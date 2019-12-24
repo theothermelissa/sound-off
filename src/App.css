@@ -1,17 +1,69 @@
 .App {
+  height: 100vh;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  background: whitesmoke;
+  /* max-width: 600px; */
+}
+
+.promptContainer {
+  display: flex;
+  flex-flow: column;
+  height: 50vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.promptName {
+  font-size: xx-large;
+  color: cadetblue;
+  margin: 20px;
+}
+
+.promptField {
+  display: flex;
+  flex-flow: row wrap;
+  background: white;
+  width: 40vw;
+  height: 50px;
+  border: 1px solid #4C4C4C;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+.dot {
+  height: 15px;
+  width: 15px;
+  background-color: #4C4C4C;
+  border-radius: 50%;
+}
+
+.space {
+  height: 15px;
+  width: 15px;
+  background-color: white;
+}
+
+.dash {
+  width: 45px;
+  height: 15px;
+  background-color: #4C4C4C;
 }
 
 .buttonContainer {
   display: flex;
+  flex-direction: center;
   align-items: center;
   justify-content: center;
+  margin: 20px;
 }
 
 .switchButton {
   width: 15vw;
   height: 15vw;
-  background: linear-gradient(#242424,#444444);
+  background: radial-gradient(#242424,#4C4C4C);
   border-radius: 50%;
   /* border: 11px solid  */
 }

@@ -21,7 +21,6 @@ class Button extends Component {
       () => console.log(this.state)
     );
     beep.play();
-    // alert("Good job!");
   };
 
   handleMouseUp() {

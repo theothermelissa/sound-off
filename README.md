@@ -6,11 +6,10 @@ I wanted to learn Morse Code, so I thought I'd build a game to help myself pract
 
 ### Goals:
 
-- a button switch that, when pressed, makes a noise and triggers an alert
+X- a button switch that, when pressed, makes a noise and triggers an alert
   - display a large black button in the bottom middle of the screen
-  - when the button is pressed:
-    - a sound plays while the button is pressed
-    - the app alerts with "good job!"
+  - when the button is pressed, a sound plays
+  - when the button is released, the sound ceases
 
 - a goal regarding button pressing
   - display a 'say this' field above the button
