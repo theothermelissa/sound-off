@@ -7,10 +7,18 @@
   /* max-width: 600px; */
 }
 
+.aPrompt {
+  color: red;
+}
+
+.mPrompt {
+  color: green;
+}
+
 .promptContainer {
   display: flex;
   flex-flow: column;
-  height: 50vh;
+  /* height: 50vh; */
   justify-content: center;
   align-items: center;
 }

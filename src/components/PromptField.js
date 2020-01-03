@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Prompt from './Prompt';
 import '../App.css';
 
 
@@ -16,23 +17,7 @@ class PromptField extends Component {
       <div className="promptContainer">
         <div className="promptName">Say this:</div>
         <div className="promptField">
-        <div className="dot"></div>
-        <div className="space"></div>
-        <div className="dot"></div>
-        <div className="space"></div>
-        <div className="dot"></div>
-        <div className="space"></div>
-        <div className="dash"></div>
-        <div className="space"></div>
-        <div className="dash"></div>
-        <div className="space"></div>
-        <div className="dash"></div>
-        <div className="space"></div>
-        <div className="dot"></div>
-        <div className="space"></div>
-        <div className="dot"></div>
-        <div className="space"></div>
-        <div className="dot"></div>
+        <Prompt />
         </div>
       </div>
     )
