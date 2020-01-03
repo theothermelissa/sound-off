@@ -1,13 +1,15 @@
 import React from 'react';
-import Button from './components/Button'
-import Prompt from './components/Prompt'
+import SignalSwitch from './components/SignalSwitch'
+import PromptField from './components/PromptField'
+import CurrentJoke from './components/CurrentJoke'
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <Prompt />
-      <Button />
+      <PromptField />
+      <SignalSwitch />
+      <CurrentJoke />
     </div>
   );
 }

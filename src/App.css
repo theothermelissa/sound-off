@@ -63,7 +63,21 @@
 .switchButton {
   width: 15vw;
   height: 15vw;
-  background: radial-gradient(#242424,#4C4C4C);
+  background: radial-gradient(black,#4C4C4C);
   border-radius: 50%;
-  /* border: 11px solid  */
+  border: 7px solid #242424
+}
+
+.statementContainer {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.potato {
+  width: 10vw;
+  border-radius: 27%;
+  color: brown;
 }

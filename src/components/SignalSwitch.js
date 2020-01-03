@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import '../App.css';
-import longBeep from '../800hz.mp3';
+import soundSignal from '../assets/800hz.mp3';
 
-const beep = new Audio(longBeep)
+const beep = new Audio(soundSignal)
 
 
-class Button extends Component {
+class SignalSwitch extends Component {
   constructor(props) {
     super(props);
       this.state = {
-        buttonPressed: false
+        switchOn: false
       }
     this.startSound = this.handleMouseDown.bind(this);
     this.stopSound = this.handleMouseUp.bind(this);
@@ -17,7 +17,7 @@ class Button extends Component {
 
   handleMouseDown() {
     this.setState(
-      { buttonPressed: true },
+      { switchOn: true },
       () => console.log(this.state)
     );
     beep.play();
@@ -25,7 +25,7 @@ class Button extends Component {
 
   handleMouseUp() {
     this.setState(
-      { buttonPressed: false},
+      { switchOn: false},
       () => console.log(this.state)
     )
     beep.pause();
@@ -35,10 +35,10 @@ class Button extends Component {
   render() {
     return (
       <div className="buttonContainer">
-        <div className="switchButton" onMouseDown={this.startSound} onMouseUp={this.stopSound}></div>
+        <button className="switchButton" onMouseDown={this.startSound} onMouseUp={this.stopSound}></button>
       </div>
     )
   }
 };
 
-export default Button;
+export default SignalSwitch;

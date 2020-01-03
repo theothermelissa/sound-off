@@ -1,0 +1,374 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+const elements = [
+  {
+    id: "dot",
+    character: ".",
+    minDuration: .05,
+    maxDuration: .4,
+  },
+  {
+    id: "dash",
+    character: "-",
+    minDuration: .401,
+    maxDuration: 1.0,
+  },
+  {
+    id: "space",
+    character: " ",
+    minDuration: .401,
+    maxDuration: 1.0,
+  },{
+    id: "stop",
+    character: "   ",
+    minDuration: 1.01,
+    maxDuration: 3.0,
+  }
+]
+
+const [ dot, dash, space, stop ] = elements;
+
+const alphabet = [
+  {
+    letter: "a",
+    code: 65,
+    shift: false,
+    sequence: [dot, dash],
+  },{
+    letter: "b",
+    code: 66,
+    shift: false,
+    sequence: [dash, dot, dot, dot],
+  },{
+    letter: "c",
+    code: 67,
+    shift: false,
+    sequence: [dash, dot, dash, dot],
+  },{
+    letter: "d",
+    code: 68,
+    shift: false,
+    sequence: [dash, dot, dot],
+  },{
+    letter: "e",
+    code: 69,
+    shift: false,
+    sequence: [dot],
+  },{
+    letter: "f",
+    code: 70,
+    sequence: [dot, dot, dash, dot],
+  },{
+    letter: "g",
+    code: 71,
+    shift: false,
+    sequence: [dash, dash, dot],
+  },{
+    letter: "h",
+    code: 72,
+    shift: false,
+    sequence: [dot, dot, dot, dot],
+  },{
+    letter: "i",
+    code: 73,
+    shift: false,
+    sequence: [dot, dot],
+  },{
+    letter: "j",
+    code: 74,
+    sequence: [dot, dash, dash, dash],
+  },{
+    letter: "k",
+    code: 75,
+    shift: false,
+    sequence: [dash, dot, dash],
+  },{
+    letter: "l",
+    code: 76,
+    shift: false,
+    sequence: [dot, dash, dot, dot],
+  },{
+    letter: "m",
+    code: 77,
+    shift: false,
+    sequence: [dash, dash],
+  },{
+    letter: "n",
+    code: 78,
+    shift: false,
+    sequence: [dash, dot],
+  },{
+    letter: "o",
+    code: 79,
+    shift: false,
+    sequence: [dash, dash, dash],
+  },{
+    letter: "p",
+    code: 80,
+    shift: false,
+    sequence: [dot, dash, dash, dot],
+  },{
+    letter: "q",
+    code: 81,
+    shift: false,
+    sequence: [dash, dash, dot, dash],
+  },{
+    letter: "r",
+    code: 82,
+    shift: false,
+    sequence: [dot, dash, dot],
+  },{
+    letter: "s",
+    code: 83,
+    sequence: [dot, dot, dot],
+  },{
+    letter: "t",
+    code: 84,
+    shift: false,
+    sequence: [dash],
+  },{
+    letter: "u",
+    code: 85,
+    shift: false,
+    sequence: [dot, dot, dash],
+  },{
+    letter: "v",
+    code: 86,
+    shift: false,
+    sequence: [dot, dot, dot, dash],
+  },{
+    letter: "w",
+    code: 87,
+    shift: false,
+    sequence: [dot, dash, dash],
+  },{
+    letter: "x",
+    code: 88,
+    shift: false,
+    sequence: [dash, dot, dot, dash],
+  },{
+    letter: "y",
+    code: 89,
+    shift: false,
+    sequence: [dash, dot, dash, dash],
+  },{
+    letter: "z",
+    code: 90,
+    sequence: [dash, dash, dot, dot],
+  },{
+    letter: "0",
+    code: 48,
+    shift: false,
+    sequence: [dash, dash, dash, dash, dash],
+  },{
+    letter: "1",
+    code: 49,
+    shift: false,
+    sequence: [dot, dash, dash, dash, dash],
+  },{
+    letter: "2",
+    code: 50,
+    shift: false,
+    sequence: [dot, dot, dash, dash, dash],
+  },{
+    letter: "3",
+    code: 51,
+    shift: false,
+    sequence: [dot, dot, dot, dash, dash],
+  },{
+    letter: "4",
+    code: 52,
+    shift: false,
+    sequence: [dot, dot, dot, dot, dispatchEvent],
+  },{
+    letter: "5",
+    code: 53,
+    shift: false,
+    sequence: [dot, dot, dot, dot, dot],
+  },{
+    letter: "6",
+    code: 54,
+    shift: false,
+    sequence: [dash, dot, dot, dot, dot],
+  },{
+    letter: "7",
+    code: 55,
+    shift: false,
+    sequence: [dash, dash, dot, dot, dot],
+  },{
+    letter: "8",
+    code: 56,
+    shift: false,
+    sequence: [dash, dash, dash, dot, dot],
+  },{
+    letter: "9",
+    code: 57,
+    shift: false,
+    sequence: [dash, dash, dash, dash, dot],
+  },{
+    letter: ".",
+    code: 190,
+    shift: false,
+    sequence: [dot, dash, dot, dash, dot, dash],
+  },{
+    letter: ",",
+    code: 188,
+    shift: false,
+    sequence: [dash, dash, dot, dot, dash, dash],
+  },{
+    letter: "?",
+    code: 191,
+    shift: true,
+    sequence: [dot, dot, dash, dash, dot, dot],
+  },{
+    letter: "!",
+    code: 49,
+    shift: true,
+    sequence: [],
+  },{
+    letter: "'",
+    //is this the right way?
+    code: 222,
+    shift: false,
+    sequence: [dot, dash, dash, dash, dash, dot],
+  },{
+    letter: '"',
+    // is this the right way?
+    code: 222,
+    shift: true,
+    sequence: [dot, dash, dot, dot, dash, dot],
+  },{
+    letter: "(",
+    code: 57,
+    shift: true,
+    sequence: [dash, dot, dash, dash, dot],
+  },{
+    letter: ")",
+    code: 48,
+    shift: true,
+    sequence: [dash, dot, dash, dash, dot, dash],
+  },{
+    letter: "&",
+    code: 55,
+    shift: true,
+    sequence: [dot, dash, dot, dot, dot],
+  },{
+    letter: ":",
+    code: 186,
+    shift: false,
+    sequence: [dash, dash, dash, dot, dot, dot],
+  },{
+    letter: ";",
+    code: 186,
+    shift: false,
+    sequence: [dash, dot, dash, dot, dash, dot],
+  },{
+    letter: "/",
+    code: 191,
+    shift: false,
+    sequence: [dash, dot, dot, dash, dot],
+  },{
+    letter: "_",
+    code: 189,
+    shift: true,
+    sequence: [dot, dot, dash, dash, dot, dash],
+  },{
+    letter: "=",
+    code: 187,
+    shift: false,
+    sequence: [dash, dot, dot, dot, dash],
+  },{
+    letter: "+",
+    code: 187,
+    shift: true,
+    sequence: [dot, dash, dot, dash, dot],
+  },{
+    letter: "-",
+    code: 189,
+    sequence: [dash, dot, dot, dot, dot, dash],
+  },{
+    letter: "$",
+    code: 52,
+    shift: true,
+    sequence: [dot, dot, dot, dash, dot, dot, dash],
+  },{
+    letter: "@",
+    code: 50,
+    shift: true,
+    sequence: [dot, dash, dash, dot, dash, dot],
+  }
+]
+
+const isElement = (val) => {
+  const allowedElements = [dot, dash, space, stop];
+    return allowedElements(includes(val));
+  // if (allowedElements.includes(val)) {
+  //   return true;
+  // } else {
+  //   return false;
+  // }
+};
+
+const phrases = [
+  {
+    phrase: "SOS",
+    sequence: [dot, dot, dot, dash, dash, dash, dot, dot, dot]
+  },{
+    phrase: "New Line",
+    sequence: [dot, dash, dot, dash]
+  },{
+    phrase: "New Page",
+    sequence: [dot, dash, dot, dash, dot]
+  },{
+    phrase: "New Paragraph",
+    sequence: [dash, dot, dot, dot, dash]
+  },{
+    phrase: "Attention",
+    sequence: [dash, dot, dash, dot, dash]
+  },{
+    phrase: "Error",
+    sequence: [dot, dot, dot, dot, dot, dot, dot, dot]
+  },{
+    phrase: "Wait",
+    sequence: [dot, dash, dot, dot, dot]
+  },{
+    phrase: "Break",
+    sequence: [dash, dot, dot, dot, space, dash, dot, dash]
+  },{
+    phrase: "Closing",
+    sequence: [dash, dot, dash, dot, space, dot, dash, dot, dot]
+  },{
+    phrase: "End of Contact",
+    sequence: [dot, dot, dot]
+  },{
+    phrase: "Understood",
+    sequence: [dot, dot, dot, dash, dot]
+  },{
+    phrase: "Named station invited to transmit",
+    sequence: [dash, dot, dash, dash, dot]
+  },{
+    phrase: "Any station invited to transmit",
+    sequence: [dash, dot, dash]
+  }
+]
+
+alphabet.propTypes = {
+  letters: PropTypes.arrayOf(
+    PropTypes.shape({
+      letter: PropTypes.string,
+      code: PropTypes.number,
+      shift: PropTypes.bool,
+      sequence: PropTypes.arrayOf(
+        PropTypes.oneOfType(isElement)
+      )
+    })
+  )
+};
+
+phrases.propTypes = {
+  phrase: PropTypes.string,
+  sequence: PropTypes.arrayOf(
+    PropTypes.oneOfType(isElement)
+  )
+};
