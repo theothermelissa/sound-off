@@ -1,19 +1,24 @@
-import React, { Component } from 'react';
-import codeTranslationKey from '../assets/codeTranslationKey';
+import React from 'react';
+import alphabet from '../assets/codeTranslationKey.js';
 import '../App.css';
 
-// const alphaPrompt = (props) => {
-//   return <h1>it's a {props.thing}</h1>;
-// };
+const AlphaPrompt = ({ char }) => {
+  return char;
+};
 
-
+const MorsePrompt = ({ char }) => {
+  return alphabet[char]["sequence"].map(({ id }, index) => { 
+    return <div className={id} key={id + index}></div>
+  })
+};
 
 function Prompt(props) {
   return (
-    <div className="promptContainer">
-      <div className="aPrompt">It's an AlphaPrompt</div>
-      <div className="mPrompt">It's a MorsePrompt</div>
-    </div>)
-}
+    <div>
+      <AlphaPrompt char={props.char} />
+      <MorsePrompt char={props.char}/>
+    </div>
+  )
+};
 
 export default Prompt;

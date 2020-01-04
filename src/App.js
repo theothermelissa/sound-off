@@ -1,7 +1,7 @@
 import React from 'react';
 import SignalSwitch from './components/SignalSwitch'
 import PromptField from './components/PromptField'
-import CurrentJoke from './components/CurrentJoke'
+// import CurrentJoke from './components/CurrentJoke'
 import './App.css';
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <PromptField />
       <SignalSwitch />
-      <CurrentJoke />
+      {/* <CurrentJoke /> */}
     </div>
   );
 }

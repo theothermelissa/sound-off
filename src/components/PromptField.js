@@ -14,10 +14,10 @@ class PromptField extends Component {
 
   render() {
     return (
-      <div className="promptContainer">
+      <div>
         <div className="promptName">Say this:</div>
-        <div className="promptField">
-        <Prompt />
+        <div>
+        <Prompt char="a"/>
         </div>
       </div>
     )
