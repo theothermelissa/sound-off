@@ -8,17 +8,34 @@
 }
 
 .aPrompt {
-  color: red;
+  font-size: 9em;
+  color:#BCBCBC;
+}
+
+.aPrompt:hover {
+  font-size: 9em;
+  color: black;
 }
 
 .mPrompt {
-  color: green;
+  background-color:#BCBCBC;
 }
+
+.mPrompt:hover {
+  background-color:black;
+}
+
 
 .promptContainer {
   display: flex;
   flex-flow: column;
-  /* height: 50vh; */
+  justify-content: center;
+  align-items: center;
+}
+
+.morsePromptContainer {
+  display: flex;
+  flex-flow: row;
   justify-content: center;
   align-items: center;
 }
@@ -35,29 +52,38 @@
   background: white;
   width: 40vw;
   height: 50px;
-  border: 1px solid #4C4C4C;
+  border: 1px solid black;
   border-radius: 5px;
   align-items: center;
   justify-content: center;
 }
 
 .dot {
-  height: 15px;
-  width: 15px;
-  background-color: #4C4C4C;
+  height: 6px;
+  width: 6px;
+  background-color: #BCBCBC;
   border-radius: 50%;
 }
 
+.dot:hover {
+  background-color: black;
+}
+
 .space {
-  height: 15px;
-  width: 15px;
-  background-color: white;
+  height: 6px;
+  width: 6px;
+  background-color: whitesmoke;
 }
 
 .dash {
-  width: 45px;
-  height: 15px;
-  background-color: #4C4C4C;
+  width: 20px;
+  height: 6px;
+  background-color: #BCBCBC;
+  border-radius: 13%;
+}
+
+.dash:hover {
+  background-color: black;
 }
 
 .buttonContainer {

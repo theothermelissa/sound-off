@@ -3,7 +3,6 @@ import Prompt from './Prompt';
 import '../App.css';
 
 
-
 class PromptField extends Component {
   constructor(props) {
     super(props);
@@ -15,9 +14,9 @@ class PromptField extends Component {
   render() {
     return (
       <div>
-        <div className="promptName">Say this:</div>
+        {/* <div className="promptName">Say this:</div> */}
         <div>
-        <Prompt char="a"/>
+        <Prompt char="q"/>
         </div>
       </div>
     )
