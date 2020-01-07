@@ -16,7 +16,7 @@ class PromptField extends Component {
       <div>
         {/* <div className="promptName">Say this:</div> */}
         <div>
-        <Prompt char="q"/>
+        <Prompt char="j"/>
         </div>
       </div>
     )

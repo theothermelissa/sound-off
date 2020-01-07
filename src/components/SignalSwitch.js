@@ -3,16 +3,27 @@ import '../App.css';
 import {useAudio} from 'react-use';
 import soundSignal from '../assets/800hz.mp3';
 
-const SignalSwitch = () => {
-  const [audio, controls] = useAudio ({
+const SignalSwitch = (props) => {
+
+  const [audio, state, controls, ref] = useAudio ({
     src: soundSignal,
     autoPlay: false,
   });
 
+  const handlePress = (event) => {
+    controls.play();
+    props.startTimer(event);
+  };
+
+  const handleRelease = (event) => {
+    controls.pause();
+    props.stopTimer(event);
+  }
+
   return(
     <div className="buttonContainer">
       {audio}
-      <button onMouseDown={controls.play} onMouseUp={controls.pause} className="switchButton"></button>
+      <button onMouseDown={handlePress} onMouseUp={handleRelease} className="switchButton"></button>
     </div>
   )
 }
