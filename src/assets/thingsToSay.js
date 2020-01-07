@@ -1,17 +1,17 @@
 const thingsToSay = [
 {
-  call: "I want a potato.",
-  response: "So get one.",
+  call: "Hello.",
+  response: "No.",
   difficulty: 0,
   id: "potato",
 },{
-  call: "Give me a taco.",
-  response: "No.",
+  call: "Taco.",
+  response: "Yes.",
   difficulty: 1,
   id: "taco"
 },{
-  call: "Suit up.",
-  response: "It's at the cleaners.",
+  call: "Suit.",
+  response: "Why?",
   difficulty: 2,
   id: "suit"
 }

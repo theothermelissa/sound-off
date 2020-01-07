@@ -1,23 +1,30 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import '../App.css';
 import thingsToSay from '../assets/thingsToSay';
 import Prompt from './Prompt';
 import SignalSwitch from './SignalSwitch'
 
 
+const PromptField = (props) => {
+  let msg = thingsToSay[props.index]["call"].split("");
+  return msg.map((letter, index) => {
+    return <Prompt char={letter} status={props.status} key={letter+index}/>
+  })
+};
+
+
 class GameMaster extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentJoke: 0,
-      activeCharacter: 0,
+      currentJokeIndex: 0,
+      activeCharacter: {
+        char: "",
+        status: "active",
+      },
       timeStart: 0,
       timeEnd: 0,
     };
-  };
-
-  makePromptList = (msg) => {
-    return thingsToSay[msg]["call"].split();
   };
 
   saveCurrentStartTime = (pressEvent) => {
@@ -34,14 +41,14 @@ class GameMaster extends Component {
     return totalTime;
   };
 
-  // completePrompt = () => {
+  // checkPrompt = () => {
 
   // }
 
   render() {
     return (
       <div>
-        <div>{this.makePromptList(this.state.currentJoke)}</div>
+        <PromptField className="PromptField" index={this.state.currentJokeIndex} status={this.state.activeCharacter.status} />
         <SignalSwitch startTimer={this.saveCurrentStartTime} stopTimer={this.saveCurrentEndTime}/>
       </div>
     )
