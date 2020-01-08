@@ -8,12 +8,12 @@ class GameMaster extends Component {
     super(props);
     this.state = {
       currentJokeIndex: 0,
-      charLastComplete: 3,
-      elementLastComplete: 4,
+      charLastComplete: -1,
+      elementLastComplete: -1,
       timeStart: 0,
       testCount: 0,
     };
-    this.increaseCount = this.increaseCount.bind(this);
+    this.completeElement = this.completeElement.bind(this);
     // this.checkPrompt = this.checkPrompt.bind(this);
     // this.checkPrompt = this.checkPrompt.bind(this);
   };
@@ -40,10 +40,17 @@ class GameMaster extends Component {
     }
   };
 
-  increaseCount = () => {
-    this.setState({ testCount: this.state.testCount + 1})
-    console.log("current count: ", this.state.testCount)
-  }
+  completeElement = (currentIndex, elementsLength, msgLength) => {
+    if (currentIndex < elementsLength) {
+      this.setState({ elementLastComplete: this.state.elementLastComplete + 1 });
+      console.log("Last Completed Element: ", this.state.elementLastComplete);
+    } else {
+      this.setState({ 
+        charLastComplete: this.state.charLastComplete + 1, 
+        elementLastComplete: -1
+       });
+    }
+  };
 
   // checkCharacter = ()
 
@@ -53,7 +60,7 @@ class GameMaster extends Component {
         <div className="promptField">
           <PromptField jokeIndex={this.state.currentJokeIndex} charLastComplete={this.state.charLastComplete} elementLastComplete={this.state.elementLastComplete} />
         </div>
-          <SignalSwitch increaseCount={this.increaseCount} startTimer={this.saveCurrentStartTime} stopTimer={this.saveCurrentEndTime}/>
+          <SignalSwitch completeElement={this.completeElement} startTimer={this.saveCurrentStartTime} stopTimer={this.saveCurrentEndTime}/>
       </div>
     )
   }

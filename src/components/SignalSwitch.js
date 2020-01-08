@@ -22,7 +22,7 @@ const SignalSwitch = (props) => {
     // props.stopTimer(props.event);
     // props.checkSignal();
     // console.log("Props given to handleRelease: ", event)
-    props.increaseCount();
+    props.completeElement();
   }
 
 
