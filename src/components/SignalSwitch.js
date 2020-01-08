@@ -12,15 +12,17 @@ const SignalSwitch = (props) => {
 
   const [completePrompt, setCompletePrompt] = useState(false);
 
-  const handlePress = (props) => {
+  const handlePress = () => {
     controls.play();
-    props.startTimer(props.event);
+    // props.startTimer(props.event);
   };
 
-  const handleRelease = (props) => {
+  const handleRelease = () => {
     controls.pause();
-    props.stopTimer(props.event);
-    props.checkPrompt();
+    // props.stopTimer(props.event);
+    // props.checkSignal();
+    // console.log("Props given to handleRelease: ", event)
+    props.increaseCount();
   }
 
 

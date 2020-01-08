@@ -3,9 +3,9 @@ import Prompt from './Prompt';
 import thingsToSay from '../assets/thingsToSay'
 
 const PromptField = (props) => {
-  let msg = thingsToSay[props.index]["call"].split("");
+  let msg = thingsToSay[props.jokeIndex]["call"].split("");
   return msg.map((letter, index) => {
-    return <Prompt char={letter} status={props.status} key={letter+index}/>
+    return <Prompt char={letter} charIndex={index} charLastComplete={props.charLastComplete} elementLastComplete={props.elementLastComplete} key={letter+index}/>
   })
 };
 

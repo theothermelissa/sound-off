@@ -31,23 +31,39 @@
 .aPrompt {
   font-size: 9em;
   color:#BCBCBC;
-  margin-left: 3px;
-  margin-right: 3px;
+  /* margin-left: 3px;
+  margin-right: 3px; */
+  margin-bottom: 0px;
+}
+.aPromptActive {
+  font-size: 9em;
+  color:#BCBCBC;
+  /* margin-left: 3px;
+  margin-right: 3px; */
+  margin-bottom: 0px;
 }
 
 .aPromptComplete {
+  font-size: 9em;
   color: black;
+  /* margin-left: 3px;
+  margin-right: 3px; */
+  margin-bottom: 0px;
 }
 
 .mPrompt {
   display: flex;
   background-color:#BCBCBC;
-  margin-left: 3px;
-  margin-right: 3px;
+  /* margin-left: 3px;
+  margin-right: 3px; */
+  margin-top: 0px;
 }
 
 .mPromptComplete {
+  display: flex;
   background-color:black;
+  /* margin-left: 3px;
+  margin-right: 3px; */
 }
 
 .morsePromptContainer {
@@ -64,30 +80,62 @@
 }
 
 .dot {
-  height: 5px;
-  width: 5px;
+  height: 7px;
+  width: 7px;
+  border-radius: 50%;
+  background-color: #BCBCBC;
+}
+
+.dotActive {
+  height: 7px;
+  width: 7px;
   border-radius: 50%;
   background-color: #BCBCBC;
 }
 
 .dotComplete {
+  height: 7px;
+  width: 7px;
+  border-radius: 50%;
   background-color: black;
 }
 
 .space {
-  height: 5px;
-  width: 5px;
+  height: 3px;
+  width: 3px;
+  background-color: whitesmoke;
+}
+
+.spaceActive {
+  height: 3px;
+  width: 3px;
+  background-color: whitesmoke;
+}
+
+.spaceComplete {
+  height: 3px;
+  width: 3px;
   background-color: whitesmoke;
 }
 
 .dash {
-  width: 15px;
-  height: 5px;
+  width: 20px;
+  height: 7px;
+  border-radius: 13%;
+  background-color: #BCBCBC;
+}
+
+.dashActive {
+  width: 20px;
+  height: 7px;
   border-radius: 13%;
   background-color: #BCBCBC;
 }
 
 .dashComplete {
+  width: 20px;
+  height: 7px;
+  border-radius: 13%;
   background-color: black;
 }
 
@@ -96,7 +144,7 @@
   flex-direction: center;
   align-items: center;
   justify-content: center;
-  margin: 20px;
+  margin: 10vh;
 }
 
 .switchButton {
