@@ -1,16 +1,7 @@
 import React, { Component, useState } from 'react';
 import '../App.css';
-import thingsToSay from '../assets/thingsToSay';
-import Prompt from './Prompt';
+import PromptField from './PromptField';
 import SignalSwitch from './SignalSwitch'
-
-
-const PromptList = (props) => {
-  let msg = thingsToSay[props.index]["call"].split("");
-  return msg.map((letter, index) => {
-    return <Prompt char={letter} status={props.status} key={letter+index}/>
-  })
-};
 
 class GameMaster extends Component {
   constructor(props) {
@@ -49,13 +40,11 @@ class GameMaster extends Component {
     }
   };
 
-
-
   render() {
     return (
       <div className="game">
         <div className="promptField">
-          <PromptList checkPrompt={this.checkPrompt} index={this.state.currentJokeIndex} status={this.state.status} />
+          <PromptField checkPrompt={this.checkPrompt} index={this.state.currentJokeIndex} status={this.state.status} />
         </div>
           <SignalSwitch startTimer={this.saveCurrentStartTime} stopTimer={this.saveCurrentEndTime}/>
       </div>

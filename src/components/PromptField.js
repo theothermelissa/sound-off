@@ -1,26 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Prompt from './Prompt';
-import '../App.css';
+import thingsToSay from '../assets/thingsToSay'
 
-
-class PromptField extends Component {
-  constructor(props) {
-    super(props);
-      this.state = {
-        aNumber: 1
-      }
-  }
-
-  render() {
-    return (
-      <div>
-        {/* <div className="promptName">Say this:</div> */}
-        <div>
-        {/* <Prompt char="j"/> */}
-        </div>
-      </div>
-    )
-  }
+const PromptField = (props) => {
+  let msg = thingsToSay[props.index]["call"].split("");
+  return msg.map((letter, index) => {
+    return <Prompt char={letter} status={props.status} key={letter+index}/>
+  })
 };
+
 
 export default PromptField;
