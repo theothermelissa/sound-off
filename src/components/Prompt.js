@@ -17,23 +17,21 @@ const generateClassName = (item, status, parentStatus) => {
   return name;
 }
 
-const checkStatus = (currentIndex, indexLastComplete) => {
-  let status;
-  if (currentIndex < indexLastComplete) {
-    status = "Complete";
-  } else if (currentIndex === indexLastComplete) {
-    status = "Active";
-  } else {
-    status = ""
-  }
+// char={letter} 
+// charIndex={index} 
+// activeCharIndex={props.activeCharIndex} 
+// activeElementIndex={props.activeElementIndex}
+
+const checkStatus = (currentIndex, activeIndex) => {
+  let status = (currentIndex < activeIndex) ? "Complete" : ""
   return status;
 }
 
-const TranslateToMorse = ({ elementLastComplete, char, charStatus }) => {
+const TranslateToMorse = ({ activeElementIndex, char, charStatus }) => {
   return alphabet[char.toLowerCase()]["sequence"].map((element, index) => { 
     return (
       <div 
-        className={generateClassName(element.id, checkStatus(index, elementLastComplete), charStatus)} 
+        className={generateClassName(element.id, checkStatus(index, activeElementIndex), charStatus)} 
         key={element.id + char + index}>
       </div>
     )
@@ -48,16 +46,16 @@ const AlphaPrompt = ({ char, status }) => {
 const MorsePrompt = (props) => {
   return (
       <div className="morsePromptContainer">
-        <TranslateToMorse elementLastComplete={props.elementLastComplete} char={props.char} charStatus={props.charStatus}/>
+        <TranslateToMorse activeElementIndex={props.activeElementIndex} char={props.char} charStatus={props.charStatus}/>
       </div>
   )
 };
 
-function Prompt({ char, charLastComplete, charIndex, elementLastComplete }) {
+function Prompt({ char, currentCharIndex, activeCharIndex, activeElementIndex }) {
   return (
     <div className="promptContainer">
-      <AlphaPrompt className="aPrompt" char={char} status={checkStatus(charIndex, charLastComplete)} />
-      <MorsePrompt className="mPrompt" char={char} elementLastComplete={elementLastComplete} charStatus={checkStatus(charIndex, charLastComplete)}/>
+      <AlphaPrompt className="aPrompt" char={char} status={checkStatus(currentCharIndex, activeCharIndex)} />
+      <MorsePrompt className="mPrompt" char={char} activeElementIndex={activeElementIndex} charStatus={checkStatus(currentCharIndex, activeCharIndex)}/>
     </div>
   )
 };

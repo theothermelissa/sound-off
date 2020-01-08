@@ -10,7 +10,7 @@ const SignalSwitch = (props) => {
     autoPlay: false,
   });
 
-  const [completePrompt, setCompletePrompt] = useState(false);
+  // const [completePrompt, setCompletePrompt] = useState(false);
 
   const handlePress = () => {
     controls.play();
@@ -22,7 +22,7 @@ const SignalSwitch = (props) => {
     // props.stopTimer(props.event);
     // props.checkSignal();
     // console.log("Props given to handleRelease: ", event)
-    props.completeElement();
+    props.completeElement(props.activeElementIndex, props.activeElementsLength, props.activeCharIndex, props.activeMessageLength);
   }
 
 
