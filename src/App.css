@@ -3,31 +3,47 @@
   text-align: center;
   display: flex;
   flex-direction: column;
+  align-items: center;
   background: whitesmoke;
   /* max-width: 600px; */
 }
 
-.promptContainer {
+.game{
   display: flex;
-  width: auto;
+  flex-flow: column;
+}
+
+.promptField {
+  display: flex;
+  width: 80vw;
+  flex-flow: row wrap;
+  /* align-items: center; */
+  justify-content: center;
+}
+
+/* .promptContainer {
+  display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .aPrompt {
-  font-size: 7em;
+  font-size: 9em;
   color:#BCBCBC;
+  margin-left: 3px;
+  margin-right: 3px;
 }
 
 .aPromptComplete {
-  font-size: 9em;
   color: black;
 }
 
 .mPrompt {
   display: flex;
   background-color:#BCBCBC;
+  margin-left: 3px;
+  margin-right: 3px;
 }
 
 .mPromptComplete {
@@ -47,17 +63,9 @@
   margin: 20px;
 }
 
-.promptField {
-  display: flex;
-  width: 80vw;
-  flex-flow: row wrap;
-  align-items: center;
-  justify-content: center;
-}
-
 .dot {
-  height: 6px;
-  width: 6px;
+  height: 5px;
+  width: 5px;
   border-radius: 50%;
   background-color: #BCBCBC;
 }
@@ -67,14 +75,14 @@
 }
 
 .space {
-  height: 6px;
-  width: 6px;
+  height: 5px;
+  width: 5px;
   background-color: whitesmoke;
 }
 
 .dash {
-  width: 20px;
-  height: 6px;
+  width: 15px;
+  height: 5px;
   border-radius: 13%;
   background-color: #BCBCBC;
 }

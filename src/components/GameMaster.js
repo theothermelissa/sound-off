@@ -5,7 +5,7 @@ import Prompt from './Prompt';
 import SignalSwitch from './SignalSwitch'
 
 
-const PromptField = (props) => {
+const PromptList = (props) => {
   let msg = thingsToSay[props.index]["call"].split("");
   return msg.map((letter, index) => {
     return <Prompt char={letter} status={props.status} key={letter+index}/>
@@ -47,9 +47,11 @@ class GameMaster extends Component {
 
   render() {
     return (
-      <div>
-        <PromptField className="PromptField" index={this.state.currentJokeIndex} status={this.state.activeCharacter.status} />
-        <SignalSwitch startTimer={this.saveCurrentStartTime} stopTimer={this.saveCurrentEndTime}/>
+      <div className="game">
+        <div className="promptField">
+          <PromptList  index={this.state.currentJokeIndex} status={this.state.activeCharacter.status} />
+        </div>
+          <SignalSwitch startTimer={this.saveCurrentStartTime} stopTimer={this.saveCurrentEndTime}/>
       </div>
     )
   }
