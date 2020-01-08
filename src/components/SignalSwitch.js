@@ -10,15 +10,19 @@ const SignalSwitch = (props) => {
     autoPlay: false,
   });
 
-  const handlePress = (event) => {
+  const [completePrompt, setCompletePrompt] = useState(false);
+
+  const handlePress = (props) => {
     controls.play();
-    props.startTimer(event);
+    props.startTimer(props.event);
   };
 
-  const handleRelease = (event) => {
+  const handleRelease = (props) => {
     controls.pause();
-    props.stopTimer(event);
+    props.stopTimer(props.event);
+    props.checkPrompt();
   }
+
 
   return(
     <div className="buttonContainer">

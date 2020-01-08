@@ -12,19 +12,19 @@ const PromptList = (props) => {
   })
 };
 
-
 class GameMaster extends Component {
   constructor(props) {
     super(props);
     this.state = {
       currentJokeIndex: 0,
-      activeCharacter: {
-        char: "",
-        status: "active",
-      },
+      activeCharacter: "",
+      status: "incomplete",
+      minDuration: "",
+      maxDuration: "",
       timeStart: 0,
       timeEnd: 0,
     };
+    this.checkPrompt = this.checkPrompt.bind(this);
   };
 
   saveCurrentStartTime = (pressEvent) => {
@@ -41,15 +41,21 @@ class GameMaster extends Component {
     return totalTime;
   };
 
-  // checkPrompt = () => {
+  checkPrompt = (minDuration, totalTime, maxDuration) => {
+    if (minDuration <= totalTime <= maxDuration) {
+      this.setState ({ status: "complete" });
+    } else {
+      return null
+    }
+  };
 
-  // }
+
 
   render() {
     return (
       <div className="game">
         <div className="promptField">
-          <PromptList  index={this.state.currentJokeIndex} status={this.state.activeCharacter.status} />
+          <PromptList checkPrompt={this.checkPrompt} index={this.state.currentJokeIndex} status={this.state.status} />
         </div>
           <SignalSwitch startTimer={this.saveCurrentStartTime} stopTimer={this.saveCurrentEndTime}/>
       </div>
