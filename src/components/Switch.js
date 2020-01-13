@@ -3,7 +3,7 @@ import '../App.css';
 import {useAudio} from 'react-use';
 import soundSignal from '../assets/800hz.mp3';
 
-const SignalSwitch = (props) => {
+const Switch = (props) => {
 
   const [audio, state, controls, ref] = useAudio ({
     src: soundSignal,
@@ -11,6 +11,28 @@ const SignalSwitch = (props) => {
   });
 
   // const [completePrompt, setCompletePrompt] = useState(false);
+
+    // saveCurrentStartTime = (pressEvent) => {
+  //   let start = pressEvent.timeStamp
+  //   this.setState({timeStart: start})
+  //   return start;
+  // };
+  
+  // saveCurrentEndTime = (releaseEvent) => {
+  //   let end = releaseEvent.timeStamp
+  //   // this.setState({timeEnd: end});
+  //   let totalTime = (end - this.state.timeStart)/1000;
+  //   console.log("Total time: ", totalTime)
+  //   return totalTime;
+  // };
+
+  // checkSignal = (minDuration, totalTime, maxDuration) => {
+  //   if (minDuration <= totalTime <= maxDuration) {
+  //     this.setState ({ elementStatus: "Complete" });
+  //   } else {
+  //     return null
+  //   }
+  // };
 
   const handlePress = () => {
     controls.play();
@@ -34,4 +56,4 @@ const SignalSwitch = (props) => {
   )
 }
 
-export default SignalSwitch;
+export default Switch;

@@ -13,7 +13,7 @@
   flex-flow: column;
 }
 
-.promptField {
+.message {
   display: flex;
   width: 80vw;
   flex-flow: row wrap;
@@ -28,7 +28,7 @@
   align-items: center;
 } */
 
-.aPrompt {
+.letter {
   font-size: 9em;
   color:#BCBCBC;
   /* margin-left: 3px;
@@ -51,7 +51,7 @@
   margin-bottom: 0px;
 }
 
-.mPrompt {
+.sequence {
   display: flex;
   background-color:#BCBCBC;
   /* margin-left: 3px;
