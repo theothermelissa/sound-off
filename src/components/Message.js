@@ -6,7 +6,8 @@ import { act } from 'react-dom/test-utils';
 const Message = ({ markMessageComplete, markLetterSignalComplete, messageIndex, lastSignalReceived }) => {
   const [activeCharacterIndex, setActiveCharacterIndex] = useState(0);
   const messageCharacters = thingsToSay[messageIndex].statement.split("");
-
+  console.log("Active character index: ", activeCharacterIndex);
+  
   const onCompleteSignal = (index) => {
     setActiveCharacterIndex(activeCharacterIndex + 1);
     if(index <= messageCharacters.length) {
@@ -24,7 +25,7 @@ const Message = ({ markMessageComplete, markLetterSignalComplete, messageIndex, 
           activeLetterIndex={activeCharacterIndex}
           lastSignalReceived={lastSignalReceived}
           key={letter+index}
-          characterIndex={index}
+          position={index}
           completeSignal={onCompleteSignal}
         />
       )
