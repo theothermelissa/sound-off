@@ -9,9 +9,10 @@ const Message = ({ markMessageComplete, markLetterSignalComplete, messageIndex, 
   console.log("Active character index: ", activeCharacterIndex);
   
   const onCompleteSignal = (index) => {
-    setActiveCharacterIndex(activeCharacterIndex + 1);
-    if(index <= messageCharacters.length) {
+    let newIndex = index + 1;
+    if(newIndex < messageCharacters.length) {
       markLetterSignalComplete();
+      setActiveCharacterIndex(activeCharacterIndex + 1);
     } else {
       markMessageComplete();
     }

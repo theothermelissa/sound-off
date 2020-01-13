@@ -22,7 +22,7 @@ const Prompt = ({ char, activeLetterIndex, lastSignalReceived, position, complet
     console.log("New Status: ", newStatus);
     if (activeLetterIndex === position) {
       if (newStatus > 5) {
-        completeSignal();
+        completeSignal(position);
         setStatus(0);
       } else {
         setStatus(status + 2);
