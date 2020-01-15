@@ -20,7 +20,6 @@ const Message = ({ markMessageComplete, resetLastSignal, messageIndex, lastSigna
   return (
     messageCharacters.map((letter, index) => {
       return (
-        <div className="statementContainer">
           <Prompt 
             char={letter}
             activeCharacterIndex={activeCharacterIndex}
@@ -31,7 +30,6 @@ const Message = ({ markMessageComplete, resetLastSignal, messageIndex, lastSigna
             completePrompt={onCompletePrompt}
             resetLastSignal={resetLastSignal}
           />
-        </div>
       )
     })
   )

@@ -36,12 +36,14 @@ class GameMaster extends Component {
   render() {
     return (
       <div className="game">
-          <Message 
-            className="message" 
-            markMessageComplete={this.markMessageComplete}
-            resetLastSignal={this.resetLastSignal}
-            messageIndex={this.state.messageIndex}
-            lastSignalReceived={this.state.lastSignalReceived} />
+          <div className="message">
+            <Message 
+              className="message"
+              markMessageComplete={this.markMessageComplete}
+              resetLastSignal={this.resetLastSignal}
+              messageIndex={this.state.messageIndex}
+              lastSignalReceived={this.state.lastSignalReceived} />
+          </div>
           <Switch transmitSignal={this.transmitSignal}/>
       </div>
     )
