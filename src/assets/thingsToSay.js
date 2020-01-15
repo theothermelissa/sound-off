@@ -1,6 +1,6 @@
 const thingsToSay = [
 {
-  statement: "Hello.",
+  statement: "Hi",
   reply: "No.",
   difficulty: 0,
   id: "potato",

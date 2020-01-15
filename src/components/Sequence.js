@@ -41,27 +41,34 @@ import signalElements from '../assets/signalElements';
     // };
 
 const Sequence = ({ char, position, activeCharacterIndex, completeSequence, totalCharacters }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  console.log("Postion given to Sequence: ", position)
+  const [currentSignalIndex, setCurrentSignalIndex] = useState(0);
   // console.log("Sequence position: ", position)
   const morseElementSequence = alphabet[char.toLowerCase()]["sequence"];
+  const totalSignalsInChar = morseElementSequence.length;
   
   const clickButton = () => {
-    console.log("The ", {char}, " button has been clicked.")
-    let newIndex = currentIndex +1;
-    if (newIndex < totalCharacters) {
-      setCurrentIndex(currentIndex + 1);
-      completeSequence();
+    console.log("The ", currentSignalIndex, " button has been clicked.")
+    let newIndex = currentSignalIndex +1;
+    if (position === activeCharacterIndex) {
+      if (newIndex < totalSignalsInChar) {
+      setCurrentSignalIndex(newIndex);
+      console.log("New active signal index: ", newIndex)
+      } else {
+        setCurrentSignalIndex(0);
+        completeSequence()};
+        console.log("New active charater index: ", activeCharacterIndex)
+      }
     }
-  }
 
-  const isComplete = (position < activeCharacterIndex);
+  const isComplete = (index) => (index < currentSignalIndex) || (position < activeCharacterIndex);
 
   // className={`post-wrapper ${this.state.loading ? 'post-wrapper--loading' : ''}`}
 
   return (
     morseElementSequence.map((codeSignal, index) => {
       return (
-        <div className={`${codeSignal.id} ${isComplete ? 'completed' : ''}`} key={char + codeSignal.id + index} onClick={clickButton} />
+        <div className={`${codeSignal.id} ${isComplete(index) ? 'completed' : ''}`} key={char + codeSignal.id + index} onClick={clickButton} />
       )
     })
   //   <button onClick={clickButton}>
