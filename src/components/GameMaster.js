@@ -11,7 +11,7 @@ class GameMaster extends Component {
       lastSignalReceived: "",
     };
     this.markMessageComplete = this.markMessageComplete.bind(this);
-    this.markLetterSignalComplete = this.markLetterSignalComplete.bind(this);
+    this.resetLastSignal = this.resetLastSignal.bind(this);
     this.transmitSignal = this.transmitSignal.bind(this);
   };
 
@@ -23,7 +23,7 @@ class GameMaster extends Component {
     })
   };
 
-  markLetterSignalComplete = () => {
+  resetLastSignal = () => {
     this.setState({
       lastSignalReceived: "",
     })
@@ -39,7 +39,7 @@ class GameMaster extends Component {
           <Message 
             className="message" 
             markMessageComplete={this.markMessageComplete}
-            markLetterSignalComplete={this.markLetterSignalComplete}
+            resetLastSignal={this.resetLastSignal}
             messageIndex={this.state.messageIndex}
             lastSignalReceived={this.state.lastSignalReceived} />
           <Switch transmitSignal={this.transmitSignal}/>

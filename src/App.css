@@ -21,12 +21,12 @@
   justify-content: center;
 }
 
-/* .promptContainer {
+.promptContainer {
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
-} */
+}
 
 .letter {
   font-size: 9em;
@@ -161,10 +161,4 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-}
-
-.potato {
-  width: 10vw;
-  border-radius: 27%;
-  color: brown;
 }

@@ -7,82 +7,147 @@
 	.st1{font-family:'MyriadPro-Regular';}
 	.st2{font-size:12px;}
 	.st3{fill:none;stroke:#000000;}
-	.st4{stroke:#000000;}
-	.st5{fill:none;}
-	.st6{fill:none;stroke:#ED2088;}
-	.st7{fill:#ED2088;}
-	.st8{fill:none;stroke:#8E8E8E;}
-	.st9{fill:#8E8E8E;}
+	.st4{fill:none;}
+	.st5{fill:none;stroke:#ED2088;}
+	.st6{fill:#ED2088;}
+	.st7{fill:none;stroke:#8E8E8E;}
+	.st8{fill:#8E8E8E;}
 </style>
-<rect x="601.41" y="262.09" class="st0" width="461.76" height="429.41"/>
+<rect x="601.4" y="262.1" class="st0" width="461.8" height="429.4"/>
 <text transform="matrix(1 0 0 1 632.6789 262.0865)" class="st1 st2">GameMaster</text>
-<rect x="621.83" y="285.16" class="st0" width="420.17" height="137.25"/>
+<rect x="621.8" y="285.2" class="st0" width="420.2" height="137.2"/>
 <text transform="matrix(1 0 0 1 639.901 285.1571)" class="st1 st2">Message</text>
-<rect x="632.68" y="311.1" class="st0" width="84.13" height="103.46"/>
+<rect x="632.7" y="311.1" class="st0" width="84.1" height="103.5"/>
 <text transform="matrix(1 0 0 1 651.6433 311.1016)" class="st1 st2">Prompt</text>
-<rect x="648.22" y="318.32" class="st0" width="55.15" height="43.35"/>
+<rect x="648.2" y="318.3" class="st0" width="55.2" height="43.4"/>
 <text transform="matrix(1 0 0 1 652.0405 333.0044)" class="st1 st2">Letter</text>
-<rect x="648.22" y="379.4" class="st0" width="55.15" height="30.68"/>
+<rect x="648.2" y="379.4" class="st0" width="55.2" height="30.7"/>
 <text transform="matrix(1 0 0 1 955.7195 407.1469)" class="st1 st2">Sequence</text>
-<rect x="652.04" y="385.45" class="st3" width="8.21" height="7.51"/>
-<rect x="671.69" y="385.28" class="st3" width="8.21" height="7.51"/>
-<rect x="690.05" y="385.28" class="st3" width="8.21" height="7.51"/>
-<rect x="734.07" y="311.1" class="st0" width="84.13" height="103.46"/>
-<rect x="749.61" y="318.32" class="st0" width="55.15" height="43.35"/>
-<rect x="749.61" y="379.4" class="st0" width="55.15" height="30.68"/>
-<rect x="753.44" y="385.45" class="st3" width="8.21" height="7.51"/>
-<rect x="773.08" y="385.28" class="st3" width="8.21" height="7.51"/>
-<rect x="791.44" y="385.28" class="st3" width="8.21" height="7.51"/>
-<rect x="835.47" y="311.1" class="st3" width="84.13" height="103.46"/>
-<rect x="851.01" y="318.32" class="st3" width="55.15" height="43.35"/>
-<rect x="851.01" y="379.4" class="st3" width="55.15" height="30.68"/>
-<rect x="854.83" y="385.45" class="st3" width="8.21" height="7.51"/>
-<rect x="874.48" y="385.28" class="st3" width="8.21" height="7.51"/>
-<rect x="892.84" y="385.28" class="st3" width="8.21" height="7.51"/>
-<rect x="936.36" y="311.1" class="st3" width="84.13" height="103.46"/>
-<rect x="951.9" y="318.32" class="st3" width="55.15" height="43.35"/>
-<rect x="951.9" y="379.4" class="st3" width="55.15" height="30.68"/>
-<rect x="955.72" y="385.45" class="st3" width="8.21" height="7.51"/>
-<rect x="975.37" y="385.28" class="st3" width="8.21" height="7.51"/>
-<rect x="993.73" y="385.28" class="st3" width="8.21" height="7.51"/>
+<rect x="652" y="385.5" class="st3" width="8.2" height="7.5"/>
+<rect x="671.7" y="385.3" class="st3" width="8.2" height="7.5"/>
+<rect x="690" y="385.3" class="st3" width="8.2" height="7.5"/>
+<rect x="734.1" y="311.1" class="st0" width="84.1" height="103.5"/>
+<rect x="749.6" y="318.3" class="st0" width="55.2" height="43.4"/>
+<rect x="749.6" y="379.4" class="st0" width="55.2" height="30.7"/>
+<rect x="753.4" y="385.5" class="st3" width="8.2" height="7.5"/>
+<rect x="773.1" y="385.3" class="st3" width="8.2" height="7.5"/>
+<rect x="791.4" y="385.3" class="st3" width="8.2" height="7.5"/>
+<rect x="835.5" y="311.1" class="st3" width="84.1" height="103.5"/>
+<rect x="851" y="318.3" class="st3" width="55.2" height="43.4"/>
+<rect x="851" y="379.4" class="st3" width="55.2" height="30.7"/>
+<rect x="854.8" y="385.5" class="st3" width="8.2" height="7.5"/>
+<rect x="874.5" y="385.3" class="st3" width="8.2" height="7.5"/>
+<rect x="892.8" y="385.3" class="st3" width="8.2" height="7.5"/>
+<rect x="936.4" y="311.1" class="st3" width="84.1" height="103.5"/>
+<rect x="951.9" y="318.3" class="st3" width="55.2" height="43.4"/>
+<rect x="951.9" y="379.4" class="st3" width="55.2" height="30.7"/>
+<rect x="955.7" y="385.5" class="st3" width="8.2" height="7.5"/>
+<rect x="975.4" y="385.3" class="st3" width="8.2" height="7.5"/>
+<rect x="993.7" y="385.3" class="st3" width="8.2" height="7.5"/>
 <g>
-	<text transform="matrix(1 0 0 1 936.3578 460.1202)" class="st1 st2">Signal</text>
+	<text transform="matrix(1 0 0 1 936.3578 460.1202)" class="st1 st2">LetterSignal</text>
 </g>
 <text transform="matrix(1 0 0 1 818.2032 523.9744)" class="st1 st2">Switch</text>
-<line class="st4" x1="632.68" y1="492.89" x2="632.68" y2="422.09"/>
-<rect x="617.68" y="500.42" class="st5" width="180.35" height="114.89"/>
-<text transform="matrix(1 0 0 1 617.6764 508.9373)"><tspan x="0" y="0" class="st1 st2">MESSAGE</tspan><tspan x="0" y="14.4" class="st1 st2">NEEDS TO KNOW</tspan><tspan x="0" y="28.8" class="st1 st2">-&gt; the entire message</tspan><tspan x="0" y="43.2" class="st1 st2">-&gt; which prompt is active</tspan><tspan x="0" y="57.6" class="st1 st2">-&gt; which prompt is last</tspan><tspan x="0" y="72" class="st1 st2">NEEDS TO TELL GAMEMASTER</tspan><tspan x="0" y="86.4" class="st1 st2">-&gt; when it’s complete</tspan></text>
-<line class="st3" x1="1007.04" y1="405.3" x2="1077.85" y2="405.3"/>
+<line class="st3" x1="632.7" y1="492.9" x2="632.7" y2="422.1"/>
+<rect x="617.7" y="500.4" class="st4" width="180.4" height="114.9"/>
+<text transform="matrix(1 0 0 1 617.6764 508.9373)" class="st1 st2">MESSAGE</text>
+<text transform="matrix(1 0 0 1 617.6764 523.3373)" class="st1 st2">NEEDS TO KNOW</text>
+<text transform="matrix(1 0 0 1 617.6764 537.7373)" class="st1 st2">-&gt; the entire message</text>
+<text transform="matrix(1 0 0 1 617.6764 552.1373)" class="st1 st2">-&gt; which prompt is active</text>
+<text transform="matrix(1 0 0 1 617.6764 566.5373)" class="st1 st2">-&gt; which prompt is last</text>
+<text transform="matrix(1 0 0 1 617.6764 580.9373)" class="st1 st2">NEEDS TO TELL GAMEMASTER</text>
+<text transform="matrix(1 0 0 1 617.6764 595.3373)" class="st1 st2">-&gt; when it’s complete</text>
+<line class="st3" x1="1007" y1="405.3" x2="1077.8" y2="405.3"/>
 <g>
-	<rect x="1082.02" y="401.05" class="st5" width="180.35" height="201.26"/>
-	<text transform="matrix(1 0 0 1 1082.0244 409.5667)"><tspan x="0" y="0" class="st1 st2">SEQUENCE</tspan><tspan x="0" y="14.4" class="st1 st2">NEEDS TO KNOW</tspan><tspan x="0" y="28.8" class="st1 st2">-&gt; its character</tspan><tspan x="0" y="43.2" class="st1 st2">-&gt; its signal elements sequence w/ </tspan><tspan x="0" y="57.6" class="st1 st2">target press duration</tspan><tspan x="0" y="72" class="st1 st2">-&gt; its display status (complete, </tspan><tspan x="0" y="86.4" class="st1 st2">active, incomplete)</tspan><tspan x="0" y="100.8" class="st1 st2">-&gt; which, if any, of its elements are </tspan><tspan x="0" y="115.2" class="st1 st2">active</tspan><tspan x="0" y="129.6" class="st1 st2">-&gt; what the last signal length was</tspan><tspan x="0" y="144" class="st1 st2">NEEDS TO TELL PROMPT</tspan><tspan x="0" y="158.4" class="st1 st2">-&gt; when an element’s target signal </tspan><tspan x="0" y="172.8" class="st1 st2">duration is met, so it is completed</tspan></text>
+	<rect x="1082" y="401" class="st4" width="180.3" height="201.3"/>
+	<text transform="matrix(1 0 0 1 1082.0244 409.5667)" class="st1 st2">SEQUENCE</text>
+	<text transform="matrix(1 0 0 1 1082.0244 423.9667)" class="st1 st2">NEEDS TO KNOW</text>
+	<text transform="matrix(1 0 0 1 1082.0244 438.3667)" class="st1 st2">-&gt; its character</text>
+	<text transform="matrix(1 0 0 1 1082.0244 452.7667)" class="st1 st2">-&gt; its signal elements sequence w/ </text>
+	<text transform="matrix(1 0 0 1 1082.0244 467.1667)" class="st1 st2">target press duration</text>
+	<text transform="matrix(1 0 0 1 1082.0244 481.5667)" class="st1 st2">-&gt; its display status (complete, </text>
+	<text transform="matrix(1 0 0 1 1082.0244 495.9667)" class="st1 st2">active, incomplete)</text>
+	<text transform="matrix(1 0 0 1 1082.0244 510.3667)" class="st1 st2">-&gt; which, if any, of its elements are </text>
+	<text transform="matrix(1 0 0 1 1082.0244 524.7667)" class="st1 st2">active</text>
+	<text transform="matrix(1 0 0 1 1082.0244 539.1667)" class="st1 st2">-&gt; what the last signal length was</text>
+	<text transform="matrix(1 0 0 1 1082.0244 553.5667)" class="st1 st2">NEEDS TO TELL PROMPT</text>
+	<text transform="matrix(1 0 0 1 1082.0244 567.9667)" class="st1 st2">-&gt; when an element’s target signal </text>
+	<text transform="matrix(1 0 0 1 1082.0244 582.3667)" class="st1 st2">duration is met, so it is completed</text>
 </g>
-<line class="st4" x1="577.41" y1="330.16" x2="648.22" y2="330.16"/>
-<rect x="328.43" y="325.42" class="st5" width="246.74" height="114.89"/>
-<text transform="matrix(1 0 0 1 539.3162 333.9365)"><tspan x="0" y="0" class="st1 st2">LETTER</tspan><tspan x="-114.41" y="14.4" class="st1 st2">DISPLAYED | NEEDS TO KNOW</tspan><tspan x="-38.41" y="28.8" class="st1 st2">-&gt; its character</tspan><tspan x="-60.47" y="43.2" class="st1 st2">-&gt; its current status</tspan></text>
-<line class="st4" x1="952.9" y1="463.12" x2="952.9" y2="488.92"/>
+<line class="st3" x1="577.4" y1="330.2" x2="648.2" y2="330.2"/>
+<rect x="328.4" y="325.4" class="st4" width="246.7" height="114.9"/>
+<text transform="matrix(1 0 0 1 539.3162 333.9365)" class="st1 st2">LETTER</text>
+<text transform="matrix(1 0 0 1 424.9062 348.3365)" class="st1 st2">DISPLAYED | NEEDS TO KNOW</text>
+<text transform="matrix(1 0 0 1 500.9062 362.7365)" class="st1 st2">-&gt; its character</text>
+<text transform="matrix(1 0 0 1 478.8462 377.1365)" class="st1 st2">-&gt; its current status</text>
+<line class="st3" x1="952.9" y1="463.1" x2="952.9" y2="488.9"/>
 <g>
-	<rect x="893.4" y="490.27" class="st5" width="180.35" height="114.89"/>
-	<text transform="matrix(1 0 0 1 893.3982 498.7891)"><tspan x="0" y="0" class="st1 st2">SIGNAL</tspan><tspan x="0" y="14.4" class="st1 st2">DISPLAYED | NEEDS TO KNOW</tspan><tspan x="0" y="28.8" class="st1 st2">-&gt; its className</tspan><tspan x="0" y="43.2" class="st1 st2">-&gt; its current statu</tspan><tspan x="91.57" y="43.2" class="st1 st2">s</tspan></text>
+	<rect x="893.4" y="490.3" class="st4" width="180.3" height="114.9"/>
+	<text transform="matrix(1 0 0 1 893.3982 498.7891)" class="st1 st2">LETTERSIGNAL</text>
+	<text transform="matrix(1 0 0 1 893.3982 513.1891)" class="st1 st2">DISPLAYED | NEEDS TO KNOW</text>
+	<text transform="matrix(1 0 0 1 893.3982 527.5891)" class="st1 st2">-&gt; its className</text>
+	<text transform="matrix(1 0 0 1 893.3982 541.9891)" class="st1 st2">-&gt; its current statu</text>
+	<text transform="matrix(1 0 0 1 984.9682 541.9891)" class="st1 st2">s</text>
 </g>
-<line class="st4" x1="834.79" y1="591.86" x2="834.79" y2="604.76"/>
-<rect x="810.87" y="607.48" class="st5" width="180.35" height="162.88"/>
-<text transform="matrix(1 0 0 1 810.8685 615.9994)"><tspan x="0" y="0" class="st1 st2">SWITCH</tspan><tspan x="0" y="14.4" class="st1 st2">DISPLAYED | NEEDS TO KNOW</tspan><tspan x="0" y="28.8" class="st1 st2">-&gt; whether it’s pressed</tspan><tspan x="0" y="43.2" class="st1 st2">-&gt; how long it’s pressed</tspan><tspan x="0" y="57.6" class="st1 st2">-&gt; whether the duration matches a </tspan><tspan x="0" y="72" class="st1 st2">dot or a dash or neither</tspan><tspan x="0" y="86.4" class="st1 st2">-&gt; how to play the sound or flash </tspan><tspan x="0" y="100.8" class="st1 st2">the light</tspan><tspan x="0" y="115.2" class="st1 st2">NEEDS TO TELL GAMEMASTER</tspan><tspan x="0" y="129.6" class="st1 st2">-&gt; when a dot or dash has been </tspan><tspan x="0" y="144" class="st1 st2">signaled </tspan></text>
-<rect x="852.24" y="382.63" class="st6" width="13.19" height="13.19"/>
-<line class="st6" x1="855.76" y1="395.82" x2="855.76" y2="437.82"/>
-<text transform="matrix(1 0 0 1 820.678 449.0344)" class="st7 st1 st2">activeElement</text>
-<line class="st3" x1="1020.59" y1="318.32" x2="1091.39" y2="318.32"/>
+<line class="st3" x1="834.8" y1="591.9" x2="834.8" y2="604.8"/>
+<rect x="810.9" y="607.5" class="st4" width="180.3" height="162.9"/>
+<text transform="matrix(1 0 0 1 810.8685 617.9994)" class="st1 st2">SWITCH</text>
+<text transform="matrix(1 0 0 1 810.8685 632.3994)" class="st1 st2">DISPLAYED | NEEDS TO KNOW</text>
+<text transform="matrix(1 0 0 1 810.8685 646.7994)" class="st1 st2">-&gt; whether it’s pressed</text>
+<text transform="matrix(1 0 0 1 810.8685 661.1994)" class="st1 st2">-&gt; how long it’s pressed</text>
+<text transform="matrix(1 0 0 1 810.8685 675.5994)" class="st1 st2">-&gt; whether the duration matches a </text>
+<text transform="matrix(1 0 0 1 810.8685 689.9994)" class="st1 st2">dot or a dash or neither</text>
+<text transform="matrix(1 0 0 1 810.8685 704.3994)" class="st1 st2">-&gt; how to play the sound or flash </text>
+<text transform="matrix(1 0 0 1 810.8685 718.7994)" class="st1 st2">the light</text>
+<text transform="matrix(1 0 0 1 810.8685 733.1994)" class="st1 st2">NEEDS TO TELL GAMEMASTER</text>
+<text transform="matrix(1 0 0 1 810.8685 747.5994)" class="st1 st2">-&gt; when a Signal has been </text>
+<text transform="matrix(1 0 0 1 810.8685 761.9994)" class="st1 st2">input, and what it was</text>
+<rect x="852.2" y="382.6" class="st5" width="13.2" height="13.2"/>
+<line class="st5" x1="855.8" y1="395.8" x2="855.8" y2="437.8"/>
+<text transform="matrix(1 0 0 1 820.678 449.0344)" class="st6 st1 st2">activeElement</text>
+<line class="st3" x1="1020.6" y1="318.3" x2="1091.4" y2="318.3"/>
 <g>
-	<rect x="1092.39" y="265.56" class="st5" width="149.62" height="123.67"/>
-	<text transform="matrix(1 0 0 1 1092.3928 274.0768)"><tspan x="0" y="0" class="st1 st2">PROMPT</tspan><tspan x="0" y="14.4" class="st1 st2">NEEDS TO KNOW</tspan><tspan x="0" y="28.8" class="st1 st2">-&gt; its character</tspan><tspan x="0" y="43.2" class="st1 st2">-&gt; its current status </tspan><tspan x="0" y="57.6" class="st1 st2">-&gt; when it’s completed</tspan><tspan x="0" y="72" class="st1 st2">NEEDS TO TELL PROMPT</tspan><tspan x="121.77" y="72" class="st1 st2">-</tspan><tspan x="0" y="86.4" class="st1 st2">FIELD</tspan><tspan x="0" y="100.8" class="st1 st2">-&gt; when it is completed</tspan></text>
+	<rect x="1092.4" y="265.6" class="st4" width="149.6" height="123.7"/>
+	<text transform="matrix(1 0 0 1 1092.3928 274.0768)" class="st1 st2">PROMPT</text>
+	<text transform="matrix(1 0 0 1 1092.3928 288.4768)" class="st1 st2">NEEDS TO KNOW</text>
+	<text transform="matrix(1 0 0 1 1092.3928 302.8768)" class="st1 st2">-&gt; its character</text>
+	<text transform="matrix(1 0 0 1 1092.3928 317.2768)" class="st1 st2">-&gt; its current status </text>
+	<text transform="matrix(1 0 0 1 1092.3928 331.6768)" class="st1 st2">-&gt; when it’s completed</text>
+	<text transform="matrix(1 0 0 1 1092.3928 346.0768)" class="st1 st2">NEEDS TO TELL PROMPT</text>
+	<text transform="matrix(1 0 0 1 1214.1628 346.0768)" class="st1 st2">-</text>
+	<text transform="matrix(1 0 0 1 1092.3928 360.4768)" class="st1 st2">FIELD</text>
+	<text transform="matrix(1 0 0 1 1092.3928 374.8768)" class="st1 st2">-&gt; when it is completed</text>
 </g>
-<circle cx="833.95" cy="561.39" r="29.75"/>
-<rect x="831.91" y="295.71" class="st8" width="201.22" height="142.1"/>
-<line class="st8" x1="900.67" y1="244.59" x2="900.67" y2="295.21"/>
-<text transform="matrix(1 0 0 1 858.9337 238.5342)"><tspan x="0" y="0" class="st9 st1 st2">i</tspan><tspan x="2.81" y="0" class="st9 st1 st2">n</tspan><tspan x="9.71" y="0" class="st9 st1 st2">complete prompts</tspan></text>
-<line class="st4" x1="530.6" y1="453.78" x2="601.41" y2="453.78"/>
-<rect x="348.01" y="449.03" class="st5" width="180.35" height="239.88"/>
-<text transform="matrix(1 0 0 1 456.4814 457.5549)"><tspan x="0" y="0" class="st1 st2">GAMEMASTER </tspan><tspan x="-13.87" y="14.4" class="st1 st2">NEEDS TO KNOW</tspan><tspan x="-74.09" y="28.8" class="st1 st2">-&gt; the current message index</tspan><tspan x="-36.16" y="43.2" class="st1 st2">-&gt; last signal received</tspan><tspan x="-95.7" y="57.6" class="st1 st2">-&gt; when the message is complete</tspan><tspan x="-78.17" y="72" class="st1 st2">NEEDS TO TELL PROMPTFIELD</tspan><tspan x="-74.09" y="86.4" class="st1 st2">-&gt; the current message index</tspan><tspan x="-91.95" y="100.8" class="st1 st2">NEEDS TO TELL ACTIVE ELEMENT</tspan><tspan x="-85.22" y="115.2" class="st1 st2">-&gt; when a dot or dash has been </tspan><tspan x="29.56" y="129.6" class="st1 st2">signaled</tspan></text>
-<polyline class="st3" points="943.39,450.44 943.39,394.37 951.9,394.37 "/>
+<circle cx="834" cy="561.4" r="29.8"/>
+<rect x="831.9" y="295.7" class="st7" width="201.2" height="142.1"/>
+<line class="st7" x1="900.7" y1="244.6" x2="900.7" y2="295.2"/>
+<text transform="matrix(1 0 0 1 858.9337 238.5342)" class="st8 st1 st2">i</text>
+<text transform="matrix(1 0 0 1 861.7437 238.5342)" class="st8 st1 st2">n</text>
+<text transform="matrix(1 0 0 1 868.6437 238.5342)" class="st8 st1 st2">complete prompts</text>
+<line class="st3" x1="530.6" y1="453.8" x2="601.4" y2="453.8"/>
+<rect x="348" y="449" class="st4" width="180.3" height="239.9"/>
+<text transform="matrix(1 0 0 1 456.4814 457.5549)" class="st1 st2">GAMEMASTER </text>
+<text transform="matrix(1 0 0 1 442.6114 471.9549)" class="st1 st2">NEEDS TO KNOW</text>
+<text transform="matrix(1 0 0 1 382.3914 486.3549)" class="st1 st2">-&gt; the current message index</text>
+<text transform="matrix(1 0 0 1 420.3214 500.7549)" class="st1 st2">-&gt; last signal received</text>
+<text transform="matrix(1 0 0 1 360.7814 515.1549)" class="st1 st2">-&gt; when the message is complete</text>
+<text transform="matrix(1 0 0 1 378.3114 529.5549)" class="st1 st2">NEEDS TO TELL PROMPTFIELD</text>
+<text transform="matrix(1 0 0 1 382.3914 543.9549)" class="st1 st2">-&gt; the current message index</text>
+<text transform="matrix(1 0 0 1 364.5314 558.3549)" class="st1 st2">NEEDS TO TELL ACTIVE ELEMENT</text>
+<text transform="matrix(1 0 0 1 371.2614 572.7549)" class="st1 st2">-&gt; when a dot or dash has been </text>
+<text transform="matrix(1 0 0 1 486.0414 587.1549)" class="st1 st2">signaled</text>
+<polyline class="st3" points="943.4,450.4 943.4,394.4 951.9,394.4 "/>
 <text transform="matrix(1 0 0 1 655.9639 632.0967)" class="st1 st2">Lorem ipsum</text>
+<line class="st3" x1="905.6" y1="572.2" x2="886.7" y2="572.2"/>
+<g>
+	<text transform="matrix(1 0 0 1 909.0115 564.2803)" class="st1 st2">SIGNAL (not displayed)</text>
+	<text transform="matrix(1 0 0 1 909.0115 578.6803)" class="st1 st2">NEEDS TO KNOW</text>
+	<text transform="matrix(1 0 0 1 909.0115 593.0803)" class="st1 st2">-&gt; whether it’s a dot</text>
+	<text transform="matrix(1 0 0 1 909.0115 607.4803)" class="st1 st2">or a dash</text>
+</g>
+<g>
+	<circle class="st0" cx="849.4" cy="574.2" r="37.4"/>
+	<circle class="st0" cx="842.4" cy="569.2" r="34.4"/>
+	<circle class="st0" cx="837.6" cy="564.5" r="31.4"/>
+</g>
 </svg>

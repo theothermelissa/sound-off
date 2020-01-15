@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import Prompt from './Prompt';
 import thingsToSay from '../assets/thingsToSay'
-import { act } from 'react-dom/test-utils';
 
-const Message = ({ markMessageComplete, markLetterSignalComplete, messageIndex, lastSignalReceived }) => {
+const Message = ({ markMessageComplete, resetLastSignal, messageIndex, lastSignalReceived }) => {
   const [activeCharacterIndex, setActiveCharacterIndex] = useState(0);
   const messageCharacters = thingsToSay[messageIndex].statement.split("");
-  console.log("Active character index: ", activeCharacterIndex);
+  const totalCharacters = messageCharacters.length;
   
-  const onCompleteSignal = (index) => {
-    let newIndex = index + 1;
-    if(newIndex < messageCharacters.length) {
-      markLetterSignalComplete();
+  const onCompletePrompt = () => {
+    let newIndex = activeCharacterIndex + 1;
+    if(newIndex < totalCharacters) {
+      resetLastSignal();
       setActiveCharacterIndex(activeCharacterIndex + 1);
     } else {
       markMessageComplete();
@@ -21,14 +20,18 @@ const Message = ({ markMessageComplete, markLetterSignalComplete, messageIndex, 
   return (
     messageCharacters.map((letter, index) => {
       return (
-        <Prompt 
-          char={letter}
-          activeLetterIndex={activeCharacterIndex}
-          lastSignalReceived={lastSignalReceived}
-          key={letter+index}
-          position={index}
-          completeSignal={onCompleteSignal}
-        />
+        <div className="statementContainer">
+          <Prompt 
+            char={letter}
+            activeCharacterIndex={activeCharacterIndex}
+            totalCharacters={totalCharacters}
+            lastSignalReceived={lastSignalReceived}
+            key={letter+index}
+            position={index}
+            completePrompt={onCompletePrompt}
+            resetLastSignal={resetLastSignal}
+          />
+        </div>
       )
     })
   )

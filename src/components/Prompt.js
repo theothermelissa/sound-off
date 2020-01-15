@@ -1,48 +1,33 @@
 import React, { useState } from 'react';
-import alphabet from '../assets/codeTranslationKey.js';
+// import alphabet from '../assets/codeTranslationKey';
+import Sequence from './Sequence';
 import '../App.css';
+import { act } from 'react-dom/test-utils';
 
-// const checkStatus = (currentIndex, activeIndex) => {
-//   let status = (currentIndex < activeIndex) ? "Complete" : ""
-//   return status;
-// }
+const Prompt = ({ char, resetLastSignal, activeCharacterIndex, lastSignalReceived, position, completePrompt, totalCharacters }) => {
+  const activeStatus = (position === activeCharacterIndex) ? true : false;
+  console.log("Is Prompt index ", position, " active? ", activeStatus)
 
-// function greeting(person) {
-//   var name = person ? person.name : "stranger";
-//   return "Howdy, " + name;
-// }
-
-
-const Prompt = ({ char, activeLetterIndex, lastSignalReceived, position, completeSignal }) => {
-  // const activeStatus = 
-  const [status, setStatus] = useState(0);
-
-  const updateStatus = () => {
-    let newStatus = status + 2;
-    console.log("New Status: ", newStatus);
-    if (activeLetterIndex === position) {
-      if (newStatus > 5) {
-        completeSignal(position);
-        setStatus(0);
-      } else {
-        setStatus(status + 2);
-      }
-    };
+  const onCompleteSequence = () => {
+    console.log("Completed prompt: ", position)
+    completePrompt(position);
   };
-  // (newStatus > 5 && isActive === true) ? completeSignal() : setStatus(status + 2);
-  // const updateIsActive = () => {
-  //   if (position === activeLetterIndex) {
-  //     setIsActive(true);
-  //   } else {
-  //     return null;
-  //   }
-  // };
 
   return (
     <div className="promptContainer">
-      <button char={char} position={position} onClick={() => updateStatus()}>{status}</button>
+      <div className="letter">{char}</div>
+      <Sequence 
+        char={char}
+        position={position}
+        resetLastSignal={resetLastSignal}
+        lastSignalReceived={lastSignalReceived}
+        completeSequence={onCompleteSequence}
+        activeCharacterIndex={activeCharacterIndex}
+        totalCharacters={totalCharacters}
+      />
     </div>
-  )
-};
+  );
+
+}
 
 export default Prompt;
