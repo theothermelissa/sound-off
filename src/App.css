@@ -53,7 +53,7 @@
 
 .sequence {
   display: flex;
-  background-color:#BCBCBC;
+  /* background-color:#BCBCBC; */
   /* margin-left: 3px;
   margin-right: 3px; */
   margin-top: 0px;
@@ -66,7 +66,7 @@
   margin-right: 3px; */
 }
 
-.morsePromptContainer {
+.sequence {
   display: flex;
   flex-flow: row;
   justify-content: center;
@@ -84,6 +84,7 @@
   width: 7px;
   border-radius: 50%;
   background-color: #BCBCBC;
+  margin: 1px;
 }
 
 .dotActive {
@@ -91,6 +92,7 @@
   width: 7px;
   border-radius: 50%;
   background-color: #BCBCBC;
+  margin: 1px;
 }
 
 .dotComplete {
@@ -98,24 +100,28 @@
   width: 7px;
   border-radius: 50%;
   background-color: black;
+  margin: 1px;
 }
 
 .space {
   height: 3px;
   width: 3px;
   background-color: whitesmoke;
+  margin: 1px;
 }
 
 .spaceActive {
   height: 3px;
   width: 3px;
   background-color: whitesmoke;
+  margin: 1px;
 }
 
 .spaceComplete {
   height: 3px;
   width: 3px;
   background-color: whitesmoke;
+  margin: 1px;
 }
 
 .dash {
@@ -123,6 +129,7 @@
   height: 7px;
   border-radius: 13%;
   background-color: #BCBCBC;
+  margin: 1px;
 }
 
 .dashActive {
@@ -130,6 +137,11 @@
   height: 7px;
   border-radius: 13%;
   background-color: #BCBCBC;
+  margin: 1px;
+}
+
+.completed {
+  background-color: black;
 }
 
 .dashComplete {
@@ -137,6 +149,7 @@
   height: 7px;
   border-radius: 13%;
   background-color: black;
+  margin: 1px;
 }
 
 .buttonContainer {
