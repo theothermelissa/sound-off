@@ -10,9 +10,12 @@ const Prompt = ({ char, resetLastSignal, activeCharacterIndex, lastSignalReceive
     completePrompt(position);
   };
 
+  const isComplete = () => (position < activeCharacterIndex);
+
+  // `${codeSignal.id} ${isComplete(index) ? 'completed' : ''}`
   return (
     <div className="promptContainer">
-      <div className="letter">{char}</div>
+      <div className={`letter${isComplete() ? 'Complete' : ''}`}>{char}</div>
       <div className="sequence">
         <Sequence 
           char={char}
