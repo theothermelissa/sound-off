@@ -46,23 +46,9 @@
 
 .sequence {
   display: flex;
-  /* background-color:#BCBCBC; */
-  /* margin-left: 3px;
-  margin-right: 3px; */
-  margin-top: 0px;
-}
-
-.sequence {
-  display: flex;
   flex-flow: row;
   justify-content: center;
   align-items: center;
-}
-
-.promptName {
-  font-size: xx-large;
-  color: cadetblue;
-  margin: 20px;
 }
 
 .dot {
@@ -73,37 +59,7 @@
   margin: 1px;
 }
 
-.dotActive {
-  height: 7px;
-  width: 7px;
-  border-radius: 50%;
-  background-color: #BCBCBC;
-  margin: 1px;
-}
-
-.dotComplete {
-  height: 7px;
-  width: 7px;
-  border-radius: 50%;
-  background-color: black;
-  margin: 1px;
-}
-
 .space {
-  height: 3px;
-  width: 3px;
-  background-color: whitesmoke;
-  margin: 1px;
-}
-
-.spaceActive {
-  height: 3px;
-  width: 3px;
-  background-color: whitesmoke;
-  margin: 1px;
-}
-
-.spaceComplete {
   height: 3px;
   width: 3px;
   background-color: whitesmoke;
@@ -118,24 +74,8 @@
   margin: 1px;
 }
 
-.dashActive {
-  width: 20px;
-  height: 7px;
-  border-radius: 13%;
-  background-color: #BCBCBC;
-  margin: 1px;
-}
-
 .completed {
   background-color: black;
-}
-
-.dashComplete {
-  width: 20px;
-  height: 7px;
-  border-radius: 13%;
-  background-color: black;
-  margin: 1px;
 }
 
 .buttonContainer {
@@ -154,10 +94,3 @@
   border: 7px solid #242424
 }
 
-.statementContainer {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}

@@ -2,32 +2,35 @@ import React, { useState } from 'react';
 import alphabet from '../assets/codeTranslationKey.js';
 import '../App.css';
 
-const Sequence = ({ char, position, activeCharacterIndex, completeSequence, totalCharacters }) => {
-  console.log("Postion given to Sequence: ", position)
+const Sequence = ({ char, position, activeCharacterIndex, completeSequence, totalCharacters, promptIsComplete }) => {
   const [currentSignalIndex, setCurrentSignalIndex] = useState(0);
+  const [sequenceIsComplete, setSequenceIsComplete] = useState(false);
   const morseElementSequence = alphabet[char.toLowerCase()]["sequence"];
   const totalSignalsInChar = morseElementSequence.length;
 
-  const clickButton = () => {
-    console.log("The ", currentSignalIndex, " button has been clicked.")
+  // console.log("Is the ", position, " sequence complete? ", sequenceIsComplete)
+
+  const onCompleteSignal = () => {
+    // console.log("The ", currentSignalIndex, " button has been clicked.")
     let newIndex = currentSignalIndex +1;
     if (position === activeCharacterIndex) {
       if (newIndex < totalSignalsInChar) {
       setCurrentSignalIndex(newIndex);
-      console.log("New active signal index: ", newIndex)
-      } else {
+    } else {
+        setSequenceIsComplete(true);
         setCurrentSignalIndex(0);
-        completeSequence()};
-        console.log("New active charater index: ", activeCharacterIndex)
+        completeSequence(currentSignalIndex)};
+        // setTimeout(setSequenceIsComplete(false), 200);
+        // alert("Good job!")
       }
     }
 
-  const isComplete = (index) => (index < currentSignalIndex) || (position < activeCharacterIndex);
+  const isComplete = (index) => (index < currentSignalIndex) || sequenceIsComplete || promptIsComplete;
 
   return (
     morseElementSequence.map((codeSignal, index) => {
       return (
-        <div className={`${codeSignal.id} ${isComplete(index) ? 'completed' : ''}`} key={char + codeSignal.id + index} onClick={clickButton} />
+        <div className={`${codeSignal.id} ${(isComplete(index)) ? 'completed' : ''}`} key={char + codeSignal.id + index} onClick={onCompleteSignal} />
       )
     })
   )

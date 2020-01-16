@@ -5,17 +5,20 @@ import '../App.css';
 import { act } from 'react-dom/test-utils';
 
 const Prompt = ({ char, resetLastSignal, activeCharacterIndex, lastSignalReceived, position, completePrompt, totalCharacters }) => {
+  const [promptIsComplete, setPromptIsComplete] = useState(false);
 
-  const onCompleteSequence = () => {
+  // console.log("Is the ", position, " prompt complete?", promptIsComplete)
+
+
+  const onCompleteSequence = (index) => {
+    // console.log("Prompt says the ", index, "codeSignal is complete.")
+    setPromptIsComplete(true);
     completePrompt(position);
   };
 
-  const isComplete = () => (position < activeCharacterIndex);
-
-  // `${codeSignal.id} ${isComplete(index) ? 'completed' : ''}`
   return (
     <div className="promptContainer">
-      <div className={`letter${isComplete() ? 'Complete' : ''}`}>{char}</div>
+      <div className={`letter${promptIsComplete ? 'Complete' : ''}`}>{char}</div>
       <div className="sequence">
         <Sequence 
           char={char}
@@ -25,7 +28,8 @@ const Prompt = ({ char, resetLastSignal, activeCharacterIndex, lastSignalReceive
           completeSequence={onCompleteSequence}
           activeCharacterIndex={activeCharacterIndex}
           totalCharacters={totalCharacters}
-        />
+          promptIsComplete={promptIsComplete}
+          />
       </div>
     </div>
   );

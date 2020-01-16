@@ -10,16 +10,15 @@ class GameMaster extends Component {
       messageIndex: 0,
       lastSignalReceived: "",
     };
-    this.markMessageComplete = this.markMessageComplete.bind(this);
+    this.onCompleteMessage = this.onCompleteMessage.bind(this);
     this.resetLastSignal = this.resetLastSignal.bind(this);
     this.transmitSignal = this.transmitSignal.bind(this);
   };
 
-  markMessageComplete = () => {
-    alert("Good job!");
+  onCompleteMessage = () => {
+    console.log("GameMaster says the message is complete.")
     this.setState({
       messageIndex: 1,
-      lastSignalReceived: "",
     })
   };
 
@@ -39,7 +38,7 @@ class GameMaster extends Component {
           <div className="message">
             <Message 
               className="message"
-              markMessageComplete={this.markMessageComplete}
+              completeMessage={this.onCompleteMessage}
               resetLastSignal={this.resetLastSignal}
               messageIndex={this.state.messageIndex}
               lastSignalReceived={this.state.lastSignalReceived} />
