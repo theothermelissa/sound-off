@@ -6,18 +6,14 @@ const Message = ({ completeMessage, resetLastSignal, messageIndex, lastSignalRec
   const [activeCharacterIndex, setActiveCharacterIndex] = useState(0);
   const messageCharacters = thingsToSay[messageIndex].statement.split("");
   const totalCharacters = messageCharacters.length;
-  console.log("Active Character: ", activeCharacterIndex)
   
-  const onCompletePrompt = (index) => {
-    console.log("Message says the ", index, "prompt is complete.")
+  const onCompletePrompt = () => {
     let newIndex = activeCharacterIndex + 1;
     if(newIndex < totalCharacters) {
-      resetLastSignal();
       setActiveCharacterIndex(activeCharacterIndex + 1);
     } else {
-      setActiveCharacterIndex(0);
-      completeMessage();
-      console.log("All done!")
+      // setActiveCharacterIndex(0);
+      setTimeout(completeMessage, 200);
     }
   };
 
@@ -27,7 +23,6 @@ const Message = ({ completeMessage, resetLastSignal, messageIndex, lastSignalRec
           <Prompt 
             char={letter}
             activeCharacterIndex={activeCharacterIndex}
-            totalCharacters={totalCharacters}
             lastSignalReceived={lastSignalReceived}
             key={letter+index}
             position={index}

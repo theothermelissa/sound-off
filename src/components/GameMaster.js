@@ -16,7 +16,7 @@ class GameMaster extends Component {
   };
 
   onCompleteMessage = () => {
-    console.log("GameMaster says the message is complete.")
+    console.log("GameMaster says the message is complete. Good job!")
     this.setState({
       messageIndex: 1,
     })

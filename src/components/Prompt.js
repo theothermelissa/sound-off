@@ -1,19 +1,13 @@
 import React, { useState } from 'react';
-// import alphabet from '../assets/codeTranslationKey';
 import Sequence from './Sequence';
 import '../App.css';
-import { act } from 'react-dom/test-utils';
 
-const Prompt = ({ char, resetLastSignal, activeCharacterIndex, lastSignalReceived, position, completePrompt, totalCharacters }) => {
+const Prompt = ({ char, activeCharacterIndex, lastSignalReceived, position, completePrompt, resetLastSignal }) => {
   const [promptIsComplete, setPromptIsComplete] = useState(false);
 
-  // console.log("Is the ", position, " prompt complete?", promptIsComplete)
-
-
-  const onCompleteSequence = (index) => {
-    // console.log("Prompt says the ", index, "codeSignal is complete.")
+  const onCompleteSequence = () => {
     setPromptIsComplete(true);
-    completePrompt(position);
+    completePrompt();
   };
 
   return (
@@ -22,12 +16,11 @@ const Prompt = ({ char, resetLastSignal, activeCharacterIndex, lastSignalReceive
       <div className="sequence">
         <Sequence 
           char={char}
-          position={position}
-          resetLastSignal={resetLastSignal}
-          lastSignalReceived={lastSignalReceived}
-          completeSequence={onCompleteSequence}
           activeCharacterIndex={activeCharacterIndex}
-          totalCharacters={totalCharacters}
+          lastSignalReceived={lastSignalReceived}
+          position={position}
+          completeSequence={onCompleteSequence}
+          resetLastSignal={resetLastSignal}
           promptIsComplete={promptIsComplete}
           />
       </div>

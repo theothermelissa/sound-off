@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import alphabet from '../assets/codeTranslationKey.js';
 import '../App.css';
 
-const Sequence = ({ char, position, activeCharacterIndex, completeSequence, totalCharacters, promptIsComplete }) => {
+const Sequence = ({ char, position, activeCharacterIndex, completeSequence, resetLastSignal, promptIsComplete }) => {
   const [currentSignalIndex, setCurrentSignalIndex] = useState(0);
   const [sequenceIsComplete, setSequenceIsComplete] = useState(false);
   const morseElementSequence = alphabet[char.toLowerCase()]["sequence"];
@@ -16,13 +16,13 @@ const Sequence = ({ char, position, activeCharacterIndex, completeSequence, tota
     if (position === activeCharacterIndex) {
       if (newIndex < totalSignalsInChar) {
       setCurrentSignalIndex(newIndex);
+      resetLastSignal();
     } else {
-        setSequenceIsComplete(true);
-        setCurrentSignalIndex(0);
-        completeSequence(currentSignalIndex)};
-        // setTimeout(setSequenceIsComplete(false), 200);
-        // alert("Good job!")
-      }
+      setSequenceIsComplete(true);
+      setCurrentSignalIndex(0);
+      completeSequence(currentSignalIndex)};
+      resetLastSignal();
+    }
     }
 
   const isComplete = (index) => (index < currentSignalIndex) || sequenceIsComplete || promptIsComplete;
