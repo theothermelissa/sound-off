@@ -4,15 +4,16 @@ import thingsToSay from '../assets/thingsToSay'
 
 const Message = ({ completeMessage, resetLastSignal, messageIndex, lastSignalReceived }) => {
   const [activeCharacterIndex, setActiveCharacterIndex] = useState(0);
+
   const messageCharacters = thingsToSay[messageIndex].statement.split("");
   const totalCharacters = messageCharacters.length;
   
   const onCompletePrompt = () => {
     let newIndex = activeCharacterIndex + 1;
     if(newIndex < totalCharacters) {
-      setActiveCharacterIndex(activeCharacterIndex + 1);
+      setActiveCharacterIndex(newIndex);
     } else {
-      // setActiveCharacterIndex(0);
+      setActiveCharacterIndex(0);
       setTimeout(completeMessage, 200);
     }
   };

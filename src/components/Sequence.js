@@ -1,18 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import alphabet from '../assets/codeTranslationKey.js';
 import '../App.css';
 
-const Sequence = ({ char, position, activeCharacterIndex, completeSequence, resetLastSignal, promptIsComplete }) => {
+const Sequence = ({ char, activeCharacterIndex, lastSignalReceived, position, completeSequence, resetLastSignal, promptIsComplete }) => {
   const [currentSignalIndex, setCurrentSignalIndex] = useState(0);
   const [sequenceIsComplete, setSequenceIsComplete] = useState(false);
-  const morseElementSequence = alphabet[char.toLowerCase()]["sequence"];
-  const totalSignalsInChar = morseElementSequence.length;
 
-  // console.log("Is the ", position, " sequence complete? ", sequenceIsComplete)
-
-  const onCompleteSignal = () => {
-    // console.log("The ", currentSignalIndex, " button has been clicked.")
-    let newIndex = currentSignalIndex +1;
+//   React.useEffect(() => {
+//     fetch('https://pokeapi.co/api/v2/pokemon/gengar/')
+//     .then(res => res.json())
+//     .then(res => {
+//         setPokemon(res)
+//     })
+// }, []) 
+useEffect(() => {
+  let newIndex = currentSignalIndex +1;
+  if (lastSignalReceived) {
     if (position === activeCharacterIndex) {
       if (newIndex < totalSignalsInChar) {
       setCurrentSignalIndex(newIndex);
@@ -23,7 +26,23 @@ const Sequence = ({ char, position, activeCharacterIndex, completeSequence, rese
       completeSequence(currentSignalIndex)};
       resetLastSignal();
     }
-    }
+  }
+  }, [lastSignalReceived]);
+
+  const morseElementSequence = alphabet[char.toLowerCase()]["sequence"];
+  const totalSignalsInChar = morseElementSequence.length;
+
+  // console.log("Is the ", position, " sequence complete? ", sequenceIsComplete)
+
+  // const isMatch = (signal, target) => {
+  //   return (signal === target) ? true : false
+  // }
+
+
+
+  const onCompleteSignal = () => {
+    // console.log("The ", currentSignalIndex, " button has been clicked.")
+  };
 
   const isComplete = (index) => (index < currentSignalIndex) || sequenceIsComplete || promptIsComplete;
 

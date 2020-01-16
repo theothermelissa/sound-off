@@ -10,7 +10,7 @@ const Switch = (props) => {
     autoPlay: false,
   });
 
-  // const [completePrompt, setCompletePrompt] = useState(false);
+  const [completePrompt, setCompletePrompt] = useState(false);
 
     // saveCurrentStartTime = (pressEvent) => {
   //   let start = pressEvent.timeStamp
@@ -34,24 +34,26 @@ const Switch = (props) => {
   //   }
   // };
 
-  const handlePress = () => {
+  const onPress = () => {
     controls.play();
     // props.startTimer(props.event);
+
   };
 
-  const handleRelease = () => {
+  const onRelease = () => {
     controls.pause();
     // props.stopTimer(props.event);
     // props.checkSignal();
-    // console.log("Props given to handleRelease: ", event)
-    props.completeElement(props.activeElementIndex, props.activeElementsLength, props.activeCharIndex, props.activeMessageLength);
+    // console.log("Props given to onRelease: ", event)
+    props.transmitSignal("dot");
+    // props.completeElement(props.activeElementIndex, props.activeElementsLength, props.activeCharIndex, props.activeMessageLength);
   }
 
 
   return(
     <div className="buttonContainer">
       {audio}
-      <button onMouseDown={handlePress} onMouseUp={handleRelease} className="switchButton"></button>
+      <button onMouseDown={onPress} onMouseUp={onRelease} className="switchButton"></button>
     </div>
   )
 }

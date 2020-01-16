@@ -15,24 +15,27 @@ class GameMaster extends Component {
     this.transmitSignal = this.transmitSignal.bind(this);
   };
 
+  
   onCompleteMessage = () => {
     console.log("GameMaster says the message is complete. Good job!")
     this.setState({
       messageIndex: 1,
     })
   };
-
+  
   resetLastSignal = () => {
     this.setState({
       lastSignalReceived: "",
     })
   };
-
+  
   transmitSignal = (signal) => {
     this.setState({ lastSignalReceived: signal})
+    // console.log("Signal received: ", signal)
   };
-
+  
   render() {
+    // console.log("Last signal received: ", this.state.lastSignalReceived)
     return (
       <div className="game">
           <div className="message">
