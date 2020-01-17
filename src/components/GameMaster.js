@@ -31,11 +31,9 @@ class GameMaster extends Component {
   
   transmitSignal = (signal) => {
     this.setState({ lastSignalReceived: signal})
-    // console.log("Signal received: ", signal)
   };
   
   render() {
-    // console.log("Last signal received: ", this.state.lastSignalReceived)
     return (
       <div className="game">
           <div className="message">

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import React, { Component } from 'react';
+// import PropTypes from 'prop-types';
 import signalElements from './signalElements';
 
-const [ dot, dash, space, stop ] = signalElements;
+const { dot, dash, space, stop } = signalElements;
 
 const alphabet = {
     "a": {

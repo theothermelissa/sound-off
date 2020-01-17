@@ -78,6 +78,10 @@
   background-color: black;
 }
 
+.pressed {
+  border: 7px solid red;
+}
+
 .buttonContainer {
   display: flex;
   flex-direction: center;

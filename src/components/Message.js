@@ -14,7 +14,7 @@ const Message = ({ completeMessage, resetLastSignal, messageIndex, lastSignalRec
       setActiveCharacterIndex(newIndex);
     } else {
       setActiveCharacterIndex(0);
-      setTimeout(completeMessage, 200);
+      setTimeout(completeMessage, 550);
     }
   };
 

@@ -1,28 +1,29 @@
 
-const signalElements = [
-  {
+const signalElements = {
+  "dot": {
     id: "dot",
     character: ".",
-    minDuration: .05,
-    maxDuration: .4,
+    minDuration: 0.0,
+    maxDuration: 0.6,
   },
-  {
+  "dash": {
     id: "dash",
     character: "-",
-    minDuration: .401,
-    maxDuration: 1.0,
+    minDuration: 0.6,
+    maxDuration: 1.2,
   },
-  {
+  "space": {
     id: "space",
     character: " ",
-    minDuration: .401,
-    maxDuration: 1.0,
-  },{
+    minDuration: 0.0,
+    maxDuration: 0.6,
+  },
+  "stop": {
     id: "stop",
     character: "   ",
-    minDuration: 1.01,
-    maxDuration: 3.0,
+    minDuration: 0.6,
+    maxDuration: 1.2,
   }
-]
+}
 
 export default signalElements;

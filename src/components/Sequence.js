@@ -6,13 +6,6 @@ const Sequence = ({ char, activeCharacterIndex, lastSignalReceived, position, co
   const [currentSignalIndex, setCurrentSignalIndex] = useState(0);
   const [sequenceIsComplete, setSequenceIsComplete] = useState(false);
 
-//   React.useEffect(() => {
-//     fetch('https://pokeapi.co/api/v2/pokemon/gengar/')
-//     .then(res => res.json())
-//     .then(res => {
-//         setPokemon(res)
-//     })
-// }, []) 
 useEffect(() => {
   let newIndex = currentSignalIndex +1;
   if (lastSignalReceived) {
@@ -29,30 +22,24 @@ useEffect(() => {
   }
   }, [lastSignalReceived]);
 
+  // const checkSignal () => 
+
   const morseElementSequence = alphabet[char.toLowerCase()]["sequence"];
   const totalSignalsInChar = morseElementSequence.length;
-
-  // console.log("Is the ", position, " sequence complete? ", sequenceIsComplete)
-
-  // const isMatch = (signal, target) => {
-  //   return (signal === target) ? true : false
-  // }
-
-
-
-  const onCompleteSignal = () => {
-    // console.log("The ", currentSignalIndex, " button has been clicked.")
-  };
 
   const isComplete = (index) => (index < currentSignalIndex) || sequenceIsComplete || promptIsComplete;
 
   return (
     morseElementSequence.map((codeSignal, index) => {
+      console.log("codeSignal: ", codeSignal)
+      console.log("index: ", index)
       return (
-        <div className={`${codeSignal.id} ${(isComplete(index)) ? 'completed' : ''}`} key={char + codeSignal.id + index} onClick={onCompleteSignal} />
+        <div
+          className={`${codeSignal.id} ${(isComplete(index)) ? 'completed' : ''}`}
+          key={char + codeSignal.id + index} />
       )
     })
-  )
+    )
 };
   
   export default Sequence;
