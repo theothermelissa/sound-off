@@ -10,7 +10,7 @@ const Message = ({ completeMessage, resetLastSignal, messageIndex, lastSignalRec
   
   const onCompletePrompt = () => {
     let newIndex = activeCharacterIndex + 1;
-    if(newIndex < totalCharacters) {
+    if (newIndex < totalCharacters) {
       setActiveCharacterIndex(newIndex);
     } else {
       setActiveCharacterIndex(0);

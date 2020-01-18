@@ -13,7 +13,6 @@ const Switch = (props) => {
     autoPlay: false,
   });
 
-
     const saveCurrentStartTime = (pressEvent) => {
     console.log("Saving start time.")
       let start = pressEvent.timeStamp;
@@ -26,8 +25,6 @@ const Switch = (props) => {
     console.log("Total time: ", totalTime)
     return totalTime;
     };
-
-    // const messageCharacters = thingsToSay[messageIndex].statement.split("");
 
   const checkSignal = (totalTime) => {
     const dotMin = signalElements.dot.minDuration;
@@ -49,7 +46,6 @@ const Switch = (props) => {
     controls.play();
     setIsPressed(true);
     saveCurrentStartTime(pressEvent);
-    // props.startTimer(props.event);
 
   };
 
