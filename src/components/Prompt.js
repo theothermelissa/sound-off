@@ -10,12 +10,22 @@ const Prompt = ({ char, activeCharacterIndex, lastSignalReceived, position, comp
     completePrompt();
   };
 
+  const translatedChar = (letter) => {
+    if (letter === " ") {
+      return "&nbsp"
+    } else if (letter === "   ") {
+      return "&br"
+    } else {
+      return letter.toLowerCase()
+    };
+  };
+
   return (
     <div className="promptContainer">
       <div className={`letter${promptIsComplete ? 'Complete' : ''}`}>{char}</div>
       <div className="sequence">
         <Sequence 
-          char={char}
+          char={translatedChar(char)}
           activeCharacterIndex={activeCharacterIndex}
           lastSignalReceived={lastSignalReceived}
           position={position}

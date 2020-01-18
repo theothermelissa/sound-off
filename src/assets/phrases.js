@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import signalElements from './signalElements';
 
-const [ dot, dash, space, stop ] = signalElements;
+const [ dot, dash, space, linebreak ] = signalElements;
 
 const phrases = [
   {
@@ -48,7 +48,7 @@ const phrases = [
 ];
 
 const isElement = (val) => {
-  const allowedElements = [dot, dash, space, stop];
+  const allowedElements = [dot, dash, space, linebreak];
   return allowedElements.includes(val);
   // if (allowedElements.includes(val)) {
   //   return true;

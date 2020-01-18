@@ -31,8 +31,16 @@ const CodeSignal = ({
   const isComplete = (elementIndex < activeSignalIndex) || sequenceIsComplete || promptIsComplete;
   const currentClassName = (isComplete) ? elementName + " " + "completed" : elementName;
 
+  // const completeSpaces = () => {
+  //   if (elementName === "space" || elementName === "linebreak") {
+  //     console.log("We'll give you the space for free. ");
+  //     completeCodeSignal(elementIndex);
+  // };
+
+  // completeSpaces();
+
   useEffect(() => {
-    if (lastSignalReceived && (characterPosition === activeCharacterIndex) && (elementIndex === activeSignalIndex) && (lastSignalReceived === elementName)) {
+    if (lastSignalReceived && characterPosition === activeCharacterIndex && elementIndex === activeSignalIndex && lastSignalReceived === elementName) {
       console.log("That's the right signal!");
       completeCodeSignal(elementIndex);
     } else {

@@ -7,7 +7,7 @@ const Sequence = ({ char, activeCharacterIndex, lastSignalReceived, position, co
   const [currentSignalIndex, setCurrentSignalIndex] = useState(0);
   const [sequenceIsComplete, setSequenceIsComplete] = useState(false);
 
-  const morseElementSequence = alphabet[char.toLowerCase()]["sequence"];
+  const morseElementSequence = alphabet[char]["sequence"];
   const totalSignalsInChar = morseElementSequence.length;
 
   const onCompleteCodeSignal = (index) => {

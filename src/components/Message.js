@@ -7,11 +7,20 @@ const Message = ({ completeMessage, resetLastSignal, messageIndex, lastSignalRec
 
   const messageCharacters = thingsToSay[messageIndex].statement.split("");
   const totalCharacters = messageCharacters.length;
-  
+
+  const isSpace =(char) => {
+    return (char === " " || char === "   ");
+  };
+
+
   const onCompletePrompt = () => {
     let newIndex = activeCharacterIndex + 1;
     if (newIndex < totalCharacters) {
       setActiveCharacterIndex(newIndex);
+      console.log("Next character: ", messageCharacters[newIndex]);
+      if (isSpace(messageCharacters[newIndex])) {
+        setActiveCharacterIndex(newIndex + 1);
+      }
     } else {
       setActiveCharacterIndex(0);
       setTimeout(completeMessage, 550);

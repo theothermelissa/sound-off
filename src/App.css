@@ -60,9 +60,7 @@
 }
 
 .space {
-  height: 3px;
-  width: 3px;
-  background-color: whitesmoke;
+  width: 30px;
   margin: 1px;
 }
 
