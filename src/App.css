@@ -11,38 +11,31 @@
 .game{
   display: flex;
   flex-flow: column;
+  margin-top: 100px;
 }
 
 .message {
   display: flex;
-  width: 80vw;
   flex-flow: row wrap;
-  /* align-items: center; */
   justify-content: center;
 }
+
+/* 615-861-0927 Brooke */
 
 .promptContainer {
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
+  margin: 3px;
 }
 
 .letter {
-  font-size: 9em;
+  font-size: 2em;
   color:#BCBCBC;
-  /* margin-left: 3px;
-  margin-right: 3px; */
   margin-bottom: 0px;
 }
 
-.letterComplete {
-  font-size: 9em;
-  color: black;
-  /* margin-left: 3px;
-  margin-right: 3px; */
-  margin-bottom: 0px;
-}
 
 .sequence {
   display: flex;
@@ -52,47 +45,66 @@
 }
 
 .dot {
-  height: 7px;
-  width: 7px;
+  height: 4px;
+  width: 4px;
   border-radius: 50%;
   background-color: #BCBCBC;
   margin: 1px;
 }
 
 .space {
-  width: 30px;
-  margin: 1px;
+  width: 4px;
+  margin: 3px;
 }
 
 .dash {
-  width: 20px;
-  height: 7px;
+  width: 9px;
+  height: 4px;
   border-radius: 13%;
   background-color: #BCBCBC;
   margin: 1px;
 }
 
-.completed {
+.completedCodeSignal {
   background-color: black;
 }
 
-.pressed {
-  border: 7px solid red;
+.completedText {
+  color: black;
 }
 
 .buttonContainer {
   display: flex;
+  height: 70vh;
   flex-direction: center;
   align-items: center;
   justify-content: center;
-  margin: 10vh;
 }
 
 .switchButton {
-  width: 15vw;
-  height: 15vw;
-  background: radial-gradient(black,#4C4C4C);
+  display: flex;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(black,#2C2C2C);
   border-radius: 50%;
-  border: 7px solid #242424
+  border: 5px solid #242424;
 }
 
+.pressed {
+  background: radial-gradient(black,#4c4c4c);
+  border: 5px solid #2C2C2C
+}
+
+@media only screen and (min-width: 600px) {
+  .letter {
+    font-size: 5em;
+  }
+  .dot {
+    height: 8px;
+    width: 8px;
+  }
+  .dash {
+    height: 8px;
+    width: 16px;
+  }
+}

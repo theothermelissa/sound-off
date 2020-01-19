@@ -29,7 +29,7 @@ const CodeSignal = ({
   promptIsComplete,
 }) => {
   const isComplete = (elementIndex < activeSignalIndex) || sequenceIsComplete || promptIsComplete;
-  const currentClassName = (isComplete) ? elementName + " " + "completed" : elementName;
+  const currentClassName = (isComplete) ? elementName + " " + "completedCodeSignal" : elementName;
 
   // const completeSpaces = () => {
   //   if (elementName === "space" || elementName === "linebreak") {

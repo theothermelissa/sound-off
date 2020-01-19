@@ -22,7 +22,7 @@ const Prompt = ({ char, activeCharacterIndex, lastSignalReceived, position, comp
 
   return (
     <div className="promptContainer">
-      <div className={`letter${promptIsComplete ? 'Complete' : ''}`}>{char}</div>
+      <div className={`letter${promptIsComplete ? ' completedText' : ''}`}>{char}</div>
       <div className="sequence">
         <Sequence 
           char={translatedChar(char)}
