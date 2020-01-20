@@ -8,7 +8,43 @@
   /* max-width: 600px; */
 }
 
-.game{
+label {
+  color:#BCBCBC;
+  font-size: medium;
+}
+
+input {
+  display: inline-block;
+  /* height: 40px; */
+  /* width: 500px; */
+  /* margin: 10px; */
+  border: 1px solid #DCDCDC;
+  padding: 0px 10px;
+  -webkit-appearance: none;
+  border-radius: 0;
+  vertical-align: top;
+  font-size: medium;
+  padding: 10px 10px;
+  margin: 10px;
+  font-family: "Lucida Console", monospace;
+}
+
+.submitButton {
+  /* height: 40px; */
+  font-family: "Lucida Console", monospace;
+  /* width: 500px; */
+  padding: 0px 10px;
+  background-color: #C49404;
+  color: white;
+  border-radius: 0;
+  -webkit-appearance: none;
+  font-size: medium;
+  padding: 10px 10px;
+  margin: 10px;
+  border: 1px solid transparent;
+}
+
+.game {
   display: flex;
   flex-flow: column;
   margin-top: 100px;
@@ -20,6 +56,11 @@
   justify-content: center;
 }
 
+.createMessageContainer {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
 /* 615-861-0927 Brooke */
 
 .promptContainer {
@@ -75,7 +116,7 @@
 
 .buttonContainer {
   display: flex;
-  height: 60vh;
+  height: 50vh;
   flex-direction: center;
   align-items: center;
   justify-content: center;
@@ -96,9 +137,9 @@
 }
 
 @media only screen and (min-width: 600px) {
-  .letter {
-    font-size: 5em;
-  }
+  /* .letter {
+    font-size: 4em;
+  } */
   .dot {
     height: 8px;
     width: 8px;
@@ -107,4 +148,10 @@
     height: 8px;
     width: 16px;
   }
+  /* input {
+    width: 300px;
+  }
+  .submitButton {
+    width: 300px;
+  } */
 }
