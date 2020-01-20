@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import Prompt from './Prompt';
 import thingsToSay from '../assets/thingsToSay'
 
-const Message = ({ completeMessage, resetLastSignal, messageIndex, lastSignalReceived }) => {
+const Message = ({ submittedMessage, completeMessage, resetLastSignal, lastSignalReceived }) => {
   const [activeCharacterIndex, setActiveCharacterIndex] = useState(0);
 
-  const messageCharacters = thingsToSay[messageIndex].statement.split("");
+  // const messageCharacters = thingsToSay[messageIndex].statement.split("");
+  const messageCharacters = submittedMessage.split("");
   const totalCharacters = messageCharacters.length;
 
   const isSpace =(char) => {
