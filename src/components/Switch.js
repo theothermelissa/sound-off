@@ -8,9 +8,7 @@ const Switch = (props) => {
   const { transmitStartTime, transmitSignal, transmitEndTime } = props;
 
   const [isPressed, setIsPressed] = useState(false);
-  const [isFirst, setIsFirst] = useState(true);
   const [timeSignalStarted, setTimeSignalStarted] = useState(0);
-  // const [messageTimeStart, setMessageTimeStart] = useState(0);
 
   const [audio, state, controls, ref] = useAudio ({
     src: soundSignal,
@@ -53,8 +51,6 @@ const Switch = (props) => {
     determineSignalType(totalTimePressed(releaseEvent));
     transmitEndTime(eventTimeStamp(releaseEvent));
   }
-
-  console.log("Is this the first signal? ", isFirst)
 
   return(
     <div className="buttonContainer">

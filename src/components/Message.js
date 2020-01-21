@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import Prompt from './Prompt';
-import thingsToSay from '../assets/thingsToSay'
 
 const Message = ({ userSubmittedMessage, completeMessage, resetLastSignal, lastSignalReceived }) => {
   const [activeCharacterIndex, setActiveCharacterIndex] = useState(0);
 
-  // const messageCharacters = thingsToSay[messageIndex].statement.split("");
   const messageCharacters = userSubmittedMessage.split("");
   const totalCharacters = messageCharacters.length;
 
@@ -18,7 +16,6 @@ const Message = ({ userSubmittedMessage, completeMessage, resetLastSignal, lastS
     let newIndex = activeCharacterIndex + 1;
     if (newIndex < totalCharacters) {
       setActiveCharacterIndex(newIndex);
-      console.log("Next character: ", messageCharacters[newIndex]);
       if (isSpace(messageCharacters[newIndex])) {
         setActiveCharacterIndex(newIndex + 1);
       }

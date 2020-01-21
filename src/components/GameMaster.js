@@ -8,7 +8,6 @@ class GameMaster extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // messageIndex: 0,
       lastSignalReceived: "",
       userSubmittedMessage: "Hello world",
       signalsReceived: 0,
@@ -33,7 +32,6 @@ class GameMaster extends Component {
       signalsReceived: 0,
       timeFirstSignalBegan: 0,
       timeLastSignalBegan: 0,
-      // messageEndTime: 0,
     }), 400)
   };
   
@@ -67,14 +65,10 @@ class GameMaster extends Component {
   
   
   render() {
-    let messageLength = this.state.userSubmittedMessage.length;
-  console.log("Time first signal began: ", this.timeLastSignalBegan);
-  console.log("Time last signal ended: ", this.timeLastSignalEnded);
     return (
       <div className="game">
-          <div className="message">
+          <div className="messageHolder">
             <Message 
-              className="message"
               userSubmittedMessage={this.state.userSubmittedMessage}
               completeMessage={this.onCompleteMessage}
               resetLastSignal={this.resetLastSignal}
