@@ -5,40 +5,38 @@ import soundSignal from '../assets/800hz.mp3';
 import signalElements from '../assets/signalElements';
 
 const Switch = (props) => {
+  const { transmitStartTime, transmitSignal, transmitEndTime } = props;
+
   const [isPressed, setIsPressed] = useState(false);
-  const [timeStart, setTimeStart] = useState(0);
+  const [isFirst, setIsFirst] = useState(true);
+  const [timeSignalStarted, setTimeSignalStarted] = useState(0);
+  // const [messageTimeStart, setMessageTimeStart] = useState(0);
 
   const [audio, state, controls, ref] = useAudio ({
     src: soundSignal,
     autoPlay: false,
   });
 
+    let eventTimeStamp = (event) => event.timeStamp;
+
     const saveCurrentStartTime = (pressEvent) => {
-    console.log("Saving start time.")
-      let start = pressEvent.timeStamp;
-    setTimeStart(start);
+      setTimeSignalStarted(eventTimeStamp(pressEvent));
     };
   
     const totalTimePressed = (releaseEvent) => {
-    let end = releaseEvent.timeStamp
-    let totalTime = (end - timeStart)/1000;
-    console.log("Total time: ", totalTime)
+    let totalTime = (eventTimeStamp(releaseEvent) - timeSignalStarted)/1000;
     return totalTime;
     };
 
-  const checkSignal = (totalTime) => {
+  const determineSignalType = (totalTime) => {
     const dotMin = signalElements.dot.minDuration;
     const dotMax = signalElements.dot.maxDuration;
     const dashMin = signalElements.dash.minDuration;
     const dashMax = signalElements.dash.maxDuration;
     if (dotMin <= totalTime && totalTime <= dotMax) {
-      console.log("That was a dot!");
-      props.transmitSignal("dot")
+      transmitSignal("dot")
     } else if (dashMin < totalTime && totalTime <= dashMax) {
-      console.log("That was a dash!");
-      props.transmitSignal("dash")
-    } else {
-      console.log("Oops. Try again!")
+      transmitSignal("dash")
     }
   };
 
@@ -46,14 +44,17 @@ const Switch = (props) => {
     controls.play();
     setIsPressed(true);
     saveCurrentStartTime(pressEvent);
-
-  };
+    transmitStartTime(eventTimeStamp(pressEvent));
+    };
 
   const onRelease = (releaseEvent) => {
     controls.pause();
     setIsPressed(false);
-    checkSignal(totalTimePressed(releaseEvent));
+    determineSignalType(totalTimePressed(releaseEvent));
+    transmitEndTime(eventTimeStamp(releaseEvent));
   }
+
+  console.log("Is this the first signal? ", isFirst)
 
   return(
     <div className="buttonContainer">

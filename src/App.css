@@ -1,5 +1,5 @@
 .App {
-  height: 100vh;
+  height: 120vh;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -47,19 +47,22 @@ input {
 .game {
   display: flex;
   flex-flow: column;
-  margin-top: 100px;
+  height: auto;
+  width: 90%;
 }
 
 .message {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+  margin-top: 70px;
 }
 
 .createMessageContainer {
   display: flex;
   flex-flow: column;
   justify-content: center;
+  margin-top: auto;
 }
 /* 615-861-0927 Brooke */
 
@@ -116,7 +119,8 @@ input {
 
 .buttonContainer {
   display: flex;
-  height: 50vh;
+  /* height: 50vh; */
+  margin: 50px;
   flex-direction: center;
   align-items: center;
   justify-content: center;
@@ -136,10 +140,10 @@ input {
   border: 5px solid #2C2C2C
 }
 
-@media only screen and (min-width: 600px) {
-  /* .letter {
+/* @media only screen and (min-width: 600px) {
+  .letter {
     font-size: 4em;
-  } */
+  }
   .dot {
     height: 8px;
     width: 8px;
@@ -148,10 +152,4 @@ input {
     height: 8px;
     width: 16px;
   }
-  /* input {
-    width: 300px;
-  }
-  .submitButton {
-    width: 300px;
-  } */
-}
+} */

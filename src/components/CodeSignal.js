@@ -41,7 +41,6 @@ const CodeSignal = ({
 
   useEffect(() => {
     if (lastSignalReceived && characterPosition === activeCharacterIndex && elementIndex === activeSignalIndex && lastSignalReceived === elementName) {
-      console.log("That's the right signal!");
       completeCodeSignal(elementIndex);
     } else {
       resetLastSignal();

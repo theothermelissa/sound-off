@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const CreateMessage = ({ submitNewMessage }) => {
   const [message, setMessage] = useState("");
-  const [placeholder, setPlaceholder] = useState("What would you like to say?")
+  // const [placeholder, setPlaceholder] = useState("What would you like to say?")
 
   const updateMessage = (event) => {
     setMessage(event.target.value);
@@ -11,7 +11,7 @@ const CreateMessage = ({ submitNewMessage }) => {
   const submitMessage = (event) => {
     event.preventDefault();
     submitNewMessage(message);
-    setPlaceholder("How about another?");
+    // setPlaceholder("How about another?");
   }
 
   //disallow unsupported characters during input
@@ -24,7 +24,7 @@ const CreateMessage = ({ submitNewMessage }) => {
             type="text"
             name="message"
             onChange={updateMessage}
-            placeholder={placeholder}
+            // placeholder={placeholder}
           />
           <button className="submitButton" type="submit">submit</button>
       </div>
