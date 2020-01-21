@@ -35,6 +35,8 @@ const Switch = (props) => {
       transmitSignal("dot")
     } else if (dashMin < totalTime && totalTime <= dashMax) {
       transmitSignal("dash")
+    } else {
+      transmitSignal("error")
     }
   };
 

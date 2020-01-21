@@ -14,6 +14,7 @@ class GameMaster extends Component {
       timeFirstSignalBegan: 0,
       timeLastSignalBegan: 0,
       timeLastSignalEnded: 0,
+      errors: 0,
     };
     this.onCompleteMessage = this.onCompleteMessage.bind(this);
     this.resetLastSignal = this.resetLastSignal.bind(this);
@@ -24,14 +25,14 @@ class GameMaster extends Component {
 
   onCompleteMessage = () => {
     let messageDuration = -(this.state.timeFirstSignalBegan - this.state.timeLastSignalEnded)/1000;
-    console.log("GameMaster says the message is complete. Good job!")
-    console.log("Good job! You completed ", this.state.userSubmittedMessage.length, " characters in ", messageDuration, " seconds.");
+    console.log("Good job! You completed ", this.state.userSubmittedMessage.length, " characters in ", messageDuration, " seconds with ", this.state.errors, "errors.");
     setTimeout(this.setState({
       lastSignalReceived: "",
       userSubmittedMessage: "",
       signalsReceived: 0,
       timeFirstSignalBegan: 0,
       timeLastSignalBegan: 0,
+      errors: 0,
     }), 400)
   };
   
@@ -47,6 +48,13 @@ class GameMaster extends Component {
       signalsReceived: this.state.signalsReceived + 1,
     })
   };
+
+  logError = () => {
+    this.setState({
+      errors: this.state.errors + 1,
+      signalsReceived: this.state.signalsReceived + 1,
+    })
+  }
 
   transmitStartTime = (time) => {
     this.setState({ timeLastSignalBegan: time })
@@ -73,7 +81,9 @@ class GameMaster extends Component {
               completeMessage={this.onCompleteMessage}
               resetLastSignal={this.resetLastSignal}
               messageIndex={this.state.messageIndex}
-              lastSignalReceived={this.state.lastSignalReceived} />
+              lastSignalReceived={this.state.lastSignalReceived}
+              logError={this.logError}
+            />
           </div>
           <Switch
             transmitSignal={this.transmitSignal}

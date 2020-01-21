@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Prompt from './Prompt';
 
-const Message = ({ userSubmittedMessage, completeMessage, resetLastSignal, lastSignalReceived }) => {
+const Message = ({ userSubmittedMessage, completeMessage, resetLastSignal, lastSignalReceived, logError }) => {
   const [activeCharacterIndex, setActiveCharacterIndex] = useState(0);
 
   const messageCharacters = userSubmittedMessage.split("");
@@ -36,6 +36,7 @@ const Message = ({ userSubmittedMessage, completeMessage, resetLastSignal, lastS
             position={index}
             completePrompt={onCompletePrompt}
             resetLastSignal={resetLastSignal}
+            logError={logError}
           />
       )
     })
