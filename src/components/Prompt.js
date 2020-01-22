@@ -2,7 +2,18 @@ import React, { useState } from 'react';
 import Sequence from './Sequence';
 import '../App.css';
 
-const Prompt = ({ char, activeCharacterIndex, lastSignalReceived, position, completePrompt, resetLastSignal, logError }) => {
+const Prompt = ({ 
+  char,
+  activeCharacterIndex,
+  lastSignalReceived,
+  position,
+  completePrompt,
+  resetLastSignal,
+  logError,
+  startTimer,
+  // timerIsRunning,
+  // trackElapsedTime
+}) => {
   const [promptIsComplete, setPromptIsComplete] = useState(false);
 
   const onCompleteSequence = () => {
@@ -33,6 +44,9 @@ const Prompt = ({ char, activeCharacterIndex, lastSignalReceived, position, comp
           resetLastSignal={resetLastSignal}
           promptIsComplete={promptIsComplete}
           logError={logError}
+          startTimer={startTimer}
+          // timerIsRunning={timerIsRunning}
+          // trackElapsedTime={trackElapsedTime}
           />
       </div>
     </div>

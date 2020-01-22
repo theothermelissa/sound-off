@@ -16,7 +16,7 @@
   flex-flow: column;
   width: 90%;
   /* min-height: 100%; */
-  max-width: 700px;
+  max-width: 500px;
   text-align: center;
   flex-grow: 1;
 }
@@ -63,7 +63,7 @@
 .dash {
   width: 9px;
   height: 5px;
-  border-radius: 13%;
+  border-radius: 1px;
   background-color: #BCBCBC;
   margin: 1px;
 }

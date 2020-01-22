@@ -27,13 +27,13 @@ const CreateMessage = ({ submitNewMessage }) => {
   return (
     <form onSubmit={submitMessage}>
       <div className="createMessageContainer">
-          <label>I'd like to say:</label>
+          <label>Change message:</label>
           <input 
             type="text"
             name="message"
             onChange={updateMessage}
           />
-          <button className="submitButton" type="submit">submit</button>
+          <button className="submitButton" type="submit">submit new message</button>
       </div>
     </form>
   )

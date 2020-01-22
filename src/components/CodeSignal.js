@@ -15,6 +15,8 @@ const CodeSignal = ({
   resetLastSignal,
   promptIsComplete,
   logError,
+  startTimer,
+  // timerIsRunning,
 }) => {
   const isComplete = (elementIndex < activeSignalIndex) || sequenceIsComplete || promptIsComplete;
   const currentClassName = (isComplete) ? elementName + " " + "completedCodeSignal" : elementName;
@@ -28,7 +30,7 @@ const CodeSignal = ({
         } else {
           logError();
           resetLastSignal();
-        }
+          }
       }
     }
   }, [lastSignalReceived]);

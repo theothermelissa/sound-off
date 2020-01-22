@@ -3,7 +3,19 @@ import alphabet from '../assets/codeTranslationKey.js';
 import '../App.css';
 import CodeSignal from './CodeSignal';
 
-const Sequence = ({ char, activeCharacterIndex, lastSignalReceived, position, completeSequence, resetLastSignal, promptIsComplete, logError }) => {
+const Sequence = ({
+  char,
+  activeCharacterIndex,
+  lastSignalReceived,
+  position,
+  completeSequence,
+  resetLastSignal,
+  promptIsComplete,
+  logError,
+  startTimer,
+  // timerIsRunning
+  // trackElapsedTime,
+ }) => {
   const [currentSignalIndex, setCurrentSignalIndex] = useState(0);
   const [sequenceIsComplete, setSequenceIsComplete] = useState(false);
 
@@ -39,6 +51,9 @@ const Sequence = ({ char, activeCharacterIndex, lastSignalReceived, position, co
           resetLastSignal={resetLastSignal}
           promptIsComplete={promptIsComplete}
           logError={logError}
+          startTimer={startTimer}
+          // timerIsRunning={timerIsRunning}
+          // trackElapsedTime={trackElapsedTime}
         />
       )
     })
