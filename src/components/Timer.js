@@ -4,9 +4,6 @@ const Timer = ({ timerShouldRun, transmitElapsedSeconds }) => {
   const [time, setTime] = useState(new Date().toLocaleTimeString());
   const elapsedSeconds = useRef(0);
 
-  // const [time, setTime] = useState(new Date().toLocaleDateString());
-  // const elapsedSeconds = useRef(0);
-  
   const isRunning = useMemo(() => (timerShouldRun === true) ? true : false, [timerShouldRun])
 
   useEffect(() => {
@@ -15,7 +12,7 @@ const Timer = ({ timerShouldRun, transmitElapsedSeconds }) => {
         const date = new Date();
         elapsedSeconds.current = elapsedSeconds.current + 1;
         setTime(date.toLocaleTimeString());
-        transmitElapsedSeconds(elapsedSeconds.current);
+        // transmitElapsedSeconds(elapsedSeconds.current);
       }, 1000);
       return () => { clearTimeout(timeout) };
     } else {
@@ -24,7 +21,6 @@ const Timer = ({ timerShouldRun, transmitElapsedSeconds }) => {
   }, [isRunning, time, elapsedSeconds, transmitElapsedSeconds]);
   return (
     <div>
-      {/* <div>{time}</div> */}
       <div>{elapsedSeconds.current}</div>
     </div>
   )

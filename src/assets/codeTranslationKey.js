@@ -1,6 +1,7 @@
 // import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import signalElements from './signalElements';
+import calcScores from 'util';
 
 const { dot, dash, space, linebreak } = signalElements;
 
@@ -360,3 +361,9 @@ const alphabet = {
 // };
 
 export default alphabet;
+// export default {
+//   alphabet: alphabet,
+//   alphabetWithScores: calcScores(alphabet)
+// };
+
+
