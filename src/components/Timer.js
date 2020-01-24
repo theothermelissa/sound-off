@@ -6,6 +6,13 @@ const Timer = ({ timerShouldRun, transmitElapsedSeconds }) => {
 
   const isRunning = useMemo(() => (timerShouldRun === true) ? true : false, [timerShouldRun])
 
+  // const timeFirstSignalBegan = useRef(0); //move to Timer
+  // const timeLastSignalEnded = useRef(0); //move to Timer
+  // const messageDuration = (start, end) => -(end - start)/1000; // send to Timer
+
+  const runTimer = useMemo(() => (isComplete === false) ? true : false, [isComplete]); // toggles status to send to Timer based on props from GM
+
+
   useEffect(() => {
     if (isRunning) {
       const timeout = setTimeout(() => {
