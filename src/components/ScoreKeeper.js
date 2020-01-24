@@ -9,30 +9,26 @@ const ScoreKeeper = (props) => {
     timerShouldRun,
     transmitElapsedTime,
   } = props;
-
+  
   const [elapsedTime, setElapsedTime] = useState(0);
   const [errorCount, setErrorCount] = useState(0);
   const [signalsReceived, setSignalsReceived] = useState(0);
   const timeFirstSignalReceived = useRef(0);
   const timeLastSignalReceived = useRef(0);
-
+  const timerIsRunning = useMemo(() => (timerShouldRun === true) ? true : false, [timerShouldRun])
+  
   const messageLength = userSubmittedMessage.length;
   const listOfMessageCharacters = userSubmittedMessage.split("");
-
-  // const list = ["dot", "dash", "dot", "dot", "dash", "dash", "dash"];
-
-  const targetSpeed = () => {
-    //question : should this be a setting, or should this be calculated?
-    //if calculated: map over each character in listOfMessageCharacters; total the minDuration of every signal element in every char's sequence
-  }
-
-  const findChanges = (sequence) => {
-    return sequence.reduce((sumChanges, thisElement, index)=> {
-      const nextElement = sequence[index + 1];
-      console.log("Sum Changes: ", sumChanges);
-      console.log("This Element: ", thisElement);
-      console.log("thisElement !== nextElement", thisElement !== nextElement)
-      console.log("nextElement === undefined", nextElement === undefined)
+  const targetMessageSpeed = (characterList, translationKey) => {
+    return characterList.map((character)=> {
+      return translationKey[character]["sequence"].minDuration;
+    }).reduce((sumDuration, thisDuration) => {
+      return sumDuration + thisDuration;
+    })
+  };
+  const numberOfCodeSignalChanges = (elementSequence) => {
+    return elementSequence.reduce((sumChanges, thisElement, index)=> {
+      const nextElement = elementSequence[index + 1];
       if (thisElement !== nextElement) {
         if (nextElement === undefined) {
           return sumChanges;
@@ -43,17 +39,11 @@ const ScoreKeeper = (props) => {
         return sumChanges;
       }
     }, 0)
+  };
+  const characterComplexity = (character) => {
+    return alphabet[character]["sequence"].length + numberOfCodeSignalChanges(character)
   }
-
-  // const calculateCharacterComplexity = (character) => {
-  //   //character.sequence.length + numberOfTimesSignalTypeChanges
-  //   alphabet[character][sequence].length + numberOfTimesSignalTypeChanges(character))
-  //   })
-  // }
-
-  const calculateMessageDifficulty = () => {
-    //length * average character complexity"
-  }
+  const messageDifficulty = messageLength + listOfMessageCharacters.reduce((totalComplexity, thisCharacter) => totalComplexity + characterComplexity(thisCharacter));
 
   const messageDuration = (start, end) => -(end - start)/1000;
   const speedBonus = (actual, target) => 100 - actual - target;
@@ -62,6 +52,7 @@ const ScoreKeeper = (props) => {
 
   const startTimer = () => {
     console.log("Record transmissionStartTime")
+    
   }
 
   const stopTimer = () => {
