@@ -12,6 +12,8 @@ const Timer = ({ timerShouldRun, transmitElapsedSeconds }) => {
 
   const runTimer = useMemo(() => (isComplete === false) ? true : false, [isComplete]); // toggles status to send to Timer based on props from GM
 
+  let messageDuration = -(this.state.timeFirstSignalBegan - this.state.timeLastSignalEnded)/1000;
+    let totalTime = Math.round(messageDuration * 100)/100;
 
   useEffect(() => {
     if (isRunning) {

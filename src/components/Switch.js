@@ -1,57 +1,50 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import '../App.css';
 import {useAudio} from 'react-use';
 import soundSignal from '../assets/800hz.mp3';
 import signalElements from '../assets/signalElements';
 
 const Switch = (props) => {
-  const { transmitStartTime, transmitSignal, transmitEndTime } = props;
+  const { transmitSignal } = props;
 
   const [isPressed, setIsPressed] = useState(false);
-  const [timeSignalStarted, setTimeSignalStarted] = useState(0);
-
+  let [startTime, setStartTime] = useState(0);
+  
   const [audio, state, controls, ref] = useAudio ({
     src: soundSignal,
     autoPlay: false,
   });
-
-    let eventTimeStamp = (event) => event.timeStamp;
-
-    const saveCurrentStartTime = (pressEvent) => {
-      setTimeSignalStarted(eventTimeStamp(pressEvent));
-    };
   
-    const totalTimePressed = (releaseEvent) => {
-    let totalTime = (eventTimeStamp(releaseEvent) - timeSignalStarted)/1000;
-    return totalTime;
-    };
-
   const determineSignalType = (totalTime) => {
     const dotMin = signalElements.dot.minDuration;
     const dotMax = signalElements.dot.maxDuration;
     const dashMin = signalElements.dash.minDuration;
     const dashMax = signalElements.dash.maxDuration;
     if (dotMin <= totalTime && totalTime <= dotMax) {
-      transmitSignal("dot")
+      return "dot";
     } else if (dashMin < totalTime && totalTime <= dashMax) {
-      transmitSignal("dash")
+      return "dash";
     } else {
-      transmitSignal("error")
+      return "error";
     }
   };
 
+  let timeStamp = (event) => event.timeStamp;
+  let duration = (start, end) => (end - start) / 1000;
+  let newTime;
+
   const onPress = (pressEvent) => {
+    newTime = timeStamp(pressEvent);
     controls.play();
     setIsPressed(true);
-    saveCurrentStartTime(pressEvent);
-    transmitStartTime(eventTimeStamp(pressEvent));
-    };
-
+    setStartTime(newTime);
+  };
+  
   const onRelease = (releaseEvent) => {
+    newTime = timeStamp(releaseEvent);
     controls.pause();
     setIsPressed(false);
-    determineSignalType(totalTimePressed(releaseEvent));
-    transmitEndTime(eventTimeStamp(releaseEvent));
+    transmitSignal(determineSignalType(duration(startTime, newTime)), startTime, newTime);
   }
 
   return(
