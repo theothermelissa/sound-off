@@ -11,7 +11,9 @@ class GameMaster extends Component {
     super(props);
     this.state = {
       userSubmittedMessage: "Hello world",
-      isComplete: true,
+      isBegun: false,
+      isComplete: false,
+      isError: false,
       lastSignalReceived: "",
       signalStartTime: 0,
       signalEndTime: 0,
@@ -21,40 +23,39 @@ class GameMaster extends Component {
     this.resetLastSignal = this.resetLastSignal.bind(this);
     this.transmitSignal = this.transmitSignal.bind(this);
     this.transmitInputDuration = this.transmitInputDuration.bind(this);
+    this.logError = this.logError.bind(this);
+    this.submitNewMessage = this.submitNewMessage.bind(this);
   };
 
   onCompleteMessage = () => {
     this.setState({ isComplete: true });
     setTimeout(this.setState({
-      lastSignalReceived: "",
-      userSubmittedMessage: "Hello again world.",
-      signalsReceived: 0,
-      timeFirstSignalBegan: 0,
-      timeLastSignalBegan: 0,
-      timeLastSignalEnded: 0,
+      userSubmittedMessage: "Hello again, world",
+      isBegun: false,
       isComplete: false,
-      elapsedTime: 0,
-      errorCount: 0,
+      isError: false,
+      lastSignalReceived: "",
+      signalStartTime: 0,
+      signalEndTime: 0,
+      durationOfTransmission: 0,
     }), 400)
   };
 
   resetLastSignal = () => {
     this.setState({
       lastSignalReceived: "",
+      isError: false,
     })
   };
 
   transmitInputDuration = (time) => {
     this.setState({ durationOfTransmission: time});
-  }
+  };
 
   transmitSignal = (signal, startTime, endTime) => {
-    console.log("Signal received.")
-    if (this.state.isComplete === true) { 
-      // console.log("Message is incomplete.")
-      this.setState({ isComplete: false }) 
+    if (this.state.isBegun === false) { 
+      this.setState({ isBegun: true }) 
     };
-    console.log("Signal type: ", signal, " Start time: ", startTime, " End time: ", endTime)
     this.setState({ 
       lastSignalReceived: signal,
       signalStartTime: startTime,
@@ -63,60 +64,70 @@ class GameMaster extends Component {
   };
 
   logError = () => {
+    console.log("logError has been called. Setting state to isError: true")
     this.setState({
-      errorCount: this.state.errorCount + 1,
-      signalsReceived: this.state.signalsReceived + 1,
+      isError: true,
     })
   }
 
   // transmitStartTime = (time) => {
-  //   this.setState({ timeLastSignalBegan: time })
-  //   if (this.state.signalsReceived === 0) {
-  //     this.setState({ 
-  //       timeFirstSignalBegan: time,
-  //     })
-  //   }
-  // };
+    //   this.setState({ timeLastSignalBegan: time })
+    //   if (this.state.signalsReceived === 0) {
+      //     this.setState({ 
+        //       timeFirstSignalBegan: time,
+        //     })
+        //   }
+        // };
 
   // transmitEndTime = (time) => {
-  //   this.setState({ 
-  //     timeLastSignalEnded: time, 
-  //   })
-  // };
+    //   this.setState({ 
+      //     timeLastSignalEnded: time, 
+      //   })
+      // };
 
   submitNewMessage = (message) => {
     this.setState({ 
-      userSubmittedMessage: message 
+      userSubmittedMessage: message,
+      isBegun: false,
+      isComplete: false,
+      isError: false,
+      lastSignalReceived: "",
+      signalStartTime: 0,
+      signalEndTime: 0,
+      durationOfTransmission: 0,
     });
   }
 
   render() {
     return (
       <div className="game">
-          <div className="messageHolder">
-            <Message 
-              userSubmittedMessage={this.state.userSubmittedMessage}
-              completeMessage={this.onCompleteMessage}
-              resetLastSignal={this.resetLastSignal}
-              messageIndex={this.state.messageIndex}
-              lastSignalReceived={this.state.lastSignalReceived}
-              logError={this.logError}
-            />
-          </div>
-          <Switch
-            transmitSignal={this.transmitSignal}
-          />
-          <CreateMessage 
-            submitNewMessage={this.submitNewMessage}
-            currentMessage={this.state.userSubmittedMessage}
-          />
-          {/* <Timer transmitInputDuration={this.state.transmitInputDuration} /> */}
-          {/* <ScoreKeeper 
+        <div className="messageHolder">
+          <Message 
             userSubmittedMessage={this.state.userSubmittedMessage}
-            signalIsMatch={this.state.signalIsMatch}
+            completeMessage={this.onCompleteMessage}
+            resetLastSignal={this.resetLastSignal}
             isComplete={this.state.isComplete}
-            durationOfTransmission={this.durationOfTransmission}
-          /> */}
+            isBegun={this.state.isBegun}
+            lastSignalReceived={this.state.lastSignalReceived}
+            logError={this.logError}
+          />
+        </div>
+        <Switch
+          transmitSignal={this.transmitSignal}
+        />
+        <CreateMessage 
+          submitNewMessage={this.submitNewMessage}
+          // currentMessage={this.state.userSubmittedMessage}
+        />
+        {/* <Timer transmitInputDuration={this.state.transmitInputDuration} /> */}
+        <ScoreKeeper 
+          userSubmittedMessage={this.state.userSubmittedMessage}
+          isError={this.state.isError}
+          isComplete={this.state.isComplete}
+          durationOfTransmission={this.durationOfTransmission}
+          signalStartTime={this.state.signalStartTime}
+          isBegun={this.state.isBegun}
+        />
           {/* <button onClick={this.toggleTimer}>Start/Stop Timer</button> */}
           {/* <Timer isComplete={this.state.isComplete} /> */}
       </div>

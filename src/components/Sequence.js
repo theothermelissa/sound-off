@@ -13,6 +13,7 @@ const Sequence = ({
   promptIsComplete,
   logError,
   startTimer,
+  isBegun,
   // timerIsRunning
   // trackElapsedTime,
  }) => {
@@ -31,7 +32,14 @@ const Sequence = ({
       setSequenceIsComplete(true);
       completeSequence();
     }
-  }
+  };
+
+  useEffect(() => {
+    if (!isBegun) {
+      setCurrentSignalIndex(0);
+      setSequenceIsComplete(false);
+    }
+  }, [isBegun]);
 
   return (
     morseElementSequence.map((codeSignal, index) => {
@@ -40,7 +48,6 @@ const Sequence = ({
           element={codeSignal}
           elementName={codeSignal.id}
           elementIndex={index}
-          totalSignalsInChar={totalSignalsInChar}
           key={char + codeSignal.id + index}
           characterPosition={position}
           activeSignalIndex={currentSignalIndex}

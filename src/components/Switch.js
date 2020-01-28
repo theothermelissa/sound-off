@@ -9,6 +9,9 @@ const Switch = (props) => {
 
   const [isPressed, setIsPressed] = useState(false);
   let [startTime, setStartTime] = useState(0);
+  let timeStamp = (event) => event.timeStamp;
+  let duration = (start, end) => (end - start) / 1000;
+  let newTime;
   
   const [audio, state, controls, ref] = useAudio ({
     src: soundSignal,
@@ -28,10 +31,6 @@ const Switch = (props) => {
       return "error";
     }
   };
-
-  let timeStamp = (event) => event.timeStamp;
-  let duration = (start, end) => (end - start) / 1000;
-  let newTime;
 
   const onPress = (pressEvent) => {
     newTime = timeStamp(pressEvent);

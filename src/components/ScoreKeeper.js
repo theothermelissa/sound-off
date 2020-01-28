@@ -4,15 +4,35 @@ import alphabet from '../assets/codeTranslationKey';
 
 const ScoreKeeper = (props) => {
   const { 
-    userSubmittedMessage, //entire message, string
-    signalIsMatch, //whether signal was a match; boolean
+    // userSubmittedMessage, //entire message, string
+    isError, //whether signal was a match; boolean
     isComplete, //whether message is completed; boolean
-    durationOfTransmission, //how long the user took to complete the message
+    isBegun, //whether message is begun; boolean
+    signalStartTime, //to compare?
+    // durationOfTransmission, //how long the user took to complete the message
   } = props;
 
   const [runningErrorCount, setRunningErrorCount] = useState(0); //running tally of errors
-  const [totalErrorCount, setTotalErrorCount] = useState(0); //final number of errors
+  const [isActive, setIsActive] = useState(false);
 
+  const tempErrorCount = useRef(0);
+
+  // const increaseCount = () => runningErrorCount + 1;
+  // const newCount = useMemo(() => increaseCount());
+
+  useEffect(() => {
+    isBegun ? setIsActive(true) : setIsActive(false)
+  }, [isBegun]);
+
+  useEffect(() => {
+    console.log("Should be logging error.")
+    const logError = () => setRunningErrorCount(x => x + 1);
+    if (isError) {
+      logError();
+    }
+  }, [isError])
+
+  console.log("Running Error Count: ", runningErrorCount)
   // const messageLength = userSubmittedMessage.length;
   // const listOfMessageCharacters = userSubmittedMessage.split("");
   // const targetMessageSpeed = (characterList, translationKey) => {
@@ -54,25 +74,39 @@ const ScoreKeeper = (props) => {
   // const accuracyScore = runningErrorCount / messageLength * 100;
   // const totalScore = accuracyScore + speedScore;
 
-  useEffect(() => {
-    const newCount = runningErrorCount + 1;
-    const logError = () => setRunningErrorCount(newCount);
-    if (isComplete) {
-      if (!signalIsMatch) {
-        logError();
-        setTotalErrorCount(newCount);
-      } else {
-        setTotalErrorCount(runningErrorCount)
-      };
-    };
-    if (!signalIsMatch) {
-      logError();
-    };
-  }, [isComplete, signalIsMatch, runningErrorCount, totalErrorCount]);
+  // useEffect(() => {
+  //   const newCount = runningErrorCount + 1;
+  //   const logError = () => setRunningErrorCount(newCount);
+  //   // if (!isBegun) {
+  //   //   setRunningErrorCount(0);
+  //   // };
+  //   if (!isComplete) {
+  //     if (isBegun) {
+  //       if (!isError) {
+  //         console.log("Error logged.")
+  //         logError();
+  //       }
+  //     }
+  //   }
+  //   if (isComplete) {
+  //     if (isError) {
+  //       setTotalErrorCount(runningErrorCount);
+  //       setTimeout(setRunningErrorCount(0), 200);
+  //     } else {
+  //       setTotalErrorCount(newCount);
+  //       setTimeout(setRunningErrorCount(0), 200);
+  //     };
+  //     setTimeout(console.log("Message complete. Total error count: ", totalErrorCount), 1000);
+  //   } 
+  //   console.log("Change detected")
+  // }, [isComplete, isError, signalStartTime]);
+
+
+
+
 
   return (
     <div className="scoreCard">{runningErrorCount}
-      {/* <Timer runTimer={runTimer} /> */}
       {/* <div className="difficulty">Difficulty: {messageDifficulty}</div> */}
       {/* <div className="accuracy">Accuracy: {accuracyScore}</div> */}
       {/* <div className="speed">Speed: {speedScore}</div> */}

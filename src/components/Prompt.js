@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Sequence from './Sequence';
 import '../App.css';
 
 const Prompt = ({ 
   char,
-  activeCharacterIndex,
-  lastSignalReceived,
   position,
+  activeCharacterIndex,
+  isComplete,
+  isBegun,
+  logError,
+  lastSignalReceived,
   completePrompt,
   resetLastSignal,
-  logError,
-  startTimer,
-  // timerIsRunning,
-  // trackElapsedTime
 }) => {
   const [promptIsComplete, setPromptIsComplete] = useState(false);
 
@@ -20,6 +19,12 @@ const Prompt = ({
     setPromptIsComplete(true);
     completePrompt();
   };
+
+  useEffect(() => {
+    if (!isBegun || isComplete) {
+      setPromptIsComplete(false);
+    }
+  }, [isBegun, isComplete])
 
   const translatedChar = (letter) => {
     if (letter === " ") {
@@ -37,14 +42,15 @@ const Prompt = ({
       <div className="sequence">
         <Sequence 
           char={translatedChar(char)}
-          activeCharacterIndex={activeCharacterIndex}
-          lastSignalReceived={lastSignalReceived}
           position={position}
+          activeCharacterIndex={activeCharacterIndex}
+          isComplete={isComplete}
+          isBegun={isBegun}
+          logError={logError}
+          lastSignalReceived={lastSignalReceived}
           completeSequence={onCompleteSequence}
           resetLastSignal={resetLastSignal}
           promptIsComplete={promptIsComplete}
-          logError={logError}
-          startTimer={startTimer}
           // timerIsRunning={timerIsRunning}
           // trackElapsedTime={trackElapsedTime}
           />

@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Prompt from './Prompt';
 
 const Message = ({ 
   userSubmittedMessage,
   completeMessage,
   resetLastSignal,
+  isComplete,
+  isBegun,
   lastSignalReceived,
   logError,
-  startTimer,
-  // timerIsRunning,
-  // trackElapsedTime
-}) => {
+  }) => {
+
   const [activeCharacterIndex, setActiveCharacterIndex] = useState(0);
 
   const messageCharacters = userSubmittedMessage.split("");
@@ -20,6 +20,9 @@ const Message = ({
     return (char === " " || char === "   ");
   };
 
+  useEffect(() => {
+    setActiveCharacterIndex(0);
+  }, [userSubmittedMessage, isComplete, isBegun]);
 
   const onCompletePrompt = () => {
     let newIndex = activeCharacterIndex + 1;
@@ -30,7 +33,7 @@ const Message = ({
       }
     } else {
       setActiveCharacterIndex(0);
-      setTimeout(completeMessage, 550);
+      setTimeout(completeMessage, 600);
     }
   };
 
@@ -39,16 +42,15 @@ const Message = ({
       return (
           <Prompt 
             char={letter}
-            activeCharacterIndex={activeCharacterIndex}
-            lastSignalReceived={lastSignalReceived}
-            key={letter+index}
             position={index}
+            activeCharacterIndex={activeCharacterIndex}
+            isComplete={isComplete}
+            isBegun={isBegun}
+            logError={logError}
+            lastSignalReceived={lastSignalReceived}
             completePrompt={onCompletePrompt}
             resetLastSignal={resetLastSignal}
-            logError={logError}
-            startTimer={startTimer}
-            // timerIsRunning={timerIsRunning}
-            // trackElapsedTime={trackElapsedTime}
+            key={letter+index}
           />
       )
     })
