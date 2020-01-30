@@ -20,12 +20,28 @@ const GameMaster = () => {
     isActive: false,
   }
 
-  const playReducer = (state, action) => {
+  const signalReducer = (state, action) => {
     switch (action.type) {
-      case "begin":
+      case "error":
+        console.log("Current state: ", state)
         return {
           ...state,
-          isActive: true,
+          isError: true,
+          lastSignalReceived: "error",
+          signalStartTimes: [...state.signalStartTimes, action.startTime],
+          signalEndTimes: [...state.signalEndTimes, action.endTime]
+          };
+      case "dot":
+        return {
+          lastSignalReceived: "dot",
+          signalStartTimes: [...state.signalStartTimes, action.startTime],
+          signalEndTimes: [...state.signalEndTimes, action.endTime]
+        };
+      case "dash":
+        return {
+          lastSignalReceived: "dash",
+          signalStartTimes: [...state.signalStartTimes, action.startTime],
+          signalEndTimes: [...state.signalEndTimes, action.endTime]
         };
       case "reset":
         return {
@@ -45,72 +61,20 @@ const GameMaster = () => {
           isActive: false,
         }
       default:
-          throw new Error("Unknown status");
-    }
-  };
-
-  const signalReducer = (state, action) => {
-    switch (action.type) {
-      case "error":
-        console.log("Current state: ", state)
-        return {
-          ...state,
-          isError: true,
-          lastSignalReceived: "",
-          signalStartTimes: [...state.signalStartTimes, action.startTime],
-          signalEndTimes: [...state.signalEndTimes, action.endTime]
-          };
-      case "dot":
-        return {
-          lastSignalReceived: "dot",
-          signalStartTimes: [...state.signalStartTimes, action.startTime],
-          signalEndTimes: [...state.signalEndTimes, action.endTime]
-        };
-      case "dash":
-        return {
-          lastSignalReceived: "dash",
-          signalStartTimes: [...state.signalStartTimes, action.startTime],
-          signalEndTimes: [...state.signalEndTimes, action.endTime]
-        };
-        default:
-          throw new Error("Unknown signal");
+        throw new Error("Unknown signal");
     }
   };
 
   const [signalState, signalDispatch] = useReducer(signalReducer, initialState);
-  const [playState, playDispatch] = useReducer(playReducer, initialState);
 
   const eventTimestamp = (event) => event.timeStamp;
 
-  // console.log("current state: ", initialState)
+  console.log("current signalStartTimes: ", signalState.signalStartTimes)
 
   return (
     <div>
       <div className="SignalInfo">
-        {signalState.isError ? (
-          <>
-            <div>Errors received at {JSON.stringify(signalState.signalStartTimes)}.</div>
-          </>
-        ) : (
-          <>
-<div>Last signal was {signalState.lastSignalReceived} at {JSON.stringify(signalState.signalStartTimes)}</div>
-          </>
-        )}
-        <button onClick={(event) => signalDispatch({ type: "dot", startTime: event.timeStamp })}>dot</button>
-        <button onClick={(event) => signalDispatch({ type: "dash", startTime: event.timeStamp })}>dash</button>
-        <button onClick={(event) => signalDispatch({ type: "error", startTime: event.timeStamp})}>error</button>
-      </div>
-      <div className="PlayInfo">
-        {playState.isActive ? (
-          <>
-            <div>Game is active.</div>
-          </>
-        ) : (
-          <>
-          <div>Game is not active</div>
-          </>
-        )}
-        {playState.isComplete ? (
+        {signalState.isComplete ? (
           <>
             <div>Game is complete.</div>
           </>
@@ -119,13 +83,24 @@ const GameMaster = () => {
             <div>Game is not complete.</div>
           </>
         )}
+        {signalState.signalStartTimes[0] && !signalState.isComplete ? (
           <>
-            <div>Current message is "{playState.userSubmittedMessage}"</div>
+            <div>Game is active.</div>
           </>
+        ) : (
+          <>
+            <div>Game is not active.</div>
+          </>
+        )}
+        <>
+          <div>Last signal was {signalState.lastSignalReceived} at {JSON.stringify(signalState.signalStartTimes)}</div>
+        </>
+        <button onClick={(event) => signalDispatch({ type: "dot", startTime: event.timeStamp })}>dot</button>
+        <button onClick={(event) => signalDispatch({ type: "dash", startTime: event.timeStamp })}>dash</button>
+        <button onClick={(event) => signalDispatch({ type: "error", startTime: event.timeStamp})}>error</button>
+        <button onClick={() => signalDispatch({ type: "reset"})}>reset</button>
+        <button onClick={() => signalDispatch({ type: "complete"})}>complete</button>
       </div>
-      <button onClick={() => playDispatch({ type: "begin"})}>begin</button>
-      <button onClick={() => playDispatch({ type: "reset"})}>reset</button>
-      <button onClick={() => playDispatch({ type: "complete"})}>complete</button>
     </div>
   )
 }
