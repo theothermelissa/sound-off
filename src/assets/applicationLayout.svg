@@ -10,265 +10,276 @@
 	.st4{font-family:'MyriadPro-Regular';}
 	.st5{font-size:12px;}
 	.st6{fill:#993333;}
-	.st7{opacity:0.68;fill:#E69B24;}
-	.st8{enable-background:new    ;}
-	.st9{fill:none;stroke:#A8A8A8;stroke-miterlimit:10;}
-	.st10{font-size:23.0301px;}
-	.st11{font-size:58.5802px;}
-	.st12{fill:url(#SVGID_1_);}
-	.st13{fill:url(#SVGID_2_);}
-	.st14{fill:url(#SVGID_3_);}
-	.st15{fill:#A5A5A5;}
-	.st16{fill:#FFFFFF;}
+	.st7{opacity:0.68;fill:#E69B24;enable-background:new    ;}
+	.st8{fill:none;stroke:#A8A8A8;stroke-miterlimit:10;}
+	.st9{enable-background:new    ;}
+	.st10{font-size:58.5802px;}
+	.st11{fill:url(#SVGID_1_);}
+	.st12{fill:url(#SVGID_2_);}
+	.st13{fill:url(#SVGID_3_);}
+	.st14{fill:#A5A5A5;}
+	.st15{fill:#FFFFFF;}
 </style>
-<rect x="601.4" y="197.4" class="st0" width="461.8" height="494.1"/>
-<rect x="621.8" y="285.2" class="st1" width="420.2" height="137.2"/>
-<rect x="632.7" y="311.1" class="st0" width="84.1" height="103.5"/>
-<rect x="648.2" y="318.3" class="st0" width="55.2" height="43.4"/>
-<rect x="648.2" y="379.4" class="st0" width="55.2" height="30.7"/>
-<rect x="652" y="385.5" class="st2" width="8.2" height="7.5"/>
-<rect x="671.7" y="385.3" class="st2" width="8.2" height="7.5"/>
-<rect x="690" y="385.3" class="st2" width="8.2" height="7.5"/>
-<rect x="734.1" y="311.1" class="st0" width="84.1" height="103.5"/>
-<rect x="749.6" y="318.3" class="st0" width="55.2" height="43.4"/>
-<rect x="749.6" y="379.4" class="st0" width="55.2" height="30.7"/>
-<rect x="753.4" y="385.5" class="st2" width="8.2" height="7.5"/>
-<rect x="773.1" y="385.3" class="st2" width="8.2" height="7.5"/>
-<rect x="791.4" y="385.3" class="st2" width="8.2" height="7.5"/>
-<rect x="835.5" y="311.1" class="st2" width="84.1" height="103.5"/>
-<rect x="851" y="318.3" class="st2" width="55.2" height="43.4"/>
-<rect x="851" y="379.4" class="st2" width="55.2" height="30.7"/>
-<rect x="854.8" y="385.5" class="st2" width="8.2" height="7.5"/>
-<rect x="874.5" y="385.3" class="st2" width="8.2" height="7.5"/>
-<rect x="892.8" y="385.3" class="st2" width="8.2" height="7.5"/>
-<rect x="936.4" y="311.1" class="st2" width="84.1" height="103.5"/>
-<rect x="951.9" y="318.3" class="st2" width="55.2" height="43.4"/>
-<rect x="951.9" y="379.4" class="st1" width="55.2" height="30.7"/>
-<rect x="955.7" y="385.5" class="st2" width="8.2" height="7.5"/>
-<rect x="975.4" y="385.3" class="st2" width="8.2" height="7.5"/>
-<rect x="993.7" y="385.3" class="st2" width="8.2" height="7.5"/>
-<line class="st1" x1="632.7" y1="492.9" x2="632.7" y2="422.1"/>
-<rect x="617.7" y="500.4" class="st3" width="180.4" height="114.9"/>
-<text transform="matrix(1 0 0 1 617.6764 508.9373)" class="st4 st5">MESSAGE</text>
-<text transform="matrix(1 0 0 1 617.6764 523.3373)" class="st4 st5">NEEDS TO KNOW</text>
-<text transform="matrix(1 0 0 1 617.6764 537.7373)" class="st4 st5">-&gt; the entire message</text>
-<text transform="matrix(1 0 0 1 617.6764 552.1373)" class="st4 st5">-&gt; which prompt is active</text>
-<text transform="matrix(1 0 0 1 617.6764 566.5373)" class="st4 st5">-&gt; which prompt is last</text>
-<text transform="matrix(1 0 0 1 617.6764 580.9373)" class="st4 st5">NEEDS TO TELL GAMEMASTER</text>
-<text transform="matrix(1 0 0 1 617.6764 595.3373)" class="st4 st5">-&gt; when it’s complete</text>
-<line class="st1" x1="1007" y1="405.3" x2="1077.8" y2="405.3"/>
+<rect x="888.1" y="251.2" class="st0" width="461.8" height="494.1"/>
+<rect x="908.5" y="339" class="st1" width="420.2" height="137.2"/>
+<rect x="919.4" y="364.9" class="st0" width="84.1" height="103.5"/>
+<rect x="934.9" y="372.1" class="st0" width="55.2" height="43.4"/>
+<rect x="934.9" y="433.2" class="st0" width="55.2" height="30.7"/>
+<rect x="938.7" y="439.3" class="st2" width="8.2" height="7.5"/>
+<rect x="958.4" y="439.1" class="st2" width="8.2" height="7.5"/>
+<rect x="976.7" y="439.1" class="st2" width="8.2" height="7.5"/>
+<rect x="1020.8" y="364.9" class="st0" width="84.1" height="103.5"/>
+<rect x="1036.3" y="372.1" class="st0" width="55.2" height="43.4"/>
+<rect x="1036.3" y="433.2" class="st0" width="55.2" height="30.7"/>
+<rect x="1040.1" y="439.3" class="st2" width="8.2" height="7.5"/>
+<rect x="1059.8" y="439.1" class="st2" width="8.2" height="7.5"/>
+<rect x="1078.1" y="439.1" class="st2" width="8.2" height="7.5"/>
+<rect x="1122.2" y="364.9" class="st2" width="84.1" height="103.5"/>
+<rect x="1137.7" y="372.1" class="st2" width="55.2" height="43.4"/>
+<rect x="1137.7" y="433.2" class="st2" width="55.2" height="30.7"/>
+<rect x="1141.5" y="439.3" class="st2" width="8.2" height="7.5"/>
+<rect x="1161.2" y="439.1" class="st2" width="8.2" height="7.5"/>
+<rect x="1179.5" y="439.1" class="st2" width="8.2" height="7.5"/>
+<rect x="1223.1" y="364.9" class="st2" width="84.1" height="103.5"/>
+<rect x="1238.6" y="372.1" class="st2" width="55.2" height="43.4"/>
+<rect x="1238.6" y="433.2" class="st1" width="55.2" height="30.7"/>
+<rect x="1242.4" y="439.3" class="st2" width="8.2" height="7.5"/>
+<rect x="1262.1" y="439.1" class="st2" width="8.2" height="7.5"/>
+<rect x="1280.4" y="439.1" class="st2" width="8.2" height="7.5"/>
+<line class="st1" x1="919.4" y1="546.7" x2="919.4" y2="475.9"/>
+<rect x="904.4" y="554.2" class="st3" width="180.4" height="114.9"/>
+<text transform="matrix(1 0 0 1 904.3508 562.7075)" class="st4 st5">MESSAGE</text>
+<text transform="matrix(1 0 0 1 904.3508 577.1075)" class="st4 st5">NEEDS TO KNOW</text>
+<text transform="matrix(1 0 0 1 904.3508 591.5075)" class="st4 st5">-&gt; the entire message</text>
+<text transform="matrix(1 0 0 1 904.3508 605.9075)" class="st4 st5">-&gt; which prompt is active</text>
+<text transform="matrix(1 0 0 1 904.3508 620.3075)" class="st4 st5">-&gt; which prompt is last</text>
+<text transform="matrix(1 0 0 1 904.3508 634.7075)" class="st4 st5">NEEDS TO TELL GAMEMASTER</text>
+<text transform="matrix(1 0 0 1 904.3508 649.1075)" class="st4 st5">-&gt; when it’s complete</text>
+<line class="st1" x1="1293.7" y1="459.1" x2="1364.5" y2="459.1"/>
 <g>
-	<rect x="1082" y="401" class="st3" width="180.3" height="201.3"/>
-	<text transform="matrix(1 0 0 1 1082.0244 409.5667)" class="st4 st5">SEQUENCE</text>
-	<text transform="matrix(1 0 0 1 1082.0244 423.9667)" class="st4 st5">NEEDS TO KNOW</text>
-	<text transform="matrix(1 0 0 1 1082.0244 438.3667)" class="st4 st5">-&gt; its character</text>
-	<text transform="matrix(1 0 0 1 1082.0244 452.7667)" class="st4 st5">-&gt; its signal elements sequence w/ </text>
-	<text transform="matrix(1 0 0 1 1082.0244 467.1667)" class="st4 st5">target press duration</text>
-	<text transform="matrix(1 0 0 1 1082.0244 481.5667)" class="st4 st5">-&gt; its display status (complete, </text>
-	<text transform="matrix(1 0 0 1 1082.0244 495.9667)" class="st4 st5">active, incomplete)</text>
-	<text transform="matrix(1 0 0 1 1082.0244 510.3667)" class="st4 st5">-&gt; which, if any, of its elements are </text>
-	<text transform="matrix(1 0 0 1 1082.0244 524.7667)" class="st4 st5">active</text>
-	<text transform="matrix(1 0 0 1 1082.0244 539.1667)" class="st4 st5">-&gt; what the last signal length was</text>
-	<text transform="matrix(1 0 0 1 1082.0244 553.5667)" class="st4 st5">NEEDS TO TELL PROMPT</text>
-	<text transform="matrix(1 0 0 1 1082.0244 567.9667)" class="st4 st5">-&gt; when an element’s target signal </text>
-	<text transform="matrix(1 0 0 1 1082.0244 582.3667)" class="st4 st5">duration is met, so it is completed</text>
+	<rect x="1368.7" y="454.8" class="st3" width="180.3" height="201.3"/>
+	<text transform="matrix(1 0 0 1 1368.6987 463.3369)" class="st4 st5">SEQUENCE</text>
+	<text transform="matrix(1 0 0 1 1368.6987 477.7369)" class="st4 st5">NEEDS TO KNOW</text>
+	<text transform="matrix(1 0 0 1 1368.6987 492.1369)" class="st4 st5">-&gt; its character</text>
+	<text transform="matrix(1 0 0 1 1368.6987 506.5369)" class="st4 st5">-&gt; its signal elements sequence w/ </text>
+	<text transform="matrix(1 0 0 1 1368.6987 520.9369)" class="st4 st5">target press duration</text>
+	<text transform="matrix(1 0 0 1 1368.6987 535.3369)" class="st4 st5">-&gt; its display status (complete, </text>
+	<text transform="matrix(1 0 0 1 1368.6987 549.7369)" class="st4 st5">active, incomplete)</text>
+	<text transform="matrix(1 0 0 1 1368.6987 564.1369)" class="st4 st5">-&gt; which, if any, of its elements are </text>
+	<text transform="matrix(1 0 0 1 1368.6987 578.5369)" class="st4 st5">active</text>
+	<text transform="matrix(1 0 0 1 1368.6987 592.9369)" class="st4 st5">-&gt; what the last signal length was</text>
+	<text transform="matrix(1 0 0 1 1368.6987 607.3369)" class="st4 st5">NEEDS TO TELL PROMPT</text>
+	<text transform="matrix(1 0 0 1 1368.6987 621.7369)" class="st4 st5">-&gt; when an element’s target signal </text>
+	<text transform="matrix(1 0 0 1 1368.6987 636.1369)" class="st4 st5">duration is met, so it is completed</text>
 </g>
-<line class="st2" x1="577.4" y1="360.2" x2="648.2" y2="360.2"/>
-<rect x="328.4" y="325.4" class="st3" width="246.7" height="114.9"/>
-<text transform="matrix(1 0 0 1 539.3162 363.9365)" class="st4 st5">LETTER</text>
-<text transform="matrix(1 0 0 1 424.9062 378.3365)" class="st4 st5">DISPLAYED | NEEDS TO KNOW</text>
-<text transform="matrix(1 0 0 1 500.9062 392.7365)" class="st4 st5">-&gt; its character</text>
-<text transform="matrix(1 0 0 1 478.8462 407.1365)" class="st4 st5">-&gt; its current status</text>
+<line class="st2" x1="864.1" y1="414" x2="934.9" y2="414"/>
+<rect x="615.1" y="379.2" class="st3" width="246.7" height="114.9"/>
+<text transform="matrix(1 0 0 1 825.9906 417.7067)" class="st4 st5">LETTER</text>
+<text transform="matrix(1 0 0 1 711.5806 432.1067)" class="st4 st5">DISPLAYED | NEEDS TO KNOW</text>
+<text transform="matrix(1 0 0 1 787.5806 446.5067)" class="st4 st5">-&gt; its character</text>
+<text transform="matrix(1 0 0 1 765.5206 460.9067)" class="st4 st5">-&gt; its current status</text>
 <g>
-	<rect x="893.4" y="455.7" class="st3" width="180.3" height="114.9"/>
-	<text transform="matrix(1 0 0 1 893.399 464.2281)" class="st4 st5">CODESIGNAL</text>
-	<text transform="matrix(1 0 0 1 893.399 478.6282)" class="st4 st5">DISPLAYED | NEEDS TO KNOW</text>
-	<text transform="matrix(1 0 0 1 893.399 493.0282)" class="st4 st5">-&gt; its className</text>
-	<text transform="matrix(1 0 0 1 893.399 507.4282)" class="st4 st5">-&gt; its current statu</text>
-	<text transform="matrix(1 0 0 1 984.969 507.4282)" class="st4 st5">s</text>
+	<rect x="1180.1" y="509.5" class="st3" width="180.3" height="114.9"/>
+	<text transform="matrix(1 0 0 1 1180.0734 517.9983)" class="st4 st5">CODESIGNAL</text>
+	<text transform="matrix(1 0 0 1 1180.0734 532.3984)" class="st4 st5">DISPLAYED | NEEDS TO KNOW</text>
+	<text transform="matrix(1 0 0 1 1180.0734 546.7984)" class="st4 st5">-&gt; its className</text>
+	<text transform="matrix(1 0 0 1 1180.0734 561.1984)" class="st4 st5">-&gt; its current statu</text>
+	<text transform="matrix(1 0 0 1 1271.6433 561.1984)" class="st4 st5">s</text>
 </g>
-<line class="st2" x1="834.8" y1="591.2" x2="834.8" y2="701.8"/>
-<rect x="810.9" y="704.5" class="st3" width="180.3" height="162.9"/>
-<text transform="matrix(1 0 0 1 810.8845 714.9994)" class="st4 st5">SWITCH</text>
-<text transform="matrix(1 0 0 1 810.8845 729.3994)" class="st4 st5">DISPLAYED | NEEDS TO KNOW</text>
-<text transform="matrix(1 0 0 1 810.8845 743.7994)" class="st4 st5">-&gt; whether it’s pressed</text>
-<text transform="matrix(1 0 0 1 810.8845 758.1994)" class="st4 st5">-&gt; how long it’s pressed</text>
-<text transform="matrix(1 0 0 1 810.8845 772.5994)" class="st4 st5">-&gt; whether the duration matches a </text>
-<text transform="matrix(1 0 0 1 810.8845 786.9994)" class="st4 st5">dot or a dash or neither</text>
-<text transform="matrix(1 0 0 1 810.8845 801.3994)" class="st4 st5">-&gt; how to play the sound or flash </text>
-<text transform="matrix(1 0 0 1 810.8845 815.7994)" class="st4 st5">the light</text>
-<text transform="matrix(1 0 0 1 810.8845 830.1994)" class="st4 st5">NEEDS TO TELL GAMEMASTER</text>
-<text transform="matrix(1 0 0 1 810.8845 844.5994)" class="st4 st5">-&gt; when a Signal has been </text>
-<text transform="matrix(1 0 0 1 810.8845 858.9994)" class="st4 st5">input, and what it was</text>
-<line class="st2" x1="1020.6" y1="318.3" x2="1091.4" y2="318.3"/>
+<line class="st2" x1="1121.5" y1="645" x2="1121.5" y2="755.6"/>
+<rect x="1097.6" y="758.3" class="st3" width="180.3" height="162.9"/>
+<text transform="matrix(1 0 0 1 1097.5588 768.7696)" class="st4 st5">SWITCH</text>
+<text transform="matrix(1 0 0 1 1097.5588 783.1696)" class="st4 st5">DISPLAYED | NEEDS TO KNOW</text>
+<text transform="matrix(1 0 0 1 1097.5588 797.5696)" class="st4 st5">-&gt; whether it’s pressed</text>
+<text transform="matrix(1 0 0 1 1097.5588 811.9696)" class="st4 st5">-&gt; how long it’s pressed</text>
+<text transform="matrix(1 0 0 1 1097.5588 826.3696)" class="st4 st5">-&gt; whether the duration matches a </text>
+<text transform="matrix(1 0 0 1 1097.5588 840.7696)" class="st4 st5">dot or a dash or neither</text>
+<text transform="matrix(1 0 0 1 1097.5588 855.1696)" class="st4 st5">-&gt; how to play the sound or flash </text>
+<text transform="matrix(1 0 0 1 1097.5588 869.5696)" class="st4 st5">the light</text>
+<text transform="matrix(1 0 0 1 1097.5588 883.9696)" class="st4 st5">NEEDS TO TELL GAMEMASTER</text>
+<text transform="matrix(1 0 0 1 1097.5588 898.3696)" class="st4 st5">-&gt; when a Signal has been </text>
+<text transform="matrix(1 0 0 1 1097.5588 912.7696)" class="st4 st5">input, and what it was</text>
+<line class="st2" x1="1307.3" y1="372.1" x2="1378.1" y2="372.1"/>
 <g>
-	<rect x="1092.4" y="265.6" class="st3" width="149.6" height="123.7"/>
-	<text transform="matrix(1 0 0 1 1092.3928 274.0768)" class="st4 st5">PROMPT</text>
-	<text transform="matrix(1 0 0 1 1092.3928 288.4768)" class="st4 st5">NEEDS TO KNOW</text>
-	<text transform="matrix(1 0 0 1 1092.3928 302.8768)" class="st4 st5">-&gt; its character</text>
-	<text transform="matrix(1 0 0 1 1092.3928 317.2768)" class="st4 st5">-&gt; its current status </text>
-	<text transform="matrix(1 0 0 1 1092.3928 331.6768)" class="st4 st5">-&gt; when it’s completed</text>
-	<text transform="matrix(1 0 0 1 1092.3928 346.0768)" class="st4 st5">NEEDS TO TELL PROMPT</text>
-	<text transform="matrix(1 0 0 1 1214.1628 346.0768)" class="st4 st5">-</text>
-	<text transform="matrix(1 0 0 1 1092.3928 360.4768)" class="st4 st5">FIELD</text>
-	<text transform="matrix(1 0 0 1 1092.3928 374.8768)" class="st4 st5">-&gt; when it is completed</text>
+	<rect x="1379.1" y="319.4" class="st3" width="149.6" height="123.7"/>
+	<text transform="matrix(1 0 0 1 1379.0671 327.847)" class="st4 st5">PROMPT</text>
+	<text transform="matrix(1 0 0 1 1379.0671 342.247)" class="st4 st5">NEEDS TO KNOW</text>
+	<text transform="matrix(1 0 0 1 1379.0671 356.647)" class="st4 st5">-&gt; its character</text>
+	<text transform="matrix(1 0 0 1 1379.0671 371.047)" class="st4 st5">-&gt; its current status </text>
+	<text transform="matrix(1 0 0 1 1379.0671 385.447)" class="st4 st5">-&gt; when it’s completed</text>
+	<text transform="matrix(1 0 0 1 1379.0671 399.847)" class="st4 st5">NEEDS TO TELL PROMPT</text>
+	<text transform="matrix(1 0 0 1 1500.8372 399.847)" class="st4 st5">-</text>
+	<text transform="matrix(1 0 0 1 1379.0671 414.247)" class="st4 st5">FIELD</text>
+	<text transform="matrix(1 0 0 1 1379.0671 428.647)" class="st4 st5">-&gt; when it is completed</text>
 </g>
-<circle cx="834" cy="561.4" r="29.8"/>
-<line class="st2" x1="530.6" y1="455.5" x2="601.4" y2="455.5"/>
-<text transform="matrix(1 0 0 1 456.4814 459.244)" class="st4 st5">GAMEMASTER </text>
-<polyline class="st2" points="943.4,450.4 943.4,389 955.7,389 "/>
-<text transform="matrix(1 0 0 1 1105.3191 182.172)" class="st4 st5">YOUR SPEED: speed</text>
-<line class="st2" x1="905.6" y1="563.2" x2="886.7" y2="563.2"/>
+<circle cx="1120.7" cy="615.2" r="29.8"/>
+<line class="st2" x1="817.3" y1="509.3" x2="888.1" y2="509.3"/>
+<text transform="matrix(1 0 0 1 743.1558 513.0142)" class="st4 st5">GAMEMASTER </text>
+<polyline class="st2" points="1230.1,504.2 1230.1,442.8 1242.4,442.8 "/>
+<text transform="matrix(1 0 0 1 1391.9934 235.9422)" class="st4 st5">YOUR SPEED: speed</text>
+<line class="st2" x1="1192.3" y1="617" x2="1173.4" y2="617"/>
 <g>
-	<text transform="matrix(1 0 0 1 909.0115 566.2803)" class="st4 st5">SIGNAL (not displayed)</text>
-	<text transform="matrix(1 0 0 1 909.0115 580.6803)" class="st4 st5">NEEDS TO KNOW</text>
-	<text transform="matrix(1 0 0 1 909.0115 595.0803)" class="st4 st5">-&gt; whether it’s a dot</text>
-	<text transform="matrix(1 0 0 1 909.0115 609.4803)" class="st4 st5">or a dash</text>
+	<text transform="matrix(1 0 0 1 1195.6858 620.0505)" class="st4 st5">SIGNAL (not displayed)</text>
+	<text transform="matrix(1 0 0 1 1195.6858 634.4505)" class="st4 st5">NEEDS TO KNOW</text>
+	<text transform="matrix(1 0 0 1 1195.6858 648.8505)" class="st4 st5">-&gt; whether it’s a dot</text>
+	<text transform="matrix(1 0 0 1 1195.6858 663.2505)" class="st4 st5">or a dash</text>
 </g>
 <g>
-	<circle class="st0" cx="849.4" cy="564.3" r="37.4"/>
+	<circle class="st0" cx="1136.1" cy="618.1" r="37.4"/>
 </g>
-<rect x="601" y="197.9" class="st0" width="461.8" height="30.7"/>
-<text transform="matrix(1 0 0 1 1086.3149 208.6706)" class="st4 st5">YOUR ACCURACY: accuracy</text>
-<text transform="matrix(1 0 0 1 983.5997 216.7052)" class="st4 st5">SCORE: score </text>
-<text transform="matrix(1 0 0 1 612.8002 252.602)" class="st4 st5">NavBar</text>
-<rect x="1073.7" y="168" class="st2" width="154.8" height="20.2"/>
-<rect x="1073.7" y="194.6" class="st2" width="154.8" height="20.2"/>
+<rect x="887.7" y="251.7" class="st0" width="461.8" height="30.7"/>
+<text transform="matrix(1 0 0 1 1372.9893 262.4408)" class="st4 st5">YOUR ACCURACY: accuracy</text>
+<text transform="matrix(1 0 0 1 1270.274 270.4754)" class="st4 st5">SCORE: score </text>
+<text transform="matrix(1 0 0 1 899.4745 306.3722)" class="st4 st5">NavBar</text>
+<rect x="1360.4" y="221.8" class="st2" width="154.8" height="20.2"/>
+<rect x="1360.4" y="248.4" class="st2" width="154.8" height="20.2"/>
 <g>
-	<circle class="st0" cx="1015.8" cy="215.2" r="37.4"/>
+	
+		<ellipse transform="matrix(0.2298 -0.9732 0.9732 0.2298 741.4521 1474.8054)" class="st0" cx="1302.5" cy="269" rx="37.4" ry="37.4"/>
 </g>
-<text transform="matrix(1 0 0 1 458.0487 155.2522)" class="st4 st5">prompts on/off</text>
-<text transform="matrix(1 0 0 1 449.8571 179.8286)" class="st4 st5">light / sound mode</text>
-<text transform="matrix(1 0 0 1 884.4805 138.2922)" class="st4 st5">Speedbar</text>
-<rect x="412.3" y="141.1" class="st2" width="156" height="20.2"/>
-<rect x="412.3" y="166.2" class="st2" width="156" height="20.2"/>
-<text transform="matrix(1 0 0 1 427.174 204.9706)" class="st4 st5">target characters/minute</text>
-<rect x="412.3" y="191.4" class="st2" width="154.8" height="20.2"/>
-<text transform="matrix(1 0 0 1 442.6115 230.1126)" class="st4 st5">difficulty level, etc.</text>
-<rect x="412.3" y="216.5" class="st2" width="154.8" height="20.2"/>
-<rect x="605.5" y="202.6" class="st2" width="32.4" height="20.2"/>
-<line class="st0" x1="611.2" y1="207.1" x2="632.7" y2="207.1"/>
-<line class="st0" x1="611" y1="212.6" x2="632.5" y2="212.6"/>
-<line class="st0" x1="611" y1="217.9" x2="632.5" y2="217.9"/>
-<polyline class="st0" points="567.1,236.7 605.5,222.7 605.5,202.6 568.3,141.1 "/>
-<polyline class="st0" points="1073.7,214.7 1062.8,228.6 1062.8,197.9 1073.7,168 "/>
-<line class="st2" x1="890.7" y1="141.3" x2="890.7" y2="203.7"/>
+<text transform="matrix(1 0 0 1 744.7231 209.0224)" class="st4 st5">prompts on/off</text>
+<text transform="matrix(1 0 0 1 736.5315 233.5988)" class="st4 st5">light / sound mode</text>
+<text transform="matrix(1 0 0 1 1171.1549 192.0624)" class="st4 st5">Speedbar</text>
+<rect x="699" y="194.9" class="st2" width="156" height="20.2"/>
+<rect x="699" y="220" class="st2" width="156" height="20.2"/>
+<text transform="matrix(1 0 0 1 713.8484 258.7408)" class="st4 st5">target characters/minute</text>
+<rect x="699" y="245.2" class="st2" width="154.8" height="20.2"/>
+<text transform="matrix(1 0 0 1 729.2859 283.8828)" class="st4 st5">difficulty level, etc.</text>
+<rect x="699" y="270.3" class="st2" width="154.8" height="20.2"/>
+<rect x="892.2" y="256.4" class="st2" width="32.4" height="20.2"/>
+<line class="st0" x1="897.9" y1="260.9" x2="919.4" y2="260.9"/>
+<line class="st0" x1="897.7" y1="266.4" x2="919.2" y2="266.4"/>
+<line class="st0" x1="897.7" y1="271.7" x2="919.2" y2="271.7"/>
+<polyline class="st0" points="853.8,290.5 892.2,276.5 892.2,256.4 855,194.9 "/>
+<polyline class="st0" points="1360.4,268.5 1349.5,282.4 1349.5,251.7 1360.4,221.8 "/>
+<line class="st2" x1="1177.4" y1="195.1" x2="1177.4" y2="257.5"/>
 <g>
-	<rect x="643.7" y="203.7" class="st0" width="320.2" height="17.8"/>
-	<rect x="644.1" y="204.2" class="st6" width="113.8" height="16.8"/>
-	<rect x="644.1" y="204.2" class="st7" width="88.7" height="16.8"/>
+	<rect x="930.4" y="257.5" class="st0" width="320.2" height="17.8"/>
+	<rect x="930.8" y="258" class="st6" width="113.8" height="16.8"/>
+	<rect x="930.8" y="258" class="st7" width="88.7" height="16.8"/>
 </g>
-<rect x="593.5" y="660.8" class="st1" width="477.4" height="38.8"/>
-<text transform="matrix(1 0 0 1 614.2827 729.3995)" class="st4 st5">ShareBar</text>
-<text transform="matrix(1 0 0 1 628.9325 679.6516)" class="st4 st5">share this message</text>
-<rect x="605.5" y="666.1" class="st2" width="154.8" height="20.2"/>
-<text transform="matrix(1 0 0 1 950.1595 679.6523)" class="st4 st5">send a challenge</text>
-<rect x="764.8" y="666.1" class="st2" width="154.8" height="20.2"/>
-<text transform="matrix(1 0 0 1 794.0042 679.6525)" class="st4 st5">share your scores</text>
-<rect x="924.8" y="666.1" class="st2" width="132.7" height="20.2"/>
-<text transform="matrix(1 0 0 1 604.7757 137.5383)" class="st4 st5">menu</text>
-<line class="st2" x1="611" y1="140.5" x2="611" y2="203"/>
-<text transform="matrix(1 0 0 1 1011.1 112.654)" class="st4 st5">score</text>
-<line class="st2" x1="1017.3" y1="115.6" x2="1017.3" y2="178.1"/>
-<text transform="matrix(1 0 0 1 1118.7758 127.7151)" class="st4 st5">Stats</text>
-<line class="st1" x1="1125" y1="130.7" x2="1125" y2="161.9"/>
-<rect x="1068.2" y="161.9" class="st1" width="167.5" height="66.6"/>
-<text transform="matrix(1 0 0 1 452.8323 96.5804)" class="st8"><tspan x="0" y="0" class="st4 st5">S</tspan><tspan x="6" y="0" class="st4 st5">ettingsControls</tspan></text>
-<line class="st1" x1="459" y1="99.5" x2="459" y2="130.8"/>
-<rect x="402.3" y="130.8" class="st1" width="176.6" height="119.4"/>
-<text transform="matrix(1 0 0 1 716.7999 254.0318)" class="st4 st5">userSpeedFill</text>
-<line class="st2" x1="723" y1="218.6" x2="723" y2="246"/>
-<line class="st2" x1="749.6" y1="181.2" x2="749.6" y2="208.6"/>
-<text transform="matrix(1 0 0 1 744.62 179.8284)" class="st4 st5">opponentSpeedFill</text>
-<rect x="639.9" y="188.2" class="st9" width="428.3" height="54.3"/>
-<line class="st2" x1="617.7" y1="228.8" x2="617.7" y2="243.8"/>
+<rect x="880.2" y="714.6" class="st1" width="477.4" height="38.8"/>
+<text transform="matrix(1 0 0 1 900.9571 783.1697)" class="st4 st5">ShareBar</text>
+<text transform="matrix(1 0 0 1 915.6069 733.4218)" class="st4 st5">share this message</text>
+<rect x="892.2" y="719.9" class="st2" width="154.8" height="20.2"/>
+<text transform="matrix(1 0 0 1 1236.8339 733.4225)" class="st4 st5">send a challenge</text>
+<rect x="1051.5" y="719.9" class="st2" width="154.8" height="20.2"/>
+<text transform="matrix(1 0 0 1 1080.6786 733.4227)" class="st4 st5">share your scores</text>
+<rect x="1211.5" y="719.9" class="st2" width="132.7" height="20.2"/>
+<text transform="matrix(1 0 0 1 891.4501 191.3085)" class="st4 st5">menu</text>
+<line class="st2" x1="897.7" y1="194.3" x2="897.7" y2="256.8"/>
+<text transform="matrix(1 0 0 1 1297.7744 166.4243)" class="st4 st5">score</text>
+<line class="st2" x1="1304" y1="169.4" x2="1304" y2="231.9"/>
+<text transform="matrix(1 0 0 1 1405.4502 181.4853)" class="st4 st5">Stats</text>
+<line class="st1" x1="1411.7" y1="184.5" x2="1411.7" y2="215.7"/>
+<rect x="1354.9" y="215.7" class="st1" width="167.5" height="66.6"/>
+<text transform="matrix(1 0 0 1 739.5067 150.3506)" class="st4 st5">S</text>
+<text transform="matrix(1 0 0 1 745.5067 150.3506)" class="st4 st5">ettingsControls</text>
+<line class="st1" x1="745.7" y1="153.3" x2="745.7" y2="184.6"/>
+<rect x="689" y="184.6" class="st1" width="176.6" height="119.4"/>
+<text transform="matrix(1 0 0 1 1003.4743 307.802)" class="st4 st5">userSpeedFill</text>
+<line class="st2" x1="1009.7" y1="272.4" x2="1009.7" y2="299.8"/>
+<line class="st2" x1="1036.3" y1="235" x2="1036.3" y2="262.4"/>
+<text transform="matrix(1 0 0 1 1031.2944 233.5986)" class="st4 st5">opponentSpeedFill</text>
+<rect x="926.6" y="242" class="st8" width="428.3" height="54.3"/>
+<line class="st2" x1="904.4" y1="282.6" x2="904.4" y2="297.6"/>
 <g>
-	<text transform="matrix(1 0 0 1 663.3333 39.9158)" class="st4 st5">ScoreKeeper</text>
+	<text transform="matrix(1 0 0 1 950.0077 93.686)" class="st4 st5">ScoreKeeper</text>
 </g>
-<line class="st1" x1="669.5" y1="125.5" x2="669.5" y2="188"/>
-<line class="st1" x1="620.2" y1="699.6" x2="620.2" y2="719.3"/>
-<rect x="453.5" y="467.1" class="st3" width="171.5" height="166.8"/>
-<text transform="matrix(1 0 0 1 453.5426 475.6644)"><tspan x="0" y="0" class="st4 st5">NEEDS TO KNOW</tspan><tspan x="0" y="14.4" class="st4 st5">-&gt; message (for length)</tspan><tspan x="0" y="28.8" class="st4 st5">-&gt; messageDuration</tspan><tspan x="0" y="43.2" class="st4 st5">-&gt; lastSignalReceived</tspan><tspan x="0" y="57.6" class="st4 st5">-&gt; timerShouldRun</tspan><tspan x="0" y="72" class="st4 st5">-&gt; elapsedSeconds?</tspan><tspan x="0" y="86.4" class="st4 st5">-&gt; errorCount</tspan></text>
-<rect x="662.3" y="47.4" class="st3" width="171.5" height="166.8"/>
-<text transform="matrix(1 0 0 1 662.3043 55.9013)"><tspan x="0" y="0" class="st4 st5">NEEDS TO KNOW</tspan><tspan x="0" y="14.4" class="st4 st5">-&gt; when to start &amp; stop timer</tspan><tspan x="0" y="28.8" class="st4 st5">-&gt; elapsedTime</tspan><tspan x="0" y="43.2" class="st4 st5">-&gt; running tally of errors</tspan><tspan x="0" y="57.6" class="st4 st5">-&gt; how to calculate score</tspan></text>
-<text transform="matrix(1 0 0 1 82.0884 33.3673)" class="st4 st5">user inputs signal</text>
-<text transform="matrix(1 0 0 1 89.4951 146.6051)" class="st4 st5">GM broadcasts signal</text>
-<text transform="matrix(1 0 0 1 84.9194 86.1633)" class="st4 st5">switch evaluates</text>
-<polyline class="st0" points="126.9,112.9 126.9,137.5 132.1,129.7 "/>
-<text transform="matrix(1 0 0 1 62.3241 111.132)" class="st4 st5">switch sends signal to GM</text>
-<line class="st0" x1="126.1" y1="36.7" x2="126.1" y2="48.8"/>
-<line class="st0" x1="126.9" y1="89" x2="126.9" y2="101.1"/>
-<text transform="matrix(1 0 0 1 53.855 182.9516)" class="st8"><tspan x="0" y="0" class="st4 st5">dot or dash</tspan><tspan x="0" y="14.4" class="st4 st5">(eval. by CodeSignal,</tspan><tspan x="0" y="28.8" class="st4 st5">sent eventually to GM)</tspan></text>
-<text transform="matrix(1 0 0 1 151.19 182.9515)" class="st4 st5">error</text>
-<polyline class="st0" points="105.2,153.1 89.5,169.3 98.7,167.4 "/>
-<polyline class="st0" points="133.8,151.2 145.9,171.1 146.4,161.8 "/>
-<polyline class="st0" points="179,181.5 207.9,181.5 200.2,176.2 "/>
-<text transform="matrix(1 0 0 1 215.4789 182.9514)" class="st4 st5">ScoreKeeper records error</text>
-<text transform="matrix(1 0 0 1 48.5335 254.9706)" class="st4 st5">match</text>
-<text transform="matrix(1 0 0 1 114.2691 250.9088)" class="st4 st5">error</text>
-<polyline class="st0" points="62.3,215 62.7,237.6 67.8,229.8 "/>
-<polyline class="st0" points="96.9,219.2 109,239.1 109.5,229.7 "/>
-<polyline class="st0" points="177,57.2 205.9,57.2 198.1,51.9 "/>
-<text transform="matrix(1 0 0 1 213.4408 58.6613)" class="st8"><tspan x="0" y="0" class="st4 st5">GM broadcasts:</tspan><tspan x="0" y="14.4" class="st4 st5">-game is active</tspan><tspan x="0" y="28.8" class="st4 st5">-message</tspan></text>
-<text transform="matrix(1 0 0 1 210.9602 112.778)" class="st8"><tspan x="0" y="0" class="st4 st5">ScoreKeeper starts Timer</tspan><tspan x="0" y="14.4" class="st4 st5">and calculates message difficulty</tspan></text>
-<line class="st0" x1="238.5" y1="89.4" x2="238.5" y2="101.5"/>
-<polyline class="st0" points="143,247.4 171.9,247.4 164.2,242.2 "/>
-<text transform="matrix(1 0 0 1 179.4865 248.8748)" class="st4 st5">ScoreKeeper records error</text>
-<text transform="matrix(1 0 0 1 62.3241 292.0415)" class="st4 st5">last?</text>
-<line class="st0" x1="73.9" y1="259.9" x2="73.9" y2="280.6"/>
-<polyline class="st0" points="62.1,294.2 53.8,315.2 61.5,309.9 "/>
-<polyline class="st0" points="80.6,293.9 92.7,313.9 93.2,304.5 "/>
-<text transform="matrix(1 0 0 1 46.3611 326.1417)" class="st4 st5">no</text>
-<text transform="matrix(1 0 0 1 88.8349 324.5554)" class="st4 st5">yes</text>
-<text transform="matrix(1 0 0 1 115.824 59.9159)" class="st4 st5">first?</text>
-<text transform="matrix(1 0 0 1 156.2035 58.2889)" class="st4 st5">yes</text>
-<line class="st0" x1="151.8" y1="56.4" x2="139.7" y2="56.4"/>
-<line class="st0" x1="126.1" y1="62.8" x2="126.1" y2="74.8"/>
-<path class="st0" d="M49,330.7c-7.7,6.3-58.3-42.4-29.2-125.6S45.1,100.4,38,90.7S16.8,29.3,73.8,30l-10.6-4.9"/>
-<polyline class="st0" points="95.4,328.4 95.4,346.1 98.6,338.4 "/>
-<text transform="matrix(1 0 0 1 24.3811 360.4771)" class="st4 st5">Message signals completion</text>
-<polyline class="st0" points="73.8,363.9 73.8,381.6 76.9,374 "/>
-<text transform="matrix(1 0 0 1 42.3244 396.0183)" class="st4 st5">GM broadcasts completion</text>
-<rect x="266.3" y="680.2" class="st0" width="273.1" height="238.6"/>
-<text transform="matrix(1 0 0 1 375.9315 702.3314)" class="st4 st5">Good job!</text>
-<text transform="matrix(1 0 0 1 341.1554 651.2443)" class="st4 st10">95% accuracy</text>
-<text transform="matrix(1 0 0 1 274.2157 847.7717)" class="st4 st11">102 points</text>
-<text transform="matrix(1 0 0 1 274.2161 767.5492)" class="st4 st5">speed:</text>
-<text transform="matrix(1 0 0 1 277.5825 680.1772)" class="st4 st5">ScoreCard</text>
-<line class="st0" x1="266.7" y1="800.3" x2="539.3" y2="800.3"/>
-<text transform="matrix(1 0 0 1 204.5921 396.5646)" class="st8"><tspan x="0" y="0" class="st4 st5">Scor</tspan><tspan x="21.8" y="0" class="st4 st5">e</tspan><tspan x="27.6" y="0" class="st4 st5">Keeper stops Timer, </tspan><tspan x="0" y="14.4" class="st4 st5">calculates &amp; transmits accuracy, </tspan><tspan x="0" y="28.8" class="st4 st5">wpm, and final score</tspan></text>
-<line class="st0" x1="187.2" y1="392.7" x2="199.2" y2="392.7"/>
-<text transform="matrix(1 0 0 1 377.4704 894.9896)" class="st4 st5">play again</text>
-<rect x="366.8" y="883.1" class="st0" width="72.2" height="17.6"/>
-<polyline class="st0" points="250.8,469 250.8,486.7 253.9,479 "/>
-<text transform="matrix(1 0 0 1 213.4408 502.614)" class="st4 st5">user clicks “play again”</text>
-<polyline class="st0" points="249.2,505.2 249.2,522.9 252.3,515.3 "/>
-<text transform="matrix(1 0 0 1 204.5919 537.3165)" class="st8"><tspan x="0" y="0" class="st4 st5">GM resets to 0 inputs &amp; default </tspan><tspan x="0" y="14.4" class="st4 st5">message (future versions should</tspan><tspan x="0" y="28.8" class="st4 st5">include different messages)</tspan></text>
-<rect x="207.7" y="455" class="st3" width="124.6" height="35.5"/>
-<text transform="matrix(1 0 0 1 207.6955 463.5548)" class="st4 st5">GM displays ScoreCard</text>
-<polyline class="st0" points="259.4,431.5 259.4,449.1 262.5,441.5 "/>
-<text transform="matrix(1 0 0 1 274.2157 728.4541)" class="st4 st5">difficulty: </text>
-<text transform="matrix(1 0 0 1 274.216 747.5048)" class="st4 st5">accuracy:</text>
-<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="326.3555" y1="724.8102" x2="522.0671" y2="724.8102">
+<line class="st1" x1="956.2" y1="179.3" x2="956.2" y2="241.8"/>
+<line class="st1" x1="906.9" y1="753.4" x2="906.9" y2="773.1"/>
+<rect x="740.2" y="520.9" class="st3" width="171.5" height="166.8"/>
+<text transform="matrix(1 0 0 1 740.217 529.4346)" class="st4 st5">NEEDS TO KNOW</text>
+<text transform="matrix(1 0 0 1 740.217 543.8346)" class="st4 st5">-&gt; message (for length)</text>
+<text transform="matrix(1 0 0 1 740.217 558.2346)" class="st4 st5">-&gt; messageDuration</text>
+<text transform="matrix(1 0 0 1 740.217 572.6346)" class="st4 st5">-&gt; lastSignalReceived</text>
+<text transform="matrix(1 0 0 1 740.217 587.0346)" class="st4 st5">-&gt; timerShouldRun</text>
+<text transform="matrix(1 0 0 1 740.217 601.4346)" class="st4 st5">-&gt; elapsedSeconds?</text>
+<text transform="matrix(1 0 0 1 740.217 615.8346)" class="st4 st5">-&gt; errorCount</text>
+<rect x="949" y="101.2" class="st3" width="171.5" height="166.8"/>
+<text transform="matrix(1 0 0 1 948.9787 109.6714)" class="st4 st5">NEEDS TO KNOW</text>
+<text transform="matrix(1 0 0 1 948.9787 124.0715)" class="st4 st5">-&gt; when to start &amp; stop timer</text>
+<text transform="matrix(1 0 0 1 948.9787 138.4715)" class="st4 st5">-&gt; elapsedTime</text>
+<text transform="matrix(1 0 0 1 948.9787 152.8715)" class="st4 st5">-&gt; running tally of errors</text>
+<text transform="matrix(1 0 0 1 948.9787 167.2715)" class="st4 st5">-&gt; how to calculate score</text>
+<text transform="matrix(1 0 0 1 192.0884 93.3673)" class="st4 st5">user inputs signal</text>
+<text transform="matrix(1 0 0 1 199.4951 206.6051)" class="st4 st5">GM broadcasts signal</text>
+<text transform="matrix(1 0 0 1 194.9194 140.1493)" class="st4 st5">switch evaluates</text>
+<polyline class="st0" points="236.9,172.9 236.9,197.5 242.1,189.7 "/>
+<text transform="matrix(1 0 0 1 178.9614 171.1321)" class="st4 st5">switch transmits signal</text>
+<text transform="matrix(1 0 0 1 163.8002 265.5537)" class="st4 st5">dot or dash</text>
+<text transform="matrix(1 0 0 1 261.19 242.9515)" class="st4 st5">error</text>
+<polyline class="st0" points="215.2,213.1 190.6,251.3 205,246.8 "/>
+<polyline class="st0" points="243.8,211.2 255.9,231.1 256.4,221.8 "/>
+<polyline class="st0" points="289,241.5 317.9,241.5 310.2,236.2 "/>
+<text transform="matrix(1 0 0 1 325.4789 242.9514)" class="st4 st5">error count +1</text>
+<text transform="matrix(1 0 0 1 158.5335 314.9706)" class="st4 st5">match</text>
+<text transform="matrix(1 0 0 1 237.8759 326.7633)" class="st4 st5">error</text>
+<polyline class="st0" points="175.3,274.7 169.8,296.6 176.8,290.4 "/>
+<polyline class="st0" points="205.4,270.2 232.6,315 233.1,305.6 "/>
+<polyline class="st0" points="338,89.2 420.7,89.2 398.4,82.8 "/>
+<text transform="matrix(1 0 0 1 430.5373 79.7026)" class="st9"><tspan x="0" y="0" class="st4 st5">-game is active</tspan><tspan x="0" y="14.4" class="st4 st5">- timer starts</tspan></text>
+<polyline class="st0" points="266.6,323.3 295.5,323.3 287.8,318.1 "/>
+<text transform="matrix(1 0 0 1 303.0934 324.7293)" class="st4 st5">error count +1</text>
+<text transform="matrix(1 0 0 1 172.3241 352.0415)" class="st4 st5">last?</text>
+<line class="st0" x1="176.8" y1="319.9" x2="176.8" y2="340.6"/>
+<polyline class="st0" points="172.1,354.2 163.8,375.2 171.5,369.9 "/>
+<polyline class="st0" points="190.6,353.9 202.7,373.9 203.2,364.5 "/>
+<text transform="matrix(1 0 0 1 156.3611 386.1417)" class="st4 st5">no</text>
+<text transform="matrix(1 0 0 1 198.8349 384.5554)" class="st4 st5">yes</text>
+<text transform="matrix(1 0 0 1 311.6027 93.3671)" class="st4 st5">first?</text>
+<polyline class="st0" points="205.4,388.4 205.4,406.1 208.6,398.4 "/>
+<text transform="matrix(1 0 0 1 134.3811 420.4771)" class="st4 st5">Message complete</text>
+<polyline class="st0" points="232.8,418.2 273.2,418.2 255.9,415.1 "/>
+<rect x="101.9" y="696.5" class="st0" width="273.1" height="238.6"/>
+<text transform="matrix(1 0 0 1 211.5815 718.6424)" class="st4 st5">Good job!</text>
+<text transform="matrix(1 0 0 1 109.8657 864.0827)" class="st4 st10">102 points</text>
+<text transform="matrix(1 0 0 1 109.8661 783.8602)" class="st4 st5">speed:</text>
+<text transform="matrix(1 0 0 1 113.2325 696.4882)" class="st4 st5">ScoreCard</text>
+<line class="st0" x1="102.4" y1="816.6" x2="374.9" y2="816.6"/>
+<text transform="matrix(1 0 0 1 287.0341 420.4772)" class="st4 st5">Stop Timer, </text>
+<text transform="matrix(1 0 0 1 287.0342 435.0632)" class="st4 st5">calculate accuracy, </text>
+<text transform="matrix(1 0 0 1 287.0342 449.4633)" class="st4 st5">wpm, and final score</text>
+<text transform="matrix(1 0 0 1 213.1204 911.3006)" class="st4 st5">play again</text>
+<rect x="202.4" y="899.4" class="st0" width="72.2" height="17.6"/>
+<polyline class="st0" points="333.2,493.1 333.2,510.8 336.3,503.1 "/>
+<text transform="matrix(1 0 0 1 295.8829 526.7126)" class="st4 st5">user clicks “play again”</text>
+<polyline class="st0" points="331.6,529.3 331.6,547 334.7,539.4 "/>
+<rect x="282.4" y="562.7" class="st3" width="145.7" height="48.9"/>
+<text transform="matrix(1 0 0 1 282.3677 571.1865)" class="st4 st5">game is inactive</text>
+<rect x="290.1" y="479.1" class="st3" width="124.6" height="35.5"/>
+<text transform="matrix(1 0 0 1 290.1376 487.6534)" class="st4 st5">display ScoreCard</text>
+<polyline class="st0" points="341.8,455.6 341.8,473.2 344.9,465.6 "/>
+<text transform="matrix(1 0 0 1 109.8657 744.7651)" class="st4 st5">difficulty: </text>
+<text transform="matrix(1 0 0 1 109.866 763.8158)" class="st4 st5">accuracy:</text>
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="162.05" y1="260.8391" x2="357.75" y2="260.8391" gradientTransform="matrix(1 0 0 -1 0 1002)">
 	<stop  offset="0" style="stop-color:#D8BE28"/>
 	<stop  offset="0.7186" style="stop-color:#A12F21"/>
 </linearGradient>
-<rect x="326.4" y="718.6" class="st12" width="195.7" height="12.5"/>
-<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="326.3555" y1="743.7994" x2="522.0671" y2="743.7994">
+<rect x="162" y="734.9" class="st11" width="195.7" height="12.5"/>
+<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="162.05" y1="241.8391" x2="357.75" y2="241.8391" gradientTransform="matrix(1 0 0 -1 0 1002)">
 	<stop  offset="0" style="stop-color:#D8BE28"/>
 	<stop  offset="0.7186" style="stop-color:#993333"/>
 </linearGradient>
-<rect x="326.4" y="737.6" class="st13" width="195.7" height="12.5"/>
-<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="326.3555" y1="762.7885" x2="522.0671" y2="762.7885">
+<rect x="162" y="753.9" class="st12" width="195.7" height="12.5"/>
+<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="162.05" y1="222.8391" x2="357.75" y2="222.8391" gradientTransform="matrix(1 0 0 -1 0 1002)">
 	<stop  offset="0" style="stop-color:#D8BE28"/>
 	<stop  offset="0.7186" style="stop-color:#A12F21"/>
 </linearGradient>
-<rect x="326.4" y="756.6" class="st14" width="195.7" height="12.5"/>
-<rect x="429.3" y="718.6" class="st15" width="92.8" height="12.5"/>
-<rect x="493" y="737.6" class="st15" width="29" height="12.5"/>
-<rect x="390.6" y="756.6" class="st15" width="131.5" height="12.5"/>
-<text transform="matrix(1 0 0 1 430.9332 728.7628)" class="st16 st4 st5">moderate</text>
-<text transform="matrix(1 0 0 1 497.0478 747.8702)" class="st16 st4 st5">96%</text>
-<text transform="matrix(1 0 0 1 393.7875 766.859)" class="st16 st4 st5">30 wpm</text>
-<line class="st0" x1="266.7" y1="863.4" x2="539.3" y2="863.4"/>
+<rect x="162" y="772.9" class="st13" width="195.7" height="12.5"/>
+<rect x="264.9" y="734.9" class="st14" width="92.8" height="12.5"/>
+<rect x="328.6" y="753.9" class="st14" width="29" height="12.5"/>
+<rect x="226.2" y="772.9" class="st14" width="131.5" height="12.5"/>
+<text transform="matrix(1 0 0 1 266.5832 745.0738)" class="st15 st4 st5">moderate</text>
+<text transform="matrix(1 0 0 1 332.6978 764.1812)" class="st15 st4 st5">96%</text>
+<text transform="matrix(1 0 0 1 229.4375 783.17)" class="st15 st4 st5">30 wpm</text>
+<line class="st0" x1="102.4" y1="879.7" x2="374.9" y2="879.7"/>
+<text transform="matrix(1 0 0 1 287.0341 406.0613)" class="st4 st5">game is complete</text>
+<path class="st0" d="M147.8,384.6C6.5,384.6-10.5,89.3,188,89.3L165.6,82"/>
+<rect x="193.8" y="43.9" class="st3" width="145.7" height="48.9"/>
+<text transform="matrix(1 0 0 1 193.7647 52.4341)" class="st4 st5">game is inactive</text>
+<polyline class="st0" points="234.3,56.1 234.3,80.7 239.5,72.9 "/>
+<polyline class="st0" points="235.4,97.3 235.4,127.4 238.6,119.7 "/>
+<polyline class="st0" points="237,144 237,161.7 240.2,154 "/>
+<polyline class="st0" points="287,89.8 304.7,89.8 297,86.6 "/>
 </svg>

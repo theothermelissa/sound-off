@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useMemo } from 'react';
+import React, { useState, useRef, useCallback, useEffect, useMemo } from 'react';
 // import Timer from './Timer';
 import alphabet from '../assets/codeTranslationKey';
 
@@ -12,27 +12,15 @@ const ScoreKeeper = (props) => {
     // durationOfTransmission, //how long the user took to complete the message
   } = props;
 
-  const [runningErrorCount, setRunningErrorCount] = useState(0); //running tally of errors
-  const [isActive, setIsActive] = useState(false);
-
-  const tempErrorCount = useRef(0);
-
-  // const increaseCount = () => runningErrorCount + 1;
-  // const newCount = useMemo(() => increaseCount());
-
   useEffect(() => {
     isBegun ? setIsActive(true) : setIsActive(false)
   }, [isBegun]);
 
-  useEffect(() => {
-    console.log("Should be logging error.")
-    const logError = () => setRunningErrorCount(x => x + 1);
-    if (isError) {
-      logError();
-    }
-  }, [isError])
 
-  console.log("Running Error Count: ", runningErrorCount)
+
+  // const [runningErrorCount, setRunningErrorCount] = useState(0); //running tally of errors
+  // const [isActive, setIsActive] = useState(false);
+
   // const messageLength = userSubmittedMessage.length;
   // const listOfMessageCharacters = userSubmittedMessage.split("");
   // const targetMessageSpeed = (characterList, translationKey) => {
