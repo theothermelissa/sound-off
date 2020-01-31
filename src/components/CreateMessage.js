@@ -1,17 +1,24 @@
 import React, { useState, useContext } from 'react';
 import { GameContext } from "./GameMaster";
 
-const CreateMessage = ({ submitNewMessage }) => {
+const CreateMessage = () => {
   const context = useContext(GameContext);
   const dispatch = context.gameDispatch;
   const [message, setMessage] = useState("");
   const [inputValue, setInputValue] = useState("");
-  
+
   const updateMessage = (event) => {
-    setMessage(event.target.value);
-    setInputValue(event.target.value);
+    let input = event.target.value;
+    if (regex.test(input)) {
+      alert("Some special characters are okay. That one isn't.")
+      setInputValue("");
+    }
+    setMessage(input);
+    setInputValue(input);
   }
-  
+
+  const regex = /[^\w\s\?\.\,\!\'\"\(\)\&\:\;\/\-\=\+\$\@]/
+
   const submitMessage = (event) => {
     event.preventDefault();
     dispatch({
@@ -20,18 +27,9 @@ const CreateMessage = ({ submitNewMessage }) => {
     });
     setInputValue("");
   }
-  
+
   //disallow unsupported characters during input
-  
   //normalize capitalization and remove extra spaces
-  
-  //send message to ThingsToSay (convert thingsToSay into component)
-  
-  //input field for new message
-  
-  //submit button
-  
-  //possible -- include component to evaluate difficulty of input message before submit
 
   return (
     <form onSubmit={submitMessage}>
@@ -42,6 +40,7 @@ const CreateMessage = ({ submitNewMessage }) => {
             name="message"
             value={inputValue}
             onChange={updateMessage}
+            maxLength="50"
           />
           <button className="submitButton" type="submit">submit</button>
       </div>

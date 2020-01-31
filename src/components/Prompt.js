@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Sequence from './Sequence';
 import '../App.css';
+import { GameContext } from "./GameMaster";
 
 const Prompt = ({ 
   char,
@@ -8,12 +9,19 @@ const Prompt = ({
   activeCharacterIndex,
   completePrompt,
 }) => {
+  const context = useContext(GameContext);
   const [promptIsComplete, setPromptIsComplete] = useState(false);
 
   const onCompleteSequence = () => {
     setPromptIsComplete(true);
     completePrompt();
   };
+
+  useEffect(() => {
+    if (!context.gameState.signalStartTimes[0]) {
+      setPromptIsComplete(false)
+    };
+  }, [context.gameState.signalStartTimes])
 
   const translatedChar = (letter) => {
     if (letter === " ") {

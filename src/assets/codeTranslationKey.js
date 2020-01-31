@@ -3,6 +3,8 @@
 import signalElements from './signalElements';
 import calcScores from 'util';
 
+// [^\w\s\?\.\,\!\'\"\(\)\&\:\;\/\-\=\+\$\@]
+
 const { dot, dash, space, linebreak } = signalElements;
 
 const alphabet = {

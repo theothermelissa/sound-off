@@ -53,7 +53,6 @@ const Switch = () => {
     <div className="buttonContainer">
       {audio}
       <div
-        className="switchButton"
         onMouseDown={(event) => onPress(event)}
         onMouseUp={(event) => onRelease(event.timeStamp)}
         className={`switchButton${(switchIsPressed) ? ' pressed' : ''}`}>

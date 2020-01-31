@@ -16,7 +16,7 @@ const CodeSignal = ({
   const lastSignalReceived = context.gameState.lastSignalReceived;
   const dispatch = context.gameDispatch;
   const isActive = characterPosition === activeCharacterIndex && elementIndex === activeSignalIndex;
-  const isComplete = (elementIndex < activeSignalIndex) || sequenceIsComplete || promptIsComplete;
+  const isComplete = (elementIndex < activeSignalIndex) || promptIsComplete;
   const currentClassName = (isComplete) ? elementName + " completedCodeSignal" : elementName;
 
 const handleNewSignal = useCallback(() => {
