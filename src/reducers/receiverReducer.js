@@ -32,7 +32,7 @@ const receiverReducer = (state, action) => {
       }
     case "resetMessage":
       return {
-        userSubmittedMessage: action.newMessage,
+        userSubmittedMessage: action.payload,
         signalStartTimes: [],
         signalEndTimes: [],
         lastSignalReceived: "",

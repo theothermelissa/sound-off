@@ -3,7 +3,7 @@ import '../App.css';
 import Message from './Message';
 import Switch from './Switch';
 import receiverReducer from '../reducers/receiverReducer'
-// import CreateMessage from './CreateMessage';
+import CreateMessage from './CreateMessage';
 // import ScoreKeeper from './ScoreKeeper';
 // import Timer from './Timer';
 
@@ -38,11 +38,11 @@ const GameMaster = () => {
         <div className="switchContainer">
           <Switch />
         </div>
+        <CreateMessage />
       </div>
     </GameContext.Provider>
   )
 }
-
 
 // class GameMaster extends Component {
 //   constructor(props) {

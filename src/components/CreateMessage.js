@@ -1,15 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { GameContext } from "./GameMaster";
 
 const CreateMessage = ({ submitNewMessage }) => {
+  const context = useContext(GameContext);
+  const dispatch = context.gameDispatch;
   const [message, setMessage] = useState("");
+  const [inputValue, setInputValue] = useState("");
   
   const updateMessage = (event) => {
     setMessage(event.target.value);
+    setInputValue(event.target.value);
   }
   
   const submitMessage = (event) => {
     event.preventDefault();
-    submitNewMessage(message);
+    dispatch({
+      type: "resetMessage",
+      payload: message
+    });
+    setInputValue("");
   }
   
   //disallow unsupported characters during input
@@ -31,9 +40,10 @@ const CreateMessage = ({ submitNewMessage }) => {
           <input 
             type="text"
             name="message"
+            value={inputValue}
             onChange={updateMessage}
           />
-          <button className="submitButton" type="submit">submit new message</button>
+          <button className="submitButton" type="submit">submit</button>
       </div>
     </form>
   )

@@ -101,7 +101,7 @@
   flex-flow: column;
   flex-grow: 2;
   margin: 30px;
-  /* justify-content: center; */
+  /* align-items: center; */
   /* position: absolute; */
 }
 /* 615-861-0927 Brooke */
@@ -131,16 +131,16 @@ input {
 .submitButton {
   /* height: 40px; */
   font-family: "Lucida Console", monospace;
-  /* width: 500px; */
-  padding: 0px 10px;
-  background-color: #C49404;
+  max-width: 100px;
+  background-color: #8D6564;
   color: white;
-  border-radius: 0;
   -webkit-appearance: none;
   font-size: medium;
   padding: 10px 10px;
-  margin: 10px;
+  margin: 0px 10px;
   border: 1px solid transparent;
+  border-radius: 4px;
+  align-self: flex-end;
 }
 
 /* @media only screen and (min-width: 600px) {

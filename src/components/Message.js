@@ -39,7 +39,7 @@ const Message = () => {
   return (
     characterList.map((letter, index) => {
       return (
-        <div className="promptContainer">
+        <div className="promptContainer" key={letter+index}>
           <Prompt 
             char={letter}
             position={index}
