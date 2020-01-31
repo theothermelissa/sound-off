@@ -1,12 +1,14 @@
 import React, { Component, useReducer, useContext, useCallback } from 'react';
 import '../App.css';
-// import Message from './Message';
+import Message from './Message';
 import Switch from './Switch';
+import receiverReducer from '../reducers/receiverReducer'
 // import CreateMessage from './CreateMessage';
 // import ScoreKeeper from './ScoreKeeper';
 // import Timer from './Timer';
 
-export const GameContext = React.createContext(null)
+export const GameContext = React.createContext(null);
+export const gameDispatch = React.createContext(null);
 
 const initialState = {
   userSubmittedMessage: "Hello world",
@@ -16,68 +18,20 @@ const initialState = {
   isError: false,
   totalErrors: 0,
   isComplete: false,
-  isActive: false,
 }
 
-const reducer = (state, action) => {
-  console.log("Dispatch activated.")
-  switch (action.type) {
-    case "error":
-      return {
-        ...state,
-        isError: true,
-        lastSignalReceived: "error",
-        signalStartTimes: [...state.signalStartTimes, action.startTime],
-        signalEndTimes: [...state.signalEndTimes, action.endTime]
-      };
-    case "dot":
-      return {
-        lastSignalReceived: "dot",
-        signalStartTimes: [...state.signalStartTimes, action.startTime],
-        signalEndTimes: [...state.signalEndTimes, action.endTime]
-      };
-    case "dash":
-      return {
-        lastSignalReceived: "dash",
-        signalStartTimes: [...state.signalStartTimes, action.startTime],
-        signalEndTimes: [...state.signalEndTimes, action.endTime]
-      };
-    case "reset":
-      return {
-        userSubmittedMessage: action.newMessage,
-        signalStartTimes: [],
-        signalEndTimes: [],
-        lastSignalReceived: "",
-        isError: false,
-        totalErrors: 0,
-        isComplete: false,
-        isActive: false,
-      }
-    case "complete":
-      return {
-        ...state,
-        isComplete: true,
-        isActive: false,
-      }
-    default:
-      throw new Error("Unknown signal");
-  }
-};
-
 const GameMaster = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  // const onTransmit = useCallback(
-  //   (signalType, timeBegun, timeConcluded) => dispatch({ type: signalType, startTime: timeBegun, endTime: timeConcluded })
-  // )
+  const [gameState, gameDispatch] = useReducer(receiverReducer, initialState);
+  console.log("userSubmittedMessage according to GameMaster: ", gameState.userSubmittedMessage)
   return (
     <GameContext.Provider 
       value={{
-        state,
-        dispatch
+        gameState,
+        gameDispatch
       }}
     >
-      <div className="SignalInfo">
-        {state.isComplete ? (
+      <div className="GameInfo">
+        {gameState.isComplete ? (
           <>
             <div>Game is complete.</div>
           </>
@@ -86,7 +40,7 @@ const GameMaster = () => {
             <div>Game is not complete.</div>
           </>
         )}
-        {state.signalStartTimes[0] && !state.isComplete ? (
+        {gameState.signalStartTimes[0] && !gameState.isComplete ? (
           <>
             <div>Game is active.</div>
           </>
@@ -95,9 +49,10 @@ const GameMaster = () => {
             <div>Game is not active.</div>
           </>
         )}
-        <div>Last signal was {state.lastSignalReceived} at {JSON.stringify(state.signalStartTimes)}</div>
-        <button onClick={() => dispatch({ type: "reset"})}>reset</button>
-        <button onClick={() => dispatch({ type: "complete"})}>complete</button>
+        <div>Last signal was {gameState.lastSignalReceived} at {JSON.stringify(gameState.signalStartTimes)}</div>
+        <button onClick={() => gameDispatch({ type: "reset"})}>reset</button>
+        <button onClick={() => gameDispatch({ type: "complete"})}>complete</button>
+        <Message userSubmittedMessage={gameState.userSubmittedMessage} />
         <Switch />
       </div>
     </GameContext.Provider>

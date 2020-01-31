@@ -7,21 +7,17 @@ import { GameContext } from "./GameMaster";
 
 
 const Switch = () => {
-  const { dispatch } = useContext(GameContext);
-  // const initialState = {
-  //   switchIsPressed: false,
-  //   pressTime: "",
-  // }
-  // const [signalInfo, setSignalInfo] = useState(initialState);
-  // const duration = (start, end) => (end - start) / 1000;
+  const { gameDispatch } = useContext(GameContext);
 
-  // let [pressTime, setPressTime] = useState(0);
-  let pressTime = useRef(0);
+  const [pressTime, setPressTime] = useState(0);
   const [switchIsPressed, setSwitchIsPressed] = useState(false);
-//   const [audio, state, controls, ref] = useAudio ({
-//     src: soundSignal,
-//     autoPlay: false,
-//   });
+
+  const [audio, state, controls, ref] = useAudio ({
+    src: soundSignal,
+    autoPlay: false,
+  });
+
+  const duration = (start, end) => (end - start) / 1000;
 
   const determineSignalType = (totalTime) => {
     const dotMin = signalElements.dot.minDuration;
@@ -38,41 +34,30 @@ const Switch = () => {
   };
 
   const onPress = (event) => {
-    // controls.play();
+    controls.play();
     console.log("Time onPress: ", event.timeStamp)
-    pressTime.current = event.timeStamp;
+    setPressTime(event.timeStamp);
     setSwitchIsPressed(true);
   };
   
-  const onRelease = (signalType, releaseTime) => {
-    console.log("pressTime on switch release: ", pressTime.current)
+  const onRelease = (releaseTime) => {
+    console.log("pressTime on switch release: ", pressTime)
     console.log("releaseTime on switch release: ", releaseTime)
     setSwitchIsPressed(false);
-    // controls.pause();
-    // transmitSignal(determineSignalsignalType(duration(startTime, newTime)), startTime, newTime);
-    // transmitSignal((signalType), signalInfo.pressTime, newTime);
-    dispatch({
-      type: signalType,
-      startTime: pressTime.current,
+    controls.pause();
+    gameDispatch({
+      type: determineSignalType(duration(pressTime, releaseTime)),
+      startTime: pressTime,
       endTime: releaseTime,
     })
   };
 
-  return (
-    <>
-    <button onMouseDown={(event) => onPress(event)} onMouseUp={(event) => onRelease("dot", event.timeStamp)}>dot</button>
-    {/* <button onMouseDown={(event) => onPress("dash", event.timeStamp )} onMouseUp={(event) => onRelease("dash", event.timeStamp)}>dash</button> */}
-    {/* <button onMouseDown={(event) => onPress("error", event.timeStamp)} onMouseUp={(event) => onRelease("error", event.timeStamp)}>error</button> */}
-    </>
+  return(
+    <div className="buttonContainer">
+      {audio}
+      <div onMouseDown={(event) => onPress(event)} onMouseUp={(event) => onRelease(event.timeStamp)} className={`switchButton${(switchIsPressed) ? ' pressed' : ''}`}></div>
+    </div>
   )
 }
-
-//   return(
-//     <div className="buttonContainer">
-//       {audio}
-//       <div onMouseDown={onPress} onMouseUp={onRelease} className={`switchButton${(switchIsPressed) ? ' pressed' : ''}`}></div>
-//     </div>
-//   )
-// }
 
 export default Switch;
