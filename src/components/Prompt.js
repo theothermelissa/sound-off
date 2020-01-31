@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Sequence from './Sequence';
 import '../App.css';
+import { gameDispatch } from "./GameMaster"
 
 const Prompt = ({ 
   char,
   position,
   activeCharacterIndex,
-  isComplete,
-  isBegun,
-  logError,
-  lastSignalReceived,
   completePrompt,
   resetLastSignal,
 }) => {
   const [promptIsComplete, setPromptIsComplete] = useState(false);
+
+  const dispatch = useContext(gameDispatch);
+
 
   const onCompleteSequence = () => {
     setPromptIsComplete(true);

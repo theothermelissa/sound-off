@@ -35,14 +35,11 @@ const Switch = () => {
 
   const onPress = (event) => {
     controls.play();
-    console.log("Time onPress: ", event.timeStamp)
     setPressTime(event.timeStamp);
     setSwitchIsPressed(true);
   };
   
   const onRelease = (releaseTime) => {
-    console.log("pressTime on switch release: ", pressTime)
-    console.log("releaseTime on switch release: ", releaseTime)
     setSwitchIsPressed(false);
     controls.pause();
     gameDispatch({
@@ -55,7 +52,12 @@ const Switch = () => {
   return(
     <div className="buttonContainer">
       {audio}
-      <div onMouseDown={(event) => onPress(event)} onMouseUp={(event) => onRelease(event.timeStamp)} className={`switchButton${(switchIsPressed) ? ' pressed' : ''}`}></div>
+      <div
+        className="switchButton"
+        onMouseDown={(event) => onPress(event)}
+        onMouseUp={(event) => onRelease(event.timeStamp)}
+        className={`switchButton${(switchIsPressed) ? ' pressed' : ''}`}>
+      </div>
     </div>
   )
 }

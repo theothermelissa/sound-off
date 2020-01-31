@@ -1,17 +1,17 @@
 import React, { useState, useEffect, useContext } from 'react';
-import Prompt from './Prompt';
-import { gameDispatch } from "./GameMaster"
+// import Prompt from './Prompt';
+import { GameContext } from "./GameMaster"
 
-const Message = ({ userSubmittedMessage }) => {
-  const dispatch = useContext(gameDispatch);
+const Message = () => {
+  const context = useContext(GameContext);
+  const userSubmittedMessage = context.gameState.userSubmittedMessage;
+  const dispatch = context.gameDispatch;
   const [activeCharacterIndex, setActiveCharacterIndex] = useState(0);
-  const messageCharacters = userSubmittedMessage.split("");
-  const totalCharacters = messageCharacters.length;
-  console.log("Active Character Index: ", activeCharacterIndex)
+  const characterList = userSubmittedMessage.split("");
+  const totalCharacters = characterList.length;
+  const isSpace =(char) => char === " " || char === "   ";
 
-  const isSpace =(char) => {
-    return (char === " " || char === "   ");
-  };
+  console.log("Active character index: ", activeCharacterIndex)
 
   useEffect(() => {
     setActiveCharacterIndex(0);
@@ -21,21 +21,32 @@ const Message = ({ userSubmittedMessage }) => {
     let newIndex = activeCharacterIndex + 1;
     if (newIndex < totalCharacters) {
       setActiveCharacterIndex(newIndex);
-      if (isSpace(messageCharacters[newIndex])) {
+      if (isSpace(characterList[newIndex])) {
         setActiveCharacterIndex(newIndex + 1);
       }
     } else {
       setActiveCharacterIndex(0);
-      setTimeout(gameDispatch({
+      setTimeout(dispatch({
         type: "complete"
       }), 600);
     }
   };
 
   return (
-    messageCharacters.map((letter, index) => {
+    characterList.map((letter, index) => {
       return (
-        <button onClick={onCompletePrompt} key={letter+index}>{letter}</button>
+        <GameContext.Provider>
+          <div className="promptContainer">
+            <button onClick={onCompletePrompt}>{letter}</button>
+            {/* <Prompt 
+              char={letter}
+              position={index}
+              activeCharacterIndex={activeCharacterIndex}
+              completePrompt={completePrompt}
+              key={letter+index}
+            /> */}
+          </div>
+        </GameContext.Provider>
       )
     }) 
   )

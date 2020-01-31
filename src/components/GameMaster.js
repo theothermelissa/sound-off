@@ -8,10 +8,10 @@ import receiverReducer from '../reducers/receiverReducer'
 // import Timer from './Timer';
 
 export const GameContext = React.createContext(null);
-export const gameDispatch = React.createContext(null);
+export const GameDispatch = React.createContext(null);
 
 const initialState = {
-  userSubmittedMessage: "Hello world",
+  userSubmittedMessage: "It works!",
   signalStartTimes: [],
   signalEndTimes: [],
   lastSignalReceived: "",
@@ -22,7 +22,9 @@ const initialState = {
 
 const GameMaster = () => {
   const [gameState, gameDispatch] = useReducer(receiverReducer, initialState);
-  console.log("userSubmittedMessage according to GameMaster: ", gameState.userSubmittedMessage)
+  console.log("Game is complete: ", gameState.isComplete)
+  console.log("First signal start time: ", gameState.signalStartTimes[0])
+  console.log("Last signal was: ", gameState.lastSignalReceived)
   return (
     <GameContext.Provider 
       value={{
@@ -30,30 +32,17 @@ const GameMaster = () => {
         gameDispatch
       }}
     >
-      <div className="GameInfo">
-        {gameState.isComplete ? (
-          <>
-            <div>Game is complete.</div>
-          </>
-        ) : (
-          <>
-            <div>Game is not complete.</div>
-          </>
-        )}
-        {gameState.signalStartTimes[0] && !gameState.isComplete ? (
-          <>
-            <div>Game is active.</div>
-          </>
-        ) : (
-          <>
-            <div>Game is not active.</div>
-          </>
-        )}
-        <div>Last signal was {gameState.lastSignalReceived} at {JSON.stringify(gameState.signalStartTimes)}</div>
-        <button onClick={() => gameDispatch({ type: "reset"})}>reset</button>
-        <button onClick={() => gameDispatch({ type: "complete"})}>complete</button>
-        <Message userSubmittedMessage={gameState.userSubmittedMessage} />
-        <Switch />
+      <div className="game">
+          {/* <button onClick={() => gameDispatch({ type: "reset"})}>reset</button> */}
+          {/* <button onClick={() => gameDispatch({ type: "complete"})}>complete</button> */}
+        <div className="messageHolder">
+          <Message
+            userSubmittedMessage={gameState.userSubmittedMessage}
+          />
+        </div>
+        <div className="switchContainer">
+          <Switch />
+        </div>
       </div>
     </GameContext.Provider>
   )

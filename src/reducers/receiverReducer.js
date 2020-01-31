@@ -11,12 +11,14 @@ const receiverReducer = (state, action) => {
       };
     case "dot":
       return {
+        ...state,
         lastSignalReceived: "dot",
         signalStartTimes: [...state.signalStartTimes, action.startTime],
         signalEndTimes: [...state.signalEndTimes, action.endTime]
       };
     case "dash":
       return {
+        ...state,
         lastSignalReceived: "dash",
         signalStartTimes: [...state.signalStartTimes, action.startTime],
         signalEndTimes: [...state.signalEndTimes, action.endTime]
