@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 import '../App.css';
+import { GameContext } from "./GameMaster";
 
 const CodeSignal = ({ 
   elementName,
@@ -7,29 +8,52 @@ const CodeSignal = ({
   characterPosition,
   activeSignalIndex,
   activeCharacterIndex,
-  lastSignalReceived,
   sequenceIsComplete,
   completeCodeSignal,
-  resetLastSignal,
   promptIsComplete,
-  logError,
 }) => {
+  const context = useContext(GameContext);
+  const lastSignalReceived = context.gameState.lastSignalReceived;
+  const dispatch = context.gameDispatch;
+  const isActive = characterPosition === activeCharacterIndex && elementIndex === activeSignalIndex;
   const isComplete = (elementIndex < activeSignalIndex) || sequenceIsComplete || promptIsComplete;
-  const currentClassName = (isComplete) ? elementName + " " + "completedCodeSignal" : elementName;
+  const currentClassName = (isComplete) ? elementName + " completedCodeSignal" : elementName;
+
+const handleNewSignal = useCallback(() => {
+  if (isActive) {
+    if (lastSignalReceived === elementName) { 
+      completeCodeSignal(elementIndex);
+    } else if ((lastSignalReceived === "dot" || lastSignalReceived === "dash")){
+      dispatch({
+        type: "error"
+      })
+    }
+  }
+}, [
+  isActive,
+  lastSignalReceived,
+  elementName,
+  completeCodeSignal,
+  elementIndex,
+  dispatch
+  ])
 
   useEffect(() => {
-    if (lastSignalReceived) {
-      if (characterPosition === activeCharacterIndex && elementIndex === activeSignalIndex) {
-        if (lastSignalReceived === elementName) {
-          completeCodeSignal(elementIndex);
-          resetLastSignal();
-        } else {
-          logError();
-          // resetLastSignal();
-          }
-      }
-    }
-  }, [lastSignalReceived]);
+    handleNewSignal(lastSignalReceived)
+  }, [handleNewSignal, lastSignalReceived]);
+
+  // useEffect(() => {
+  //   if ( isActiveCharacterPosition && isActiveSignalIndex ) {
+  //     console.log("is the signal a match? ", lastSignalReceived === elementName)
+  //     // if (lastSignalReceived === elementName) {
+  //     //   completeCodeSignal(elementIndex);
+  //     // } else {
+  //     //   dispatch({
+  //     //     type: "error"
+  //     //   })
+  //   //     // resetLastSignal();
+  //       }
+  // }, [lastSignalReceived, signalStartTimes]);
 
   return (
     <div className={currentClassName}></div>

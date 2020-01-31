@@ -11,7 +11,7 @@ export const GameContext = React.createContext(null);
 export const GameDispatch = React.createContext(null);
 
 const initialState = {
-  userSubmittedMessage: "It works!",
+  userSubmittedMessage: "Potato",
   signalStartTimes: [],
   signalEndTimes: [],
   lastSignalReceived: "",
@@ -22,9 +22,6 @@ const initialState = {
 
 const GameMaster = () => {
   const [gameState, gameDispatch] = useReducer(receiverReducer, initialState);
-  console.log("Game is complete: ", gameState.isComplete)
-  console.log("First signal start time: ", gameState.signalStartTimes[0])
-  console.log("Last signal was: ", gameState.lastSignalReceived)
   return (
     <GameContext.Provider 
       value={{
@@ -36,9 +33,7 @@ const GameMaster = () => {
           {/* <button onClick={() => gameDispatch({ type: "reset"})}>reset</button> */}
           {/* <button onClick={() => gameDispatch({ type: "complete"})}>complete</button> */}
         <div className="messageHolder">
-          <Message
-            userSubmittedMessage={gameState.userSubmittedMessage}
-          />
+          <Message />
         </div>
         <div className="switchContainer">
           <Switch />

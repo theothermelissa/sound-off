@@ -1,10 +1,12 @@
 const receiverReducer = (state, action) => {
-  console.log("gameMasterDispatch activated.")
   switch (action.type) {
     case "error":
+      const newErrorCount = state.totalErrors + 1;
+      console.log("Errors: ", newErrorCount)
       return {
         ...state,
         isError: true,
+        totalErrors: newErrorCount,
         lastSignalReceived: "error",
         signalStartTimes: [...state.signalStartTimes, action.startTime],
         signalEndTimes: [...state.signalEndTimes, action.endTime]
@@ -23,7 +25,12 @@ const receiverReducer = (state, action) => {
         signalStartTimes: [...state.signalStartTimes, action.startTime],
         signalEndTimes: [...state.signalEndTimes, action.endTime]
       };
-    case "reset":
+    case "resetSignal":
+      return {
+        ...state,
+        lastSignalReceived: "",
+      }
+    case "resetMessage":
       return {
         userSubmittedMessage: action.newMessage,
         signalStartTimes: [],
