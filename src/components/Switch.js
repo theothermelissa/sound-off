@@ -28,7 +28,7 @@ const Switch = () => {
     } else if (dashMin < totalTime && totalTime <= dashMax) {
       return "dash";
     } else {
-      return "error";
+      return "invalidSignal";
     }
   };
 
@@ -41,6 +41,7 @@ const Switch = () => {
   const onRelease = (releaseTime) => {
     setSwitchIsPressed(false);
     controls.pause();
+    console.log(determineSignalType(duration(pressTime, releaseTime)), " received.")
     gameDispatch({
       type: determineSignalType(duration(pressTime, releaseTime)),
       startTime: pressTime,

@@ -1,8 +1,7 @@
 const receiverReducer = (state, action) => {
+  const newErrorCount = state.totalErrors + 1;
   switch (action.type) {
-    case "error":
-      const newErrorCount = state.totalErrors + 1;
-      console.log("Errors: ", newErrorCount)
+    case "invalidSignal":
       return {
         ...state,
         isError: true,
@@ -10,6 +9,13 @@ const receiverReducer = (state, action) => {
         lastSignalReceived: "error",
         signalStartTimes: [...state.signalStartTimes, action.startTime],
         signalEndTimes: [...state.signalEndTimes, action.endTime]
+      };
+    case "error":
+      return {
+        ...state,
+        isError: true,
+        totalErrors: newErrorCount,
+        lastSignalReceived: "error",
       };
     case "dot":
       return {

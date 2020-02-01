@@ -10,30 +10,38 @@ const ScoreKeeper = () => {
   const signalStartTimes = context.gameState.signalStartTimes;
   const signalEndTimes = context.gameState.signalEndTimes;
   const totalErrors = context.gameState.totalErrors;
-
-  const [difficulty, setDifficulty] = useState(0);
-  const [targetLength, setTargetLength] = useState(0);
-
   const listOfMessageCharacters = userSubmittedMessage.toLowerCase().split("");
   const messageLength = listOfMessageCharacters.length;
-
-  //Loop through each character in listOfMessageCharacters, and
-  //find it in the alphabet object, and
-  //loop through its "sequence" property array, and
-  //sum the minDuration values
-
   let entireSequence = [];
-
-  const totalDuration = () => {
+  
+  const [difficulty, setDifficulty] = useState(0);
+  const [targetLength, setTargetLength] = useState(0);
+  
+  const durationOfTransmission = () => {
+    const timeStart = signalStartTimes[0];
+    const timeEnd = signalEndTimes[signalEndTimes.length - 1];
+    return timeEnd - timeStart;
+  }
+  // const speedScore = 100 - durationOfTransmission - targetMessageSpeed;
+  
+  const targetDuration = () => {
     let total = 0;
     for (let x=0; x < messageLength; x++) {
-      let charCodeSequence = alphabet[listOfMessageCharacters[x]]["sequence"];
-      for (let y=0; y < charCodeSequence.length; y++) {
-        entireSequence.push(charCodeSequence[y]["id"])
-        let signalLength = (charCodeSequence[y]["minDuration"] === 0) ? .01 : charCodeSequence[y]["minDuration"];
-        total += signalLength;
-      }
+      if (alphabet[listOfMessageCharacters[x]]) {
+        let charCodeSequence = alphabet[listOfMessageCharacters[x]]["sequence"];
+        for (let y=0; y < charCodeSequence.length; y++) {
+          entireSequence.push(charCodeSequence[y]["id"])
+          let signalLength = 
+            (charCodeSequence[y]["minDuration"] === 0)
+              ? .01
+              : charCodeSequence[y]["minDuration"]
+          total += signalLength;
+        }
+      } else {
+          continue
+        }
     }
+    // setTargetLength(total);
     return total;
   };
 
@@ -48,12 +56,12 @@ const ScoreKeeper = () => {
     return total;
   };
 
-  const messageComplexity = () => {
-    return entireSequence.length + numberOfCodeSignalChanges()
+  const messageDifficulty = () => {
+    // setDifficulty(entireSequence.length + numberOfCodeSignalChanges());
+    return entireSequence.length + numberOfCodeSignalChanges();
   };
 
-  // const messageDifficulty = messageLength + listOfMessageCharacters.reduce((totalComplexity, thisCharacter) => totalComplexity + characterComplexity(thisCharacter));
-  // const speedScore = 100 - durationOfTransmission - targetMessageSpeed;
+
   // const accuracyScore = runningErrorCount / messageLength * 100;
   // const totalScore = accuracyScore + speedScore;
 
@@ -91,9 +99,10 @@ const ScoreKeeper = () => {
   return (
     <div className="scoreCard">
       <div>Total errors: {totalErrors}</div>
-      <div>Target speed: {totalDuration()}</div>
+      <div>Target speed: {targetDuration()}</div>
       <div>Signal changes: {numberOfCodeSignalChanges()}</div>
-      <div>Message complexity: {messageComplexity()}</div>
+      <div>Message difficulty: {messageDifficulty()}</div>
+      <div>Duration of transmission: {durationOfTransmission()}</div>
       {/* <div className="difficulty">Difficulty: {messageDifficulty}</div> */}
       {/* <div className="accuracy">Accuracy: {accuracyScore}</div> */}
       {/* <div className="speed">Speed: {speedScore}</div> */}

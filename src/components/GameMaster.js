@@ -7,11 +7,16 @@ import CreateMessage from './CreateMessage';
 import ScoreKeeper from './ScoreKeeper';
 // import Timer from './Timer';
 
+// SIVT25-A01-180609-DA
+// EMC FCC 120V/60HZ/3000W/3800/IV0331
+
+// hours
+
 export const GameContext = React.createContext(null);
 export const GameDispatch = React.createContext(null);
 
 const initialState = {
-  userSubmittedMessage: "Potato",
+  userSubmittedMessage: "Hi",
   signalStartTimes: [],
   signalEndTimes: [],
   lastSignalReceived: "",

@@ -20,16 +20,19 @@ const CodeSignal = ({
   const currentClassName = (isComplete) ? elementName + " completedCodeSignal" : elementName;
 
 const handleNewSignal = useCallback(() => {
-  if (isActive) {
-    if (lastSignalReceived === elementName) { 
-      completeCodeSignal(elementIndex);
-    } else if ((lastSignalReceived === "dot" || lastSignalReceived === "dash")){
-      dispatch({
-        type: "error"
-      })
+  if (!isComplete) {
+    if (isActive) {
+      if (lastSignalReceived === elementName) {
+        completeCodeSignal(elementIndex);
+      } else if ((lastSignalReceived !== elementName && (lastSignalReceived === "dot" || lastSignalReceived === "dash"))){
+        dispatch({
+          type: "error",
+        })
+      }
     }
   }
 }, [
+  isComplete,
   isActive,
   lastSignalReceived,
   elementName,
@@ -41,19 +44,6 @@ const handleNewSignal = useCallback(() => {
   useEffect(() => {
     handleNewSignal(lastSignalReceived)
   }, [handleNewSignal, lastSignalReceived]);
-
-  // useEffect(() => {
-  //   if ( isActiveCharacterPosition && isActiveSignalIndex ) {
-  //     console.log("is the signal a match? ", lastSignalReceived === elementName)
-  //     // if (lastSignalReceived === elementName) {
-  //     //   completeCodeSignal(elementIndex);
-  //     // } else {
-  //     //   dispatch({
-  //     //     type: "error"
-  //     //   })
-  //   //     // resetLastSignal();
-  //       }
-  // }, [lastSignalReceived, signalStartTimes]);
 
   return (
     <div className={currentClassName}></div>

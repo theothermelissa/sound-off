@@ -30,9 +30,9 @@ const Message = () => {
       }
     } else {
       setActiveCharacterIndex(0);
-      setTimeout(dispatch({
+      dispatch({
         type: "complete"
-      }), 600);
+      });
     }
   };
 

@@ -29,9 +29,9 @@ const Sequence = ({
         type: "resetSignal"
       })
     } else {
-      setCurrentSignalIndex(0);
-      setSequenceIsComplete(true);
       completeSequence();
+      setSequenceIsComplete(true);
+      setCurrentSignalIndex(0);
     }
   };
 
