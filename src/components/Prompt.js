@@ -35,7 +35,10 @@ const Prompt = ({
 
   return (
     <div className="promptContainer">
-      <div className={`letter${promptIsComplete ? ' completedText' : ''}`}>{char}</div>
+      {promptIsComplete
+        ? <div className={`letter${promptIsComplete ? ' completedText' : ''}`}>{char}</div>
+        : null
+      }
       <div className="sequence">
         <Sequence 
           char={translatedChar(char)}

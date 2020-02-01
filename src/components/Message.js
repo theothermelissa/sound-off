@@ -30,16 +30,16 @@ const Message = () => {
       }
     } else {
       setActiveCharacterIndex(0);
-      dispatch({
+      setTimeout(() => dispatch({
         type: "complete"
-      });
+      }), 320);
     }
   };
 
   return (
     characterList.map((letter, index) => {
       return (
-        <div className="promptContainer" key={letter+index}>
+        <div key={letter+index}>
           <Prompt 
             char={letter}
             position={index}

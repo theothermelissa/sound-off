@@ -3,7 +3,6 @@ import '../App.css';
 import Message from './Message';
 import Switch from './Switch';
 import receiverReducer from '../reducers/receiverReducer'
-import CreateMessage from './CreateMessage';
 import ScoreKeeper from './ScoreKeeper';
 // import Timer from './Timer';
 
@@ -16,7 +15,7 @@ export const GameContext = React.createContext(null);
 export const GameDispatch = React.createContext(null);
 
 const initialState = {
-  userSubmittedMessage: "Hi",
+  userSubmittedMessage: "Hello world",
   signalStartTimes: [],
   signalEndTimes: [],
   lastSignalReceived: "",
@@ -29,20 +28,22 @@ const GameMaster = () => {
   const [gameState, gameDispatch] = useReducer(receiverReducer, initialState);
   return (
     <GameContext.Provider 
-    value={{
-      gameState,
-      gameDispatch
-    }}
+      value={{
+        gameState,
+        gameDispatch
+      }}
     >
       <div className="game">
-      <ScoreKeeper />
         <div className="messageHolder">
           <Message />
         </div>
+      {gameState.isComplete
+        ? <ScoreKeeper />
+        : null
+      }
         <div className="switchContainer">
           <Switch />
         </div>
-        <CreateMessage />
       </div>
     </GameContext.Provider>
   )

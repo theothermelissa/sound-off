@@ -2,10 +2,12 @@ import React, { useState, useRef, useCallback, useEffect, useMemo, useContext } 
 // import Timer from './Timer';
 import alphabet from '../assets/codeTranslationKey';
 import signalElements from '../assets/signalElements';
+import CreateMessage from './CreateMessage';
 import { GameContext } from "./GameMaster";
 
 const ScoreKeeper = () => {
   const context = useContext(GameContext);
+  const dispatch = context.gameDispatch;
   const userSubmittedMessage = context.gameState.userSubmittedMessage;
   const signalStartTimes = context.gameState.signalStartTimes;
   const signalEndTimes = context.gameState.signalEndTimes;
@@ -13,17 +15,13 @@ const ScoreKeeper = () => {
   const listOfMessageCharacters = userSubmittedMessage.toLowerCase().split("");
   const messageLength = listOfMessageCharacters.length;
   let entireSequence = [];
-  
-  const [difficulty, setDifficulty] = useState(0);
-  const [targetLength, setTargetLength] = useState(0);
-  
+
   const durationOfTransmission = () => {
     const timeStart = signalStartTimes[0];
     const timeEnd = signalEndTimes[signalEndTimes.length - 1];
-    return timeEnd - timeStart;
+    return (timeEnd - timeStart)/1000;
   }
-  // const speedScore = 100 - durationOfTransmission - targetMessageSpeed;
-  
+
   const targetDuration = () => {
     let total = 0;
     for (let x=0; x < messageLength; x++) {
@@ -32,17 +30,21 @@ const ScoreKeeper = () => {
         for (let y=0; y < charCodeSequence.length; y++) {
           entireSequence.push(charCodeSequence[y]["id"])
           let signalLength = 
-            (charCodeSequence[y]["minDuration"] === 0)
-              ? .01
-              : charCodeSequence[y]["minDuration"]
+          (charCodeSequence[y]["minDuration"] === 0)
+          ? .01
+          : charCodeSequence[y]["minDuration"]
           total += signalLength;
         }
       } else {
-          continue
-        }
+        continue
+      }
     }
-    // setTargetLength(total);
     return total;
+  };
+
+  const speedBonus = () => {
+    const ratio = targetDuration()/durationOfTransmission();
+    return Math.round(ratio * 1000);
   };
 
   const numberOfCodeSignalChanges = () => {
@@ -57,56 +59,30 @@ const ScoreKeeper = () => {
   };
 
   const messageDifficulty = () => {
-    // setDifficulty(entireSequence.length + numberOfCodeSignalChanges());
-    return entireSequence.length + numberOfCodeSignalChanges();
+    return Math.round((entireSequence.length + numberOfCodeSignalChanges())/2);
   };
 
+  const accuracyScore = Math.round((messageLength - totalErrors) / messageLength * 100);
 
-  // const accuracyScore = runningErrorCount / messageLength * 100;
-  // const totalScore = accuracyScore + speedScore;
+  const totalScore = accuracyScore + speedBonus();
 
-  // useEffect(() => {
-  //   const newCount = runningErrorCount + 1;
-  //   const logError = () => setRunningErrorCount(newCount);
-  //   // if (!isBegun) {
-  //   //   setRunningErrorCount(0);
-  //   // };
-  //   if (!isComplete) {
-  //     if (isBegun) {
-  //       if (!isError) {
-  //         console.log("Error logged.")
-  //         logError();
-  //       }
-  //     }
-  //   }
-  //   if (isComplete) {
-  //     if (isError) {
-  //       setTotalErrorCount(runningErrorCount);
-  //       setTimeout(setRunningErrorCount(0), 200);
-  //     } else {
-  //       setTotalErrorCount(newCount);
-  //       setTimeout(setRunningErrorCount(0), 200);
-  //     };
-  //     setTimeout(console.log("Message complete. Total error count: ", totalErrorCount), 1000);
-  //   } 
-  //   console.log("Change detected")
-  // }, [isComplete, isError, signalStartTime]);
-
-
-
-
+  const handleClose = () => {
+    dispatch({
+      type: "resetMessage",
+      payload: "Play again",
+    })
+  };
 
   return (
     <div className="scoreCard">
-      <div>Total errors: {totalErrors}</div>
-      <div>Target speed: {targetDuration()}</div>
-      <div>Signal changes: {numberOfCodeSignalChanges()}</div>
-      <div>Message difficulty: {messageDifficulty()}</div>
-      <div>Duration of transmission: {durationOfTransmission()}</div>
-      {/* <div className="difficulty">Difficulty: {messageDifficulty}</div> */}
-      {/* <div className="accuracy">Accuracy: {accuracyScore}</div> */}
-      {/* <div className="speed">Speed: {speedScore}</div> */}
-      {/* <div className="totalScore">Total score: {totalScore}</div> */}
+      <div className="scoreCard-main">
+        <div className="score">Total Score: {totalScore}</div>
+        <div className="score">Accuracy: {accuracyScore}%</div>
+        <div className="score">Speed bonus: {speedBonus()} points</div>
+        <div className="score">Message difficulty: {messageDifficulty()}%</div>
+        <CreateMessage />
+        {/* <button className="modal-close" onClick={handleClose}>Dismiss</button> */}
+      </div>
     </div>
   )
 }

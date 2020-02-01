@@ -10,7 +10,7 @@ const CreateMessage = () => {
   const updateMessage = (event) => {
     let input = event.target.value;
     if (regex.test(input)) {
-      alert("Some special characters are okay ... but that one isn't.")
+      alert("Some special characters have Morse translations ... but that one doesn't.")
       setInputValue("");
     }
     setMessage(input);
@@ -21,25 +21,27 @@ const CreateMessage = () => {
 
   const submitMessage = (event) => {
     event.preventDefault();
-    dispatch({
-      type: "resetMessage",
-      payload: message
-    });
+    (!message) 
+      ? alert("No blank messages, please.")
+      : dispatch({
+        type: "resetMessage",
+        payload: message
+      });
     setInputValue("");
   }
 
   return (
     <form onSubmit={submitMessage}>
       <div className="createMessageContainer">
-          <label>Change message:</label>
+          <label>New message:</label>
           <input 
             type="text"
             name="message"
             value={inputValue}
             onChange={updateMessage}
-            maxLength="50"
+            maxLength="42"
           />
-          <button className="submitButton" type="submit">submit</button>
+          <button className="submitButton" type="submit">play again</button>
       </div>
     </form>
   )
