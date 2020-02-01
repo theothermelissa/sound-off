@@ -10,7 +10,7 @@ const CreateMessage = () => {
   const updateMessage = (event) => {
     let input = event.target.value;
     if (regex.test(input)) {
-      alert("Some special characters are okay. That one isn't.")
+      alert("Some special characters are okay ... but that one isn't.")
       setInputValue("");
     }
     setMessage(input);
@@ -27,9 +27,6 @@ const CreateMessage = () => {
     });
     setInputValue("");
   }
-
-  //disallow unsupported characters during input
-  //normalize capitalization and remove extra spaces
 
   return (
     <form onSubmit={submitMessage}>

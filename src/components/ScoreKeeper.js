@@ -1,61 +1,56 @@
-import React, { useState, useRef, useCallback, useEffect, useMemo } from 'react';
+import React, { useState, useRef, useCallback, useEffect, useMemo, useContext } from 'react';
 // import Timer from './Timer';
 import alphabet from '../assets/codeTranslationKey';
+import signalElements from '../assets/signalElements';
+import { GameContext } from "./GameMaster";
 
-const ScoreKeeper = (props) => {
-  const { 
-    // userSubmittedMessage, //entire message, string
-    isError, //whether signal was a match; boolean
-    isComplete, //whether message is completed; boolean
-    isBegun, //whether message is begun; boolean
-    signalStartTime, //to compare?
-    // durationOfTransmission, //how long the user took to complete the message
-  } = props;
+const ScoreKeeper = () => {
+  const context = useContext(GameContext);
+  const userSubmittedMessage = context.gameState.userSubmittedMessage;
+  const signalStartTimes = context.gameState.signalStartTimes;
+  const signalEndTimes = context.gameState.signalEndTimes;
+  const totalErrors = context.gameState.totalErrors;
 
-  useEffect(() => {
-    isBegun ? setIsActive(true) : setIsActive(false)
-  }, [isBegun]);
+  const [difficulty, setDifficulty] = useState(0);
+  const [targetLength, setTargetLength] = useState(0);
 
+  const listOfMessageCharacters = userSubmittedMessage.toLowerCase().split("");
+  const messageLength = listOfMessageCharacters.length;
 
+  //Loop through each character in listOfMessageCharacters, and
+  //find it in the alphabet object, and
+  //loop through its "sequence" property array, and
+  //sum the minDuration values
 
-  // const [runningErrorCount, setRunningErrorCount] = useState(0); //running tally of errors
-  // const [isActive, setIsActive] = useState(false);
+  let entireSequence = [];
 
-  // const messageLength = userSubmittedMessage.length;
-  // const listOfMessageCharacters = userSubmittedMessage.split("");
-  // const targetMessageSpeed = (characterList, translationKey) => {
-  //   return characterList.map((character)=> {
-  //     return translationKey[character]["sequence"].minDuration;
-  //   }).reduce((sumDuration, thisDuration) => {
-  //     return sumDuration + thisDuration;
-  //   })
-  // };
+  const totalDuration = () => {
+    let total = 0;
+    for (let x=0; x < messageLength; x++) {
+      let charCodeSequence = alphabet[listOfMessageCharacters[x]]["sequence"];
+      for (let y=0; y < charCodeSequence.length; y++) {
+        entireSequence.push(charCodeSequence[y]["id"])
+        let signalLength = (charCodeSequence[y]["minDuration"] === 0) ? .01 : charCodeSequence[y]["minDuration"];
+        total += signalLength;
+      }
+    }
+    return total;
+  };
 
-  // const numberOfCodeSignalChanges = (elementSequence) => {
-  //   console.log("Number of Code Signal Changes called. elementSequence: ", elementSequence);
-  //   elementSequence.reduce((sumChanges, thisElement, index)=> {
-  //     let nextElement = elementSequence[index + 1];
-  //     if (thisElement !== nextElement) {
-  //       if (nextElement === undefined) {
-  //         return sumChanges;
-  //       } else {
-  //         return sumChanges + 1;
-  //       }
-  //     } else {
-  //       return sumChanges;
-  //     }
-  //   }, 0)
-  // };
+  const numberOfCodeSignalChanges = () => {
+    const total = entireSequence
+      .reduce((sumChanges, thisElement, index)=> {
+        let nextElement = entireSequence[index + 1];
+        return thisElement !== nextElement 
+          ? (nextElement === undefined ? sumChanges : sumChanges + 1)
+          : sumChanges
+      }, 0);
+    return total;
+  };
 
-  // const characterComplexity = (character) => {
-  //   console.log("Character: ", character);
-  //   let signalSequence = alphabet[character]["sequence"];
-  //   console.log("Sequence length: ", signalSequence.length);
-  //   console.log("Number of signal changes for ", character, ": ", numberOfCodeSignalChanges(signalSequence));
-  //   let result = signalSequence.length + numberOfCodeSignalChanges(signalSequence)
-  //   console.log("Character Complexity for ", character, ": ", result);
-  //   return result;
-  // }
+  const messageComplexity = () => {
+    return entireSequence.length + numberOfCodeSignalChanges()
+  };
 
   // const messageDifficulty = messageLength + listOfMessageCharacters.reduce((totalComplexity, thisCharacter) => totalComplexity + characterComplexity(thisCharacter));
   // const speedScore = 100 - durationOfTransmission - targetMessageSpeed;
@@ -94,7 +89,11 @@ const ScoreKeeper = (props) => {
 
 
   return (
-    <div className="scoreCard">{runningErrorCount}
+    <div className="scoreCard">
+      <div>Total errors: {totalErrors}</div>
+      <div>Target speed: {totalDuration()}</div>
+      <div>Signal changes: {numberOfCodeSignalChanges()}</div>
+      <div>Message complexity: {messageComplexity()}</div>
       {/* <div className="difficulty">Difficulty: {messageDifficulty}</div> */}
       {/* <div className="accuracy">Accuracy: {accuracyScore}</div> */}
       {/* <div className="speed">Speed: {speedScore}</div> */}

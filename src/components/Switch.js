@@ -5,7 +5,6 @@ import soundSignal from '../assets/800hz.mp3';
 import signalElements from '../assets/signalElements';
 import { GameContext } from "./GameMaster";
 
-
 const Switch = () => {
   const { gameDispatch } = useContext(GameContext);
 
