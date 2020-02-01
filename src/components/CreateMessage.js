@@ -9,7 +9,7 @@ const CreateMessage = () => {
 
   const updateMessage = (event) => {
     let input = event.target.value;
-    if (regex.test(input)) {
+    if (disallowedRegex.test(input)) {
       alert("Some special characters have Morse translations ... but that one doesn't.")
       setInputValue("");
     }
@@ -17,7 +17,8 @@ const CreateMessage = () => {
     setInputValue(input);
   }
 
-  const regex = /[^\w\s\?\.\,\!\'\"\(\)\&\:\;\/\-\=\+\$\@]/
+  const disallowedRegex = /[^\w\s\?\.\,\!\'\"\(\)\&\:\;\/\-\=\+\$\@]/
+  // const bookendSpaceRegex = /[]/
 
   const submitMessage = (event) => {
     event.preventDefault();

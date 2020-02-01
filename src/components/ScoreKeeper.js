@@ -76,6 +76,7 @@ const ScoreKeeper = () => {
   return (
     <div className="scoreCard">
       <div className="scoreCard-main">
+        <div className="score">Way to go!</div>
         <div className="score">Total Score: {totalScore}</div>
         <div className="score">Accuracy: {accuracyScore}%</div>
         <div className="score">Speed bonus: {speedBonus()} points</div>

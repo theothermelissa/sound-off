@@ -14,7 +14,7 @@
 .game {
   display: flex;
   flex-flow: column;
-  width: 90%;
+  /* width: 90%; */
   /* min-height: 100%; */
   /* max-width: 500px; */
   text-align: center;
@@ -23,12 +23,13 @@
 
 .messageHolder {
   display: flex;
+  /* width: 90%; */
   height: 90%;
   flex-flow: row wrap;
   justify-content: center;
   flex-grow: 1;
   align-items: flex-start;
-  /* margin-top: 70px; */
+  margin-top: 70px;
 }
 
 .promptContainer {
@@ -112,6 +113,7 @@
 
 form {
   background: white;
+  width:
 }
 /* 615-861-0927 Brooke */
 
@@ -174,6 +176,7 @@ input {
   box-shadow: -10px 5px 20px rgba(0, 0, 0, 0.2);
   width: 60%;
   min-height: 30%;
+  padding-top: 40px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
