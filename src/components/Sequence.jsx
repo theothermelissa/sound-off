@@ -10,7 +10,7 @@ const Sequence = ({
   activeCharacterIndex,
   completeSequence,
   promptIsComplete,
- }) => {
+  }) => {
 
   const { gameDispatch, gameState: { isComplete, signalStartTimes } } = useContext(GameContext);
   const [currentSignalIndex, setCurrentSignalIndex] = useState(0);

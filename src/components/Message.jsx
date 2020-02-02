@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Prompt from './Prompt';
-import { GameContext } from "./GameMaster";
+import { GameContext } from './GameMaster';
 
 const Message = () => {
   const { gameDispatch, gameState: { userSubmittedMessage } } = useContext(GameContext);

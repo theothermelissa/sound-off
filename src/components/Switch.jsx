@@ -3,7 +3,7 @@ import '../App.css';
 import {useAudio} from 'react-use';
 import soundSignal from '../assets/800hz.mp3';
 import signalElements from '../assets/signalElements';
-import { GameContext } from "./GameMaster";
+import { GameContext } from './GameMaster';
 
 const Switch = () => {
   const { gameDispatch } = useContext(GameContext);
@@ -24,12 +24,11 @@ const Switch = () => {
     const dashMin = signalElements.dash.minDuration;
     const dashMax = signalElements.dash.maxDuration;
     if (dotMin <= totalTime && totalTime <= dotMax) {
-      return "dot";
-    } else if (dashMin < totalTime && totalTime <= dashMax) {
-      return "dash";
-    } else {
-      return "invalidSignal";
+      return 'dot';
+    } if (dashMin < totalTime && totalTime <= dashMax) {
+      return 'dash';
     }
+    return 'invalidSignal';
   };
 
   const onPress = (event) => {
@@ -37,7 +36,7 @@ const Switch = () => {
     setPressTime(event.timeStamp);
     setSwitchIsPressed(true);
   };
-  
+
   const onRelease = (releaseTime) => {
     setSwitchIsPressed(false);
     controls.pause();
@@ -45,10 +44,10 @@ const Switch = () => {
       type: determineSignalType(duration(pressTime, releaseTime)),
       startTime: pressTime,
       endTime: releaseTime,
-    })
+    });
   };
 
-  return(
+  return (
     <div className="buttonContainer">
       {audio}
       <div
