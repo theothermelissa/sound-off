@@ -7,23 +7,17 @@
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  /* justify-content: center; */
-  /* max-width: 600px; */
 }
 
 .game {
   display: flex;
   flex-flow: column;
-  /* width: 90%; */
-  /* min-height: 100%; */
-  /* max-width: 500px; */
   text-align: center;
   flex-grow: 1;
 }
 
 .messageHolder {
   display: flex;
-  /* width: 90%; */
   height: 90%;
   flex-flow: row wrap;
   justify-content: center;
@@ -108,29 +102,21 @@
   flex-grow: 2;
   background: white;
   margin: 30px;
-  /* align-items: center; */
-  /* position: absolute; */
 }
 
 form {
   background: white;
-  width:
+  width: auto;
 }
-/* 615-861-0927 Brooke */
 
 label {
   color: #7C6C64;
   background: white;
   font-size: medium;
-  /* padding: 10px 10px; */
   margin: 10px;
 }
 
 input {
-  /* display: inline-block; */
-  /* height: 40px; */
-  /* width: 500px; */
-  /* margin: 10px; */
   border: 1px solid #CCC4BC;
   background: white;
   padding: 0px 10px;
@@ -144,7 +130,6 @@ input {
 }
 
 .submitButton {
-  /* height: 40px; */
   font-family: "Lucida Console", monospace;
   max-width: 100px;
   background-color: #7C6C64;
