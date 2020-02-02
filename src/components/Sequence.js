@@ -12,11 +12,10 @@ const Sequence = ({
   promptIsComplete,
  }) => {
 
-  const context = useContext(GameContext);
-  const dispatch = context.gameDispatch;
+  const { gameDispatch, gameState: { isComplete, signalStartTimes } } = useContext(GameContext);
   const [currentSignalIndex, setCurrentSignalIndex] = useState(0);
   const [sequenceIsComplete, setSequenceIsComplete] = useState(false);
-  const isActive = () => context.gameState.signalStartTimes[0] && !context.gameState.isComplete;
+  const isActive = () => signalStartTimes[0] && !isComplete;
   const [gameIsActive, setgameIsActive] = useState(isActive());
   const morseElementSequence = alphabet[char]["sequence"];
   const totalSignalsInChar = morseElementSequence.length;
@@ -25,7 +24,7 @@ const Sequence = ({
     let newIndex = index + 1;
     if (newIndex < totalSignalsInChar) {
       setCurrentSignalIndex(newIndex);
-      dispatch({
+      gameDispatch({
         type: "resetSignal"
       })
     } else {

@@ -9,7 +9,7 @@ const Prompt = ({
   activeCharacterIndex,
   completePrompt,
 }) => {
-  const context = useContext(GameContext);
+  const { gameState: { signalStartTimes } } = useContext(GameContext);
   const [promptIsComplete, setPromptIsComplete] = useState(false);
 
   const onCompleteSequence = () => {
@@ -18,10 +18,10 @@ const Prompt = ({
   };
 
   useEffect(() => {
-    if (!context.gameState.signalStartTimes[0]) {
+    if (!signalStartTimes[0]) {
       setPromptIsComplete(false)
     };
-  }, [context.gameState.signalStartTimes])
+  }, [signalStartTimes])
 
   const translatedChar = (letter) => {
     if (letter === " ") {

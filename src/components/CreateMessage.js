@@ -2,8 +2,7 @@ import React, { useState, useContext } from 'react';
 import { GameContext } from "./GameMaster";
 
 const CreateMessage = () => {
-  const context = useContext(GameContext);
-  const dispatch = context.gameDispatch;
+  const { gameDispatch } = useContext(GameContext);
   const [message, setMessage] = useState("");
   const [inputValue, setInputValue] = useState("");
 
@@ -17,14 +16,14 @@ const CreateMessage = () => {
     setInputValue(input);
   }
 
-  const disallowedRegex = /[^\w\s\?\.\,\!\'\"\(\)\&\:\;\/\-\=\+\$\@]/
+  const disallowedRegex = /[^\w\s?.,!'"()&:;/\-=+$@]/
   // const bookendSpaceRegex = /[]/
 
   const submitMessage = (event) => {
     event.preventDefault();
     (!message) 
       ? alert("No blank messages, please.")
-      : dispatch({
+      : gameDispatch({
         type: "resetMessage",
         payload: message
       });
