@@ -21,6 +21,7 @@ const receiverReducer = (state, action) => {
       return {
         ...state,
         lastSignalReceived: 'dot',
+        isBegun: true,
         signalStartTimes: [...state.signalStartTimes, action.startTime],
         signalEndTimes: [...state.signalEndTimes, action.endTime],
       };
@@ -28,6 +29,7 @@ const receiverReducer = (state, action) => {
       return {
         ...state,
         lastSignalReceived: 'dash',
+        isBegun: true,
         signalStartTimes: [...state.signalStartTimes, action.startTime],
         signalEndTimes: [...state.signalEndTimes, action.endTime],
       };
@@ -36,7 +38,7 @@ const receiverReducer = (state, action) => {
         ...state,
         lastSignalReceived: '',
       };
-    case 'resetMessage':
+    case 'newMessage':
       return {
         userSubmittedMessage: action.payload,
         signalStartTimes: [],
@@ -45,6 +47,18 @@ const receiverReducer = (state, action) => {
         isError: false,
         totalErrors: 0,
         isComplete: false,
+        isBegun: false,
+      };
+    case 'reset':
+      return {
+        ...state,
+        signalStartTimes: [],
+        signalEndTimes: [],
+        lastSignalReceived: '',
+        isError: false,
+        totalErrors: 0,
+        isComplete: false,
+        isBegun: false,
       };
     case 'complete':
       return {

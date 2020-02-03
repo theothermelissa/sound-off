@@ -1,6 +1,6 @@
 import React, { useState, useRef, useContext } from 'react';
 import '../App.css';
-import {useAudio} from 'react-use';
+import { useAudio } from 'react-use';
 import soundSignal from '../assets/800hz.mp3';
 import signalElements from '../assets/signalElements';
 import { GameContext } from './GameMaster';
@@ -11,7 +11,7 @@ const Switch = () => {
   const [pressTime, setPressTime] = useState(0);
   const [switchIsPressed, setSwitchIsPressed] = useState(false);
 
-  const [audio, state, controls, ref] = useAudio ({
+  const [audio, state, controls, ref] = useAudio({
     src: soundSignal,
     autoPlay: false,
   });
@@ -24,9 +24,14 @@ const Switch = () => {
     const dashMin = signalElements.dash.minDuration;
     const dashMax = signalElements.dash.maxDuration;
     if (dotMin <= totalTime && totalTime <= dotMax) {
+      console.log('Dot received.');
       return 'dot';
     } if (dashMin < totalTime && totalTime <= dashMax) {
+      console.log('Dash received.');
       return 'dash';
+    } if (dashMax < totalTime) {
+      console.log('Reset received.');
+      return 'reset';
     }
     return 'invalidSignal';
   };
@@ -51,12 +56,15 @@ const Switch = () => {
     <div className="buttonContainer">
       {audio}
       <div
+        role="button"
+        label="switch"
+        tabIndex="0"
         onMouseDown={(event) => onPress(event)}
         onMouseUp={(event) => onRelease(event.timeStamp)}
-        className={`switchButton${(switchIsPressed) ? ' pressed' : ''}`}>
-      </div>
+        className={`switchButton${(switchIsPressed) ? ' pressed' : ''}`}
+      />
     </div>
-  )
-}
+  );
+};
 
 export default Switch;

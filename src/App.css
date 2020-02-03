@@ -96,6 +96,10 @@
   border: 5px solid #2C2C2C
 }
 
+.switchButton:focus {
+  outline-style: none;
+}
+
 .createMessageContainer {
   display: flex;
   flex-flow: column;
