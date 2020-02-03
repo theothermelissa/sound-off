@@ -33,6 +33,15 @@ const receiverReducer = (state, action) => {
         signalStartTimes: [...state.signalStartTimes, action.startTime],
         signalEndTimes: [...state.signalEndTimes, action.endTime],
       };
+    case 'letter':
+      console.log("Reducer's payload: ", action.payload)
+      return {
+        ...state,
+        lastSignalReceived: action.payload,
+        isBegun: true,
+        signalStartTimes: [...state.signalStartTimes, action.startTime],
+        signalEndTimes: [...state.signalEndTimes, action.endTime],
+      };
     case 'resetSignal':
       return {
         ...state,
@@ -40,6 +49,7 @@ const receiverReducer = (state, action) => {
       };
     case 'newMessage':
       return {
+        ...state,
         userSubmittedMessage: action.payload,
         signalStartTimes: [],
         signalEndTimes: [],

@@ -1,4 +1,6 @@
-import React, { useState, useRef, useContext } from 'react';
+import React, {
+  useState, useEffect, useContext, useCallback,
+} from 'react';
 import '../App.css';
 import { useAudio } from 'react-use';
 import soundSignal from '../assets/800hz.mp3';
@@ -6,7 +8,7 @@ import signalElements from '../assets/signalElements';
 import { GameContext } from './GameMaster';
 
 const Switch = () => {
-  const { gameDispatch } = useContext(GameContext);
+  const { gameDispatch, gameState: { isComplete } } = useContext(GameContext);
 
   const [pressTime, setPressTime] = useState(0);
   const [switchIsPressed, setSwitchIsPressed] = useState(false);
@@ -16,21 +18,21 @@ const Switch = () => {
     autoPlay: false,
   });
 
+
   const duration = (start, end) => (end - start) / 1000;
 
-  const determineSignalType = (totalTime) => {
+  const determineSignalType = (totalTime, letter) => {
     const dotMin = signalElements.dot.minDuration;
     const dotMax = signalElements.dot.maxDuration;
     const dashMin = signalElements.dash.minDuration;
     const dashMax = signalElements.dash.maxDuration;
-    if (dotMin <= totalTime && totalTime <= dotMax) {
-      console.log('Dot received.');
+    if (letter) {
+      return letter;
+    } if (dotMin <= totalTime && totalTime <= dotMax) {
       return 'dot';
     } if (dashMin < totalTime && totalTime <= dashMax) {
-      console.log('Dash received.');
       return 'dash';
     } if (dashMax < totalTime) {
-      console.log('Reset received.');
       return 'reset';
     }
     return 'invalidSignal';
@@ -52,10 +54,40 @@ const Switch = () => {
     });
   };
 
+  const listenForKeyCode = useCallback(
+    (event) => {
+      event.preventDefault();
+      const inputCode = event.keyCode;
+      console.log('key pressed: ', inputCode);
+      gameDispatch({
+        type: 'letter',
+        payload: inputCode,
+      });
+    },
+  );
+
+  useEffect(() => {
+    if (!isComplete) {
+      window.addEventListener('keyup', listenForKeyCode);
+      return () => {
+        window.removeEventListener('keyup', listenForKeyCode)
+      };
+    }
+    return () => {
+      window.removeEventListener('keyup', listenForKeyCode)
+    };
+  }, [isComplete]);
+
+  // useEffect(() => {
+  //   window.removeEventListener('keyup', listenForKeyCode);
+  // });
+
+
   return (
     <div className="buttonContainer">
       {audio}
       <div
+        id="switch"
         role="button"
         label="switch"
         tabIndex="0"

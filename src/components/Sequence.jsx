@@ -11,12 +11,11 @@ const Sequence = ({
   completeSequence,
   promptIsComplete,
 }) => {
-  const { gameDispatch, gameState: { isComplete, isBegun, signalStartTimes } } = useContext(GameContext);
+  const { gameDispatch, gameState: { isBegun, lastSignalReceived } } = useContext(GameContext);
   const [currentSignalIndex, setCurrentSignalIndex] = useState(0);
   const [sequenceIsComplete, setSequenceIsComplete] = useState(false);
-  const isActive = () => signalStartTimes[0] && !isComplete;
-  const [gameIsActive, setgameIsActive] = useState(isActive());
   const morseElementSequence = alphabet[char].sequence;
+  const charKeyCode = alphabet[char].code;
   const totalSignalsInChar = morseElementSequence.length;
 
   const onCompleteCodeSignal = (index) => {
@@ -39,6 +38,17 @@ const Sequence = ({
       setSequenceIsComplete(false);
     }
   }, [isBegun]);
+
+  useEffect(() => {
+    if (position === activeCharacterIndex) {
+      if (lastSignalReceived === charKeyCode) {
+        console.log('Match');
+        completeSequence();
+        setSequenceIsComplete(true);
+        setCurrentSignalIndex(0);
+      }
+    }
+  }, [lastSignalReceived, charKeyCode, position, activeCharacterIndex]);
 
   return (
     morseElementSequence.map((codeSignal, index) => (

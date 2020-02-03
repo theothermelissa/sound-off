@@ -3,24 +3,30 @@ import Prompt from './Prompt';
 import { GameContext } from './GameMaster';
 
 const Message = () => {
-  const { gameDispatch, gameState: { userSubmittedMessage, isBegun } } = useContext(GameContext);
+  const {
+    gameDispatch,
+    gameState: {
+      userSubmittedMessage,
+      isBegun,
+    },
+  } = useContext(GameContext);
   const [activeCharacterIndex, setActiveCharacterIndex] = useState(0);
   const characterList = userSubmittedMessage.split('');
   const totalCharacters = characterList.length;
   const isSpace = (char) => char === ' ' || char === '   ';
-  
+
   const onCompletePrompt = () => {
     const newIndex = activeCharacterIndex + 1;
     if (newIndex < totalCharacters) {
-      setActiveCharacterIndex(newIndex);
       gameDispatch({
         type: 'resetSignal',
       });
+      setActiveCharacterIndex(newIndex);
       if (isSpace(characterList[newIndex])) {
-        setActiveCharacterIndex(newIndex + 1);
         gameDispatch({
           type: 'resetSignal',
         });
+        setActiveCharacterIndex(newIndex + 1);
       }
     } else {
       setActiveCharacterIndex(0);
@@ -31,8 +37,11 @@ const Message = () => {
   };
 
   useEffect(() => {
-    setActiveCharacterIndex(0);
+    if (!isBegun) {
+      setActiveCharacterIndex(0);
+    }
   }, [isBegun]);
+
 
   return (
     characterList.map((letter, index) => (

@@ -61,30 +61,28 @@ const ScoreKeeper = () => {
   );
 
   const totalScore = () => (accuracyScore() + speedBonus());
-  console.log('accuracyscore(): ', accuracyScore());
-  console.log('speedBonus(): ', speedBonus());
 
   return (
     <div className="scoreCard">
       <div className="scoreCard-main">
         <div className="score">Way to go!</div>
         <div className="score">
-          {'Total Score: '}
+          Total Score:
           {totalScore()}
         </div>
         <div className="score">
-          {'Accuracy: '}
+          Accuracy:
           {accuracyScore()}
           %
         </div>
         <div className="score">
-          {'Speed bonus: '}
+          Speed bonus:
           {speedBonus()}
           {' '}
           points
         </div>
         <div className="score">
-          {'Message difficulty: '}
+          Message difficulty:
           {messageDifficulty()}
           %
         </div>
