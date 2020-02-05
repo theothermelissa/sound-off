@@ -34,7 +34,6 @@ const receiverReducer = (state, action) => {
         signalEndTimes: [...state.signalEndTimes, action.endTime],
       };
     case 'letter':
-      console.log("Reducer's payload: ", action.payload)
       return {
         ...state,
         lastSignalReceived: action.payload,

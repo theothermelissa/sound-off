@@ -83,7 +83,25 @@
   flex-grow: 0;
 }
 
+circle { 
+  /* position: absolute; */
+  /* left: 50%; */
+  /* top: 50%; */
+  /* margin-left: -75px;
+  margin-top: -75px;*/
+  transform: rotate(270deg); 
+}
+
+/* .resetSpinner {
+  stroke: white;
+} */
+
 .switchButton {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -75px;
+  margin-top: -75px;
   width: 150px;
   height: 150px;
   background: radial-gradient(black,#2C2C2C);
@@ -145,6 +163,11 @@ input {
   border: 1px solid transparent;
   border-radius: 4px;
   align-self: flex-end;
+}
+
+@keyframes rotate {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg);}
 }
 
 .scoreCard {

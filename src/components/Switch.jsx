@@ -58,7 +58,6 @@ const Switch = () => {
     (event) => {
       event.preventDefault();
       const inputCode = event.keyCode;
-      console.log('key pressed: ', inputCode);
       gameDispatch({
         type: 'letter',
         payload: inputCode,
@@ -77,11 +76,6 @@ const Switch = () => {
       window.removeEventListener('keyup', listenForKeyCode)
     };
   }, [isComplete]);
-
-  // useEffect(() => {
-  //   window.removeEventListener('keyup', listenForKeyCode);
-  // });
-
 
   return (
     <div className="buttonContainer">

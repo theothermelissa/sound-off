@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from 'react';
 import Sequence from './Sequence';
 import '../App.css';
 import { GameContext } from './GameMaster';
-import alphabet from '../assets/codeTranslationKey';
 
 const Prompt = ({
   char,
@@ -10,7 +9,7 @@ const Prompt = ({
   activeCharacterIndex,
   completePrompt,
 }) => {
-  const { gameState: { isBegun, lastSignalReceived } } = useContext(GameContext);
+  const { gameState: { isBegun } } = useContext(GameContext);
   const [promptIsComplete, setPromptIsComplete] = useState(false);
 
   const onCompleteSequence = () => {
@@ -23,13 +22,6 @@ const Prompt = ({
       setPromptIsComplete(false);
     }
   }, [isBegun]);
-
-  // useEffect(() => {
-  //   const targetCode = alphabet[char].code;
-  //   if (lastSignalReceived === targetCode) {
-  //     onCompleteSequence();
-  //   }
-  // });
 
   const translatedChar = (letter) => {
     if (letter === ' ') {
