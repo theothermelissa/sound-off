@@ -12,7 +12,6 @@ const ScoreKeeper = () => {
       signalStartTimes,
       signalEndTimes,
       totalErrors,
-      isBegun,
       isComplete,
     },
   } = useContext(GameContext);
@@ -20,22 +19,9 @@ const ScoreKeeper = () => {
   const messageLength = listOfMessageCharacters.length;
   const entireSequence = [];
 
-  const [speedTarget, setSpeedTarget] = useState(0);
-  const [sequenceLength, setSequenceLength] = useState(0);
-  const [accuracyScore, setAccuracyScore] = useState(0);
-  const [totalScore, setTotalScore] = useState(0);
-  const [difficultyScore, setDifficultyScore] = useState(0);
-  const [speedBonus, setSpeedBonus] = useState(0);
-
-  const durationOfTransmission = () => {
-    const timeStart = signalStartTimes[0];
-    const timeEnd = signalEndTimes[signalEndTimes.length - 1];
-    return (timeEnd - timeStart) / 1000;
-  };
-
-  const findTargetDuration = () => {
+  const findTargetDuration = (length) => {
     let total = 0;
-    for (let x = 0; x < messageLength; x += 1) {
+    for (let x = 0; x < length; x += 1) {
       if (alphabet[listOfMessageCharacters[x]]) {
         const charCodeSequence = alphabet[listOfMessageCharacters[x]].sequence;
         for (let y = 0; y < charCodeSequence.length; y += 1) {
@@ -47,7 +33,6 @@ const ScoreKeeper = () => {
         }
       }
     }
-    setSpeedTarget(total);
     return total;
   };
 
@@ -62,42 +47,40 @@ const ScoreKeeper = () => {
     return total;
   };
 
-  const handleBegin = useCallback(() => {
-    if (isBegun) {
-      const targetSpeed = findTargetDuration();
-      const { length } = entireSequence;
-      const difficulty = Math.round((entireSequence.length + numberOfCodeSignalChanges()) / 2);
-      console.log("targetSpeed: ", targetSpeed);
-      console.log("length: ", length);
-      console.log("difficulty: ", difficulty);
-      setSpeedTarget(targetSpeed);
-      setSequenceLength(length);
-      setDifficultyScore(difficulty);
-    }
-  });
+  const [speedTarget, setSpeedTarget] = useState(findTargetDuration(messageLength));
+  const [sequenceLength, setSequenceLength] = useState(entireSequence.length);
+  const [difficultyScore, setDifficultyScore] = useState(
+    Math.round((entireSequence.length + numberOfCodeSignalChanges() / 2)),
+  );
+  const [accuracyScore, setAccuracyScore] = useState(0);
+  const [totalScore, setTotalScore] = useState(0);
+  const [speedBonus, setSpeedBonus] = useState(0);
+
+  const durationOfTransmission = () => {
+    const timeStart = signalStartTimes[0];
+    const timeEnd = signalEndTimes[signalEndTimes.length - 1];
+    return (timeEnd - timeStart) / 1000;
+  };
+
+  console.log('targetSpeed upon completion: ', speedTarget);
+  console.log('length upon completion: ', sequenceLength);
+  console.log('difficulty upon completion: ', difficultyScore);
 
   const handleComplete = useCallback(() => {
-    console.log("targetSpeed upon completion: ", speedTarget);
-    console.log("length upon completion: ", sequenceLength);
-    console.log("difficulty upon completion: ", difficultyScore);
     if (isComplete) {
       const accuracy = ((sequenceLength - totalErrors) / sequenceLength) * 100;
       const transmissionSpeed = durationOfTransmission();
-      const bonus = (speedTarget / transmissionSpeed) * 1000;
+      const bonus = Math.round((speedTarget / transmissionSpeed) * 1000);
       const total = accuracy + bonus;
-      console.log("accuracy upon completion: ", accuracy);
-      console.log("transmissionSpeed upon completion: ", transmissionSpeed);
-      console.log("speedBonus upon completion: ", bonus);
-      console.log("total score upon completion: ", total);
+      console.log('accuracy upon completion: ', accuracy);
+      console.log('transmissionSpeed upon completion: ', transmissionSpeed);
+      console.log('speedBonus upon completion: ', bonus);
+      console.log('total score upon completion: ', total);
       setAccuracyScore(accuracy);
       setSpeedBonus(Math.round(bonus));
       setTotalScore(total);
     }
   });
-
-  useEffect(() => {
-    handleBegin();
-  }, [isBegun]);
 
   useEffect(() => {
     handleComplete();

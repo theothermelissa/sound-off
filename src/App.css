@@ -181,6 +181,7 @@ input {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  z-index: 1;
 }
 
 .scoreCard-main {
@@ -192,7 +193,7 @@ input {
   background: white;
   box-shadow: -10px 5px 20px rgba(0, 0, 0, 0.2);
   width: 60%;
-  min-height: 30%;
+  min-height: 33%;
   padding-top: 40px;
   top: 50%;
   left: 50%;
