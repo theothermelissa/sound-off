@@ -69,7 +69,7 @@ const receiverReducer = (state, action) => {
         isComplete: false,
         isBegun: false,
       };
-    case 'complete':
+      case 'complete':
       return {
         ...state,
         isComplete: true,

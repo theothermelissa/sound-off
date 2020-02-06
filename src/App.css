@@ -18,10 +18,10 @@
 
 .messageHolder {
   display: flex;
-  height: 90%;
+  height: 80%;
   flex-flow: row wrap;
   justify-content: center;
-  flex-grow: 1;
+  /* flex-grow: 1; */
   align-items: flex-start;
   margin-top: 70px;
 }
@@ -76,32 +76,32 @@
 }
 
 .switchContainer {
-  display: flex;
   margin: 40px;
-  margin-bottom: 150px;
-  justify-content: center;
-  flex-grow: 0;
 }
 
-circle { 
-  /* position: absolute; */
-  /* left: 50%; */
-  /* top: 50%; */
-  /* margin-left: -75px;
-  margin-top: -75px;*/
+.spinnerContainer {
+  position: relative;
+  top: 109px;
+  right: -5px;
+  background: transparent;
+}
+
+.resetSpinner {
+  position: relative;
+  top: -180px;
+  right: -58px;
   transform: rotate(270deg); 
+  stroke: #CCC4BC;
+  stroke-width: 7px;
+  fill: transparent;
+  stroke-linecap: round;
 }
-
-/* .resetSpinner {
-  stroke: white;
-} */
 
 .switchButton {
-  position: absolute;
+  position: relative;
   left: 50%;
   top: 50%;
-  margin-left: -75px;
-  margin-top: -75px;
+  margin: -75px 0 0 -75px;
   width: 150px;
   height: 150px;
   background: radial-gradient(black,#2C2C2C);
@@ -177,6 +177,10 @@ input {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.2);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .scoreCard-main {

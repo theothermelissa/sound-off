@@ -22,7 +22,7 @@ const CodeSignal = ({
       if (isActive) {
         if (lastSignalReceived === elementName) {
           completeCodeSignal(elementIndex);
-        } else if (lastSignalReceived !== elementName && lastSignalReceived !== 'invalidSignal') {
+        } else if ((lastSignalReceived === 'dot' || lastSignalReceived === 'dash') && lastSignalReceived !== 'invalidSignal') {
           gameDispatch({
             type: 'error',
           });
