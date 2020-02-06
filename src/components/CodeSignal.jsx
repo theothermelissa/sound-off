@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useCallback } from 'react';
 import '../App.css';
 import PropTypes from 'prop-types';
 import { GameContext } from './GameMaster';
+import { SettingsContext } from '../App';
 
 const CodeSignal = ({
   elementName,
@@ -9,20 +10,26 @@ const CodeSignal = ({
   characterPosition,
   activeSignalIndex,
   activeCharacterIndex,
+  wordPosition,
+  activeWordIndex,
+  sequenceIsComplete,
   completeCodeSignal,
   promptIsComplete,
 }) => {
   const { gameDispatch, gameState: { lastSignalReceived } } = useContext(GameContext);
-  const isActive = characterPosition === activeCharacterIndex && elementIndex === activeSignalIndex;
+  const { settingsState: { showSignals } } = useContext(SettingsContext);
+  const isActive = (wordPosition === activeWordIndex)
+    && (characterPosition === activeCharacterIndex)
+    && (elementIndex === activeSignalIndex);
   const isComplete = elementIndex < activeSignalIndex || promptIsComplete;
   const currentClassName = (isComplete) ? `${elementName} completedCodeSignal` : elementName;
 
-  const handleNewSignal = useCallback(() => {
+  const handleNewSignal = useCallback((signal) => {
     if (!isComplete) {
       if (isActive) {
-        if (lastSignalReceived === elementName) {
+        if (signal === elementName) {
           completeCodeSignal(elementIndex);
-        } else if ((lastSignalReceived === 'dot' || lastSignalReceived === 'dash') && lastSignalReceived !== 'invalidSignal') {
+        } else if ((signal === 'dot' || signal === 'dash') && signal !== 'invalidSignal') {
           gameDispatch({
             type: 'error',
           });
@@ -32,7 +39,6 @@ const CodeSignal = ({
   }, [
     isComplete,
     isActive,
-    lastSignalReceived,
   ]);
 
   useEffect(() => {
@@ -40,9 +46,13 @@ const CodeSignal = ({
   }, [handleNewSignal, lastSignalReceived]);
 
   return (
-    <div className={currentClassName} />
+    showSignals && <div className={currentClassName} />
   );
 };
+
+// {(promptIsComplete || showLetters)
+//   ? <div className={`letter${promptIsComplete ? ' completedText' : ''}`}>{char}</div>
+//   : null}
 
 CodeSignal.propTypes = {
   activeCharacterIndex: PropTypes.number.isRequired,

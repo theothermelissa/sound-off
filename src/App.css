@@ -21,9 +21,14 @@
   height: 80%;
   flex-flow: row wrap;
   justify-content: center;
-  /* flex-grow: 1; */
   align-items: flex-start;
   margin-top: 70px;
+}
+
+.wordHolder {
+  display: flex;
+  flex-flow: row;
+  margin: 15px;
 }
 
 .promptContainer {

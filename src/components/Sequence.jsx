@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react';
 import alphabet from '../assets/codeTranslationKey.js';
-import '../App.css';
 import CodeSignal from './CodeSignal';
 import { GameContext } from './GameMaster';
 
 const Sequence = ({
   char,
-  position,
+  characterPosition,
   activeCharacterIndex,
+  wordPosition,
+  activeWordIndex,
   completeSequence,
   promptIsComplete,
 }) => {
@@ -40,7 +41,7 @@ const Sequence = ({
   }, [isBegun]);
 
   useEffect(() => {
-    if (position === activeCharacterIndex) {
+    if (characterPosition === activeCharacterIndex) {
       if (lastSignalReceived === charKeyCode) {
         console.log('Match');
         completeSequence();
@@ -48,7 +49,7 @@ const Sequence = ({
         setCurrentSignalIndex(0);
       }
     }
-  }, [lastSignalReceived, charKeyCode, position, activeCharacterIndex]);
+  }, [lastSignalReceived, charKeyCode, characterPosition, activeCharacterIndex]);
 
   return (
     morseElementSequence.map((codeSignal, index) => (
@@ -57,9 +58,11 @@ const Sequence = ({
         elementName={codeSignal.id}
         elementIndex={index}
         key={char + codeSignal.id + index}
-        characterPosition={position}
+        characterPosition={characterPosition}
         activeSignalIndex={currentSignalIndex}
         activeCharacterIndex={activeCharacterIndex}
+        wordPosition={wordPosition}
+        activeWordIndex={activeWordIndex}
         sequenceIsComplete={sequenceIsComplete}
         completeCodeSignal={onCompleteCodeSignal}
         promptIsComplete={promptIsComplete}

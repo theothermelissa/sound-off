@@ -18,10 +18,8 @@ const ResetSpinner = ({ shouldRun }) => {
       }
       const interval = setInterval(() => {
         setProgress(newProgress);
-      }, 20);
+      }, 22);
       return () => clearInterval(interval);
-    } if (!isComplete) {
-      // setProgress(0);
     }
   }, [isRunning, progress, isComplete]);
 

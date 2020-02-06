@@ -1,15 +1,19 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Sequence from './Sequence';
 import '../App.css';
+import { SettingsContext } from '../App';
 import { GameContext } from './GameMaster';
 
 const Prompt = ({
   char,
-  position,
+  characterPosition,
   activeCharacterIndex,
+  wordPosition,
+  activeWordIndex,
   completePrompt,
 }) => {
   const { gameState: { isBegun } } = useContext(GameContext);
+  const { settingsState: { showLetters } } = useContext(SettingsContext);
   const [promptIsComplete, setPromptIsComplete] = useState(false);
 
   const onCompleteSequence = () => {
@@ -34,14 +38,16 @@ const Prompt = ({
 
   return (
     <div className="promptContainer">
-      {promptIsComplete
+      {(promptIsComplete || showLetters)
         ? <div className={`letter${promptIsComplete ? ' completedText' : ''}`}>{char}</div>
         : null}
       <div className="sequence">
         <Sequence
           char={translatedChar(char)}
-          position={position}
+          characterPosition={characterPosition}
           activeCharacterIndex={activeCharacterIndex}
+          wordPosition={wordPosition}
+          activeWordIndex={activeWordIndex}
           completeSequence={onCompleteSequence}
           promptIsComplete={promptIsComplete}
         />

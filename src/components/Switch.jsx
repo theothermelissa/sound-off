@@ -13,7 +13,6 @@ const Switch = () => {
 
   const [pressTime, setPressTime] = useState(0);
   const [switchIsPressed, setSwitchIsPressed] = useState(false);
-  // const [isResetting, setIsResetting] = useState(false);
   const [resetCount, setResetCount] = useState(0);
   const [showReset, setShowReset] = useState(false);
 
@@ -30,7 +29,6 @@ const Switch = () => {
       } if (resetCount === 7) {
         const date = new Date();
         const currentTimestamp = date.getTime();
-        // console.log("currentTimestamp: ", currentTimestamp);
         gameDispatch({
           type: 'reset',
           startTime: pressTime,
@@ -40,7 +38,7 @@ const Switch = () => {
         controls.pause();
       }
       const interval = setInterval(() => {
-        console.log("New count should be: ", newCount);
+        console.log("Resetting in: ", (8 - newCount));
         setResetCount(newCount);
       }, 500);
       return () => clearInterval(interval);
@@ -60,8 +58,6 @@ const Switch = () => {
       return 'dot';
     } if (dashMin < totalTime && totalTime <= dashMax) {
       return 'dash';
-    // } if (dashMax < totalTime) {
-    //   return 'reset';
     }
     return 'invalidSignal';
   };

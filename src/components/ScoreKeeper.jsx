@@ -62,23 +62,15 @@ const ScoreKeeper = () => {
     return (timeEnd - timeStart) / 1000;
   };
 
-  console.log('targetSpeed upon completion: ', speedTarget);
-  console.log('length upon completion: ', sequenceLength);
-  console.log('difficulty upon completion: ', difficultyScore);
-
   const handleComplete = useCallback(() => {
     if (isComplete) {
       const accuracy = ((sequenceLength - totalErrors) / sequenceLength) * 100;
       const transmissionSpeed = durationOfTransmission();
-      const bonus = Math.round((speedTarget / transmissionSpeed) * 1000);
+      const bonus = (speedTarget / transmissionSpeed);
       const total = accuracy + bonus;
-      console.log('accuracy upon completion: ', accuracy);
-      console.log('transmissionSpeed upon completion: ', transmissionSpeed);
-      console.log('speedBonus upon completion: ', bonus);
-      console.log('total score upon completion: ', total);
-      setAccuracyScore(accuracy);
+      setAccuracyScore(Math.round(accuracy));
       setSpeedBonus(Math.round(bonus));
-      setTotalScore(total);
+      setTotalScore(Math.round(total));
     }
   });
 
@@ -101,9 +93,8 @@ const ScoreKeeper = () => {
         </div>
         <div className="score">
           Speed bonus:
-          {speedBonus}
           {' '}
-          points
+          {speedBonus}
         </div>
         <div className="score">
           Message difficulty:

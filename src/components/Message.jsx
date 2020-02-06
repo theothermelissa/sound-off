@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import Prompt from './Prompt';
+import Word from './Word';
 import { GameContext } from './GameMaster';
 
 const Message = () => {
@@ -10,26 +10,19 @@ const Message = () => {
       isBegun,
     },
   } = useContext(GameContext);
-  const [activeCharacterIndex, setActiveCharacterIndex] = useState(0);
-  const characterList = userSubmittedMessage.split('');
-  const totalCharacters = characterList.length;
-  const isSpace = (char) => char === ' ' || char === '   ';
+  const [activeWordIndex, setActiveWordIndex] = useState(0);
+  const wordList = userSubmittedMessage.split(' ');
+  const totalWords = wordList.length;
 
-  const onCompletePrompt = () => {
-    const newIndex = activeCharacterIndex + 1;
-    if (newIndex < totalCharacters) {
+  const onCompleteWord = () => {
+    const newIndex = activeWordIndex + 1;
+    if (newIndex < totalWords) {
       gameDispatch({
         type: 'resetSignal',
       });
-      setActiveCharacterIndex(newIndex);
-      if (isSpace(characterList[newIndex])) {
-        gameDispatch({
-          type: 'resetSignal',
-        });
-        setActiveCharacterIndex(newIndex + 1);
-      }
+      setActiveWordIndex(newIndex);
     } else {
-      setActiveCharacterIndex(0);
+      setActiveWordIndex(0);
       setTimeout(() => gameDispatch({
         type: 'complete',
       }), 320);
@@ -38,20 +31,18 @@ const Message = () => {
 
   useEffect(() => {
     if (!isBegun) {
-      setActiveCharacterIndex(0);
+      setActiveWordIndex(0);
     }
   }, [isBegun]);
 
-
   return (
-    characterList.map((letter, index) => (
-      <div key={letter + index}>
-        <Prompt
-          char={letter}
-          position={index}
-          activeCharacterIndex={activeCharacterIndex}
-          completePrompt={onCompletePrompt}
-          key={letter + index}
+    wordList.map((word, index) => (
+      <div className="wordHolder" key={word + index}>
+        <Word
+          characterList={word.split('')}
+          activeWordIndex={activeWordIndex}
+          wordPosition={index}
+          completeWord={onCompleteWord}
         />
       </div>
     ))

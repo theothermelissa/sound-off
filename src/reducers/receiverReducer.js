@@ -45,6 +45,8 @@ const receiverReducer = (state, action) => {
       return {
         ...state,
         lastSignalReceived: '',
+        signalStartTimes: [],
+        signalEndTimes: [],
       };
     case 'newMessage':
       return {

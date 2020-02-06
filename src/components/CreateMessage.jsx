@@ -12,7 +12,7 @@ const CreateMessage = () => {
   const updateMessage = (event) => {
     const input = event.target.value;
     if (disallowedRegex.test(input)) {
-      alert("Some special characters have Morse translations ... but that one doesn't.");
+      alert("Some special characters have Morse translations, but that one doesn't.");
       setInputValue('');
     }
     setMessage(input);
@@ -23,7 +23,7 @@ const CreateMessage = () => {
   const submitMessage = (event) => {
     event.preventDefault();
     (!message)
-      ? alert('No blank messages, please.')
+      ? alert('No blank messages, if you please.')
       : gameDispatch({
         type: 'newMessage',
         payload: message,
