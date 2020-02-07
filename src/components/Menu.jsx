@@ -2,38 +2,53 @@ import React, { useContext } from 'react';
 import { SettingsContext } from '../App';
 
 const Menu = () => {
-  const { settingsDispatch, settingsState: { showLetters, showSignals } } = useContext(SettingsContext)
+  const { settingsDispatch, settingsState: { showLetters, showSignals } } = useContext(SettingsContext);
 
-  const turnOnLetters = () => (
-    settingsDispatch({
-      type: 'showLetters',
-    })
-  );
-  const turnOffLetters = () => (
-    settingsDispatch({
-      type: 'hideLetters',
-    })
-  );
-  const turnOnSignals = () => (
-    settingsDispatch({
-      type: 'showSignals',
-    })
-  );
-  const turnOffSignals = () => (
-    settingsDispatch({
-      type: 'hideSignals',
-    })
+  const toggleLetters = () => (
+    showLetters
+      ? settingsDispatch({
+        type: 'hideLetters',
+      })
+      : settingsDispatch({
+        type: 'showLetters',
+      })
   );
 
-  console.log("showLetters: ", showLetters);
-  console.log("showSignals: ", showSignals);
-  
+  const toggleSignals = () => (
+    showSignals
+      ? settingsDispatch({
+        type: 'hideSignals',
+      })
+      : settingsDispatch({
+        type: 'showSignals',
+      })
+  );
+
   return (
-    <div>
-      <button onClick={turnOnLetters} type="button">Letters On</button>
-      <button onClick={turnOffLetters} type="button">Letters Off</button>
-      <button onClick={turnOnSignals} type="button">Signals On</button>
-      <button onClick={turnOffSignals} type="button">Signals Off</button>
+    <div className="settings">
+      <div className="menuBar1" />
+      <div className="menuBar2" />
+      <div className="menuBar3" />
+      <div className="settings-content">
+        <div className="control-holder">
+          <div className="control-text">Letters</div>
+          <form action="#">
+            <div className="toggle">
+              <input type="checkbox" className="toggle-input" id="lettersToggle" />
+              <label onClick={toggleLetters} htmlFor="lettersToggle" className="toggle-label"></label>
+            </div>
+          </form>
+        </div>
+        <div className="control-holder">
+          <div className="control-text">Signals</div>
+          <form action="#">
+            <div className="toggle">
+              <input type="checkbox" className="toggle-input" id="signalsToggle" />
+              <label onClick={toggleSignals} htmlFor="signalsToggle" className="toggle-label"></label>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };

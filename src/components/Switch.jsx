@@ -26,7 +26,7 @@ const Switch = () => {
     if (switchIsPressed) {
       if (resetCount === 2) {
         setShowReset(true);
-      } if (resetCount === 7) {
+      } if (resetCount === 5) {
         const date = new Date();
         const currentTimestamp = date.getTime();
         gameDispatch({
@@ -38,7 +38,7 @@ const Switch = () => {
         controls.pause();
       }
       const interval = setInterval(() => {
-        console.log("Resetting in: ", (8 - newCount));
+        console.log("Resetting in: ", (5 - newCount));
         setResetCount(newCount);
       }, 500);
       return () => clearInterval(interval);

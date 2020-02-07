@@ -34,9 +34,10 @@ const CreateMessage = () => {
   return (
     <form onSubmit={submitMessage}>
       <div className="createMessageContainer">
-        <label>New message:</label>
+        <label className="text-label">New message:</label>
         <input
           type="text"
+          className="text-input"
           name="message"
           value={inputValue}
           onChange={updateMessage}

@@ -22,7 +22,13 @@ const CodeSignal = ({
     && (characterPosition === activeCharacterIndex)
     && (elementIndex === activeSignalIndex);
   const isComplete = elementIndex < activeSignalIndex || promptIsComplete;
-  const currentClassName = (isComplete) ? `${elementName} completedCodeSignal` : elementName;
+  // const currentClassName = (isComplete) ? `${elementName} completedCodeSignal` : elementName;
+  const currentClassName = () => {
+    if (showSignals) {
+      return isComplete ? `${elementName} completedCodeSignal` : elementName;
+    }
+    return `${elementName} hiddenCodeSignal`;
+  };
 
   const handleNewSignal = useCallback((signal) => {
     if (!isComplete) {
@@ -46,7 +52,7 @@ const CodeSignal = ({
   }, [handleNewSignal, lastSignalReceived]);
 
   return (
-    showSignals && <div className={currentClassName} />
+    <div className={currentClassName()} />
   );
 };
 

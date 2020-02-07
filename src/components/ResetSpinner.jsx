@@ -11,14 +11,14 @@ const ResetSpinner = ({ shouldRun }) => {
   const stroke = 2;
 
   useEffect(() => {
-    const newProgress = progress + 1;
+    const newProgress = progress + 2;
     if (isRunning) {
       if (progress === 100) {
         setIsComplete(true);
       }
       const interval = setInterval(() => {
         setProgress(newProgress);
-      }, 22);
+      }, 25);
       return () => clearInterval(interval);
     }
   }, [isRunning, progress, isComplete]);

@@ -1,8 +1,5 @@
-* {
-  background: whitesmoke;
-}
-
 .App {
+  background: whitesmoke;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,6 +11,7 @@
   flex-flow: column;
   text-align: center;
   flex-grow: 1;
+  width: 100%;
 }
 
 .messageHolder {
@@ -76,6 +74,10 @@
   background-color: black;
 }
 
+.hiddenCodeSignal {
+  display: none;
+}
+
 .completedText {
   color: black;
 }
@@ -133,17 +135,17 @@
 
 form {
   background: white;
-  width: auto;
+  /* width: auto; */
 }
 
-label {
-  color: #7C6C64;
+.text-label {
+  color: #A68823;
   background: white;
   font-size: medium;
   margin: 10px;
 }
 
-input {
+.text-input {
   border: 1px solid #CCC4BC;
   background: white;
   padding: 0px 10px;
@@ -156,10 +158,133 @@ input {
   font-family: "Lucida Console", monospace;
 }
 
+.settings {
+  position: relative;
+  /* display: inline-block; */
+  padding: 10px;
+  width: fit-content;
+}
+
+.control-holder {
+  display: flex;
+  position: relative;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.control-text {
+  font-size: larger;
+  padding-bottom: 6px;
+  color: #A39C96;
+
+}
+
+.toggle {
+  /* position: relative; */
+  /* display: inline-block; */
+  margin-left: 8px;
+}
+
+.toggle-input {
+  display: none;
+}
+
+.toggle-label {
+  display: inline-block;
+  width: 48px;
+  height: 24px;
+  text-indent: -150%;
+  clip: rect(0 0 0 0);
+  color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.toggle-label::before,
+.toggle-label::after {
+  content: '';
+  display: block;
+  position: absolute;
+  cursor: pointer;
+}
+
+.toggle-label::before {
+  width: 100%;
+  position: relative;
+  /* top: 24px; */
+  height: 100%;
+  background-color: #CCC4BC;
+  border-radius: 9999em;
+  transition: background-color 0.2s ease;
+}
+
+.toggle-label::after {
+  top: -24px;
+    position: relative;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0 0 2.5px rgba(0, 0, 0, 0.45);
+    transition: left 0.2s ease;
+}
+
+.toggle-input:checked + .toggle-label::before {
+  background-color: #DCCC3C;
+}
+
+.toggle-input:checked + .toggle-label::after {
+  left: 24px;
+}
+
+.menuBar1, .menuBar2, .menuBar3 {
+  width: 35px;
+  height: 5px;
+  background-color: #CCC4BC;
+  margin: 6px 0;
+  transition: .15s;
+  stroke-linecap: round;
+}
+
+.settings:hover .menuBar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.settings:hover .menuBar2 {
+  opacity: 0;
+}
+
+.settings:hover .menuBar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
+}
+
+.settings-content {
+  display: none;
+  position: absolute;
+  left: 32px;
+  top: 32px;
+  background-color: white;
+  min-width: 200px;
+  min-height: 125px;
+  border-radius: 12px;
+  box-shadow: -10px 5px 20px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  z-index: 1;
+}
+
+.settings:hover .settings-content {
+  display: block;
+}
+
 .submitButton {
   font-family: "Lucida Console", monospace;
   max-width: 100px;
-  background-color: #7C6C64;
+  background-color: #A68823;
   color: white;
   -webkit-appearance: none;
   font-size: medium;
@@ -207,12 +332,14 @@ input {
 
 .score {
   background-color: white;
+  color: #A39C96;
+  font-size: larger;
 }
 
 .modal-close {
   font-family: "Lucida Console", monospace;
   max-width: 100px;
-  background-color: #7C6C64;
+  background-color: #A68823;
   color: white;
   -webkit-appearance: none;
   font-size: medium;
