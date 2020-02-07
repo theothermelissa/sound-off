@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { SettingsContext } from '../App';
+import ToggleButton from './ToggleButton';
 
 const Menu = () => {
   const { settingsDispatch, settingsState: { showLetters, showSignals } } = useContext(SettingsContext);
@@ -32,21 +33,11 @@ const Menu = () => {
       <div className="settings-content">
         <div className="control-holder">
           <div className="control-text">Letters</div>
-          <form action="#">
-            <div className="toggle">
-              <input type="checkbox" className="toggle-input" id="lettersToggle" />
-              <label onClick={toggleLetters} htmlFor="lettersToggle" className="toggle-label"></label>
-            </div>
-          </form>
+          <ToggleButton isSelected={showLetters} id="lettersToggle" onSelect={toggleLetters} />
         </div>
         <div className="control-holder">
           <div className="control-text">Signals</div>
-          <form action="#">
-            <div className="toggle">
-              <input type="checkbox" className="toggle-input" id="signalsToggle" />
-              <label onClick={toggleSignals} htmlFor="signalsToggle" className="toggle-label"></label>
-            </div>
-          </form>
+          <ToggleButton isSelected={showSignals} id="signalsToggle" onSelect={toggleSignals} />
         </div>
       </div>
     </div>

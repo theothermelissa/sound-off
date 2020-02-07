@@ -182,8 +182,6 @@ form {
 }
 
 .toggle {
-  /* position: relative; */
-  /* display: inline-block; */
   margin-left: 8px;
 }
 
@@ -213,7 +211,6 @@ form {
 .toggle-label::before {
   width: 100%;
   position: relative;
-  /* top: 24px; */
   height: 100%;
   background-color: #CCC4BC;
   border-radius: 9999em;
