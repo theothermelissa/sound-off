@@ -81,26 +81,26 @@ const ScoreKeeper = () => {
   return (
     <div className="scoreCard">
       <div className="scoreCard-main">
-        <div className="score">Way to go!</div>
-        <div className="score">
-          Total Score:
-          {totalScore}
-        </div>
-        <div className="score">
+        <div className="score-secondary">Way to go!</div>
+        <div className="score-secondary">
           Accuracy:
+          {' '}
           {accuracyScore}
           %
         </div>
-        <div className="score">
-          Speed bonus:
-          {' '}
-          {speedBonus}
+        {!!speedBonus && (
+        <div className="score-secondary">
+          {`Speed bonus: ${speedBonus}`}
         </div>
-        <div className="score">
-          Message difficulty:
-          {difficultyScore}
-          %
+        )}
+        <div className="score-secondary">
+          {`Mesage difficulty: ${difficultyScore}%`}
         </div>
+        {!!totalScore && (
+        <div className="score-main">
+          {`Score: ${totalScore}`}
+        </div>
+        )}
         <CreateMessage />
       </div>
     </div>

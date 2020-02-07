@@ -9,8 +9,8 @@ const ToggleButton = ({ isSelected, id, onSelect }) => {
   return (
     <form action="#">
       <div className="toggle">
-        <input type="checkbox" className="toggle-input" id={id} checked={isChecked} />
-        <label onClick={onSelect} htmlFor={id} className="toggle-label" />
+        <input type="checkbox" onChange={onSelect} className="toggle-input" id={id} checked={isChecked} />
+        <label htmlFor={id} className="toggle-label" />
       </div>
     </form>
   );

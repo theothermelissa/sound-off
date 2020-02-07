@@ -128,21 +128,22 @@
 .createMessageContainer {
   display: flex;
   flex-flow: column;
-  flex-grow: 2;
+  /* flex-grow: 2; */
   background: white;
-  margin: 30px;
+  font-size: larger;
+  margin-top: 30px;
 }
 
 form {
   background: white;
-  /* width: auto; */
+  width: 100%;
 }
 
 .text-label {
   color: #A68823;
   background: white;
-  font-size: medium;
-  margin: 10px;
+  /* font-size: medium; */
+  margin: 10px 0 10px 0;
 }
 
 .text-input {
@@ -154,7 +155,8 @@ form {
   vertical-align: top;
   font-size: medium;
   padding: 10px 10px;
-  margin: 10px;
+  max-width: 100%;
+  /* margin: 10px; */
   font-family: "Lucida Console", monospace;
 }
 
@@ -163,6 +165,12 @@ form {
   /* display: inline-block; */
   padding: 10px;
   width: fit-content;
+}
+
+.hamburgerWrapper {
+  position: relative;
+  /* display: block; */
+  padding: 20px;
 }
 
 .control-holder {
@@ -175,7 +183,7 @@ form {
 }
 
 .control-text {
-  font-size: larger;
+  font-size: medium;
   padding-bottom: 6px;
   color: #A39C96;
 
@@ -238,44 +246,80 @@ form {
 }
 
 .menuBar1, .menuBar2, .menuBar3 {
+  position: absolute;
   width: 35px;
   height: 5px;
   background-color: #CCC4BC;
   margin: 6px 0;
   transition: .15s;
-  stroke-linecap: round;
 }
 
-.settings:hover .menuBar1 {
-  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
-  transform: rotate(-45deg) translate(-9px, 6px);
+.menuBar1 {
+  top: 5px;
 }
 
-.settings:hover .menuBar2 {
-  opacity: 0;
+.menuBar2 {
+  top: 15px;
 }
 
-.settings:hover .menuBar3 {
-  -webkit-transform: rotate(45deg) translate(-8px, -8px);
-  transform: rotate(45deg) translate(-8px, -8px);
+.menuBar3 {
+  top: 25px;
+}
+
+.menuSlider1, .menuSlider2, .menuSlider3 {
+  position: absolute;
+  width: 4px;
+  height: 10px;
+  background-color: #CCC4BC;
+  margin: 6px 0;
+  border-radius: 3px;
+  transition: .15s ease;
+}
+
+.menuSlider1 {
+  top: 2px;
+  left: 30px;
+}
+
+.menuSlider2 {
+  top: 12px;
+  left: 47px;
+}
+
+.menuSlider3 {
+  top: 22px;
+  left: 25px;
 }
 
 .settings-content {
   display: none;
   position: absolute;
-  left: 32px;
-  top: 32px;
+  left: 25px;
+  top: 55px;
   background-color: white;
   min-width: 200px;
-  min-height: 125px;
+  min-height: 100px;
   border-radius: 12px;
   box-shadow: -10px 5px 20px rgba(0, 0, 0, 0.2);
   padding: 20px;
   z-index: 1;
 }
 
-.settings:hover .settings-content {
-  display: block;
+.settings:hover > .settings-content {
+  display: flex;
+  flex-flow: column;
+}
+
+.settings:hover .menuSlider1 {
+  left: 25px;
+}
+
+.settings:hover .menuSlider2 {
+  left: 35px;
+}
+
+.settings:hover .menuSlider3 {
+  left: 45px;
 }
 
 .submitButton {
@@ -286,9 +330,9 @@ form {
   -webkit-appearance: none;
   font-size: medium;
   padding: 10px 10px;
-  margin: 10px;
+  margin: 10px 0 0 0;
   border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: 8px;
   align-self: flex-end;
 }
 
@@ -312,25 +356,32 @@ form {
 }
 
 .scoreCard-main {
-  position: fixed;
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
+  align-items: flex-start;
+  text-align: left;
+  padding: 20px;
+  /* justify-content: flex-end; */
   background: white;
   box-shadow: -10px 5px 20px rgba(0, 0, 0, 0.2);
   width: 60%;
-  min-height: 33%;
-  padding-top: 40px;
+  min-height: 40%;
+  /* padding-top: 40px; */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.score {
+.score-main {
+  color: #A39C96;
+  font-size: xx-large;
+}
+
+.score-secondary {
   background-color: white;
   color: #A39C96;
-  font-size: larger;
+  font-size: medium;
 }
 
 .modal-close {
@@ -346,8 +397,8 @@ form {
   border-radius: 4px;
 }
 
-@media only screen and (min-width: 600px) {
+/* @media only screen and (min-width: 600px) {
   .createMessageContainer {
     flex-flow: row;
   }
-} 
+}  */

@@ -42,8 +42,9 @@ const CreateMessage = () => {
           value={inputValue}
           onChange={updateMessage}
           maxLength="42"
+          tabIndex="0"
         />
-        <button className="submitButton" type="submit">play again</button>
+        {inputValue && <button className="submitButton" type="submit">play again</button>}
       </div>
     </form>
   );
