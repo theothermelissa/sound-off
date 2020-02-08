@@ -11,10 +11,10 @@ import ResetSpinner from './ResetSpinner.jsx';
 const Switch = () => {
   const { gameDispatch, gameState: { isComplete } } = useContext(GameContext);
 
-  const [pressTime, setPressTime] = useState(0);
   const [switchIsPressed, setSwitchIsPressed] = useState(false);
-  const [resetCount, setResetCount] = useState(0);
   const [showReset, setShowReset] = useState(false);
+  const [resetCount, setResetCount] = useState(0);
+  const [pressTime, setPressTime] = useState(0);
 
   const [audio, state, controls, ref] = useAudio({
     src: soundSignal,

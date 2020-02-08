@@ -14,20 +14,24 @@ const CreateMessage = () => {
     if (disallowedRegex.test(input)) {
       alert("Some special characters have Morse translations, but that one doesn't.");
       setInputValue('');
+      return;
     }
-    setMessage(input);
+    setMessage(input.trim());
     setInputValue(input);
   };
 
 
   const submitMessage = (event) => {
     event.preventDefault();
-    (!message)
-      ? alert('No blank messages, if you please.')
-      : gameDispatch({
-        type: 'newMessage',
-        payload: message,
-      });
+    if (!message) {
+      alert('No blank messages, if you please.')
+      setInputValue('');
+      return;
+    }
+    gameDispatch({
+      type: 'newMessage',
+      payload: message.trim(),
+    });
     setInputValue('');
   };
 

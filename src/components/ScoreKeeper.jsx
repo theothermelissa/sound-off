@@ -4,6 +4,7 @@ import React, {
 import alphabet from '../assets/codeTranslationKey';
 import CreateMessage from './CreateMessage';
 import { GameContext } from './GameMaster';
+import affirmations from '../assets/affirmations';
 
 const ScoreKeeper = () => {
   const {
@@ -78,10 +79,14 @@ const ScoreKeeper = () => {
     handleComplete();
   }, [isComplete]);
 
+  const randomAffirmation = () => (
+    affirmations[Math.floor(Math.random() * affirmations.length)]
+  );
+
   return (
     <div className="scoreCard">
       <div className="scoreCard-main">
-        <div className="score-secondary">Way to go!</div>
+        <div className="score-secondary">{randomAffirmation()}</div>
         <div className="score-secondary">
           Accuracy:
           {' '}

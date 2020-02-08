@@ -1,5 +1,8 @@
-.App {
+body {
   background: whitesmoke;
+}
+
+.App {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,7 +23,7 @@
   flex-flow: row wrap;
   justify-content: center;
   align-items: flex-start;
-  margin-top: 70px;
+  margin-top: 30px;
 }
 
 .wordHolder {

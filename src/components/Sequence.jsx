@@ -16,8 +16,8 @@ const Sequence = ({
   const [currentSignalIndex, setCurrentSignalIndex] = useState(0);
   const [sequenceIsComplete, setSequenceIsComplete] = useState(false);
   const morseElementSequence = alphabet[char].sequence;
-  const charKeyCode = alphabet[char].code;
   const totalSignalsInChar = morseElementSequence.length;
+  const charKeyCode = alphabet[char].code;
 
   const onCompleteCodeSignal = (index) => {
     const newIndex = index + 1;
