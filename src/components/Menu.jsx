@@ -3,7 +3,7 @@ import { SettingsContext } from '../App';
 import ToggleButton from './ToggleButton';
 
 const Menu = () => {
-  const { settingsDispatch, settingsState: { showLetters, showSignals } } = useContext(SettingsContext);
+  const { settingsDispatch, settingsState: { showLetters, showSignals, soundsOn } } = useContext(SettingsContext);
 
   const toggleLetters = () => (
     showLetters
@@ -25,6 +25,16 @@ const Menu = () => {
       })
   );
 
+  const toggleSounds = () => (
+    soundsOn
+      ? settingsDispatch({
+        type: 'soundsOff',
+      })
+      : settingsDispatch({
+        type: 'soundsOn',
+      })
+  );
+
   return (
     <div className="settings">
       <div className="hamburgerWrapper">
@@ -43,6 +53,10 @@ const Menu = () => {
         <div className="control-holder">
           <div className="control-text">Show Signals</div>
           <ToggleButton isSelected={showSignals} id="signalsToggle" onSelect={toggleSignals} />
+        </div>
+        <div className="control-holder">
+          <div className="control-text">Play Sounds</div>
+          <ToggleButton isSelected={soundsOn} id="soundsToggle" onSelect={toggleSounds} />
         </div>
         <p className="control-text">To restart this round, press and hold the switch button until the message resets.</p>
       </div>

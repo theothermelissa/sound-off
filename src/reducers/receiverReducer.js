@@ -1,6 +1,16 @@
 const receiverReducer = (state, action) => {
   const newErrorCount = state.totalErrors + 1;
   switch (action.type) {
+    case 'switchPress':
+      return {
+        ...state,
+        isPressed: true,
+      };
+    case 'switchRelease':
+      return {
+        ...state,
+        isPressed: false,
+      };
     case 'invalidSignal':
       return {
         ...state,

@@ -9,10 +9,11 @@ export const SettingsDispatch = React.createContext(null);
 const initialState = {
   showLetters: false,
   showSignals: true,
+  soundsOn: true,
 };
 
 function App() {
-  const [settingsState, settingsDispatch] = useReducer(settingsReducer, initialState)
+  const [settingsState, settingsDispatch] = useReducer(settingsReducer, initialState);
 
   return (
     <SettingsContext.Provider

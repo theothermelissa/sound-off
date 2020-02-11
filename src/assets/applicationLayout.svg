@@ -9,7 +9,7 @@
 	.st3{fill:none;}
 	.st4{font-family:'MyriadPro-Regular';}
 	.st5{font-size:12px;}
-	.st6{fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:9.9996;}
+	.st6{fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:9.9992;}
 	.st7{fill:#993333;}
 	.st8{opacity:0.68;fill:#E69B24;enable-background:new    ;}
 	.st9{fill:none;stroke:#A8A8A8;stroke-miterlimit:10;}
@@ -19,6 +19,12 @@
 	.st13{fill:url(#SVGID_3_);}
 	.st14{fill:#A5A5A5;}
 	.st15{fill:#FFFFFF;}
+	.st16{fill:#CCC4BC;}
+	.st17{fill:#A68823;}
+	.st18{fill:#F5F5F5;}
+	.st19{fill:#A39C96;}
+	.st20{fill:#444444;}
+	.st21{fill:#E0E0E0;}
 </style>
 <rect x="888.1" y="251.2" class="st0" width="461.8" height="494.1"/>
 <rect x="908.5" y="339" class="st1" width="420.2" height="137.2"/>
@@ -135,7 +141,7 @@
 <rect x="1360.4" y="248.4" class="st2" width="154.8" height="20.2"/>
 <g>
 	
-		<ellipse transform="matrix(0.2298 -0.9732 0.9732 0.2298 741.3904 1474.8992)" class="st6" cx="1302.6" cy="269" rx="37.4" ry="37.4"/>
+		<ellipse transform="matrix(0.2298 -0.9732 0.9732 0.2298 741.364 1474.8588)" class="st6" cx="1302.5" cy="269" rx="37.4" ry="37.4"/>
 </g>
 <text transform="matrix(1 0 0 1 744.7231 209.0224)" class="st4 st5">prompts on/off</text>
 <text transform="matrix(1 0 0 1 736.5315 233.5988)" class="st4 st5">light / sound mode</text>
@@ -253,17 +259,17 @@
 <polyline class="st0" points="-198.4,455.6 -198.4,473.2 -195.3,465.6 "/>
 <text transform="matrix(1 0 0 1 109.8657 744.7651)" class="st4 st5">difficulty: </text>
 <text transform="matrix(1 0 0 1 109.866 763.8158)" class="st4 st5">accuracy:</text>
-<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="162" y1="939.15" x2="357.7" y2="939.15" gradientTransform="matrix(1 0 0 1 0 -198)">
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="162" y1="62.85" x2="357.7" y2="62.85" gradientTransform="matrix(1 0 0 -1 0 804)">
 	<stop  offset="0" style="stop-color:#D8BE28"/>
 	<stop  offset="0.7186" style="stop-color:#A12F21"/>
 </linearGradient>
 <rect x="162" y="734.9" class="st11" width="195.7" height="12.5"/>
-<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="162" y1="958.15" x2="357.7" y2="958.15" gradientTransform="matrix(1 0 0 1 0 -198)">
+<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="162" y1="43.85" x2="357.7" y2="43.85" gradientTransform="matrix(1 0 0 -1 0 804)">
 	<stop  offset="0" style="stop-color:#D8BE28"/>
 	<stop  offset="0.7186" style="stop-color:#993333"/>
 </linearGradient>
 <rect x="162" y="753.9" class="st12" width="195.7" height="12.5"/>
-<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="162" y1="977.15" x2="357.7" y2="977.15" gradientTransform="matrix(1 0 0 1 0 -198)">
+<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="162" y1="24.85" x2="357.7" y2="24.85" gradientTransform="matrix(1 0 0 -1 0 804)">
 	<stop  offset="0" style="stop-color:#D8BE28"/>
 	<stop  offset="0.7186" style="stop-color:#A12F21"/>
 </linearGradient>
@@ -299,7 +305,24 @@
 <text transform="matrix(1 0 0 1 516.5369 21.8735)" class="st4 st5">something else</text>
 <line class="st1" x1="516.7" y1="24.8" x2="516.7" y2="56.1"/>
 <rect x="28.4" y="69.4" class="st3" width="97" height="63.3"/>
-<text transform="matrix(1 0 0 1 28.4268 77.8887)"><tspan x="0" y="0" class="st4 st5">SIGNAL INFO</tspan><tspan x="0" y="14.4" class="st4 st5">- last signal rec’d</tspan><tspan x="0" y="28.8" class="st4 st5">- signal start times</tspan><tspan x="0" y="43.2" class="st4 st5">- signal end times</tspan></text>
+<text transform="matrix(1 0 0 1 28.4268 77.8887)" class="st4 st5">SIGNAL INFO</text>
+<text transform="matrix(1 0 0 1 28.4268 92.2887)" class="st4 st5">- last signal rec’d</text>
+<text transform="matrix(1 0 0 1 28.4268 106.6887)" class="st4 st5">- signal start times</text>
+<text transform="matrix(1 0 0 1 28.4268 121.0887)" class="st4 st5">- signal end times</text>
 <rect x="28.4" y="159.4" class="st3" width="97" height="63.3"/>
-<text transform="matrix(1 0 0 1 28.4268 167.8887)"><tspan x="0" y="0" class="st4 st5">GAME INFO</tspan><tspan x="0" y="14.4" class="st4 st5">- message</tspan><tspan x="0" y="28.8" class="st4 st5">- isComplete</tspan></text>
+<text transform="matrix(1 0 0 1 28.4268 167.8887)" class="st4 st5">GAME INFO</text>
+<text transform="matrix(1 0 0 1 28.4268 182.2887)" class="st4 st5">- message</text>
+<text transform="matrix(1 0 0 1 28.4268 196.6887)" class="st4 st5">- isComplete</text>
+<text transform="matrix(1 0 0 1 615.0837 764.1808)" class="st4 st5">#CCC4BC</text>
+<rect x="547.3" y="730" class="st16" width="58.4" height="58.4"/>
+<text transform="matrix(1 0 0 1 615.0837 851.0247)" class="st4 st5">#A68823</text>
+<rect x="547.3" y="809.9" class="st17" width="58.4" height="58.4"/>
+<text transform="matrix(1 0 0 1 615.0837 684.2415)" class="st4 st5">#F5F5F5/whitesmoke</text>
+<rect x="547.3" y="650.1" class="st18" width="58.4" height="58.4"/>
+<text transform="matrix(1 0 0 1 478.6923 764.1808)" class="st4 st5">#A39C96</text>
+<rect x="410.9" y="730" class="st19" width="58.4" height="58.4"/>
+<text transform="matrix(1 0 0 1 472.6834 851.0245)" class="st4 st5">#444444</text>
+<rect x="409.7" y="816.6" class="st20" width="58.4" height="58.4"/>
+<text transform="matrix(1 0 0 1 478.6922 684.2415)" class="st4 st5">#E0E0E0</text>
+<rect x="410.9" y="650.1" class="st21" width="58.4" height="58.4"/>
 </svg>

@@ -1,5 +1,15 @@
 const settingsReducer = (state, action) => {
   switch (action.type) {
+    case 'soundsOn':
+      return {
+        ...state,
+        soundsOn: true,
+      };
+    case 'soundsOff':
+      return {
+        ...state,
+        soundsOn: false,
+      };
     case 'showLetters':
       return {
         ...state,
