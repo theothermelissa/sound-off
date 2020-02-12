@@ -3,60 +3,60 @@ import dot from '../assets/dot.svg';
 import codeTranslationKey from '../assets/codeTranslationKey';
 
 const CanvasMaker = () => {
-  const char = 'm';
+  const char = 'W';
+  const color = '#CCC4BC';
   const img = useRef(null);
   const canvasRef = useRef(null);
 
-  const dashW = 9;
-  const dotD = 5;
-  const dashH = 5;
+  const canvasWidth = 90;
+  const canvasHeight = 90;
+  const dashWidth = 9;
+  const dotDiameter = 5;
+  const dashHeight = 5;
   const buffer = 2;
 
-  const letter = codeTranslationKey[char];
-
+  const letter = codeTranslationKey[char.toLowerCase()];
   const totalSequenceLength = letter.sequence.length;
-  const canvasW = 90;
-  const canvasH = 90;
+  const canvasHeightCenterPoint = canvasHeight / 2;
+  const canvasWidthCenterPoint = canvasWidth / 2;
 
   const combinedCodeSignalWidths = () => {
     let total = letter.sequence
       .reduce((sum, codeSignal) => ((codeSignal.id === 'dot')
-        ? (sum + dotD)
-        : (sum + dashW)), 0);
+        ? (sum + dotDiameter)
+        : (sum + dashWidth)), 0);
     total += (totalSequenceLength - 1) * buffer;
     return total;
   };
 
-  const startPoint = (canvasW - combinedCodeSignalWidths()) / 2;
-
-  console.log('combinedCodeSignalWidths: ', combinedCodeSignalWidths());
-  console.log('startPoint: ', startPoint);
-
-  // const sequenceBoxWidth = (totalSequenceLength - 1) * buffer + (combinedCodeSignalWidths);
+  const codeStartPoint = (canvasWidth - combinedCodeSignalWidths()) / 2;
 
   useEffect(() => {
     const canvas = canvasRef.current;
     // const image = img.current;
     const context = canvas.getContext('2d');
 
-    for (let i = 0, x = startPoint; i < totalSequenceLength; i += 1) {
-      context.fillStyle = '#CCC4BC';
+    context.font = '40px Courier';
+    context.textAlign = 'center';
+    context.textBaseline = 'middle';
+    context.fillStyle = color;
+    context.fillText(char, canvasWidthCenterPoint, canvasHeightCenterPoint);
+
+    for (let i = 0, x = codeStartPoint; i < totalSequenceLength; i += 1) {
+      context.fillStyle = color;
       if (letter.sequence[i].id === 'dot') {
-        context.fillRect(x, 60, dotD, dotD);
-        x = x + buffer + dotD;
+        context.fillRect(x, 62, dotDiameter, dotDiameter);
+        x = x + buffer + dotDiameter;
       } if (letter.sequence[i].id === 'dash') {
-        context.fillRect(x, 60, dashW, dashH);
-        x = x + buffer + dashW;
+        context.fillRect(x, 62, dashWidth, dashHeight);
+        x = x + buffer + dashWidth;
       }
     }
-
-    // context.fillStyle = '#A68823';
-    // context.fillRect(10, 10, 9, 5);
   });
 
   return (
     <div>
-      <canvas ref={canvasRef} width={canvasW} height={canvasH} style={{ border: '2px solid' }} />
+      <canvas ref={canvasRef} width={canvasWidth} height={canvasHeight} style={{ border: '2px solid' }} />
       <img alt="dot" ref={img} src={dot} className="hidden" />
     </div>
   );
