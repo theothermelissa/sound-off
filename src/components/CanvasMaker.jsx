@@ -2,16 +2,17 @@ import React, { useRef, useEffect } from 'react';
 import dot from '../assets/dot.svg';
 import codeTranslationKey from '../assets/codeTranslationKey';
 
-const CanvasMaker = () => {
-  const char = 'W';
+const CanvasLetterMaker = () => {
+  const char = 'm';
   const color = '#CCC4BC';
   const img = useRef(null);
   const canvasRef = useRef(null);
 
-  const canvasWidth = 90;
+  const canvasWidth = 75;
   const canvasHeight = 90;
   const dashWidth = 9;
   const dotDiameter = 5;
+  const dotRadius = dotDiameter / 2;
   const dashHeight = 5;
   const buffer = 2;
 
@@ -19,6 +20,9 @@ const CanvasMaker = () => {
   const totalSequenceLength = letter.sequence.length;
   const canvasHeightCenterPoint = canvasHeight / 2;
   const canvasWidthCenterPoint = canvasWidth / 2;
+  const fontName = 'Courier';
+  const fontSize = '70px';
+  const font = `${fontSize} ${fontName}`;
 
   const combinedCodeSignalWidths = () => {
     let total = letter.sequence
@@ -35,20 +39,27 @@ const CanvasMaker = () => {
     const canvas = canvasRef.current;
     // const image = img.current;
     const context = canvas.getContext('2d');
+    const circle = (x, y, r) => {
+      context.beginPath();
+      context.arc(x, y, r, 0, Math.PI * 2, true);
+      context.fill();
+    };
 
-    context.font = '40px Courier';
+    context.font = font;
     context.textAlign = 'center';
     context.textBaseline = 'middle';
     context.fillStyle = color;
     context.fillText(char, canvasWidthCenterPoint, canvasHeightCenterPoint);
 
-    for (let i = 0, x = codeStartPoint; i < totalSequenceLength; i += 1) {
+    for (let i = 0, x = codeStartPoint, y = 82; i < totalSequenceLength; i += 1) {
       context.fillStyle = color;
       if (letter.sequence[i].id === 'dot') {
-        context.fillRect(x, 62, dotDiameter, dotDiameter);
+        context.translate(dotRadius, dotRadius);
+        circle(x, y, dotRadius);
         x = x + buffer + dotDiameter;
+        context.translate(-dotRadius, -dotRadius);
       } if (letter.sequence[i].id === 'dash') {
-        context.fillRect(x, 62, dashWidth, dashHeight);
+        context.fillRect(x, y, dashWidth, dashHeight);
         x = x + buffer + dashWidth;
       }
     }
@@ -62,4 +73,4 @@ const CanvasMaker = () => {
   );
 };
 
-export default CanvasMaker;
+export default CanvasLetterMaker;
