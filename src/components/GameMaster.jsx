@@ -32,7 +32,7 @@ const GameMaster = () => {
       }}
     >
       <div className="game">
-        <CanvasMaker />
+        <CanvasMaker activeCharIndex={1} activeSignalIndex={1} currentCharIndex={1} />
         {/* <Menu />
         <Light on />
         <div className="messageHolder">

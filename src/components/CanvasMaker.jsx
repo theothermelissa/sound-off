@@ -2,11 +2,13 @@ import React, { useRef, useEffect } from 'react';
 import dot from '../assets/dot.svg';
 import codeTranslationKey from '../assets/codeTranslationKey';
 
-const CanvasLetterMaker = () => {
-  const char = 'm';
-  const color = '#CCC4BC';
+const CanvasLetterMaker = ({ activeSignalIndex, activeCharIndex, currentCharIndex }) => {
+  const char = 'n';
+  const gray = '#CCC4BC';
+  const black = '#000000';
   const img = useRef(null);
   const canvasRef = useRef(null);
+  const isComplete = (activeCharIndex > currentCharIndex);
 
   const canvasWidth = 75;
   const canvasHeight = 90;
@@ -48,11 +50,15 @@ const CanvasLetterMaker = () => {
     context.font = font;
     context.textAlign = 'center';
     context.textBaseline = 'middle';
-    context.fillStyle = color;
+    context.fillStyle = isComplete ? black : gray;
     context.fillText(char, canvasWidthCenterPoint, canvasHeightCenterPoint);
 
     for (let i = 0, x = codeStartPoint, y = 82; i < totalSequenceLength; i += 1) {
-      context.fillStyle = color;
+      if (isComplete || i < activeSignalIndex) {
+        context.fillStyle = black;
+      } else {
+        context.fillStyle = gray;
+      }
       if (letter.sequence[i].id === 'dot') {
         context.translate(dotRadius, dotRadius);
         circle(x, y, dotRadius);
