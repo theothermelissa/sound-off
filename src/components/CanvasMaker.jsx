@@ -23,44 +23,40 @@ const CanvasMaker = ({ message }) => {
   };
 
   useEffect(() => {
-    const newCount = testCount + 1;
-    if (testCount < 5) {
+    const newWordIndex = activeWordIndex + 1;
+    const newCharacterIndex = activeCharacterIndex + 1;
+    const newSignalIndex = activeSignalIndex + 1;
+    if (!isComplete) {
       const timer = setTimeout(() => {
-        console.log('newCount: ', newCount);
-        setTestCount(newCount);
+        for (let currentWordIndex = 0; currentWordIndex < totalWords; currentWordIndex += 1) {
+          const currentWordLength = wordList[currentWordIndex].length;
+          for (let currentLetterIndex = 0; currentLetterIndex < currentWordLength; currentLetterIndex += 1) {
+            const letter = wordList[currentWordIndex][currentLetterIndex];
+            totalSignals.current = alphabet[letter].sequence.length;
+            for (let currentSignalIndex = 0; currentSignalIndex < totalSignals.current; currentSignalIndex += 1) {
+              const lastWord = (totalWords - 1 === currentWordIndex);
+              const lastLetter = (currentWordLength - 1 === currentLetterIndex);
+              const lastSignal = (totalSignals.current - 1 === currentSignalIndex);
+              if (lastWord && lastLetter && lastSignal) {
+                setIsComplete(true);
+              } else if (lastLetter && lastSignal) {
+                setActiveWordIndex(newWordIndex);
+              } else if (lastSignal) {
+                console.log('newCharacterIndex: ', newCharacterIndex);
+                setActiveCharacterIndex(newCharacterIndex);
+              } else {
+                console.log('newSignalIndex: ', newSignalIndex);
+                setActiveSignalIndex(newSignalIndex);
+              }
+            }
+          }
+        }
       }, 1000);
       return () => clearTimeout(timer);
     }
-  }, [testCount]);
+  }, [isComplete, testCount]);
 
-  // const newSignalIndex = activeSignalIndex + 1;
-  // const newCharacterIndex = activeCharacterIndex + 1;
-  // const newWordIndex = activeWordIndex + 1;
-  // for (let currentWordIndex = 0; currentWordIndex < totalWords; currentWordIndex += 1) {
-  //   const currentWordLength = wordList[currentWordIndex].length;
-  //   for (let currentLetterIndex = 0; currentLetterIndex < currentWordLength; currentLetterIndex += 1) {
-  //     const letter = wordList[currentWordIndex][currentLetterIndex];
-  //     totalSignals.current = alphabet[letter].sequence.length;
-  //     for (let currentSignalIndex = 0; currentSignalIndex < totalSignals.current; currentSignalIndex += 1) {
-  //       const lastWord = (totalWords === currentWordIndex);
-  //       const lastLetter = (currentWordLength === currentLetterIndex);
-  //       const lastSignal = (totalSignals.current === currentSignalIndex);
-  //       if (lastWord && lastLetter && lastSignal) {
-  //         setIsComplete(true);
-  //         clearInterval(completeMessage);
-  //       } else if (lastLetter && lastSignal) {
-  //         setActiveWordIndex(newWordIndex);
-  //       } else if (lastSignal) {
-  //         setActiveCharacterIndex(newCharacterIndex);
-  //       } else {
-  //         console.log('Last signal? ', lastSignal);
-  //         console.log('Last Letter? ', lastLetter);
-  //         console.log('Last Word? ', lastWord);
-  //         setActiveSignalIndex(newSignalIndex);
-  //       }
-  //     }
-  //   }
-  // }
+
 
 
   // useEffect(() => {
