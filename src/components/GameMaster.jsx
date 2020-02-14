@@ -6,6 +6,7 @@ import ScoreKeeper from './ScoreKeeper';
 import Menu from './Menu';
 import Light from './Light';
 import CanvasMaker from './CanvasMaker';
+// import CanvasLetterMaker from './CanvasLetterMaker';
 
 export const GameContext = React.createContext(null);
 export const GameDispatch = React.createContext(null);
@@ -20,6 +21,7 @@ const initialState = {
   isComplete: false,
   isBegun: false,
   isPressed: false,
+  isSendable: true,
 };
 
 const GameMaster = () => {
@@ -32,14 +34,15 @@ const GameMaster = () => {
       }}
     >
       <div className="game">
-        <CanvasMaker activeCharIndex={1} activeSignalIndex={1} currentCharIndex={1} />
-        {/* <Menu />
+        <Menu />
         <Light on />
         <div className="messageHolder">
-          <Message />
+          { gameState.isSendable
+            ? <CanvasMaker message={gameState.userSubmittedMessage} />
+            : <Message /> }
         </div>
         { gameState.isComplete && <ScoreKeeper /> }
-        <Switch /> */}
+        <Switch />
       </div>
     </GameContext.Provider>
   );

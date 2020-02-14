@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import Word from './Word';
 import { GameContext } from './GameMaster';
 
-const Message = () => {
+const Message = ({ activeWordIndexForCanvas, activeCharacterIndexForCanvas, activeSignalIndexForCanvas, canvasIsComplete }) => {
   const {
     gameDispatch,
     gameState: {
@@ -41,8 +41,12 @@ const Message = () => {
         <Word
           characterList={word.split('')}
           activeWordIndex={activeWordIndex}
+          activeWordIndexForCanvas={activeWordIndexForCanvas}
+          activeSignalIndexForCanvas={activeSignalIndexForCanvas}
+          activeCharacterIndexForCanvas={activeCharacterIndexForCanvas}
           wordPosition={index}
           completeWord={onCompleteWord}
+          canvasIsComplete={canvasIsComplete}
         />
       </div>
     ))

@@ -1,82 +1,84 @@
-import React, { useRef, useEffect } from 'react';
-import dot from '../assets/dot.svg';
-import codeTranslationKey from '../assets/codeTranslationKey';
+import React, { useState, useRef, useEffect } from 'react';
+import CanvasLetterMaker from './CanvasLetterMaker';
+import Message from './Message';
+import alphabet from '../assets/codeTranslationKey';
 
-const CanvasLetterMaker = ({ activeSignalIndex, activeCharIndex, currentCharIndex }) => {
-  const char = 'n';
-  const gray = '#CCC4BC';
-  const black = '#000000';
-  const img = useRef(null);
+const CanvasMaker = ({ message }) => {
+  const [testCount, setTestCount] = useState(0);
   const canvasRef = useRef(null);
-  const isComplete = (activeCharIndex > currentCharIndex);
+  const [isComplete, setIsComplete] = useState(false);
+  const [activeWordIndex, setActiveWordIndex] = useState(0);
+  const [activeCharacterIndex, setActiveCharacterIndex] = useState(0);
+  const [activeSignalIndex, setActiveSignalIndex] = useState(0);
+  const totalSignals = useRef(0);
 
-  const canvasWidth = 75;
-  const canvasHeight = 90;
-  const dashWidth = 9;
-  const dotDiameter = 5;
-  const dotRadius = dotDiameter / 2;
-  const dashHeight = 5;
-  const buffer = 2;
+  const wordList = message.split(' ');
+  const totalWords = wordList.length;
 
-  const letter = codeTranslationKey[char.toLowerCase()];
-  const totalSequenceLength = letter.sequence.length;
-  const canvasHeightCenterPoint = canvasHeight / 2;
-  const canvasWidthCenterPoint = canvasWidth / 2;
-  const fontName = 'Courier';
-  const fontSize = '70px';
-  const font = `${fontSize} ${fontName}`;
-
-  const combinedCodeSignalWidths = () => {
-    let total = letter.sequence
-      .reduce((sum, codeSignal) => ((codeSignal.id === 'dot')
-        ? (sum + dotDiameter)
-        : (sum + dashWidth)), 0);
-    total += (totalSequenceLength - 1) * buffer;
+  const messageLength = () => {
+    const total = message.reduce((sumLetters, letter) => ((letter === ' ')
+      ? sumLetters
+      : (sumLetters + 1)), 0);
     return total;
   };
 
-  const codeStartPoint = (canvasWidth - combinedCodeSignalWidths()) / 2;
-
   useEffect(() => {
-    const canvas = canvasRef.current;
-    // const image = img.current;
-    const context = canvas.getContext('2d');
-    const circle = (x, y, r) => {
-      context.beginPath();
-      context.arc(x, y, r, 0, Math.PI * 2, true);
-      context.fill();
-    };
-
-    context.font = font;
-    context.textAlign = 'center';
-    context.textBaseline = 'middle';
-    context.fillStyle = isComplete ? black : gray;
-    context.fillText(char, canvasWidthCenterPoint, canvasHeightCenterPoint);
-
-    for (let i = 0, x = codeStartPoint, y = 82; i < totalSequenceLength; i += 1) {
-      if (isComplete || i < activeSignalIndex) {
-        context.fillStyle = black;
-      } else {
-        context.fillStyle = gray;
-      }
-      if (letter.sequence[i].id === 'dot') {
-        context.translate(dotRadius, dotRadius);
-        circle(x, y, dotRadius);
-        x = x + buffer + dotDiameter;
-        context.translate(-dotRadius, -dotRadius);
-      } if (letter.sequence[i].id === 'dash') {
-        context.fillRect(x, y, dashWidth, dashHeight);
-        x = x + buffer + dashWidth;
-      }
+    const newCount = testCount + 1;
+    if (testCount < 5) {
+      const timer = setTimeout(() => {
+        console.log('newCount: ', newCount);
+        setTestCount(newCount);
+      }, 1000);
+      return () => clearTimeout(timer);
     }
-  });
+  }, [testCount]);
+
+  // const newSignalIndex = activeSignalIndex + 1;
+  // const newCharacterIndex = activeCharacterIndex + 1;
+  // const newWordIndex = activeWordIndex + 1;
+  // for (let currentWordIndex = 0; currentWordIndex < totalWords; currentWordIndex += 1) {
+  //   const currentWordLength = wordList[currentWordIndex].length;
+  //   for (let currentLetterIndex = 0; currentLetterIndex < currentWordLength; currentLetterIndex += 1) {
+  //     const letter = wordList[currentWordIndex][currentLetterIndex];
+  //     totalSignals.current = alphabet[letter].sequence.length;
+  //     for (let currentSignalIndex = 0; currentSignalIndex < totalSignals.current; currentSignalIndex += 1) {
+  //       const lastWord = (totalWords === currentWordIndex);
+  //       const lastLetter = (currentWordLength === currentLetterIndex);
+  //       const lastSignal = (totalSignals.current === currentSignalIndex);
+  //       if (lastWord && lastLetter && lastSignal) {
+  //         setIsComplete(true);
+  //         clearInterval(completeMessage);
+  //       } else if (lastLetter && lastSignal) {
+  //         setActiveWordIndex(newWordIndex);
+  //       } else if (lastSignal) {
+  //         setActiveCharacterIndex(newCharacterIndex);
+  //       } else {
+  //         console.log('Last signal? ', lastSignal);
+  //         console.log('Last Letter? ', lastLetter);
+  //         console.log('Last Word? ', lastWord);
+  //         setActiveSignalIndex(newSignalIndex);
+  //       }
+  //     }
+  //   }
+  // }
+
+
+  // useEffect(() => {
+  //   const canvas = canvasRef.current;
+  //   const context = canvas.getContext('2d');
+  // });
 
   return (
     <div>
-      <canvas ref={canvasRef} width={canvasWidth} height={canvasHeight} style={{ border: '2px solid' }} />
-      <img alt="dot" ref={img} src={dot} className="hidden" />
+      <canvas ref={canvasRef} style={{ border: '2px solid' }} />
+      <Message
+        activeSignalIndexForCanvas={activeSignalIndex}
+        activeCharacterIndexForCanvas={activeCharacterIndex}
+        activeWordIndexForCanvas={activeWordIndex}
+        isComplete={isComplete}
+      />
     </div>
   );
 };
 
-export default CanvasLetterMaker;
+export default CanvasMaker;

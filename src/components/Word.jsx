@@ -1,20 +1,26 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Prompt from './Prompt';
 import { GameContext } from './GameMaster';
+import CanvasLetterMaker from './CanvasLetterMaker';
 
-const Word = (props) => {
+const Word = ({
+  characterList,
+  activeWordIndex,
+  activeWordIndexForCanvas,
+  activeSignalIndexForCanvas,
+  activeCharacterIndexForCanvas,
+  wordPosition,
+  completeWord,
+  canvasIsComplete,
+}) => {
   const {
     gameDispatch,
     gameState: {
       isBegun,
+      isSendable,
     },
   } = useContext(GameContext);
-  const {
-    characterList,
-    activeWordIndex,
-    wordPosition,
-    completeWord,
-  } = props;
+
   const [activeCharacterIndex, setActiveCharacterIndex] = useState(0);
   const totalCharacters = characterList.length;
 
@@ -37,18 +43,30 @@ const Word = (props) => {
     }
   }, [isBegun]);
 
-
   return (
     characterList.map((letter, index) => (
       <div key={letter + index}>
-        <Prompt
-          char={letter}
-          characterPosition={index}
-          activeCharacterIndex={activeCharacterIndex}
-          wordPosition={wordPosition}
-          activeWordIndex={activeWordIndex}
-          completePrompt={onCompletePrompt}
-        />
+        { isSendable
+          ? (
+            <CanvasLetterMaker
+              char={letter}
+              characterPosition={index}
+              wordPosition={wordPosition}
+              activeWordIndex={activeWordIndexForCanvas}
+              activeCharacterIndex={activeCharacterIndexForCanvas}
+              activeSignalIndex={activeSignalIndexForCanvas}
+              canvasIsComplete={canvasIsComplete}
+            />
+          )
+          : (
+            <Prompt
+              char={letter}
+              characterPosition={index}
+              activeCharacterIndex={activeCharacterIndex}
+              wordPosition={wordPosition}
+              completePrompt={onCompletePrompt}
+            />
+          )}
       </div>
     ))
   );
