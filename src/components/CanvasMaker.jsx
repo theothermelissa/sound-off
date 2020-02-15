@@ -29,35 +29,57 @@ const CanvasMaker = ({ message }) => {
     if (!isComplete) {
       const timer = setTimeout(() => {
         for (let currentWordIndex = 0; currentWordIndex < totalWords; currentWordIndex += 1) {
+          console.log('currentWordIndex: ', currentWordIndex);
           const currentWordLength = wordList[currentWordIndex].length;
           for (let currentLetterIndex = 0; currentLetterIndex < currentWordLength; currentLetterIndex += 1) {
+            console.log('currentLetterIndex: ', currentLetterIndex);
             const letter = wordList[currentWordIndex][currentLetterIndex];
             totalSignals.current = alphabet[letter].sequence.length;
             for (let currentSignalIndex = 0; currentSignalIndex < totalSignals.current; currentSignalIndex += 1) {
-              const lastWord = (totalWords - 1 === currentWordIndex);
-              const lastLetter = (currentWordLength - 1 === currentLetterIndex);
-              const lastSignal = (totalSignals.current - 1 === currentSignalIndex);
-              if (lastWord && lastLetter && lastSignal) {
+              console.log('currentSignalIndex: ', currentSignalIndex);
+              const isActive = () => ((activeWordIndex === currentWordIndex)
+              && (activeCharacterIndex === currentLetterIndex)
+              && (activeSignalIndex === currentSignalIndex));
+              if (isActive) {
+                // console.log('character: ', currentLetterIndex, 'isActive: ', isActive);
+              }
+              const isLastWord = () => (totalWords - 1 === currentWordIndex);
+              const isLastLetter = () => (currentWordLength - 1 === currentLetterIndex);
+              const isLastSignal = () => (totalSignals.current - 1 === currentSignalIndex);
+              if (isActive()) {
+              if (isLastWord() && isLastLetter() && isLastSignal()) {
                 setIsComplete(true);
-              } else if (lastLetter && lastSignal) {
+                return;
+              } if (isLastLetter() && isLastSignal()) {
                 setActiveWordIndex(newWordIndex);
-              } else if (lastSignal) {
-                console.log('newCharacterIndex: ', newCharacterIndex);
+                setActiveCharacterIndex(0);
+                setActiveSignalIndex(0);
+                return;
+              } if (isLastSignal()) {
                 setActiveCharacterIndex(newCharacterIndex);
-              } else {
-                console.log('newSignalIndex: ', newSignalIndex);
-                setActiveSignalIndex(newSignalIndex);
+                setActiveSignalIndex(0);
+                return;
+              }
+              setActiveSignalIndex(newSignalIndex);
               }
             }
           }
         }
-      }, 1000);
+      }, 500);
       return () => clearTimeout(timer);
     }
-  }, [isComplete, testCount]);
+  });
 
 
-
+  // useEffect(() => {
+  //   const newCount = testCount + 1;
+  //   if (!isComplete && testCount < 100) {
+  //     const timer = setTimeout(() => {
+  //       setTestCount(newCount);
+  //     }, 1000);
+  //     return () => clearTimeout(timer);
+  //   }
+  // });
 
   // useEffect(() => {
   //   const canvas = canvasRef.current;
