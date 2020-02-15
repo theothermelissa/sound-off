@@ -2,7 +2,12 @@ import React, { useState, useEffect, useContext } from 'react';
 import Word from './Word';
 import { GameContext } from './GameMaster';
 
-const Message = ({ activeWordIndexForCanvas, activeCharacterIndexForCanvas, activeSignalIndexForCanvas, canvasIsComplete }) => {
+const Message = ({
+  activeWordIndexForCanvas,
+  activeCharacterIndexForCanvas,
+  activeSignalIndexForCanvas,
+  canvasIsComplete,
+}) => {
   const {
     gameDispatch,
     gameState: {

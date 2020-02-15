@@ -43,6 +43,8 @@ const Word = ({
     }
   }, [isBegun]);
 
+  
+
   return (
     characterList.map((letter, index) => (
       <div key={letter + index}>
@@ -56,6 +58,8 @@ const Word = ({
               activeCharacterIndex={activeCharacterIndexForCanvas}
               activeSignalIndex={activeSignalIndexForCanvas}
               canvasIsComplete={canvasIsComplete}
+              // signalId={index}
+              // charId={letter + index}
             />
           )
           : (
