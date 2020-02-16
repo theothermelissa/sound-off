@@ -20,13 +20,17 @@ import alphabet from '../assets/codeTranslationKey';
 const CanvasMaker = ({ message }) => {
   const signalCount = useRef(0);
   const canvasRef = useRef(null);
-  // const [isComplete, setIsComplete] = useState(false);
-  // const [activeWordIndex, setActiveWordIndex] = useState(0);
-  // const [activeCharacterIndex, setActiveCharacterIndex] = useState(0);
-  // const [activeSignalIndex, setActiveSignalIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
 
 
-  const makeCharacter = (char) => {
+  const wordList = (msg) => {
+    const list = msg
+      .split(' ')
+      .map((word) => word.split(''));
+    return list;
+  };
+
+  const makeChar = (char) => {
     const character = {
       letter: char,
       sequence: alphabet[char].sequence,
@@ -36,16 +40,15 @@ const CanvasMaker = ({ message }) => {
   };
 
   const replaceChars = (list) => {
-    for (let thisWordIndex = 0; thisWordIndex < list.length; thisWordIndex += 1) {
-      const thisWord = list[thisWordIndex];
-      const wordLength = list[thisWordIndex].length;
-      for (let thisLetterIndex = 0; thisLetterIndex < wordLength; thisLetterIndex += 1) {
-        const thisLetter = thisWord[thisLetterIndex];
-        const char = makeCharacter(thisLetter);
-        const sequenceLength = char.sequence.length;
-        thisWord.splice(thisLetterIndex, 1, char);
-        for (let thisSequenceIndex = 0; thisSequenceIndex < sequenceLength; thisSequenceIndex += 1) {
-          thisWord[thisLetterIndex].characterIndices.push(signalCount.current);
+    for (let wordIndex = 0; wordIndex < list.length; wordIndex += 1) {
+      const thisWord = list[wordIndex];
+      const wordLength = list[wordIndex].length;
+      for (let letterIndex = 0; letterIndex < wordLength; letterIndex += 1) {
+        const thisLetter = thisWord[letterIndex];
+        const char = makeChar(thisLetter);
+        thisWord.splice(letterIndex, 1, char);
+        for (let sequenceIndex = 0; sequenceIndex < char.sequence.length; sequenceIndex += 1) {
+          thisWord[letterIndex].characterIndices.push(signalCount.current);
           signalCount.current += 1;
         }
       }
@@ -53,27 +56,34 @@ const CanvasMaker = ({ message }) => {
     return list;
   };
 
-  const wordList = (msg) => {
-    const list = msg
-      .split(' ')
-      .map((word) => word.split(''));
-    return list;
-  };
-  const autoplayableMessage = replaceChars(wordList(message));
 
+  let autoplayableMessage = [];
 
+  useEffect(() => {
+    autoplayableMessage = replaceChars(wordList(message));
+  }, []);
   console.log('autoplayableMessage: ', autoplayableMessage);
+
+  useEffect(() => {
+    let active = 0;
+    let timer = setTimeout(function increment() {
+      if (active < signalCount.current) {
+        active += 1;
+        console.log('active: ', active);
+        timer = setTimeout(increment, 500);
+      }
+    }, 500);
+    return () => clearTimeout(timer);
+  });
 
   return (
     <div>
       <canvas ref={canvasRef} style={{ border: '2px solid' }} />
       <button>Click Me. I don't do anything.</button>
-      {/* <Message
-        activeSignalIndexForCanvas={activeSignalIndex}
-        activeCharacterIndexForCanvas={activeCharacterIndex}
-        activeWordIndexForCanvas={activeWordIndex}
-        isComplete={isComplete}
-      /> */}
+      <Message
+        autoplayableMessage={autoplayableMessage}
+        activeSignalIndexForCanvas={activeIndex}
+      />
     </div>
   );
 };
