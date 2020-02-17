@@ -1,89 +1,50 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Message from './Message';
-import alphabet from '../assets/codeTranslationKey';
+import useMessageFormat from '../customHooks/useMessageFormat';
+import dash from '../assets/dash.svg';
 
-// -------
-
-// withAutoplay higer-order component takes in Message
-// maps over the message and calculate:
-// - total words
-// - total characters
-// - total codeSignals
-// creates an array of word arrays, autoplayableMessage, each with:
-//  -> an array of character objects, each with:
-//    -> the indices of its signals
-// returns Message with autoplayableMessage, so it can return Word components formatted for autoplay
-
-// -------
-
-
-const CanvasMaker = ({ message }) => {
-  const signalCount = useRef(0);
+const CanvasMaker = () => {
+  const totalSignals = useRef(useMessageFormat().totalSignals);
+  const wordList = useMessageFormat().formattedMessage;
   const canvasRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
-
-
-  const wordList = (msg) => {
-    const list = msg
-      .split(' ')
-      .map((word) => word.split(''));
-    return list;
-  };
-
-  const makeChar = (char) => {
-    const character = {
-      letter: char,
-      sequence: alphabet[char].sequence,
-      characterIndices: [],
-    };
-    return character;
-  };
-
-  const replaceChars = (list) => {
-    for (let wordIndex = 0; wordIndex < list.length; wordIndex += 1) {
-      const thisWord = list[wordIndex];
-      const wordLength = list[wordIndex].length;
-      for (let letterIndex = 0; letterIndex < wordLength; letterIndex += 1) {
-        const thisLetter = thisWord[letterIndex];
-        const char = makeChar(thisLetter);
-        thisWord.splice(letterIndex, 1, char);
-        for (let sequenceIndex = 0; sequenceIndex < char.sequence.length; sequenceIndex += 1) {
-          thisWord[letterIndex].characterIndices.push(signalCount.current);
-          signalCount.current += 1;
-        }
-      }
-    }
-    return list;
-  };
-
-
-  let autoplayableMessage = [];
+  const canvasWidth='300';
 
   useEffect(() => {
-    autoplayableMessage = replaceChars(wordList(message));
+    const messageCanvas = canvasRef.current;
+    const context = messageCanvas.getContext('2d');
+    wordList.map((word, wordIndex) => {
+      word.map((letterObject, letterIndex) => {
+        const { letter } = letterObject;
+        const targetId = wordIndex + letter + letterIndex;
+        const xOrigin = () => letterIndex * document.getElementById(targetId).width;
+        context.drawImage(document.getElementById(targetId), xOrigin(), 0);
+      });
+    });
   }, []);
-  console.log('autoplayableMessage: ', autoplayableMessage);
 
   useEffect(() => {
-    let active = 0;
+    const newIndex = activeIndex + 1;
     let timer = setTimeout(function increment() {
-      if (active < signalCount.current) {
-        active += 1;
-        console.log('active: ', active);
-        timer = setTimeout(increment, 500);
+      if (activeIndex <= totalSignals.current) {
+        timer = setTimeout(increment, 125);
+        setActiveIndex(newIndex);
       }
-    }, 500);
+    }, 125);
+    // console.log('activeIndex: ', activeIndex);
     return () => clearTimeout(timer);
   });
 
+  // const onCanvasCompletion = 'potato';
+
   return (
     <div>
-      <canvas ref={canvasRef} style={{ border: '2px solid' }} />
-      <button>Click Me. I don't do anything.</button>
-      <Message
-        autoplayableMessage={autoplayableMessage}
-        activeSignalIndexForCanvas={activeIndex}
-      />
+      <canvas ref={canvasRef} width={canvasWidth} style={{ border: '2px solid' }} />
+      <div className="hidden">
+        <Message
+          activeSignalIndexForCanvas={activeIndex}
+        />
+      </div>
     </div>
   );
 };

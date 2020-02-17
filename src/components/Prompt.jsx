@@ -16,6 +16,7 @@ const Prompt = ({
   const { settingsState: { showLetters } } = useContext(SettingsContext);
   const [promptIsComplete, setPromptIsComplete] = useState(false);
 
+
   const onCompleteSequence = () => {
     setPromptIsComplete(true);
     completePrompt();

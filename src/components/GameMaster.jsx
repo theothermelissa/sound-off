@@ -12,7 +12,7 @@ export const GameContext = React.createContext(null);
 export const GameDispatch = React.createContext(null);
 
 const initialState = {
-  userSubmittedMessage: 'hello world',
+  userSubmittedMessage: 'yes',
   signalStartTimes: [],
   signalEndTimes: [],
   lastSignalReceived: '',
@@ -38,7 +38,7 @@ const GameMaster = () => {
         <Light on />
         <div className="messageHolder">
           { gameState.isSendable
-            ? <CanvasMaker message={gameState.userSubmittedMessage} />
+            ? <CanvasMaker msg={gameState.userSubmittedMessage} />
             : <Message /> }
         </div>
         { gameState.isComplete && <ScoreKeeper /> }

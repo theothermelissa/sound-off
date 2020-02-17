@@ -5,13 +5,11 @@ import CanvasLetterMaker from './CanvasLetterMaker';
 
 const Word = ({
   characterList,
-  activeWordIndex,
-  activeWordIndexForCanvas,
   activeSignalIndexForCanvas,
-  activeCharacterIndexForCanvas,
-  wordPosition,
-  completeWord,
   canvasIsComplete,
+  wordPosition,
+  activeWordIndex,
+  completeWord,
 }) => {
   const {
     gameDispatch,
@@ -43,31 +41,25 @@ const Word = ({
     }
   }, [isBegun]);
 
-  
-
   return (
     characterList.map((letter, index) => (
-      <div key={letter + index}>
+      <div key={letter.letter + index}>
         { isSendable
           ? (
             <CanvasLetterMaker
               char={letter}
-              characterPosition={index}
-              wordPosition={wordPosition}
-              activeWordIndex={activeWordIndexForCanvas}
-              activeCharacterIndex={activeCharacterIndexForCanvas}
               activeSignalIndex={activeSignalIndexForCanvas}
+              id={wordPosition + letter.letter + index}
               canvasIsComplete={canvasIsComplete}
-              // signalId={index}
-              // charId={letter + index}
             />
           )
           : (
             <Prompt
-              char={letter}
+              char={letter.letter}
               characterPosition={index}
               activeCharacterIndex={activeCharacterIndex}
               wordPosition={wordPosition}
+              activeWordIndex={activeWordIndex}
               completePrompt={onCompletePrompt}
             />
           )}

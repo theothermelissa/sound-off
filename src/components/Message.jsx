@@ -1,23 +1,21 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import Word from './Word';
+import useMessageFormat from '../customHooks/useMessageFormat';
 import { GameContext } from './GameMaster';
 
 const Message = ({
-  activeWordIndexForCanvas,
-  activeCharacterIndexForCanvas,
   activeSignalIndexForCanvas,
   canvasIsComplete,
 }) => {
   const {
     gameDispatch,
     gameState: {
-      userSubmittedMessage,
       isBegun,
     },
   } = useContext(GameContext);
+  const formattedMessage = useRef(useMessageFormat().formattedMessage);
   const [activeWordIndex, setActiveWordIndex] = useState(0);
-  const wordList = userSubmittedMessage.split(' ');
-  const totalWords = wordList.length;
+  const totalWords = formattedMessage.current.length;
 
   const onCompleteWord = () => {
     const newIndex = activeWordIndex + 1;
@@ -41,17 +39,15 @@ const Message = ({
   }, [isBegun]);
 
   return (
-    wordList.map((word, index) => (
+    formattedMessage.current.map((word, index) => (
       <div className="wordHolder" key={word + index}>
         <Word
-          characterList={word.split('')}
+          characterList={word}
           activeWordIndex={activeWordIndex}
-          activeWordIndexForCanvas={activeWordIndexForCanvas}
           activeSignalIndexForCanvas={activeSignalIndexForCanvas}
-          activeCharacterIndexForCanvas={activeCharacterIndexForCanvas}
+          canvasIsComplete={canvasIsComplete}
           wordPosition={index}
           completeWord={onCompleteWord}
-          canvasIsComplete={canvasIsComplete}
         />
       </div>
     ))
