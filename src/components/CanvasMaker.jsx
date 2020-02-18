@@ -1,7 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
+import Jimp from 'jimp/es';
+import gifshot from 'gifshot';
 import Message from './Message';
 import useMessageFormat from '../customHooks/useMessageFormat';
 import dash from '../assets/dash.svg';
+
 
 const CanvasMaker = () => {
   const totalSignals = useRef(useMessageFormat().totalSignals);
@@ -28,7 +31,21 @@ const CanvasMaker = () => {
     setFrames([...frames, nextImage]);
   }, [activeIndex]);
 
-  console.log('frames: ', frames);
+  // not sure ~ using jimp + gifwrap
+
+  // useEffect(() => {
+  //   if (activeIndex === totalSignals) {
+  //     frames.map((image, index) => {
+  //       Jimp.read(image, (err, img) => {
+  //         if (err) {
+  //           console.log(err)
+  //         } else {
+  //           img.write(`frame${index}`);
+  //         }
+  //       });
+  //     });
+  //   }
+  // });
 
   useEffect(() => {
     const newIndex = activeIndex + 1;
@@ -41,6 +58,26 @@ const CanvasMaker = () => {
     return () => clearTimeout(timer);
   });
 
+  useEffect(() => {
+    console.log('activeIndex: ', activeIndex);
+    console.log('totalSignals: ', totalSignals);
+    if (activeIndex === totalSignals.current) {
+      const images = frames;
+      console.log("test");
+      gifshot.createGIF({
+        images,
+        interval: 0.4,
+      }, (obj) => {
+        if (!obj.error) {
+          console.log("error: ", obj.error);
+          const { image } = obj;
+          const animatedImage = document.getElementById('animatedGIF');
+          animatedImage.src = image;
+        }
+      });
+    }
+  }, [activeIndex, totalSignals]);
+
 
   return (
     <div>
@@ -49,6 +86,9 @@ const CanvasMaker = () => {
         <Message
           activeSignalIndexForCanvas={activeIndex}
         />
+      </div>
+      <div>
+        <img id="animatedGIF" alt="autoplaying-message" />
       </div>
     </div>
   );
