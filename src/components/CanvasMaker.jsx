@@ -12,12 +12,16 @@ const CanvasMaker = () => {
   const canvasRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const canvasWidth = '300';
+  const canvasHeight = '300';
   const [frames, setFrames] = useState([]);
   let nextImage;
 
   useEffect(() => {
     const messageCanvas = canvasRef.current;
     const context = messageCanvas.getContext('2d');
+    // context.globalCompositeOperation = 'destination-over';
+    context.fillStyle = 'whitesmoke';
+    context.fillRect(0, 0, canvasWidth, canvasHeight);
     wordList.map((word, wordIndex) => {
       word.map((letterObject, letterIndex) => {
         const { letter } = letterObject;
@@ -51,22 +55,25 @@ const CanvasMaker = () => {
     const newIndex = activeIndex + 1;
     let timer = setTimeout(function increment() {
       if (activeIndex <= totalSignals.current) {
-        timer = setTimeout(increment, 200);
+        timer = setTimeout(increment, 100);
         setActiveIndex(newIndex);
       }
-    }, 200);
+    }, 100);
     return () => clearTimeout(timer);
   });
 
   useEffect(() => {
     console.log('activeIndex: ', activeIndex);
     console.log('totalSignals: ', totalSignals);
-    if (activeIndex === totalSignals.current) {
+    if (activeIndex > totalSignals.current) {
       const images = frames;
       console.log("test");
       gifshot.createGIF({
         images,
-        interval: 0.4,
+        interval: 0.2,
+        gifWidth: canvasWidth,
+        gifHeight: canvasHeight,
+        webcamVideoElement: null,
       }, (obj) => {
         if (!obj.error) {
           console.log("error: ", obj.error);
@@ -81,7 +88,7 @@ const CanvasMaker = () => {
 
   return (
     <div>
-      <canvas ref={canvasRef} width={canvasWidth} style={{ border: '2px solid' }} />
+      <canvas ref={canvasRef} width={canvasWidth} height={canvasHeight} style={{ border: '2px solid' }} />
       <div className="hidden">
         <Message
           activeSignalIndexForCanvas={activeIndex}
