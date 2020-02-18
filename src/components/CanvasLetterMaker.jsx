@@ -18,6 +18,7 @@ const CanvasLetterMaker = ({
   const dashHeight = 5;
   const buffer = 2;
 
+  
   const { letter, characterIndices, sequence } = char;
   const totalSequenceLength = sequence.length;
   const canvasHeightCenterPoint = canvasHeight / 2;
@@ -25,6 +26,13 @@ const CanvasLetterMaker = ({
   const fontName = 'Courier';
   const fontSize = '70px';
   const font = `${fontSize} ${fontName}`;
+
+  const signalIsComplete = (signalIndex) => signalIndex < activeSignalIndex;
+
+  const letterIsComplete = () => {
+    const finalIndex = characterIndices[characterIndices.length - 1];
+    return (finalIndex < activeSignalIndex);
+  };
 
   const combinedCodeSignalWidths = () => {
     let total = sequence
@@ -46,11 +54,6 @@ const CanvasLetterMaker = ({
       context.fill();
     };
 
-    const letterIsComplete = () => {
-      const finalIndex = characterIndices[characterIndices.length - 1];
-      return (finalIndex < activeSignalIndex);
-    };
-
     context.font = font;
     context.textAlign = 'center';
     context.textBaseline = 'middle';
@@ -58,9 +61,7 @@ const CanvasLetterMaker = ({
     context.fillText(letter, canvasWidthCenterPoint, canvasHeightCenterPoint);
 
     for (let signalIndex = 0, x = codeStartPoint, y = 82; signalIndex < totalSequenceLength; signalIndex += 1) {
-      const isComplete = () => characterIndices[signalIndex] < activeSignalIndex;
-      console.log('isComplete(): ', isComplete());
-      context.fillStyle = isComplete() ? black : gray;
+      context.fillStyle = signalIsComplete(characterIndices[signalIndex]) ? black : gray;
       if (sequence[signalIndex].id === 'dot') {
         context.translate(dotRadius, dotRadius);
         circle(x, y, dotRadius);

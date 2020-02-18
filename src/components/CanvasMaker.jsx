@@ -8,7 +8,9 @@ const CanvasMaker = () => {
   const wordList = useMessageFormat().formattedMessage;
   const canvasRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const canvasWidth='300';
+  const canvasWidth = '300';
+  const [frames, setFrames] = useState([]);
+  let nextImage;
 
   useEffect(() => {
     const messageCanvas = canvasRef.current;
@@ -21,21 +23,24 @@ const CanvasMaker = () => {
         context.drawImage(document.getElementById(targetId), xOrigin(), 0);
       });
     });
-  }, []);
+    nextImage = messageCanvas.toDataURL();
+
+    setFrames([...frames, nextImage]);
+  }, [activeIndex]);
+
+  console.log('frames: ', frames);
 
   useEffect(() => {
     const newIndex = activeIndex + 1;
     let timer = setTimeout(function increment() {
       if (activeIndex <= totalSignals.current) {
-        timer = setTimeout(increment, 125);
+        timer = setTimeout(increment, 200);
         setActiveIndex(newIndex);
       }
-    }, 125);
-    // console.log('activeIndex: ', activeIndex);
+    }, 200);
     return () => clearTimeout(timer);
   });
 
-  // const onCanvasCompletion = 'potato';
 
   return (
     <div>
