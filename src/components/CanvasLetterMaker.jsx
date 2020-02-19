@@ -6,25 +6,26 @@ const CanvasLetterMaker = ({
   char,
   activeSignalIndex,
   id,
+  reduceBy,
 }) => {
   const canvasRef = useRef(null);
   const gray = '#CCC4BC';
   const black = '#000000';
-  const canvasWidth = 75;
-  const canvasHeight = 90;
-  const dashWidth = 9;
-  const dotDiameter = 5;
+  const canvasWidth = Math.round(75 * reduceBy);
+  const canvasHeight = Math.round(90 * reduceBy);
+  const dashWidth = Math.round(9 * reduceBy);
+  const dotDiameter = Math.round(5 * reduceBy);
+  const dashHeight = Math.round(5 * reduceBy);
   const dotRadius = dotDiameter / 2;
-  const dashHeight = 5;
-  const buffer = 2;
+  const buffer = Math.round(2 * reduceBy);
+  const textSize = Math.round(70 * reduceBy);
 
-  
   const { letter, characterIndices, sequence } = char;
   const totalSequenceLength = sequence.length;
   const canvasHeightCenterPoint = canvasHeight / 2;
   const canvasWidthCenterPoint = canvasWidth / 2;
   const fontName = 'Courier';
-  const fontSize = '70px';
+  const fontSize = `${textSize}px`;
   const font = `${fontSize} ${fontName}`;
 
   const signalIsComplete = (signalIndex) => signalIndex < activeSignalIndex;

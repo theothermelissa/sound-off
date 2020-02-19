@@ -1,55 +1,57 @@
 import React, { useState, useRef, useEffect } from 'react';
-import Jimp from 'jimp/es';
 import gifshot from 'gifshot';
 import Message from './Message';
-import useMessageFormat from '../customHooks/useMessageFormat';
-import dash from '../assets/dash.svg';
-
+import useFormatter from '../customHooks/useFormatter';
+import useCanvasResizer from '../customHooks/useCanvasResizer';
 
 const CanvasMaker = () => {
-  const totalSignals = useRef(useMessageFormat().totalSignals);
-  const wordList = useMessageFormat().formattedMessage;
+  const wordList = useFormatter().formattedMessage;
+  const totalCharacters = wordList.reduce((sum, word) => sum + word.length, 0);
+  const totalSignals = useRef(useFormatter().totalSignals);
   const canvasRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const canvasWidth = '300';
-  const canvasHeight = '300';
   const [frames, setFrames] = useState([]);
+  const leftPadding = useRef(0);
+  const startingLetterWidth = 75;
+  const wordBuffer = 2;
   let nextImage;
+
+  const { canvasWidth, canvasHeight, reduceBy } = useCanvasResizer();
+
+  const workingLetterWidth = startingLetterWidth * reduceBy;
+  const totalMessageWidth = (totalCharacters * workingLetterWidth) + ((wordList.length - 1) * wordBuffer);
+  leftPadding.current = Math.round((canvasWidth - totalMessageWidth) / 2);
 
   useEffect(() => {
     const messageCanvas = canvasRef.current;
     const context = messageCanvas.getContext('2d');
-    // context.globalCompositeOperation = 'destination-over';
     context.fillStyle = 'whitesmoke';
     context.fillRect(0, 0, canvasWidth, canvasHeight);
+    let previousXOrigin;
     wordList.map((word, wordIndex) => {
       word.map((letterObject, letterIndex) => {
+        const veryFirst = (wordIndex === 0 && letterIndex === 0);
+        const startOfWord = (wordIndex !== 0 && letterIndex === 0);
         const { letter } = letterObject;
         const targetId = wordIndex + letter + letterIndex;
-        const xOrigin = () => letterIndex * document.getElementById(targetId).width;
+        const xOrigin = () => {
+          let origin;
+          if (veryFirst) {
+            origin = leftPadding.current;
+            previousXOrigin = origin;
+          } else if (startOfWord) {
+            origin = previousXOrigin + wordBuffer + workingLetterWidth;
+          } else origin = previousXOrigin + workingLetterWidth;
+          previousXOrigin = origin;
+          console.log('previousXOrigin: ', previousXOrigin);
+          return origin;
+        };
         context.drawImage(document.getElementById(targetId), xOrigin(), 0);
       });
     });
     nextImage = messageCanvas.toDataURL();
-
     setFrames([...frames, nextImage]);
   }, [activeIndex]);
-
-  // not sure ~ using jimp + gifwrap
-
-  // useEffect(() => {
-  //   if (activeIndex === totalSignals) {
-  //     frames.map((image, index) => {
-  //       Jimp.read(image, (err, img) => {
-  //         if (err) {
-  //           console.log(err)
-  //         } else {
-  //           img.write(`frame${index}`);
-  //         }
-  //       });
-  //     });
-  //   }
-  // });
 
   useEffect(() => {
     const newIndex = activeIndex + 1;
@@ -63,11 +65,8 @@ const CanvasMaker = () => {
   });
 
   useEffect(() => {
-    console.log('activeIndex: ', activeIndex);
-    console.log('totalSignals: ', totalSignals);
     if (activeIndex > totalSignals.current) {
       const images = frames;
-      console.log("test");
       gifshot.createGIF({
         images,
         interval: 0.2,
@@ -76,7 +75,6 @@ const CanvasMaker = () => {
         webcamVideoElement: null,
       }, (obj) => {
         if (!obj.error) {
-          console.log("error: ", obj.error);
           const { image } = obj;
           const animatedImage = document.getElementById('animatedGIF');
           animatedImage.src = image;
@@ -92,6 +90,7 @@ const CanvasMaker = () => {
       <div className="hidden">
         <Message
           activeSignalIndexForCanvas={activeIndex}
+          reduceBy={reduceBy}
         />
       </div>
       <div>

@@ -10,6 +10,7 @@ const Word = ({
   wordPosition,
   activeWordIndex,
   completeWord,
+  reduceBy,
 }) => {
   const {
     gameDispatch,
@@ -51,6 +52,7 @@ const Word = ({
               activeSignalIndex={activeSignalIndexForCanvas}
               id={wordPosition + letter.letter + index}
               canvasIsComplete={canvasIsComplete}
+              reduceBy={reduceBy}
             />
           )
           : (

@@ -1,9 +1,8 @@
 import React, { useRef, useContext } from 'react';
-import Message from '../components/Message';
 import alphabet from '../assets/codeTranslationKey';
 import { GameContext } from '../components/GameMaster';
 
-const useMessageFormat = () => {
+const useFormatter = () => {
   const {
     gameState: {
       userSubmittedMessage,
@@ -50,6 +49,6 @@ const useMessageFormat = () => {
     totalSignals: signalCount.current,
   };
 };
-// console.log('totalCount in useMessageFormat: ', totalCount);
+// console.log('totalCount in useFormatter: ', totalCount);
 
-export default useMessageFormat;
+export default useFormatter;

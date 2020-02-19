@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import Word from './Word';
-import useMessageFormat from '../customHooks/useMessageFormat';
+import useFormatter from '../customHooks/useFormatter';
 import { GameContext } from './GameMaster';
 
 const Message = ({
   activeSignalIndexForCanvas,
   canvasIsComplete,
+  reduceBy,
 }) => {
   const {
     gameDispatch,
@@ -13,7 +14,7 @@ const Message = ({
       isBegun,
     },
   } = useContext(GameContext);
-  const formattedMessage = useRef(useMessageFormat().formattedMessage);
+  const formattedMessage = useRef(useFormatter().formattedMessage);
   const [activeWordIndex, setActiveWordIndex] = useState(0);
   const totalWords = formattedMessage.current.length;
 
@@ -48,6 +49,7 @@ const Message = ({
           canvasIsComplete={canvasIsComplete}
           wordPosition={index}
           completeWord={onCompleteWord}
+          reduceBy={reduceBy}
         />
       </div>
     ))
