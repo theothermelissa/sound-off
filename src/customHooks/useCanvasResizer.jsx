@@ -13,28 +13,32 @@ const useCanvasResizer = () => {
   const workingLetterWidth = 75;
   const workingLetterHeight = 90;
 
-  const maximumWidth = () => messageLength * workingLetterWidth;
+  const maximumWidth = () => messageLength.current * workingLetterWidth;
 
-  const needsReduced = maximumWidth > 300;
+  const needsReduced = maximumWidth() > 500;
 
   const findCanvasWidth = () => {
     if (needsReduced) {
-      return maximumWidth;
-    } return 300;
+      return 500;
+    } return maximumWidth();
   };
 
-  const reductionRate = () => ((maximumWidth > 300) ? ((300 / maximumWidth) * 100) : 100);
+  const reductionRate = () => {
+    if (needsReduced) {
+      return 500 / maximumWidth();
+    } return 100;
+  };
 
   const findCanvasHeight = () => {
     if (needsReduced) {
-      return workingLetterHeight * reductionRate;
+      return workingLetterHeight * reductionRate();
     } return workingLetterHeight;
   };
 
   return {
     canvasWidth: findCanvasWidth(),
     canvasHeight: findCanvasHeight(),
-    reduceBy: Math.round(reductionRate() / 100),
+    reduceBy: (Math.round(reductionRate() * 100)) / 100,
   };
 };
 

@@ -18,6 +18,9 @@ const CanvasMaker = () => {
 
   const { canvasWidth, canvasHeight, reduceBy } = useCanvasResizer();
 
+  console.log('reduceBy: ', reduceBy);
+
+
   const workingLetterWidth = startingLetterWidth * reduceBy;
   const totalMessageWidth = (totalCharacters * workingLetterWidth) + ((wordList.length - 1) * wordBuffer);
   leftPadding.current = Math.round((canvasWidth - totalMessageWidth) / 2);
@@ -43,7 +46,6 @@ const CanvasMaker = () => {
             origin = previousXOrigin + wordBuffer + workingLetterWidth;
           } else origin = previousXOrigin + workingLetterWidth;
           previousXOrigin = origin;
-          console.log('previousXOrigin: ', previousXOrigin);
           return origin;
         };
         context.drawImage(document.getElementById(targetId), xOrigin(), 0);
