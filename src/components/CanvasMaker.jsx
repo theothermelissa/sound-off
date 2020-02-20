@@ -3,8 +3,12 @@ import gifshot from 'gifshot';
 import Message from './Message';
 import useFormatter from '../customHooks/useFormatter';
 import useCanvasResizer from '../customHooks/useCanvasResizer';
+import gifSizes from '../assets/gifSizes';
 
 const CanvasMaker = () => {
+  const {
+    wordBuffer,
+  } = gifSizes;
   const wordList = useFormatter().formattedMessage;
   const totalCharacters = wordList.reduce((sum, word) => sum + word.length, 0);
   const totalSignals = useRef(useFormatter().totalSignals);
@@ -12,17 +16,13 @@ const CanvasMaker = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [frames, setFrames] = useState([]);
   const leftPadding = useRef(0);
-  const startingLetterWidth = 75;
-  const wordBuffer = 2;
   let nextImage;
 
-  const { canvasWidth, canvasHeight, reduceBy } = useCanvasResizer();
+  const {
+    canvasWidth, canvasHeight, reduceBy, letterWidth,
+  } = useCanvasResizer();
 
-  console.log('reduceBy: ', reduceBy);
-
-
-  const workingLetterWidth = startingLetterWidth * reduceBy;
-  const totalMessageWidth = (totalCharacters * workingLetterWidth) + ((wordList.length - 1) * wordBuffer);
+  const totalMessageWidth = (totalCharacters * letterWidth) + ((wordList.length - 1) * wordBuffer);
   leftPadding.current = Math.round((canvasWidth - totalMessageWidth) / 2);
 
   useEffect(() => {
@@ -43,15 +43,16 @@ const CanvasMaker = () => {
             origin = leftPadding.current;
             previousXOrigin = origin;
           } else if (startOfWord) {
-            origin = previousXOrigin + wordBuffer + workingLetterWidth;
-          } else origin = previousXOrigin + workingLetterWidth;
+            origin = previousXOrigin + wordBuffer + letterWidth;
+          } else origin = previousXOrigin + letterWidth;
           previousXOrigin = origin;
           return origin;
         };
         context.drawImage(document.getElementById(targetId), xOrigin(), 0);
       });
     });
-    nextImage = messageCanvas.toDataURL();
+    nextImage = new Image();
+    nextImage.src = messageCanvas.toDataURL();
     setFrames([...frames, nextImage]);
   }, [activeIndex]);
 
@@ -59,10 +60,10 @@ const CanvasMaker = () => {
     const newIndex = activeIndex + 1;
     let timer = setTimeout(function increment() {
       if (activeIndex <= totalSignals.current) {
-        timer = setTimeout(increment, 100);
+        timer = setTimeout(increment, 300);
         setActiveIndex(newIndex);
       }
-    }, 100);
+    }, 300);
     return () => clearTimeout(timer);
   });
 

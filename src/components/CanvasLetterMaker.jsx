@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
-import dot from '../assets/dot.svg';
 import codeTranslationKey from '../assets/codeTranslationKey';
+import gifSizes from '../assets/gifSizes';
 
 const CanvasLetterMaker = ({
   char,
@@ -8,16 +8,23 @@ const CanvasLetterMaker = ({
   id,
   reduceBy,
 }) => {
+  const { dotD,
+    dashH,
+    dashW,
+    letterW,
+    letterH,
+    signalBuffer,
+  } = gifSizes;
   const canvasRef = useRef(null);
-  const gray = '#CCC4BC';
+  // const gray = '#CCC4BC';
   const black = '#000000';
-  const canvasWidth = Math.round(75 * reduceBy);
-  const canvasHeight = Math.round(90 * reduceBy);
-  const dashWidth = Math.round(9 * reduceBy);
-  const dotDiameter = Math.round(5 * reduceBy);
-  const dashHeight = Math.round(5 * reduceBy);
+  const canvasWidth = Math.round(letterW * reduceBy);
+  const canvasHeight = Math.round(letterH * reduceBy);
+  const dashWidth = Math.round(dashW * reduceBy);
+  const dotDiameter = Math.round(dotD * reduceBy);
+  const dashHeight = Math.round(dashH * reduceBy);
   const dotRadius = dotDiameter / 2;
-  const buffer = Math.round(2 * reduceBy);
+  const buffer = signalBuffer;
   const textSize = Math.round(70 * reduceBy);
 
   const { letter, characterIndices, sequence } = char;
@@ -61,8 +68,8 @@ const CanvasLetterMaker = ({
     context.fillStyle = letterIsComplete() ? black : 'transparent';
     context.fillText(letter, canvasWidthCenterPoint, canvasHeightCenterPoint);
 
-    for (let signalIndex = 0, x = codeStartPoint, y = 82; signalIndex < totalSequenceLength; signalIndex += 1) {
-      context.fillStyle = signalIsComplete(characterIndices[signalIndex]) ? black : gray;
+    for (let signalIndex = 0, x = codeStartPoint, y = canvasHeight - 10; signalIndex < totalSequenceLength; signalIndex += 1) {
+      context.fillStyle = signalIsComplete(characterIndices[signalIndex]) ? black : 'transparent';
       if (sequence[signalIndex].id === 'dot') {
         context.translate(dotRadius, dotRadius);
         circle(x, y, dotRadius);

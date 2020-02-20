@@ -39,6 +39,7 @@ const useCanvasResizer = () => {
     canvasWidth: findCanvasWidth(),
     canvasHeight: findCanvasHeight(),
     reduceBy: (Math.round(reductionRate() * 100)) / 100,
+    letterWidth: Math.round(workingLetterWidth * reductionRate()),
   };
 };
 

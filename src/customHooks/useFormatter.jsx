@@ -21,7 +21,7 @@ const useFormatter = () => {
   const makeChar = (char) => {
     const character = {
       letter: char,
-      sequence: alphabet[char].sequence,
+      sequence: alphabet[char.toLowerCase()].sequence,
       characterIndices: [],
     };
     return character;
