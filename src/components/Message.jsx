@@ -5,7 +5,7 @@ import { GameContext } from './GameMaster';
 
 const Message = ({
   activeSignalIndexForCanvas,
-  canvasIsComplete,
+  canvasMessageIsComplete,
   reduceBy,
 }) => {
   const {
@@ -46,7 +46,7 @@ const Message = ({
           characterList={word}
           activeWordIndex={activeWordIndex}
           activeSignalIndexForCanvas={activeSignalIndexForCanvas}
-          canvasIsComplete={canvasIsComplete}
+          canvasMessageIsComplete={canvasMessageIsComplete}
           wordPosition={index}
           completeWord={onCompleteWord}
           reduceBy={reduceBy}

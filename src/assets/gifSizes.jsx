@@ -4,8 +4,8 @@ const gifSizes = {
   dashW: 12,
   canvasW: 500,
   letterW: 70,
-  letterH: 90,
-  signalBuffer: 2,
+  letterH: 100,
+  signalBuffer: 3,
   wordBuffer: 10,
 };
 

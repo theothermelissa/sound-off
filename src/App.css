@@ -345,7 +345,7 @@ form {
   to {transform: rotate(360deg);}
 }
 
-.scoreCard {
+.modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -400,6 +400,23 @@ form {
   border-radius: 4px;
 }
 
+.sendableMessage-main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  /* text-align: left; */
+  padding: 20px;
+  background: white;
+  box-shadow: -10px 5px 20px rgba(0, 0, 0, 0.2);
+  width: 60%;
+  min-height: 40%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .light-container {
   height: 30px;
   position: relative;
@@ -436,4 +453,8 @@ form {
 
 .hidden {
   display: none;
+}
+
+h1 {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
 }

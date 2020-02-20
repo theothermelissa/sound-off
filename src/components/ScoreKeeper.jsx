@@ -84,7 +84,7 @@ const ScoreKeeper = () => {
   );
 
   return (
-    <div className="scoreCard">
+    <div className="modal">
       <div className="scoreCard-main">
         <div className="score-secondary">{randomAffirmation()}</div>
         <div className="score-secondary">

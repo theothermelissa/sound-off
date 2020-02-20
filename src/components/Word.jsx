@@ -6,7 +6,7 @@ import CanvasLetterMaker from './CanvasLetterMaker';
 const Word = ({
   characterList,
   activeSignalIndexForCanvas,
-  canvasIsComplete,
+  canvasMessageIsComplete,
   wordPosition,
   activeWordIndex,
   completeWord,
@@ -51,7 +51,7 @@ const Word = ({
               char={letter}
               activeSignalIndex={activeSignalIndexForCanvas}
               id={wordPosition + letter.letter + index}
-              canvasIsComplete={canvasIsComplete}
+              canvasMessageIsComplete={canvasMessageIsComplete}
               reduceBy={reduceBy}
             />
           )

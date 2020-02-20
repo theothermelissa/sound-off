@@ -16,6 +16,9 @@ const CanvasMaker = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [frames, setFrames] = useState([]);
   const leftPadding = useRef(0);
+  const [gifIsComplete, setGifIsComplete] = useState(false);
+  const [gifIsReady, setGifIsReady] = useState(false);
+  const canvasMessageIsComplete = activeIndex >= totalSignals.current;
   let nextImage;
 
   const {
@@ -60,22 +63,26 @@ const CanvasMaker = () => {
     const newIndex = activeIndex + 1;
     let timer = setTimeout(function increment() {
       if (activeIndex <= totalSignals.current) {
-        timer = setTimeout(increment, 300);
+        timer = setTimeout(increment, 10);
         setActiveIndex(newIndex);
       }
-    }, 300);
+    }, 10);
     return () => clearTimeout(timer);
   });
 
   useEffect(() => {
     if (activeIndex > totalSignals.current) {
+      const endingFrames = Array(10).fill(nextImage);
+      console.log('endingFrames: ', endingFrames);
       const images = frames;
+      images.push(...endingFrames);
       gifshot.createGIF({
         images,
-        interval: 0.2,
+        interval: 0.3,
         gifWidth: canvasWidth,
         gifHeight: canvasHeight,
         webcamVideoElement: null,
+        repeat: null,
       }, (obj) => {
         if (!obj.error) {
           const { image } = obj;
@@ -86,18 +93,40 @@ const CanvasMaker = () => {
     }
   }, [activeIndex, totalSignals]);
 
+  useEffect(() => {
+    if (frames.length === totalSignals.current + 2) {
+      setGifIsComplete(true);
+    }
+  }, [frames, totalSignals]);
+
+  useEffect(() => {
+    if (gifIsComplete) {
+      setTimeout(() => {
+        setGifIsReady(true);
+      }, 3000);
+    }
+  });
+
+  const shouldHide = () => {
+    if (gifIsReady) {
+      return { display: 'block' };
+    } return { display: 'none' };
+  };
 
   return (
     <div>
-      <canvas ref={canvasRef} width={canvasWidth} height={canvasHeight} style={{ border: '2px solid' }} />
+      <canvas className="hidden" ref={canvasRef} width={canvasWidth} height={canvasHeight} style={{ border: '2px solid' }} />
+      {!gifIsReady && <h1>Building your message ...</h1>}
       <div className="hidden">
         <Message
+          style={shouldHide()}
           activeSignalIndexForCanvas={activeIndex}
           reduceBy={reduceBy}
+          canvasMessageIsComplete={canvasMessageIsComplete}
         />
       </div>
       <div>
-        <img id="animatedGIF" alt="autoplaying-message" />
+        <img id="animatedGIF" style={shouldHide()} alt="autoplaying-message" />
       </div>
     </div>
   );

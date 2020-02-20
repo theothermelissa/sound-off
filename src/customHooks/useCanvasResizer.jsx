@@ -1,5 +1,6 @@
 import React, { useRef, useContext, useEffect } from 'react';
 import { GameContext } from '../components/GameMaster';
+import gifSizes from '../assets/gifSizes';
 
 
 const useCanvasResizer = () => {
@@ -9,9 +10,14 @@ const useCanvasResizer = () => {
     },
   } = useContext(GameContext);
 
+  const {
+    letterW,
+    letterH,
+  } = gifSizes;
+
   const messageLength = useRef(userSubmittedMessage.length);
-  const workingLetterWidth = 75;
-  const workingLetterHeight = 90;
+  const workingLetterWidth = letterW;
+  const workingLetterHeight = letterH;
 
   const maximumWidth = () => messageLength.current * workingLetterWidth;
 

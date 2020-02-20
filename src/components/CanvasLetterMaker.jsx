@@ -7,8 +7,10 @@ const CanvasLetterMaker = ({
   activeSignalIndex,
   id,
   reduceBy,
+  canvasMessageIsComplete,
 }) => {
-  const { dotD,
+  const {
+    dotD,
     dashH,
     dashW,
     letterW,
@@ -16,7 +18,7 @@ const CanvasLetterMaker = ({
     signalBuffer,
   } = gifSizes;
   const canvasRef = useRef(null);
-  // const gray = '#CCC4BC';
+  const gray = '#CCC4BC';
   const black = '#000000';
   const canvasWidth = Math.round(letterW * reduceBy);
   const canvasHeight = Math.round(letterH * reduceBy);
@@ -68,14 +70,23 @@ const CanvasLetterMaker = ({
     context.fillStyle = letterIsComplete() ? black : 'transparent';
     context.fillText(letter, canvasWidthCenterPoint, canvasHeightCenterPoint);
 
-    for (let signalIndex = 0, x = codeStartPoint, y = canvasHeight - 10; signalIndex < totalSequenceLength; signalIndex += 1) {
-      context.fillStyle = signalIsComplete(characterIndices[signalIndex]) ? black : 'transparent';
-      if (sequence[signalIndex].id === 'dot') {
+    for (let signalIndex = 0, x = codeStartPoint, y = canvasHeight - (dashHeight * 2); signalIndex < totalSequenceLength; signalIndex += 1) {
+      const thisSignal = characterIndices[signalIndex];
+      const thisSignalId = sequence[signalIndex].id;
+      const determineFillStyle = () => {
+        if (letterIsComplete()) {
+          return black;
+        } if (signalIsComplete(thisSignal)) {
+          return gray;
+        } return 'transparent';
+      };
+      context.fillStyle = determineFillStyle();
+      if (thisSignalId === 'dot') {
         context.translate(dotRadius, dotRadius);
         circle(x, y, dotRadius);
         x = x + buffer + dotDiameter;
         context.translate(-dotRadius, -dotRadius);
-      } if (sequence[signalIndex].id === 'dash') {
+      } if (thisSignalId === 'dash') {
         context.fillRect(x, y, dashWidth, dashHeight);
         x = x + buffer + dashWidth;
       }

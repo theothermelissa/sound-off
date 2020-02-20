@@ -5,14 +5,14 @@ import receiverReducer from '../reducers/receiverReducer';
 import ScoreKeeper from './ScoreKeeper';
 import Menu from './Menu';
 import Light from './Light';
-import CanvasMaker from './CanvasMaker';
+import SendableMessage from './SendableMessage';
 // import CanvasLetterMaker from './CanvasLetterMaker';
 
 export const GameContext = React.createContext(null);
 export const GameDispatch = React.createContext(null);
 
 const initialState = {
-  userSubmittedMessage: 'Hello world',
+  userSubmittedMessage: 'I love you',
   signalStartTimes: [],
   signalEndTimes: [],
   lastSignalReceived: '',
@@ -38,7 +38,7 @@ const GameMaster = () => {
         <Light on />
         <div className="messageHolder">
           { gameState.isSendable
-            ? <CanvasMaker msg={gameState.userSubmittedMessage} />
+            ? <SendableMessage />
             : <Message /> }
         </div>
         { gameState.isComplete && <ScoreKeeper /> }
