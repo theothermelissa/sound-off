@@ -4,6 +4,7 @@ import Message from './Message';
 import useFormatter from '../customHooks/useFormatter';
 import useCanvasResizer from '../customHooks/useCanvasResizer';
 import gifSizes from '../assets/gifSizes';
+import DownloadLink from './DownloadLink';
 
 const CanvasMaker = () => {
   const {
@@ -15,11 +16,13 @@ const CanvasMaker = () => {
   const canvasRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [frames, setFrames] = useState([]);
-  const leftPadding = useRef(0);
+  const [gifURL, setGifURL] = useState('');
   const [gifIsComplete, setGifIsComplete] = useState(false);
   const [gifIsReady, setGifIsReady] = useState(false);
+  const leftPadding = useRef(0);
   const canvasMessageIsComplete = activeIndex >= totalSignals.current;
   let nextImage;
+  let fileName;
 
   const {
     canvasWidth, canvasHeight, reduceBy, letterWidth,
@@ -70,6 +73,31 @@ const CanvasMaker = () => {
     return () => clearTimeout(timer);
   });
 
+  // from https://github.com/eligrey/FileSaver.js/issues/176#issuecomment-153800018
+
+  // const base64toBlob = (data, type, size) => {
+  //   const contentType = type || '';
+  //   const sliceSize = size || 512;
+
+  //   const byteCharacters = atob(data);
+  //   const byteArrays = [];
+
+  //   for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+  //     const slice = byteCharacters.slice(offset, offset + sliceSize);
+
+  //     const byteNumbers = new Array(slice.length);
+  //     for (let i = 0; i < slice.length; i += 1) {
+  //       byteNumbers[i] = slice.charCodeAt(i);
+  //     }
+
+  //     const byteArray = new Uint8Array(byteNumbers);
+
+  //     byteArrays.push(byteArray);
+  //   }
+  //   const blob = new Blob(byteArrays, { type: contentType });
+  //   return blob;
+  // };
+
   useEffect(() => {
     if (activeIndex > totalSignals.current) {
       const endingFrames = Array(10).fill(nextImage);
@@ -88,6 +116,7 @@ const CanvasMaker = () => {
           const { image } = obj;
           const animatedImage = document.getElementById('animatedGIF');
           animatedImage.src = image;
+          setGifURL(animatedImage.src);
         }
       });
     }
@@ -113,6 +142,8 @@ const CanvasMaker = () => {
     } return { display: 'none' };
   };
 
+  // console.log('gifURL: ', gifURL);
+
   return (
     <div>
       <canvas className="hidden" ref={canvasRef} width={canvasWidth} height={canvasHeight} style={{ border: '2px solid' }} />
@@ -128,6 +159,7 @@ const CanvasMaker = () => {
       <div>
         <img id="animatedGIF" style={shouldHide()} alt="autoplaying-message" />
       </div>
+      <DownloadLink source={gifURL} text="Download" />
     </div>
   );
 };

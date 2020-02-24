@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+// import { saveAs } from 'file-saver';
 import CanvasMaker from './CanvasMaker';
 import { GameContext } from './GameMaster';
 
@@ -9,11 +10,16 @@ const SendableMessage = () => {
     },
   } = useContext(GameContext);
 
+  // const onClick = () => {
+  //   saveAs(Blob, 'mymessage.gif');
+  // };
+
+
   return (
     <div className="modal">
       <div className="sendableMessage-main">
         <CanvasMaker msg={userSubmittedMessage} />
-        <button>download</button>
+        {/* <button type="button" className="submitButton">download</button> */}
       </div>
     </div>
   );
