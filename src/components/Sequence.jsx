@@ -43,7 +43,6 @@ const Sequence = ({
   useEffect(() => {
     if (characterPosition === activeCharacterIndex) {
       if (lastSignalReceived === charKeyCode) {
-        console.log('Match');
         completeSequence();
         setSequenceIsComplete(true);
         setCurrentSignalIndex(0);

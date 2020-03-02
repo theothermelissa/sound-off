@@ -1,22 +1,22 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import React, {
+  useState, useEffect, useRef, useContext,
+} from 'react';
 import Word from './Word';
-import useFormatter from '../customHooks/useFormatter';
 import { GameContext } from './GameMaster';
 
 const Message = ({
   activeSignalIndexForCanvas,
   canvasMessageIsComplete,
-  reduceBy,
 }) => {
   const {
     gameDispatch,
     gameState: {
       isBegun,
+      formattedMessage,
     },
   } = useContext(GameContext);
-  const formattedMessage = useRef(useFormatter().formattedMessage);
   const [activeWordIndex, setActiveWordIndex] = useState(0);
-  const totalWords = formattedMessage.current.length;
+  const totalWords = formattedMessage.length;
 
   const onCompleteWord = () => {
     const newIndex = activeWordIndex + 1;
@@ -40,7 +40,7 @@ const Message = ({
   }, [isBegun]);
 
   return (
-    formattedMessage.current.map((word, index) => (
+    formattedMessage && formattedMessage.map((word, index) => (
       <div className="wordHolder" key={word + index}>
         <Word
           characterList={word}
@@ -49,7 +49,7 @@ const Message = ({
           canvasMessageIsComplete={canvasMessageIsComplete}
           wordPosition={index}
           completeWord={onCompleteWord}
-          reduceBy={reduceBy}
+          // reduceBy={reduceBy}
         />
       </div>
     ))

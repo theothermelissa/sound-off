@@ -81,10 +81,20 @@ const receiverReducer = (state, action) => {
         isComplete: false,
         isBegun: false,
       };
-      case 'complete':
+    case 'complete':
       return {
         ...state,
         isComplete: true,
+      };
+    case 'formatMessage':
+      return {
+        ...state,
+        formattedMessage: action.payload,
+      };
+    case 'countTotalSignals':
+      return {
+        ...state,
+        totalSignals: action.payload,
       };
     default:
       throw new Error('Unknown signal');

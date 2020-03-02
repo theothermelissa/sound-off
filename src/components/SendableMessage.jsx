@@ -1,25 +1,26 @@
 import React, { useState, useContext } from 'react';
-// import { saveAs } from 'file-saver';
 import CanvasMaker from './CanvasMaker';
+import DownloadLink from './DownloadLink';
 import { GameContext } from './GameMaster';
 
 const SendableMessage = () => {
+  const [gifURL, setGifURL] = useState('');
+
+  const recordURL = (data) => {
+    setGifURL(data);
+  };
+
   const {
     gameState: {
       userSubmittedMessage,
     },
   } = useContext(GameContext);
 
-  // const onClick = () => {
-  //   saveAs(Blob, 'mymessage.gif');
-  // };
-
-
   return (
     <div className="modal">
       <div className="sendableMessage-main">
-        <CanvasMaker msg={userSubmittedMessage} />
-        {/* <button type="button" className="submitButton">download</button> */}
+        <CanvasMaker recordURL={recordURL} message={userSubmittedMessage} />
+        <DownloadLink source={gifURL} buttonText="download" fileName="MorseMessage" />
       </div>
     </div>
   );

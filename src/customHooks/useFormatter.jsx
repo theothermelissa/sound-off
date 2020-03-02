@@ -1,18 +1,11 @@
-import React, { useRef, useContext } from 'react';
+import React, { useRef } from 'react';
 import alphabet from '../assets/codeTranslationKey';
-import { GameContext } from '../components/GameMaster';
 
-const useFormatter = () => {
-  const {
-    gameState: {
-      userSubmittedMessage,
-    },
-  } = useContext(GameContext);
-
+const useFormatter = (message) => {
   const signalCount = useRef(0);
 
   const wordList = () => {
-    const list = userSubmittedMessage
+    const list = message
       .split(' ')
       .map((word) => word.split(''));
     return list;
@@ -45,10 +38,9 @@ const useFormatter = () => {
   };
 
   return {
-    formattedMessage: replaceChars(wordList(userSubmittedMessage)),
+    formattedMessage: replaceChars(wordList()),
     totalSignals: signalCount.current,
   };
 };
-// console.log('totalCount in useFormatter: ', totalCount);
 
 export default useFormatter;

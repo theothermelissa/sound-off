@@ -10,7 +10,9 @@ const initialState = {
   showLetters: false,
   showSignals: true,
   soundsOn: true,
+  isSendable: false,
 };
+
 
 function App() {
   const [settingsState, settingsDispatch] = useReducer(settingsReducer, initialState);

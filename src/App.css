@@ -37,7 +37,7 @@ body {
   display: flex;
   flex-flow: column;
   margin: 3px;
-  min-width: 2.1em;
+  min-width: 2.5em;
   min-height: 3em;
   justify-content: flex-end;
 }
@@ -46,6 +46,7 @@ body {
   position: fixed;
   font-size: 3em;
   color:#CCC4BC;
+  padding-bottom: 7px;
 }
 
 .sequence {
@@ -338,6 +339,20 @@ form {
   border: 1px solid transparent;
   border-radius: 8px;
   align-self: flex-end;
+  text-decoration: none;
+}
+
+.downloadButton {
+  max-width: 100px;
+  background-color: #A68823;
+  color: white;
+  -webkit-appearance: none;
+  font-size: medium;
+  padding: 10px 10px;
+  margin: 10px 0 0 0;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  text-decoration: none;
 }
 
 @keyframes rotate {

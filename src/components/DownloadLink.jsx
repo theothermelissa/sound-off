@@ -1,16 +1,14 @@
 import React from 'react';
 
-const DownloadLink = ({ source, text }) => {
-  const click = () => {
-  }
+const DownloadLink = ({ source, buttonText, fileName }) => {
 
   return (
     <a
+      className="downloadButton"
       href={source}
-      download
-      onClick={click}
+      download={fileName}
     >
-      {text}
+      {buttonText}
     </a>
   );
 };

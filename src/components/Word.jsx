@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Prompt from './Prompt';
 import { GameContext } from './GameMaster';
+import { SettingsContext } from '../App';
 import CanvasLetterMaker from './CanvasLetterMaker';
 
 const Word = ({
@@ -10,15 +11,20 @@ const Word = ({
   wordPosition,
   activeWordIndex,
   completeWord,
-  reduceBy,
+  // reduceBy,
 }) => {
+  // console.log('reduceBy: ', reduceBy);
   const {
     gameDispatch,
     gameState: {
       isBegun,
-      isSendable,
     },
   } = useContext(GameContext);
+  const {
+    settingsState: {
+      isSendable,
+    },
+  } = useContext(SettingsContext);
 
   const [activeCharacterIndex, setActiveCharacterIndex] = useState(0);
   const totalCharacters = characterList.length;
@@ -52,7 +58,7 @@ const Word = ({
               activeSignalIndex={activeSignalIndexForCanvas}
               id={wordPosition + letter.letter + index}
               canvasMessageIsComplete={canvasMessageIsComplete}
-              reduceBy={reduceBy}
+              // reduceBy={reduceBy}
             />
           )
           : (

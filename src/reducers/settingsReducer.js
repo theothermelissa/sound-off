@@ -30,6 +30,16 @@ const settingsReducer = (state, action) => {
         ...state,
         showSignals: false,
       };
+    case 'createSendableMessage':
+    return {
+        ...state,
+        isSendable: true,
+      };
+    case 'dismissSendableMessage':
+      return {
+        ...state,
+        isSendable: false,
+      };
     default:
       throw new Error('Unknown setting value.');
   }

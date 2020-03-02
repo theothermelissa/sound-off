@@ -1,14 +1,16 @@
 import React, { useRef, useState, useEffect } from 'react';
 import codeTranslationKey from '../assets/codeTranslationKey';
 import gifSizes from '../assets/gifSizes';
+import useCanvasResizer from '../customHooks/useCanvasResizer';
 
 const CanvasLetterMaker = ({
   char,
   activeSignalIndex,
   id,
-  reduceBy,
-  canvasMessageIsComplete,
+  // reduceBy,
+  // canvasMessageIsComplete,
 }) => {
+  const reduceBy = (useCanvasResizer().reduceBy) / 100;
   const {
     dotD,
     dashH,
@@ -58,6 +60,7 @@ const CanvasLetterMaker = ({
   useEffect(() => {
     const canvas = canvasRef.current;
     const context = canvas.getContext('2d');
+
     const circle = (x, y, r) => {
       context.beginPath();
       context.arc(x, y, r, 0, Math.PI * 2, true);
@@ -95,7 +98,7 @@ const CanvasLetterMaker = ({
 
   return (
     <div>
-      <canvas id={id} ref={canvasRef} width={canvasWidth} height={canvasHeight} style={{ border: '2px solid' }} />
+      <canvas id={id} ref={canvasRef} width={canvasWidth} height={canvasHeight} />
       {/* <img alt="dot" ref={img} src={dot} className="hidden" /> */}
     </div>
   );

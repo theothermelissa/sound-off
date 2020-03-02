@@ -1,7 +1,6 @@
-import React, { useRef, useContext, useEffect } from 'react';
-import { GameContext } from '../components/GameMaster';
+import React, { useRef, useContext } from 'react';
 import gifSizes from '../assets/gifSizes';
-
+import { GameContext } from '../components/GameMaster';
 
 const useCanvasResizer = () => {
   const {
