@@ -1,5 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
-import codeTranslationKey from '../assets/codeTranslationKey';
+import React, { useRef, useEffect } from 'react';
 import gifSizes from '../assets/gifSizes';
 import useCanvasResizer from '../customHooks/useCanvasResizer';
 
@@ -10,7 +9,7 @@ const CanvasLetterMaker = ({
   // reduceBy,
   // canvasMessageIsComplete,
 }) => {
-  const reduceBy = (useCanvasResizer().reduceBy) / 100;
+  const { reduceBy } = useCanvasResizer();
   const {
     dotD,
     dashH,
@@ -39,12 +38,10 @@ const CanvasLetterMaker = ({
   const fontSize = `${textSize}px`;
   const font = `${fontSize} ${fontName}`;
 
+  const finalIndex = characterIndices[characterIndices.length - 1];
+  const letterIsComplete = () => finalIndex < activeSignalIndex;
   const signalIsComplete = (signalIndex) => signalIndex < activeSignalIndex;
 
-  const letterIsComplete = () => {
-    const finalIndex = characterIndices[characterIndices.length - 1];
-    return (finalIndex < activeSignalIndex);
-  };
 
   const combinedCodeSignalWidths = () => {
     let total = sequence
@@ -61,29 +58,33 @@ const CanvasLetterMaker = ({
     const canvas = canvasRef.current;
     const context = canvas.getContext('2d');
 
+    context.font = font;
+    context.textAlign = 'center';
+    context.textBaseline = 'middle';
+    context.fillStyle = letterIsComplete() ? black : gray;
+    // console.log('letterIsComplete(): ', letterIsComplete());
+    context.fillText(letter, canvasWidthCenterPoint, canvasHeightCenterPoint);
+
     const circle = (x, y, r) => {
       context.beginPath();
       context.arc(x, y, r, 0, Math.PI * 2, true);
       context.fill();
     };
 
-    context.font = font;
-    context.textAlign = 'center';
-    context.textBaseline = 'middle';
-    context.fillStyle = letterIsComplete() ? black : 'transparent';
-    context.fillText(letter, canvasWidthCenterPoint, canvasHeightCenterPoint);
+    const y = canvasHeight - (dashHeight * 2);
+    let x = codeStartPoint;
 
-    for (let signalIndex = 0, x = codeStartPoint, y = canvasHeight - (dashHeight * 2); signalIndex < totalSequenceLength; signalIndex += 1) {
+    for (let signalIndex = 0; signalIndex < totalSequenceLength; signalIndex += 1) {
       const thisSignal = characterIndices[signalIndex];
       const thisSignalId = sequence[signalIndex].id;
-      const determineFillStyle = () => {
-        if (letterIsComplete()) {
-          return black;
-        } if (signalIsComplete(thisSignal)) {
-          return gray;
-        } return 'transparent';
-      };
-      context.fillStyle = determineFillStyle();
+      // const determineFillStyle = () => {
+      //   if (letterIsComplete()) {
+      //     return black;
+      //   } if (signalIsComplete(thisSignal)) {
+      //     return gray;
+      //   } return 'pink';
+      // };
+      context.fillStyle = signalIsComplete(thisSignal) ? black : gray;
       if (thisSignalId === 'dot') {
         context.translate(dotRadius, dotRadius);
         circle(x, y, dotRadius);
@@ -99,7 +100,6 @@ const CanvasLetterMaker = ({
   return (
     <div>
       <canvas id={id} ref={canvasRef} width={canvasWidth} height={canvasHeight} />
-      {/* <img alt="dot" ref={img} src={dot} className="hidden" /> */}
     </div>
   );
 };

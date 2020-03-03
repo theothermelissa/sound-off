@@ -57,8 +57,6 @@ const Word = ({
               char={letter}
               activeSignalIndex={activeSignalIndexForCanvas}
               id={wordPosition + letter.letter + index}
-              canvasMessageIsComplete={canvasMessageIsComplete}
-              // reduceBy={reduceBy}
             />
           )
           : (

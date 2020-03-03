@@ -5,7 +5,7 @@ import { GameContext } from '../components/GameMaster';
 const useCanvasResizer = () => {
   const {
     gameState: {
-      userSubmittedMessage,
+      formattedMessage,
     },
   } = useContext(GameContext);
 
@@ -14,7 +14,7 @@ const useCanvasResizer = () => {
     letterH,
   } = gifSizes;
 
-  const messageLength = useRef(userSubmittedMessage.length);
+  const messageLength = useRef(formattedMessage.length);
   const workingLetterWidth = letterW;
   const workingLetterHeight = letterH;
 
@@ -31,7 +31,7 @@ const useCanvasResizer = () => {
   const reductionRate = () => {
     if (needsReduced) {
       return 500 / maximumWidth();
-    } return 100;
+    } return 1;
   };
 
   const findCanvasHeight = () => {
@@ -40,11 +40,14 @@ const useCanvasResizer = () => {
     } return workingLetterHeight;
   };
 
+  const reduceByValue = (Math.round(reductionRate() * 100)) / 100;
+  const finalLetterWidth = Math.round(workingLetterWidth * reduceByValue);
+
   return {
     canvasWidth: findCanvasWidth(),
     canvasHeight: findCanvasHeight(),
-    reduceBy: (Math.round(reductionRate() * 100)) / 100,
-    letterWidth: Math.round(workingLetterWidth * reductionRate()),
+    reduceBy: reduceByValue,
+    letterWidth: finalLetterWidth,
   };
 };
 
