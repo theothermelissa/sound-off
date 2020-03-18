@@ -39,8 +39,8 @@ const Message = ({
   }, [isBegun]);
 
   return (
-    formattedMessage && formattedMessage.map((word, index) => (
-      <div className="wordHolder" key={word + index}>
+    formattedMessage.current.map((word, index) => (
+      <div className="wordHolder" key={word + index} id={`word${index}`}>
         <Word
           characterList={word}
           activeWordIndex={activeWordIndex}

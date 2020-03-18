@@ -16,6 +16,8 @@ const useFormatter = (message) => {
       letter: char,
       sequence: alphabet[char.toLowerCase()].sequence,
       characterIndices: [],
+      inWord: '',
+      wordLength: '',
     };
     return character;
   };
@@ -30,6 +32,8 @@ const useFormatter = (message) => {
         thisWord.splice(letterIndex, 1, char);
         for (let sequenceIndex = 0; sequenceIndex < char.sequence.length; sequenceIndex += 1) {
           thisWord[letterIndex].characterIndices.push(signalCount.current);
+          thisWord[letterIndex].inWord = wordIndex;
+          thisWord[letterIndex].wordLength = wordLength;
           signalCount.current += 1;
         }
       }

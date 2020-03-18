@@ -13,9 +13,7 @@ export const GameContext = React.createContext(null);
 export const GameDispatch = React.createContext(null);
 
 const initialState = {
-  userSubmittedMessage: 'i t',
-  formattedMessage: '',
-  totalSignals: '',
+  userSubmittedMessage: 'you',
   signalStartTimes: [],
   signalEndTimes: [],
   lastSignalReceived: '',
