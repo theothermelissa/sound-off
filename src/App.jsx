@@ -10,7 +10,6 @@ const initialState = {
   showLetters: false,
   showSignals: true,
   soundsOn: true,
-  isSendable: false,
 };
 
 

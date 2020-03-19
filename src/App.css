@@ -40,6 +40,7 @@ body {
   min-width: 2.5em;
   min-height: 3em;
   justify-content: flex-end;
+  align-items: center;
 }
 
 .letter {
@@ -133,8 +134,18 @@ body {
   flex-flow: column;
   /* flex-grow: 2; */
   background: white;
+  align-items: flex-start;
   font-size: larger;
-  margin-top: 30px;
+  margin-top: 60px;
+}
+
+.messageInput {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  /* flex-grow: 2; */
+  background: white;
+  font-size: larger;
 }
 
 form {
@@ -145,7 +156,6 @@ form {
 .text-label {
   color: #A68823;
   background: white;
-  margin: 10px 0 10px 0;
 }
 
 .text-input {
@@ -157,6 +167,7 @@ form {
   vertical-align: top;
   font-size: medium;
   padding: 10px 10px;
+  margin: 0px 10px 0px 10px;
   max-width: 100%;
   font-family: "Lucida Console", monospace;
 }
@@ -335,10 +346,8 @@ form {
   -webkit-appearance: none;
   font-size: medium;
   padding: 10px 10px;
-  margin: 10px 0 0 0;
   border: 1px solid transparent;
   border-radius: 8px;
-  align-self: flex-end;
   text-decoration: none;
 }
 
@@ -394,7 +403,7 @@ form {
 .score-main {
   color: #A39C96;
   font-size: xx-large;
-  margin-top: 5px;
+  margin: 5px 0px 10px 0px;
 }
 
 .score-secondary {
@@ -413,23 +422,6 @@ form {
   margin: 50px;
   border: 1px solid transparent;
   border-radius: 4px;
-}
-
-.sendableMessage-main {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  /* text-align: left; */
-  padding: 20px;
-  background: white;
-  box-shadow: -10px 5px 20px rgba(0, 0, 0, 0.2);
-  width: 60%;
-  min-height: 40%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .light-container {

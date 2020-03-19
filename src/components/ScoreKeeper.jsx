@@ -107,7 +107,6 @@ const ScoreKeeper = () => {
         </div>
         )}
         <CreateMessage />
-        {/* <CreateSendableMessage /> */}
       </div>
     </div>
   );

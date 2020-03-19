@@ -1,13 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Prompt from './Prompt';
 import { GameContext } from './GameMaster';
-import { SettingsContext } from '../App';
-import CanvasLetterMaker from './CanvasLetterMaker';
 
 const Word = ({
   characterList,
-  activeSignalIndexForCanvas,
-  canvasMessageIsComplete,
   wordPosition,
   activeWordIndex,
   completeWord,
@@ -20,11 +16,6 @@ const Word = ({
       isBegun,
     },
   } = useContext(GameContext);
-  const {
-    settingsState: {
-      isSendable,
-    },
-  } = useContext(SettingsContext);
 
   const [activeCharacterIndex, setActiveCharacterIndex] = useState(0);
   const totalCharacters = characterList.length;
@@ -51,24 +42,14 @@ const Word = ({
   return (
     characterList.map((letter, index) => (
       <div key={letter.letter + index}>
-        { isSendable
-          ? (
-            <CanvasLetterMaker
-              char={letter}
-              activeSignalIndex={activeSignalIndexForCanvas}
-              id={wordPosition + letter.letter + index}
-            />
-          )
-          : (
-            <Prompt
-              char={letter.letter}
-              characterPosition={index}
-              activeCharacterIndex={activeCharacterIndex}
-              wordPosition={wordPosition}
-              activeWordIndex={activeWordIndex}
-              completePrompt={onCompletePrompt}
-            />
-          )}
+        <Prompt
+          char={letter.letter}
+          characterPosition={index}
+          activeCharacterIndex={activeCharacterIndex}
+          wordPosition={wordPosition}
+          activeWordIndex={activeWordIndex}
+          completePrompt={onCompletePrompt}
+        />
       </div>
     ))
   );

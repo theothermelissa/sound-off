@@ -5,7 +5,6 @@ import receiverReducer from '../reducers/receiverReducer';
 import ScoreKeeper from './ScoreKeeper';
 import Menu from './Menu';
 import Light from './Light';
-import SendableMessage from './SendableMessage';
 import useFormatter from '../customHooks/useFormatter';
 // import CanvasLetterMaker from './CanvasLetterMaker';
 
@@ -13,7 +12,7 @@ export const GameContext = React.createContext(null);
 export const GameDispatch = React.createContext(null);
 
 const initialState = {
-  userSubmittedMessage: 'you',
+  userSubmittedMessage: 'hi',
   signalStartTimes: [],
   signalEndTimes: [],
   lastSignalReceived: '',
@@ -22,20 +21,20 @@ const initialState = {
   isComplete: false,
   isBegun: false,
   isPressed: false,
+  formattedMessage: '',
 };
 
 const GameMaster = () => {
   const [gameState, gameDispatch] = useReducer(receiverReducer, initialState);
-  const messageWithFormat = useFormatter(initialState.userSubmittedMessage).formattedMessage;
-  const totalSignalsInMessage = useFormatter(initialState.userSubmittedMessage).totalSignals;
-
+  const messageWithFormat = useFormatter(gameState.userSubmittedMessage).formattedMessage;
+  const totalSignalsInMessage = useFormatter(gameState.userSubmittedMessage).totalSignals;
 
   useEffect(() => {
     gameDispatch({
       type: 'formatMessage',
       payload: messageWithFormat,
     });
-  }, []);
+  }, [gameState.userSubmittedMessage]);
 
   useEffect(() => {
     gameDispatch({

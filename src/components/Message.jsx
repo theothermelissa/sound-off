@@ -16,6 +16,11 @@ const Message = ({
   } = useContext(GameContext);
   const [activeWordIndex, setActiveWordIndex] = useState(0);
   const totalWords = formattedMessage.length;
+  const [currentMessage, setCurrentMessage] = useState(formattedMessage);
+
+  useEffect(() => {
+    setCurrentMessage(formattedMessage);
+  }, [formattedMessage]);
 
   const onCompleteWord = () => {
     const newIndex = activeWordIndex + 1;
@@ -39,18 +44,20 @@ const Message = ({
   }, [isBegun]);
 
   return (
-    formattedMessage.current.map((word, index) => (
-      <div className="wordHolder" key={word + index} id={`word${index}`}>
-        <Word
-          characterList={word}
-          activeWordIndex={activeWordIndex}
-          activeSignalIndexForCanvas={activeSignalIndexForCanvas}
-          wordPosition={index}
-          completeWord={onCompleteWord}
-          // reduceBy={reduceBy}
-        />
-      </div>
-    ))
+    currentMessage && (
+      currentMessage.map((word, index) => (
+        <div className="wordHolder" key={word + index} id={`word${index}`}>
+          <Word
+            characterList={word}
+            activeWordIndex={activeWordIndex}
+            activeSignalIndexForCanvas={activeSignalIndexForCanvas}
+            wordPosition={index}
+            completeWord={onCompleteWord}
+            // reduceBy={reduceBy}
+          />
+        </div>
+      ))
+    )
   );
 };
 
