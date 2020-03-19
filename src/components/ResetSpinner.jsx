@@ -11,17 +11,15 @@ const ResetSpinner = ({ shouldRun }) => {
   const stroke = 2;
 
   useEffect(() => {
-    const newProgress = progress + 1;
+    const newProgress = progress + 2;
     if (isRunning) {
       if (progress === 100) {
         setIsComplete(true);
       }
       const interval = setInterval(() => {
         setProgress(newProgress);
-      }, 20);
+      }, 25);
       return () => clearInterval(interval);
-    } if (!isComplete) {
-      // setProgress(0);
     }
   }, [isRunning, progress, isComplete]);
 
@@ -29,17 +27,19 @@ const ResetSpinner = ({ shouldRun }) => {
   const circumference = normalizedRadius * 2 * Math.PI;
   const strokeDashoffset = circumference - (progress / 100) * circumference;
   return (
-    <svg className="spinnerContainer" height={radius * 2} width={radius * 2}>
-      <circle
-        className="resetSpinner"
-        // strokeWidth={stroke}
-        strokeDasharray={circumference}
-        style={{ strokeDashoffset, transformOrigin: '50% 50%' }}
-        r={normalizedRadius}
-        cx={radius}
-        cy={radius}
-      />
-    </svg>
+    <div className="spinnerContainer">
+      <svg height={radius * 2} width={radius * 2}>
+        <circle
+          className="resetSpinner"
+          // strokeWidth={stroke}
+          strokeDasharray={circumference}
+          style={{ strokeDashoffset, transformOrigin: '50% 50%' }}
+          r={normalizedRadius}
+          cx={radius}
+          cy={radius}
+        />
+      </svg>
+    </div>
   );
 };
 

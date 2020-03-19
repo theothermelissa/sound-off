@@ -1,35 +1,36 @@
-import React, { useState, useEffect, useContext } from 'react';
-import Prompt from './Prompt';
+import React, {
+  useState, useEffect, useRef, useContext,
+} from 'react';
+import Word from './Word';
 import { GameContext } from './GameMaster';
 
-const Message = () => {
+const Message = ({
+  activeSignalIndexForCanvas,
+}) => {
   const {
     gameDispatch,
     gameState: {
-      userSubmittedMessage,
       isBegun,
+      formattedMessage,
     },
   } = useContext(GameContext);
-  const [activeCharacterIndex, setActiveCharacterIndex] = useState(0);
-  const characterList = userSubmittedMessage.split('');
-  const totalCharacters = characterList.length;
-  const isSpace = (char) => char === ' ' || char === '   ';
+  const [activeWordIndex, setActiveWordIndex] = useState(0);
+  const totalWords = formattedMessage.length;
+  const [currentMessage, setCurrentMessage] = useState(formattedMessage);
 
-  const onCompletePrompt = () => {
-    const newIndex = activeCharacterIndex + 1;
-    if (newIndex < totalCharacters) {
+  useEffect(() => {
+    setCurrentMessage(formattedMessage);
+  }, [formattedMessage]);
+
+  const onCompleteWord = () => {
+    const newIndex = activeWordIndex + 1;
+    if (newIndex < totalWords) {
       gameDispatch({
         type: 'resetSignal',
       });
-      setActiveCharacterIndex(newIndex);
-      if (isSpace(characterList[newIndex])) {
-        gameDispatch({
-          type: 'resetSignal',
-        });
-        setActiveCharacterIndex(newIndex + 1);
-      }
+      setActiveWordIndex(newIndex);
     } else {
-      setActiveCharacterIndex(0);
+      setActiveWordIndex(0);
       setTimeout(() => gameDispatch({
         type: 'complete',
       }), 320);
@@ -38,23 +39,25 @@ const Message = () => {
 
   useEffect(() => {
     if (!isBegun) {
-      setActiveCharacterIndex(0);
+      setActiveWordIndex(0);
     }
   }, [isBegun]);
 
-
   return (
-    characterList.map((letter, index) => (
-      <div key={letter + index}>
-        <Prompt
-          char={letter}
-          position={index}
-          activeCharacterIndex={activeCharacterIndex}
-          completePrompt={onCompletePrompt}
-          key={letter + index}
-        />
-      </div>
-    ))
+    currentMessage && (
+      currentMessage.map((word, index) => (
+        <div className="wordHolder" key={word + index} id={`word${index}`}>
+          <Word
+            characterList={word}
+            activeWordIndex={activeWordIndex}
+            activeSignalIndexForCanvas={activeSignalIndexForCanvas}
+            wordPosition={index}
+            completeWord={onCompleteWord}
+            // reduceBy={reduceBy}
+          />
+        </div>
+      ))
+    )
   );
 };
 

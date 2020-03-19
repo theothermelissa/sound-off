@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react';
 import alphabet from '../assets/codeTranslationKey.js';
-import '../App.css';
 import CodeSignal from './CodeSignal';
 import { GameContext } from './GameMaster';
 
 const Sequence = ({
   char,
-  position,
+  characterPosition,
   activeCharacterIndex,
+  wordPosition,
+  activeWordIndex,
   completeSequence,
   promptIsComplete,
 }) => {
@@ -15,8 +16,8 @@ const Sequence = ({
   const [currentSignalIndex, setCurrentSignalIndex] = useState(0);
   const [sequenceIsComplete, setSequenceIsComplete] = useState(false);
   const morseElementSequence = alphabet[char].sequence;
-  const charKeyCode = alphabet[char].code;
   const totalSignalsInChar = morseElementSequence.length;
+  const charKeyCode = alphabet[char].code;
 
   const onCompleteCodeSignal = (index) => {
     const newIndex = index + 1;
@@ -40,15 +41,14 @@ const Sequence = ({
   }, [isBegun]);
 
   useEffect(() => {
-    if (position === activeCharacterIndex) {
+    if (characterPosition === activeCharacterIndex) {
       if (lastSignalReceived === charKeyCode) {
-        console.log('Match');
         completeSequence();
         setSequenceIsComplete(true);
         setCurrentSignalIndex(0);
       }
     }
-  }, [lastSignalReceived, charKeyCode, position, activeCharacterIndex]);
+  }, [lastSignalReceived, charKeyCode, characterPosition, activeCharacterIndex]);
 
   return (
     morseElementSequence.map((codeSignal, index) => (
@@ -57,9 +57,11 @@ const Sequence = ({
         elementName={codeSignal.id}
         elementIndex={index}
         key={char + codeSignal.id + index}
-        characterPosition={position}
+        characterPosition={characterPosition}
         activeSignalIndex={currentSignalIndex}
         activeCharacterIndex={activeCharacterIndex}
+        wordPosition={wordPosition}
+        activeWordIndex={activeWordIndex}
         sequenceIsComplete={sequenceIsComplete}
         completeCodeSignal={onCompleteCodeSignal}
         promptIsComplete={promptIsComplete}

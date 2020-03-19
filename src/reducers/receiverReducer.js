@@ -1,6 +1,16 @@
 const receiverReducer = (state, action) => {
   const newErrorCount = state.totalErrors + 1;
   switch (action.type) {
+    case 'switchPress':
+      return {
+        ...state,
+        isPressed: true,
+      };
+    case 'switchRelease':
+      return {
+        ...state,
+        isPressed: false,
+      };
     case 'invalidSignal':
       return {
         ...state,
@@ -45,6 +55,8 @@ const receiverReducer = (state, action) => {
       return {
         ...state,
         lastSignalReceived: '',
+        signalStartTimes: [],
+        signalEndTimes: [],
       };
     case 'newMessage':
       return {
@@ -69,10 +81,20 @@ const receiverReducer = (state, action) => {
         isComplete: false,
         isBegun: false,
       };
-      case 'complete':
+    case 'complete':
       return {
         ...state,
         isComplete: true,
+      };
+    case 'formatMessage':
+      return {
+        ...state,
+        formattedMessage: action.payload,
+      };
+    case 'countTotalSignals':
+      return {
+        ...state,
+        totalSignals: action.payload,
       };
     default:
       throw new Error('Unknown signal');

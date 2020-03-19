@@ -4,6 +4,7 @@ import React, {
 import alphabet from '../assets/codeTranslationKey';
 import CreateMessage from './CreateMessage';
 import { GameContext } from './GameMaster';
+import affirmations from '../assets/affirmations';
 
 const ScoreKeeper = () => {
   const {
@@ -62,23 +63,15 @@ const ScoreKeeper = () => {
     return (timeEnd - timeStart) / 1000;
   };
 
-  console.log('targetSpeed upon completion: ', speedTarget);
-  console.log('length upon completion: ', sequenceLength);
-  console.log('difficulty upon completion: ', difficultyScore);
-
   const handleComplete = useCallback(() => {
     if (isComplete) {
       const accuracy = ((sequenceLength - totalErrors) / sequenceLength) * 100;
       const transmissionSpeed = durationOfTransmission();
-      const bonus = Math.round((speedTarget / transmissionSpeed) * 1000);
+      const bonus = (speedTarget / transmissionSpeed);
       const total = accuracy + bonus;
-      console.log('accuracy upon completion: ', accuracy);
-      console.log('transmissionSpeed upon completion: ', transmissionSpeed);
-      console.log('speedBonus upon completion: ', bonus);
-      console.log('total score upon completion: ', total);
-      setAccuracyScore(accuracy);
+      setAccuracyScore(Math.round(accuracy));
       setSpeedBonus(Math.round(bonus));
-      setTotalScore(total);
+      setTotalScore(Math.round(total));
     }
   });
 
@@ -86,30 +79,33 @@ const ScoreKeeper = () => {
     handleComplete();
   }, [isComplete]);
 
+  const randomAffirmation = () => (
+    affirmations[Math.floor(Math.random() * affirmations.length)]
+  );
+
   return (
-    <div className="scoreCard">
+    <div className="modal">
       <div className="scoreCard-main">
-        <div className="score">Way to go!</div>
-        <div className="score">
-          Total Score:
-          {totalScore}
-        </div>
-        <div className="score">
+        <div className="score-secondary">{randomAffirmation()}</div>
+        <div className="score-secondary">
           Accuracy:
+          {' '}
           {accuracyScore}
           %
         </div>
-        <div className="score">
-          Speed bonus:
-          {speedBonus}
-          {' '}
-          points
+        {!!speedBonus && (
+        <div className="score-secondary">
+          {`Speed bonus: ${speedBonus}`}
         </div>
-        <div className="score">
-          Message difficulty:
-          {difficultyScore}
-          %
+        )}
+        <div className="score-secondary">
+          {`Mesage difficulty: ${difficultyScore}%`}
         </div>
+        {!!totalScore && (
+        <div className="score-main">
+          {`Score: ${totalScore}`}
+        </div>
+        )}
         <CreateMessage />
       </div>
     </div>
