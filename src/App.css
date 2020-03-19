@@ -37,7 +37,7 @@ body {
   display: flex;
   flex-flow: column;
   margin: 3px;
-  min-width: 2.5em;
+  min-width: 3.4em;
   min-height: 3em;
   justify-content: flex-end;
   align-items: center;
